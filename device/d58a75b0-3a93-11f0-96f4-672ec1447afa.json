@@ -1,0 +1,67 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : null,
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "d58a75b0-3a93-11f0-96f4-672ec1447afa"
+    },
+    "label" : null,
+    "name" : "Test Device A3",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "A3_TEST_TOKEN",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1748307353823,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1748307353818,
+      "longValue" : 1748307353237,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[[-34.5851307171878,-58.421741691895555],[-34.590326413703174,-58.417601104568085],[-34.58937503975292,-58.41671226515484],[-34.588173923463565,-58.41813972553853],[-34.586796151039614,-58.41503932971422],[-34.5882047087697,-58.41367216554177],[-34.58761355431091,-58.412577475235366],[-34.58241768811976,-58.416718062562836]]",
+      "key" : "perimeter2",
+      "lastUpdateTs" : 1748555633172,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

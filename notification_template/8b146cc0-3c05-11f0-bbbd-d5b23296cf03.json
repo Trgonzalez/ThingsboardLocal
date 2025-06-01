@@ -1,0 +1,28 @@
+{
+  "entityType" : "NOTIFICATION_TEMPLATE",
+  "entity" : {
+    "configuration" : {
+      "deliveryMethodsTemplates" : {
+        "WEB" : {
+          "method" : "WEB",
+          "additionalConfig" : {
+            "icon" : {
+              "enabled" : false
+            },
+            "actionButtonConfig" : null
+          },
+          "body" : "sdf sfsd",
+          "enabled" : true,
+          "subject" : "sdf sd"
+        }
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "NOTIFICATION_TEMPLATE",
+      "id" : "8b146cc0-3c05-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "test",
+    "notificationType" : "RULE_NODE"
+  }
+}

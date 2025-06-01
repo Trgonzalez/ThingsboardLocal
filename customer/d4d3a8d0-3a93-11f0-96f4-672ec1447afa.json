@@ -1,0 +1,33 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : null,
+    "address" : null,
+    "address2" : null,
+    "city" : null,
+    "country" : null,
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+    },
+    "name" : "Customer A",
+    "phone" : null,
+    "state" : null,
+    "title" : "Customer A",
+    "zip" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "chatId",
+      "lastUpdateTs" : 1748651205424,
+      "longValue" : null,
+      "strValue" : "1232123"
+    } ]
+  }
+}
