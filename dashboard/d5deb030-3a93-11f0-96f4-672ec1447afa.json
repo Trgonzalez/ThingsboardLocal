@@ -20,7 +20,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -30,7 +33,11 @@
                   "startTimeMs" : 1694085343279,
                   "endTimeMs" : 1694171743279
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "NONE",
@@ -477,7 +484,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -487,7 +497,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "AVG",
@@ -571,7 +585,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -581,7 +598,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "AVG",
@@ -665,7 +686,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -675,7 +699,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "AVG",
@@ -759,7 +787,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -769,7 +800,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "AVG",
@@ -834,7 +869,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -844,7 +882,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "NONE",
@@ -1123,7 +1165,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -1133,7 +1178,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "NONE",
@@ -1412,7 +1461,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -1422,7 +1474,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "NONE",
@@ -1701,7 +1757,10 @@
                 "realtimeType" : 1,
                 "interval" : 1000,
                 "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
               },
               "history" : {
                 "historyType" : 0,
@@ -1711,7 +1770,11 @@
                   "startTimeMs" : 1694085343280,
                   "endTimeMs" : 1694171743280
                 },
-                "quickInterval" : "CURRENT_DAY"
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
               },
               "aggregation" : {
                 "type" : "NONE",
@@ -2027,7 +2090,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : true,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2055,7 +2119,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : false,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2083,7 +2148,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : false,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2111,7 +2177,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : false,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2139,7 +2206,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : false,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2167,7 +2235,8 @@
                 "backgroundImageUrl" : null,
                 "mobileAutoFillHeight" : false,
                 "mobileRowHeight" : 70,
-                "outerMargin" : true
+                "outerMargin" : true,
+                "layoutType" : "default"
               }
             }
           }
@@ -2418,7 +2487,6 @@
       },
       "timewindow" : {
         "displayValue" : "",
-        "hideInterval" : false,
         "hideAggregation" : false,
         "hideAggInterval" : false,
         "hideTimezone" : false,
@@ -2461,14 +2529,7 @@
     },
     "name" : "Software",
     "resources" : null,
-    "assignedCustomers" : [ {
-      "customerId" : {
-        "entityType" : "CUSTOMER",
-        "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
-      },
-      "title" : "Public",
-      "public" : true
-    } ],
+    "assignedCustomers" : [ ],
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",

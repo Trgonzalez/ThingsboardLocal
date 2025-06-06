@@ -41,28 +41,84 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1748753092090,
+      "lastUpdateTs" : 1748878743668,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "aguadaAlarmFlag",
+      "lastUpdateTs" : 1748890223895,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "aguadaAlarmThreshold",
+      "lastUpdateTs" : 1748890223895,
+      "longValue" : 25,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "battVal",
+      "lastUpdateTs" : 1749082520784,
+      "longValue" : 20,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1748753092089,
-      "longValue" : 1748753092089,
+      "lastUpdateTs" : 1748831632453,
+      "longValue" : 1748831632453,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1748752476741,
-      "longValue" : 1748752476184,
+      "lastUpdateTs" : 1749218055665,
+      "longValue" : 1749218053219,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.04270067845895,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1749089177595,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -59.39367520281957,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1749089177595,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tanqueAlarmFlag",
+      "lastUpdateTs" : 1748890223895,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tanqueAlarmThreshold",
+      "lastUpdateTs" : 1748890149436,
+      "longValue" : 20,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

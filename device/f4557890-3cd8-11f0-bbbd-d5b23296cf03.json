@@ -4,7 +4,7 @@
     "additionalInfo" : null,
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
     },
     "deviceData" : {
       "configuration" : {
@@ -41,7 +41,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1748720391915,
+      "lastUpdateTs" : 1748801152312,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -49,7 +49,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "humidityAlarmFlag",
-      "lastUpdateTs" : 1748717334986,
+      "lastUpdateTs" : 1748798194469,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -65,31 +65,31 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1748720391915,
-      "longValue" : 1748720391914,
+      "lastUpdateTs" : 1748801152312,
+      "longValue" : 1748801152312,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1748719782662,
-      "longValue" : 1748719782008,
+      "lastUpdateTs" : 1748800545661,
+      "longValue" : 1748800542684,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : 37.45344661691409,
+      "doubleValue" : -35.14891462105126,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1748719638865,
+      "lastUpdateTs" : 1748796332760,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -122.09363937377931,
+      "doubleValue" : -58.61628770828247,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1748719638865,
+      "lastUpdateTs" : 1748796332760,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -97,7 +97,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "temperatureAlarmFlag",
-      "lastUpdateTs" : 1748708314669,
+      "lastUpdateTs" : 1748798018288,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -105,8 +105,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "temperatureAlarmThreshold",
-      "lastUpdateTs" : 1748708314669,
-      "longValue" : 10,
+      "lastUpdateTs" : 1748797987546,
+      "longValue" : 20,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

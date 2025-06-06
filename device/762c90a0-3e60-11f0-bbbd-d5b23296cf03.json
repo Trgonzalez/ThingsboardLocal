@@ -41,28 +41,84 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1748751712082,
+      "lastUpdateTs" : 1748878740647,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "battVal",
+      "lastUpdateTs" : 1749082532462,
+      "longValue" : 52,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "humidityAlarmFlag",
+      "lastUpdateTs" : 1748798359647,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "humidityAlarmThreshold",
+      "lastUpdateTs" : 1748798772900,
+      "longValue" : 30,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1748751712082,
-      "longValue" : 1748751712082,
+      "lastUpdateTs" : 1748831632455,
+      "longValue" : 1748831632453,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1748751096665,
-      "longValue" : 1748751095151,
+      "lastUpdateTs" : 1749218052664,
+      "longValue" : 1749218052135,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.04312692554263,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1749089112762,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -59.38441127757705,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1749089112762,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "temperatureAlarmFlag",
+      "lastUpdateTs" : 1748798311776,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "temperatureAlarmThreshold",
+      "lastUpdateTs" : 1749217778802,
+      "longValue" : 30,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

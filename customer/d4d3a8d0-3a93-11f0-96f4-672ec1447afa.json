@@ -1,7 +1,11 @@
 {
   "entityType" : "CUSTOMER",
   "entity" : {
-    "additionalInfo" : null,
+    "additionalInfo" : {
+      "description" : "",
+      "homeDashboardId" : null,
+      "homeDashboardHideToolbar" : true
+    },
     "address" : null,
     "address2" : null,
     "city" : null,

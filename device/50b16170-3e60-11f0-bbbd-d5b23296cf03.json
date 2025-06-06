@@ -41,28 +41,52 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1748754112096,
+      "lastUpdateTs" : 1748878743658,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "battVal",
+      "lastUpdateTs" : 1749082509893,
+      "longValue" : 100,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1748754112096,
-      "longValue" : 1748754112095,
+      "lastUpdateTs" : 1748831632455,
+      "longValue" : 1748831632453,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1748753508653,
-      "longValue" : 1748753506360,
+      "lastUpdateTs" : 1749218055665,
+      "longValue" : 1749218052665,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.048427275118954,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1749089094664,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -59.3930067192182,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1749089094664,
+      "longValue" : null,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

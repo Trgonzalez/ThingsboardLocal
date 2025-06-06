@@ -19,7 +19,96 @@
     "image" : null,
     "name" : "lanza",
     "profileData" : {
-      "alarms" : null,
+      "alarms" : [ {
+        "alarmType" : "Alta Temperatura",
+        "clearRule" : {
+          "alarmDetails" : "Temperatura = ${temperature}",
+          "condition" : {
+            "condition" : [ {
+              "key" : {
+                "key" : "temperature",
+                "type" : "TIME_SERIES"
+              },
+              "predicate" : {
+                "type" : "NUMERIC",
+                "operation" : "LESS_OR_EQUAL",
+                "value" : {
+                  "defaultValue" : 0.0,
+                  "dynamicValue" : {
+                    "inherit" : false,
+                    "sourceAttribute" : "temperatureAlarmThreshold",
+                    "sourceType" : "CURRENT_DEVICE",
+                    "resolvedValue" : null
+                  },
+                  "userValue" : null
+                }
+              },
+              "value" : null,
+              "valueType" : "NUMERIC"
+            } ],
+            "spec" : {
+              "type" : "SIMPLE"
+            }
+          },
+          "dashboardId" : null,
+          "schedule" : null
+        },
+        "createRules" : {
+          "CRITICAL" : {
+            "alarmDetails" : "Temperatura = ${temperature}",
+            "condition" : {
+              "condition" : [ {
+                "key" : {
+                  "key" : "temperatureAlarmFlag",
+                  "type" : "ATTRIBUTE"
+                },
+                "predicate" : {
+                  "type" : "BOOLEAN",
+                  "operation" : "EQUAL",
+                  "value" : {
+                    "defaultValue" : true,
+                    "dynamicValue" : null,
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "BOOLEAN"
+              }, {
+                "key" : {
+                  "key" : "temperature",
+                  "type" : "TIME_SERIES"
+                },
+                "predicate" : {
+                  "type" : "NUMERIC",
+                  "operation" : "GREATER",
+                  "value" : {
+                    "defaultValue" : 30.0,
+                    "dynamicValue" : {
+                      "inherit" : false,
+                      "sourceAttribute" : "temperatureAlarmThreshold",
+                      "sourceType" : "CURRENT_DEVICE",
+                      "resolvedValue" : null
+                    },
+                    "userValue" : null
+                  }
+                },
+                "value" : null,
+                "valueType" : "NUMERIC"
+              } ],
+              "spec" : {
+                "type" : "SIMPLE"
+              }
+            },
+            "dashboardId" : null,
+            "schedule" : null
+          }
+        },
+        "id" : "da6e051e-dcb9-0786-ff12-99e46341e15d",
+        "propagate" : false,
+        "propagateRelationTypes" : null,
+        "propagateToOwner" : false,
+        "propagateToTenant" : false
+      } ],
       "configuration" : {
         "type" : "DEFAULT"
       },

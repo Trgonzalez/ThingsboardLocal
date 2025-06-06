@@ -1,0 +1,34 @@
+{
+  "entityType" : "NOTIFICATION_TEMPLATE",
+  "entity" : {
+    "configuration" : {
+      "deliveryMethodsTemplates" : {
+        "WEB" : {
+          "method" : "WEB",
+          "additionalConfig" : {
+            "icon" : {
+              "enabled" : false
+            },
+            "actionButtonConfig" : null
+          },
+          "body" : "Codigo de vinculación: {codigo}",
+          "enabled" : true,
+          "subject" : "Vincular Telegram"
+        },
+        "EMAIL" : {
+          "method" : "EMAIL",
+          "body" : "<p>Codigo de vinculaci&oacute;n: {codigo}</p>",
+          "enabled" : true,
+          "subject" : "Vincular Telegram"
+        }
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "NOTIFICATION_TEMPLATE",
+      "id" : "a8c08110-423a-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "VincularTelegram",
+    "notificationType" : "GENERAL"
+  }
+}

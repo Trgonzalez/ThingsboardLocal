@@ -72,18 +72,18 @@
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : 37.46437876204216,
+      "doubleValue" : -34.52179858441907,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1748556288913,
+      "lastUpdateTs" : 1748796380932,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -121.97383156103515,
+      "doubleValue" : -58.4912109375,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1748556288913,
+      "lastUpdateTs" : 1748796380932,
       "longValue" : null,
       "strValue" : null
     }, {

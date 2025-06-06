@@ -1,0 +1,206 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "8ef0cb00-3fd3-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "948c5700-3fd3-11f0-bbbd-d5b23296cf03"
+    },
+    "label" : "",
+    "name" : "Comedero Lote 1",
+    "softwareId" : null,
+    "type" : "comedero"
+  },
+  "credentials" : {
+    "credentialsId" : "5EVmYEH04cT0drrpbPmw",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1748883996683,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "battVal",
+      "lastUpdateTs" : 1749082543410,
+      "longValue" : 73,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "comedero1VacasCount",
+      "lastUpdateTs" : 1749078815844,
+      "longValue" : null,
+      "strValue" : "10"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "comedero2VacasCount",
+      "lastUpdateTs" : 1749078817497,
+      "longValue" : null,
+      "strValue" : "10"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "comedero3VacasCount",
+      "lastUpdateTs" : 1749078819030,
+      "longValue" : null,
+      "strValue" : "10"
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "comederosAlarmFlag",
+      "lastUpdateTs" : 1749090859848,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "consumoComedero2",
+      "lastUpdateTs" : 1749076156865,
+      "longValue" : null,
+      "strValue" : "50"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1749218055664,
+      "longValue" : 1749218053774,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.040725797864994,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1749089152221,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -59.39686911447094,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1749089152221,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "temperatureAlarmThreshold",
+      "lastUpdateTs" : 1749090859848,
+      "longValue" : 30,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "comedero1" : {
+          "limit" : 2,
+          "refEntityKey" : {
+            "key" : "comedero1",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        },
+        "comedero2" : {
+          "limit" : 2,
+          "refEntityKey" : {
+            "key" : "comedero2",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        },
+        "comedero3" : {
+          "limit" : 2,
+          "refEntityKey" : {
+            "key" : "comedero3",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        },
+        "vacas1" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "comedero1VacasCount",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "vacas2" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "comedero2VacasCount",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "vacas3" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "comedero3VacasCount",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "var result = {};\r\n\r\nif (comedero1.values.size() >= 2) {\r\n    var delta1 = comedero1.last - comedero1.first;\r\n    if (delta1 < 0) {\r\n        result[\"consumoComedero1\"] = -toFixed(delta1, 2);\r\n    }\r\n}\r\n\r\nif (comedero2.values.size() >= 2) {\r\n    var delta2 = comedero2.last - comedero2.first;\r\n    if (delta2 < 0) {\r\n        result[\"consumoComedero2\"] = -toFixed(delta2, 2);\r\n    }\r\n}\r\n\r\nif (comedero3.values.size() >= 2) {\r\n    var delta3 = comedero3.last - comedero3.first;\r\n    if (delta3 < 0) {\r\n        result[\"consumoComedero3\"] = -toFixed(delta3, 2);\r\n    }\r\n}\r\n\r\nreturn result;",
+      "output" : {
+        "name" : "",
+        "type" : "TIME_SERIES"
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1749072675971,
+      "failuresEnabled" : true
+    },
+    "name" : "DeltaComedero",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SCRIPT"
+  } ]
+}

@@ -22,6 +22,14 @@
   },
   "relations" : [ ],
   "attributes" : {
-    "SERVER_SCOPE" : [ ]
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"941688522\":true,\"7632398137\":true}",
+      "key" : "telegramSubs",
+      "lastUpdateTs" : 1749167801117,
+      "longValue" : null,
+      "strValue" : null
+    } ]
   }
 }
