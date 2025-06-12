@@ -39,6 +39,10 @@
       "toIndex" : 5,
       "type" : "RPC Request to Device"
     }, {
+      "fromIndex" : 2,
+      "toIndex" : 12,
+      "type" : "Attributes Updated"
+    }, {
       "fromIndex" : 6,
       "toIndex" : 2,
       "type" : "Success"
@@ -53,6 +57,18 @@
     }, {
       "fromIndex" : 9,
       "toIndex" : 8,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 10,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 13,
+      "type" : "True"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 11,
       "type" : "Success"
     } ],
     "firstNodeIndex" : 6,
@@ -226,8 +242,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 689,
-        "layoutY" : 586
+        "layoutX" : 6,
+        "layoutY" : 765
       },
       "configuration" : {
         "restEndpointUrlPattern" : "https://api.telegram.org/bot7813852758:AAFImPbdVAnfT8Y0Ty2lW6ku0zVHzREF9TM/sendMessage",
@@ -272,8 +288,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 375,
-        "layoutY" : 585
+        "layoutX" : 10,
+        "layoutY" : 667
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -300,8 +316,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 91,
-        "layoutY" : 581
+        "layoutX" : 0,
+        "layoutY" : 580
       },
       "configuration" : {
         "dataToFetch" : "ATTRIBUTES",
@@ -327,10 +343,145 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 683,
+        "layoutY" : 586
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "http://chirpstack.nexoragro.com:8090/api/devices/${cs_dev_eui}/queue",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : false,
+        "ignoreRequestBody" : false,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "accept" : "application/json",
+          "Grpc-Metadata-Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjaGlycHN0YWNrIiwiaXNzIjoiY2hpcnBzdGFjayIsInN1YiI6ImE1ODJjN2I0LTYxOWItNDExZi1hMGY4LTY5MDNkMzNkNjZmNiIsInR5cCI6ImtleSJ9.F-z7ZEULNyf0uBhGAJbwss5N6KpGnSFA0wle1CQK-qw"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749767752146,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "77019e10-47db-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "restApi",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 384,
+        "layoutY" : 595
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var segundos = msg.interval;  // reemplazá por data.segundos si viene desde afuera\n\n// Convertir a hex de 2 bytes (4 dígitos)\nvar hex = segundos.toString(16);\nwhile (hex.length < 4) {\n    hex = '0' + hex;\n}\nvar finalHex = '01' + hex;  // Ej: 010009\n\n// HEX a array de bytes\nfunction hexToBytes(hexStr) {\n    var result = [];\n    for (var i = 0; i < hexStr.length; i += 2) {\n        result.push(parseInt(hexStr.substr(i, 2), 16));\n    }\n    return result;\n}\n\n// Bytes a Base64 manual (ThingsBoard compatible)\nfunction bytesToBase64(bytes) {\n    var base64abc = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    var result = \"\", i;\n    for (i = 0; i + 2 < bytes.length; i += 3) {\n        result += base64abc[bytes[i] >> 2];\n        result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n        result += base64abc[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];\n        result += base64abc[bytes[i + 2] & 63];\n    }\n    if (i < bytes.length) {\n        result += base64abc[bytes[i] >> 2];\n        if (i + 1 < bytes.length) {\n            result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n            result += base64abc[(bytes[i + 1] & 15) << 2];\n            result += \"=\";\n        } else {\n            result += base64abc[(bytes[i] & 3) << 4];\n            result += \"==\";\n        }\n    }\n    return result;\n}\n\nvar bytes = hexToBytes(finalHex);\nvar base64Payload = bytesToBase64(bytes);\n\nvar msgPayload = {\n    \n  \"queueItem\": {\n    \"confirmed\": false,\n    \"data\": base64Payload,\n    \"fPort\": 10,\n    \"id\": \"string\",\n    \"isPending\": true\n    \n    \n  }\n\nreturn {msg: msgPayload, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// Obtenemos el campo intervalo en segundos\nvar segundos = msg.interval;\n\n// Generamos el hex de 2 bytes (4 dígitos), completando con ceros a la izquierda\nvar hexSeg = Integer.toString(segundos, 16);\nhexSeg = padStart(hexSeg, 4, '0');\n\n// Anteponemos el byte fijo '01'\nvar finalHex = '01' + hexSeg; // ej: '010009'\n\n// Convertimos el hex a bytes y luego a Base64\nvar bytesArr = hexToBytes(finalHex); // -> lista de bytes\nvar payloadBase64 = bytesToBase64(bytesArr);\n\nvar csPayload = {\n\n    \"queueItem\": {\n        \n        \"data\": payloadBase64,\n        \"fPort\": 10,\n        \"id\": \"string\",\n        \"isPending\": true\n\n\n    }\n};\nreturn {\n    msg: csPayload,\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749770956078,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "77021340-47db-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "body",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 384,
+        "layoutY" : 398
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.hasOwnProperty(\"estado\")) {\r\n    return { msg: msg, metadata: metadata, msgType: msgType };\r\n} else {\r\n    return null; // ignora otros atributos\r\n}\r\n",
+        "tbelScript" : "return msg.interval != null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749770791168,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "7702af80-47db-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "filterEstado",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 376,
+        "layoutY" : 484
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ "dev_eui" ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749770761606,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e81ffeb0-47e1-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "atributos dispo",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
     } ],
     "ruleChainConnections" : null
   },
-  "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }
