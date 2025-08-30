@@ -1,0 +1,42 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "",
+      "homeDashboardId" : null,
+      "homeDashboardHideToolbar" : true
+    },
+    "address" : null,
+    "address2" : null,
+    "city" : null,
+    "country" : null,
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "Campo La Travesia",
+    "phone" : null,
+    "state" : null,
+    "title" : "Campo La Travesia",
+    "zip" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "USER",
+      "id" : "b84ba300-7a37-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 4864
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

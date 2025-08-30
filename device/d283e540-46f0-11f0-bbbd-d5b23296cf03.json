@@ -1,0 +1,167 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "d283e540-46f0-11f0-bbbd-d5b23296cf03"
+    },
+    "label" : "Prototipo",
+    "name" : "nodoProto",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "01zm5scyeao8foxfjl8w",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1754756902249,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1754756902249,
+      "longValue" : 1754756902249,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1754686319445,
+      "longValue" : null,
+      "strValue" : "15"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1754756253661,
+      "longValue" : 1754756250810,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "levelMeasurement",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "Remaining space"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "liquidType",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "Diesel"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "sensorDimensionUnits",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "cm"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "sensorGap",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : 10,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "sensorMeasurementSystem",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "Metric"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"diameter\":100,\"height\":100}",
+      "key" : "sizeMeasure",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankCapacity",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "785.40"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankCapacityOutput",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "L"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankDimensionUnits",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "cm"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMeasurementSystem",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "Metric"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankShape",
+      "lastUpdateTs" : 1750341946592,
+      "longValue" : null,
+      "strValue" : "Vertical Cylinder"
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

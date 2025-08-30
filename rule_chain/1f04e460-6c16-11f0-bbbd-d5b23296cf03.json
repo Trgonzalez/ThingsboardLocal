@@ -1,20 +1,22 @@
 {
   "entityType" : "RULE_CHAIN",
   "entity" : {
-    "additionalInfo" : null,
+    "additionalInfo" : {
+      "description" : ""
+    },
     "configuration" : null,
     "debugMode" : false,
     "externalId" : null,
     "firstRuleNodeId" : {
       "entityType" : "RULE_NODE",
-      "id" : "d4b12cb0-3a93-11f0-96f4-672ec1447afa"
+      "id" : "1f306130-6c16-11f0-bbbd-d5b23296cf03"
     },
     "id" : {
       "entityType" : "RULE_CHAIN",
-      "id" : "d49ce160-3a93-11f0-96f4-672ec1447afa"
+      "id" : "1f04e460-6c16-11f0-bbbd-d5b23296cf03"
     },
-    "name" : "Root Rule Chain",
-    "root" : true,
+    "name" : "Freatimetro Rule Chain",
+    "root" : false,
     "type" : "CORE"
   },
   "metaData" : {
@@ -49,6 +51,10 @@
     }, {
       "fromIndex" : 6,
       "toIndex" : 9,
+      "type" : "Alarm Created"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 14,
       "type" : "Alarm Created"
     }, {
       "fromIndex" : 8,
@@ -90,7 +96,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4af09d0-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f2f28b0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Save Timeseries",
       "queueName" : null,
@@ -117,7 +123,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4afcd20-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f2f76d0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Save Client Attributes",
       "queueName" : null,
@@ -138,7 +144,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4b01b40-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f2fc4f0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Message Type Switch",
       "queueName" : null,
@@ -161,7 +167,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4b06960-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f2fec00-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Log RPC from Device",
       "queueName" : null,
@@ -184,7 +190,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4b09070-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f2fec01-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Log Other",
       "queueName" : null,
@@ -193,19 +199,24 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 468
+        "description" : null,
+        "layoutX" : 884,
+        "layoutY" : 528
       },
       "configuration" : {
         "timeoutInSeconds" : 60
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1753755413474,
+        "failuresEnabled" : false
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4b0de90-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f301310-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "RPC Call Request",
       "queueName" : null,
@@ -215,8 +226,8 @@
     }, {
       "additionalInfo" : {
         "description" : "Process incoming messages from devices with the alarm rules defined in the device profile. Dispatch all incoming messages with \"Success\" relation type.",
-        "layoutX" : 204,
-        "layoutY" : 240
+        "layoutX" : 175,
+        "layoutY" : 243
       },
       "configuration" : {
         "persistAlarmRulesState" : false,
@@ -232,7 +243,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "d4b12cb0-3a93-11f0-96f4-672ec1447afa"
+        "id" : "1f306130-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "Device Profile Node",
       "queueName" : null,
@@ -242,8 +253,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 6,
-        "layoutY" : 765
+        "layoutX" : 74,
+        "layoutY" : 768
       },
       "configuration" : {
         "restEndpointUrlPattern" : "https://api.telegram.org/bot7813852758:AAFImPbdVAnfT8Y0Ty2lW6ku0zVHzREF9TM/sendMessage",
@@ -278,7 +289,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "6b6c83a0-4261-11f0-bbbd-d5b23296cf03"
+        "id" : "1f30af50-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "telegram",
       "queueName" : null,
@@ -288,8 +299,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 10,
-        "layoutY" : 667
+        "layoutX" : 73,
+        "layoutY" : 670
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -300,13 +311,13 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749168483943,
-        "failuresEnabled" : true
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "6b6cd1c0-4261-11f0-bbbd-d5b23296cf03"
+        "id" : "1f30fd70-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "script",
       "queueName" : null,
@@ -316,8 +327,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 0,
-        "layoutY" : 580
+        "layoutX" : 68,
+        "layoutY" : 585
       },
       "configuration" : {
         "dataToFetch" : "ATTRIBUTES",
@@ -336,7 +347,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "1f96bd90-4268-11f0-bbbd-d5b23296cf03"
+        "id" : "1f314b90-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "atributos customer",
       "queueName" : null,
@@ -378,13 +389,13 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749767752146,
-        "failuresEnabled" : true
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "77019e10-47db-11f0-bbbd-d5b23296cf03"
+        "id" : "1f3172a0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "restApi",
       "queueName" : null,
@@ -400,19 +411,19 @@
       "configuration" : {
         "scriptLang" : "TBEL",
         "jsScript" : "var segundos = msg.interval;  // reemplazá por data.segundos si viene desde afuera\n\n// Convertir a hex de 2 bytes (4 dígitos)\nvar hex = segundos.toString(16);\nwhile (hex.length < 4) {\n    hex = '0' + hex;\n}\nvar finalHex = '01' + hex;  // Ej: 010009\n\n// HEX a array de bytes\nfunction hexToBytes(hexStr) {\n    var result = [];\n    for (var i = 0; i < hexStr.length; i += 2) {\n        result.push(parseInt(hexStr.substr(i, 2), 16));\n    }\n    return result;\n}\n\n// Bytes a Base64 manual (ThingsBoard compatible)\nfunction bytesToBase64(bytes) {\n    var base64abc = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    var result = \"\", i;\n    for (i = 0; i + 2 < bytes.length; i += 3) {\n        result += base64abc[bytes[i] >> 2];\n        result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n        result += base64abc[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];\n        result += base64abc[bytes[i + 2] & 63];\n    }\n    if (i < bytes.length) {\n        result += base64abc[bytes[i] >> 2];\n        if (i + 1 < bytes.length) {\n            result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n            result += base64abc[(bytes[i + 1] & 15) << 2];\n            result += \"=\";\n        } else {\n            result += base64abc[(bytes[i] & 3) << 4];\n            result += \"==\";\n        }\n    }\n    return result;\n}\n\nvar bytes = hexToBytes(finalHex);\nvar base64Payload = bytesToBase64(bytes);\n\nvar msgPayload = {\n    \n  \"queueItem\": {\n    \"confirmed\": false,\n    \"data\": base64Payload,\n    \"fPort\": 10,\n    \"id\": \"string\",\n    \"isPending\": true\n    \n    \n  }\n\nreturn {msg: msgPayload, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "// Obtenemos el campo intervalo en segundos\nvar segundos = msg.interval;\n\n// Generamos el hex de 2 bytes (4 dígitos), completando con ceros a la izquierda\nvar hexSeg = Integer.toString(segundos, 16);\nhexSeg = padStart(hexSeg, 4, '0');\n\n// Anteponemos el byte fijo '01'\nvar finalHex = '01' + hexSeg; // ej: '010009'\n\n// Convertimos el hex a bytes y luego a Base64\nvar bytesArr = hexToBytes(finalHex); // -> lista de bytes\nvar payloadBase64 = bytesToBase64(bytesArr);\n\nvar csPayload = {\n\n    \"queueItem\": {\n        \n        \"data\": payloadBase64,\n        \"fPort\": 10,\n        \"id\": \"string\",\n        \"isPending\": true\n\n\n    }\n};\nreturn {\n    msg: csPayload,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "tbelScript" : "// Obtenemos el campo intervalo en segundos\r\nvar finalHex = '';\r\n\r\n    if (msg.reboot != null) {\r\n        finalHex = 'aa5505';\r\n\r\n    } else if (msg.interval != null) {\r\n        var segundos = msg.interval;\r\n       \r\n        // Convertimos a hex de 8 dígitos (uint32), completando con ceros a la izquierda\r\n        var hexSeg = Integer.toString(segundos, 16);\r\n        hexSeg = padStart(hexSeg, 8,'0'); // ej: 00000015 para 21 segundos\r\n\r\n        // Prefijo fijo del comando\r\n        finalHex = 'AA5501'+hexSeg; // aseguro mayúsculas si querés consistencia\r\n\r\n    }\r\n\r\n\r\n// Convertimos a bytes\r\nvar bytesArr = hexToBytes(finalHex);\r\n\r\n// A Base64\r\nvar payloadBase64 = bytesToBase64(bytesArr);\r\n\r\n// Armamos objeto para ChirpStack\r\nvar csPayload = {\r\n    \"queueItem\": {\r\n        \"data\": payloadBase64,\r\n        \"fPort\": 10,\r\n        \"id\": \"string\",\r\n        \"isPending\": true\r\n    }\r\n};\r\n\r\nreturn {\r\n    msg: csPayload,\r\n    metadata: metadata,\r\n    msgType: msgType\r\n};"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749770956078,
-        "failuresEnabled" : true
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "77021340-47db-11f0-bbbd-d5b23296cf03"
+        "id" : "1f3172a1-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "body",
       "queueName" : null,
@@ -426,21 +437,21 @@
         "layoutY" : 398
       },
       "configuration" : {
-        "scriptLang" : "TBEL",
-        "jsScript" : "if (msg.hasOwnProperty(\"estado\")) {\r\n    return { msg: msg, metadata: metadata, msgType: msgType };\r\n} else {\r\n    return null; // ignora otros atributos\r\n}\r\n",
+        "scriptLang" : "JS",
+        "jsScript" : "return 'interval' in msg || 'reboot' in msg;",
         "tbelScript" : "return msg.interval != null;"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749770791168,
-        "failuresEnabled" : true
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "7702af80-47db-11f0-bbbd-d5b23296cf03"
+        "id" : "1f31c0c0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "filterEstado",
       "queueName" : null,
@@ -466,19 +477,49 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749770761606,
-        "failuresEnabled" : true
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "e81ffeb0-47e1-11f0-bbbd-d5b23296cf03"
+        "id" : "1f320ee0-6c16-11f0-bbbd-d5b23296cf03"
       },
       "name" : "atributos dispo",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 305,
+        "layoutY" : 770
+      },
+      "configuration" : {
+        "templateId" : {
+          "entityType" : "NOTIFICATION_TEMPLATE",
+          "id" : "37709820-85eb-11f0-bbbd-d5b23296cf03"
+        },
+        "targets" : [ "d467eeb0-3a93-11f0-96f4-672ec1447afa" ]
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756593402481,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "6e41b4e0-8516-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Alarma",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.notification.TbNotificationNode"
     } ],
     "ruleChainConnections" : null
   },

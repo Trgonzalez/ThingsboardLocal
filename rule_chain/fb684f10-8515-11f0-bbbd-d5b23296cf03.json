@@ -1,0 +1,180 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "fba09d20-8515-11f0-bbbd-d5b23296cf03"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "fb684f10-8515-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "Send interval",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 0,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "True"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 1,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 2,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 682,
+        "layoutY" : 338
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "http://chirpstack.nexoragro.com:8090/api/devices/${cs_dev_eui}/queue",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : false,
+        "ignoreRequestBody" : false,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "accept" : "application/json",
+          "Grpc-Metadata-Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjaGlycHN0YWNrIiwiaXNzIjoiY2hpcnBzdGFjayIsInN1YiI6ImE1ODJjN2I0LTYxOWItNDExZi1hMGY4LTY5MDNkMzNkNjZmNiIsInR5cCI6ImtleSJ9.F-z7ZEULNyf0uBhGAJbwss5N6KpGnSFA0wle1CQK-qw"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749767752146,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fba027f0-8515-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "restApi",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 383,
+        "layoutY" : 347
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var segundos = msg.interval;  // reemplazá por data.segundos si viene desde afuera\n\n// Convertir a hex de 2 bytes (4 dígitos)\nvar hex = segundos.toString(16);\nwhile (hex.length < 4) {\n    hex = '0' + hex;\n}\nvar finalHex = '01' + hex;  // Ej: 010009\n\n// HEX a array de bytes\nfunction hexToBytes(hexStr) {\n    var result = [];\n    for (var i = 0; i < hexStr.length; i += 2) {\n        result.push(parseInt(hexStr.substr(i, 2), 16));\n    }\n    return result;\n}\n\n// Bytes a Base64 manual (ThingsBoard compatible)\nfunction bytesToBase64(bytes) {\n    var base64abc = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    var result = \"\", i;\n    for (i = 0; i + 2 < bytes.length; i += 3) {\n        result += base64abc[bytes[i] >> 2];\n        result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n        result += base64abc[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];\n        result += base64abc[bytes[i + 2] & 63];\n    }\n    if (i < bytes.length) {\n        result += base64abc[bytes[i] >> 2];\n        if (i + 1 < bytes.length) {\n            result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n            result += base64abc[(bytes[i + 1] & 15) << 2];\n            result += \"=\";\n        } else {\n            result += base64abc[(bytes[i] & 3) << 4];\n            result += \"==\";\n        }\n    }\n    return result;\n}\n\nvar bytes = hexToBytes(finalHex);\nvar base64Payload = bytesToBase64(bytes);\n\nvar msgPayload = {\n    \n  \"queueItem\": {\n    \"confirmed\": false,\n    \"data\": base64Payload,\n    \"fPort\": 10,\n    \"id\": \"string\",\n    \"isPending\": true\n    \n    \n  }\n\nreturn {msg: msgPayload, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// Obtenemos el campo intervalo en segundos\r\nvar finalHex = '';\r\n\r\n    if (msg.reboot != null) {\r\n        finalHex = 'aa5505';\r\n\r\n    } else if (msg.interval != null) {\r\n        var segundos = msg.interval;\r\n       \r\n        // Convertimos a hex de 8 dígitos (uint32), completando con ceros a la izquierda\r\n        var hexSeg = Integer.toString(segundos, 16);\r\n        hexSeg = padStart(hexSeg, 8,'0'); // ej: 00000015 para 21 segundos\r\n\r\n        // Prefijo fijo del comando\r\n        finalHex = 'AA5501'+hexSeg; // aseguro mayúsculas si querés consistencia\r\n\r\n    }\r\n\r\n\r\n// Convertimos a bytes\r\nvar bytesArr = hexToBytes(finalHex);\r\n\r\n// A Base64\r\nvar payloadBase64 = bytesToBase64(bytesArr);\r\n\r\n// Armamos objeto para ChirpStack\r\nvar csPayload = {\r\n    \"queueItem\": {\r\n        \"data\": payloadBase64,\r\n        \"fPort\": 10,\r\n        \"id\": \"string\",\r\n        \"isPending\": true\r\n    }\r\n};\r\n\r\nreturn {\r\n    msg: csPayload,\r\n    metadata: metadata,\r\n    msgType: msgType\r\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1753758439789,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fba07610-8515-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "body",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 383,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "return 'interval' in msg || 'reboot' in msg;",
+        "tbelScript" : "return msg.interval != null;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1753758607692,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fba09d20-8515-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "filterEstado",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 375,
+        "layoutY" : 236
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ "dev_eui" ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1749770761606,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fba11250-8515-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "atributos dispo",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -20,21 +20,21 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "3a383b50-3e68-11f0-bbbd-d5b23296cf03"
+      "id" : "73989bd0-4712-11f0-bbbd-d5b23296cf03"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "50b16170-3e60-11f0-bbbd-d5b23296cf03"
+      "id" : "974c7880-4712-11f0-bbbd-d5b23296cf03"
     },
     "label" : "",
-    "name" : "Estacion Lote 1",
+    "name" : "Freatimetro Bajo Lote 3",
     "softwareId" : null,
-    "type" : "estMeteo"
+    "type" : "Freatimetro"
   },
   "credentials" : {
-    "credentialsId" : "ZwcOkg1WKNwDOMau5Qc5",
+    "credentialsId" : "twmtsjlvrwsspo032u0u",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067882655,
+      "lastUpdateTs" : 1754067885658,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,15 +53,15 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "battVal",
-      "lastUpdateTs" : 1749082509893,
-      "longValue" : 100,
-      "strValue" : null
+      "lastUpdateTs" : 1749684451611,
+      "longValue" : null,
+      "strValue" : "89"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798258,
+      "lastUpdateTs" : 1754067798255,
       "longValue" : 1754067798245,
       "strValue" : null
     }, {
@@ -69,25 +69,25 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596798653,
-      "longValue" : 1756596798526,
+      "lastUpdateTs" : 1756596801656,
+      "longValue" : 1756596800166,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.048427275118954,
+      "doubleValue" : null,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749089094664,
+      "lastUpdateTs" : 1749681786893,
       "longValue" : null,
-      "strValue" : null
+      "strValue" : "-35.040725797"
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.3930067192182,
+      "doubleValue" : null,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749089094664,
+      "lastUpdateTs" : 1749681827281,
       "longValue" : null,
-      "strValue" : null
+      "strValue" : "-59.38687"
     } ],
     "SHARED_SCOPE" : [ ]
   },

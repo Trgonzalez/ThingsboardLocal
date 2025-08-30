@@ -11,18 +11,24 @@
             },
             "actionButtonConfig" : null
           },
-          "body" : "Se detecto un nivel anomalo en el tanque ${originatorLabel}",
+          "body" : "Nivel de tanque anómalo",
           "enabled" : true,
-          "subject" : "Alarma"
+          "subject" : "Alarma - ${originatorLabel}"
+        },
+        "EMAIL" : {
+          "method" : "EMAIL",
+          "body" : "<h2>${name} - ${originatorLabel}</h2>\n<p style=\"white-space: pre-line;\">${details.data}</p>",
+          "enabled" : true,
+          "subject" : "Alarma - Tanque ${originatorLabel}"
         }
       }
     },
     "externalId" : null,
     "id" : {
       "entityType" : "NOTIFICATION_TEMPLATE",
-      "id" : "8b146cc0-3c05-11f0-bbbd-d5b23296cf03"
+      "id" : "37709820-85eb-11f0-bbbd-d5b23296cf03"
     },
-    "name" : "Alarma Tanque",
+    "name" : "Alarma tanque Email",
     "notificationType" : "RULE_NODE"
   }
 }

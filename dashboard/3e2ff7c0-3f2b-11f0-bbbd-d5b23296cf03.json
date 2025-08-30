@@ -2424,13 +2424,13 @@
                 },
                 "tooltip" : {
                   "show" : true,
-                  "trigger" : "click",
-                  "autoclose" : true,
                   "type" : "function",
                   "pattern" : "<b>${entityName}</b><br/><br/><b>Temperature:</b> ${temperature:1} °C<br/><b>Humidity:</b> ${humidity:0} %<br/><br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>",
+                  "patternFunction" : "var deviceType = data.Tipo;\r\n\r\nfunction buildRow(label, value) {\r\n    return `\r\n        <div style=\"display:flex;flex-direction:row;align-items:baseline;margin-bottom:9px;\">\r\n            <div style=\"font-size:13px;line-height:16px;font-weight:500;color:rgba(0, 0, 0, 0.38);width:120px\">${label}</div>\r\n            <div style=\"font-size:14px;line-height:20px;font-weight:500;letter-spacing:0.25px;color:#29313C\">${value}</div>\r\n        </div>\r\n    `;\r\n}\r\n\r\nif (typeof deviceType !== 'undefined') {\r\n    let content = `\r\n    <div style=\"display:flex;flex-direction:column;margin-bottom:8px;font-family:'Roboto';font-weight:500;font-size:16px;line-height:24px;letter-spacing:0.25px;color:#29313C\">\r\n        <div>${data.entityName ?? 'Sin nombre'}</div>\r\n        <div style=\"width: 100%;border-bottom:1px solid rgba(0, 0, 0, 0.12);margin:12px 0;\"></div>\r\n    `;\r\n\r\n    if (deviceType === \"lanza\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`);\r\n    } else if (deviceType === \"estMeteo\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Viento\", `${data.windSpeed?.toFixed(1) ?? 'N/A'} m/s`) +\r\n            buildRow(\"Dirección\", `${data.windDir?.toFixed(0) ?? 'N/A'}°`) +\r\n            buildRow(\"Lluvia\", `${data.rain?.toFixed(1) ?? 'N/A'} mm`) +\r\n            buildRow(\"Presión\", `${data.pressure?.toFixed(1) ?? 'N/A'} hPa`);\r\n    } else if (deviceType === \"pozo\") {\r\n        const estadoPozo = data.pozo == 1 ? \"Con Agua\" : \"Seco\";\r\n        content +=\r\n            buildRow(\"Nivel de Aguada\", `${data.nivelAguada?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Nivel de Tanque\", `${data.nivelTanque?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Pozo\", estadoPozo);\r\n    } else if (deviceType === \"Freatimetro\") {\r\n        content +=\r\n            buildRow(\"Nivel Napa\", `${data.nivelNapa?.toFixed(1) ?? 'N/A'} m`);\r\n    } else if (deviceType === \"comedero\") {\r\n        content +=\r\n            buildRow(\"Comedero 1\", `${data.comedero1?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 2\", `${data.comedero2?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 3\", `${data.comedero3?.toFixed(0) ?? 'N/A'} %`);\r\n    } else {\r\n        content += buildRow(\"Tipo\", \"Desconocido\");\r\n    }\r\n\r\n    content += `\r\n        <div style=\"text-align:center; margin-top:16px;\">\r\n            <link-act name=\"navigate_to_details\">\r\n                <span style=\"\r\n                    display:inline-block;\r\n                    background-color:#1976d2;\r\n                    color:white;\r\n                    padding:8px 16px;\r\n                    border-radius:20px;\r\n                    font-size:14px;\r\n                    font-weight:500;\r\n                    cursor:pointer;\r\n                \">\r\n                    Detalles\r\n                </span>\r\n            </link-act>\r\n        </div>\r\n    </div>`;\r\n\r\n    return content;\r\n}\r\n\r\nreturn `<b>${data.entityName ?? 'Dispositivo'}</b><br/>Tipo desconocido<br/>`;\r\n",
+                  "trigger" : "click",
+                  "autoclose" : true,
                   "offsetX" : 0,
                   "offsetY" : -1,
-                  "patternFunction" : "var deviceType = data.Tipo;\r\n\r\nif (typeof deviceType !== 'undefined') {\r\n    if (deviceType === \"lanza\") {\r\n        return '<b>${entityName}</b><br/>' +\r\n            '<b>Temperatura:</b> ${temperature:1} °C<br/>' +\r\n            '<b>Humedad:</b> ${humidity:0} %<br/>'+\r\n            '<br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>';\r\n    } else if (deviceType === \"estMeteo\") {\r\n        return '<b>${entityName}</b><br/>' +\r\n            '<b>Temperatura:</b> ${temperature:1} °C<br/>' +\r\n            '<b>Humedad:</b> ${humidity:0} %<br/>' +\r\n            '<b>Viento:</b> ${windSpeed:1} m/s<br/>' +\r\n            '<b>Dirección:</b> ${windDir:0}°<br/>' +\r\n            '<b>Lluvia:</b> ${rain:1} mm<br/>'+\r\n            '<br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>';\r\n    } else if (deviceType === \"pozo\") {\r\n        var valorPozo = data.pozo?.[0]?.value;\r\n        var estadoPozo = valorPozo == 1 ? \"Con Agua\" :\r\n            \"Seco\";\r\n\r\n        return '<b>' + data.entityName + '</b><br/>' +\r\n            '<b>Nivel de Aguada:</b> ${nivelAguada:1} %<br/>' +\r\n            '<b>Nivel de Tanque:</b> ${nivelTanque:1} %<br/>' +\r\n            '<b>Pozo:</b> ' + estadoPozo + '<br/>'+\r\n            '<br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>';\r\n    }\r\n}\r\n\r\nreturn '<b>${entityName}</b><br/>Tipo desconocido<br/>';",
                   "tagActions" : [ {
                     "name" : "navigate_to_details",
                     "type" : "custom",
@@ -2472,15 +2472,15 @@
                   }
                 },
                 "markerIcon" : {
+                  "iconContainer" : "iconContainer1",
+                  "icon" : "sensors",
                   "size" : 48,
                   "color" : {
                     "type" : "function",
                     "color" : "rgb(255, 0, 0)",
                     "range" : null,
                     "colorFunction" : "if (data.active !== \"true\"){\n   return 'rgb(255, 0, 0)';\n} else {\n   return 'rgb(39, 134, 34)';\n}"
-                  },
-                  "iconContainer" : "iconContainer1",
-                  "icon" : "sensors"
+                  }
                 },
                 "markerImage" : {
                   "type" : "function",
@@ -6682,7 +6682,7 @@
     },
     "name" : "copia DEMO",
     "resources" : null,
-    "assignedCustomers" : null,
+    "assignedCustomers" : [ ],
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",

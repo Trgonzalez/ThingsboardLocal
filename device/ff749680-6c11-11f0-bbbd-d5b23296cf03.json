@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
     },
     "deviceData" : {
       "configuration" : {
@@ -20,73 +20,97 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "3a383b50-3e68-11f0-bbbd-d5b23296cf03"
+      "id" : "73989bd0-4712-11f0-bbbd-d5b23296cf03"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "50b16170-3e60-11f0-bbbd-d5b23296cf03"
+      "id" : "ff749680-6c11-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
-    "name" : "Estacion Lote 1",
+    "label" : "Freatimetro",
+    "name" : "Freatimetro",
     "softwareId" : null,
-    "type" : "estMeteo"
+    "type" : "Freatimetro"
   },
   "credentials" : {
-    "credentialsId" : "ZwcOkg1WKNwDOMau5Qc5",
+    "credentialsId" : "aihz8m3iyyvoq25akbya",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067882655,
+      "lastUpdateTs" : 1754755222228,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "battVal",
-      "lastUpdateTs" : 1749082509893,
-      "longValue" : 100,
+      "key" : "depth",
+      "lastUpdateTs" : 1753907497173,
+      "longValue" : 0,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 4.6,
+      "jsonValue" : null,
+      "key" : "i0",
+      "lastUpdateTs" : 1753907605204,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 12.6,
+      "jsonValue" : null,
+      "key" : "iH",
+      "lastUpdateTs" : 1753906958320,
+      "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798258,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1754755222227,
+      "longValue" : 1754755222227,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1754752226271,
+      "longValue" : null,
+      "strValue" : "10"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596798653,
-      "longValue" : 1756596798526,
+      "lastUpdateTs" : 1754754582650,
+      "longValue" : 1754754581462,
       "strValue" : null
     }, {
-      "booleanValue" : null,
-      "doubleValue" : -35.048427275118954,
+      "booleanValue" : false,
+      "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "latitude",
-      "lastUpdateTs" : 1749089094664,
+      "key" : "reboot",
+      "lastUpdateTs" : 1753757728494,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.3930067192182,
+      "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "longitude",
-      "lastUpdateTs" : 1749089094664,
-      "longValue" : null,
+      "key" : "sensorH",
+      "lastUpdateTs" : 1753907514715,
+      "longValue" : 152,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

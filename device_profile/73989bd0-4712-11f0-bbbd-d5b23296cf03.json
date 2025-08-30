@@ -1,0 +1,139 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "1f04e460-6c16-11f0-bbbd-d5b23296cf03"
+    },
+    "description" : "",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "73989bd0-4712-11f0-bbbd-d5b23296cf03"
+    },
+    "image" : null,
+    "name" : "Freatimetro",
+    "profileData" : {
+      "alarms" : null,
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "configuration" : {
+      "type" : "SIMPLE",
+      "arguments" : {
+        "Voltage" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "data_voltage_1",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "expression" : "((Voltage-3)/1.2)*100",
+      "output" : {
+        "decimalsByDefault" : 0,
+        "name" : "batteryPercentage",
+        "type" : "TIME_SERIES"
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1753749677209,
+      "failuresEnabled" : true
+    },
+    "name" : "BatteryLevel",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SIMPLE"
+  }, {
+    "configuration" : {
+      "type" : "SIMPLE",
+      "arguments" : {
+        "H" : {
+          "defaultValue" : "300",
+          "refEntityKey" : {
+            "key" : "sensorH",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "depth" : {
+          "defaultValue" : "200",
+          "refEntityKey" : {
+            "key" : "depth",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "i" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "data_current_2",
+            "type" : "TS_LATEST"
+          }
+        },
+        "i0" : {
+          "defaultValue" : "4",
+          "refEntityKey" : {
+            "key" : "i0",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "iH" : {
+          "defaultValue" : "20",
+          "refEntityKey" : {
+            "key" : "iH",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "depth-(i - i0) / (iH - i0) * H",
+      "output" : {
+        "decimalsByDefault" : 0,
+        "name" : "waterDistance",
+        "type" : "TIME_SERIES"
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1753749980937,
+      "failuresEnabled" : true
+    },
+    "name" : "Water Distance",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SIMPLE"
+  } ]
+}
