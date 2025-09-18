@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "68cd1a60-3e60-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Aguada Lote 1",
     "name" : "Aguada Lote 1",
     "softwareId" : null,
     "type" : "pozo"
@@ -41,11 +41,19 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "Operational_Status",
+      "lastUpdateTs" : 1756869441482,
+      "longValue" : null,
+      "strValue" : "inMaintenance"
+    }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067885657,
+      "lastUpdateTs" : 1757190728103,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -77,31 +85,31 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798255,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1757190337651,
+      "longValue" : 1757190337651,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596801656,
-      "longValue" : 1756596799054,
+      "lastUpdateTs" : 1758202219579,
+      "longValue" : 1758202219477,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.04270067845895,
+      "doubleValue" : -35.04148672655719,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749089177595,
+      "lastUpdateTs" : 1757890119682,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.39367520281957,
+      "doubleValue" : -59.39610242401864,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749089177595,
+      "lastUpdateTs" : 1757890119682,
       "longValue" : null,
       "strValue" : null
     }, {

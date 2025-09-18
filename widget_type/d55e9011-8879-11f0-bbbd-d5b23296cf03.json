@@ -1,0 +1,34 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "customs2.my_chart",
+    "name" : "Last Value Chart",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/system/gateway_general_chart_statistics_system_widget_image.png",
+    "description" : "Displays changes to timeseries data over time. For example, temperature or humidity readings.",
+    "descriptor" : {
+      "type" : "timeseries",
+      "sizeX" : 10,
+      "sizeY" : 5.5,
+      "resources" : [ ],
+      "templateHtml" : "",
+      "templateCss" : ".legend {\n    font-size: 13px;\n    line-height: 10px;\n}\n\n.legend table { \n    border-spacing: 0px;\n    border-collapse: separate;\n}\n\n.mouse-events .flot-overlay {\n    cursor: crosshair; \n}\n\n",
+      "controllerScript" : "\nlet first = 0;\nfunction findLastValues () {\n    \n    for(let i=0;i<self.ctx.datasources[0].dataKeys.length;i++)\n        {\n           var cellData = self.ctx.data[i];\n            if (cellData.data.length > 0) \n            {\n                self.ctx.defaultSubscription.legendData.keys[i].dataKey.inLegend = true;\n            }\n            else \n            {\n               \n                self.ctx.defaultSubscription.legendData.keys[i].dataKey.inLegend = false;\n            }\n        }\n}\nself.onInit = function() \n{\n    self.ctx.flot = new TbFlot(self.ctx);\n    self.ctx.detectChanges(true);\n    first = 0;\n}\nself.onDataUpdated = function()\n{\n    if(first<10 ){first++;  }\n    if(first==2 ){ \n        findLastValues(); \n        self.ctx.detectChanges(true);\n    }\n    self.ctx.flot.update();\n}\n\nself.onResize = function() {\n    self.ctx.flot.resize();\n}\n\nself.onEditModeChanged = function() {\n    self.ctx.flot.checkMouseEvents();\n}\n\nself.getSettingsSchema = function() {\n   //return self.ctx.flot.settingsSchema('graph');\n}\n\nself.getDataKeySettingsSchema = function() {\n   //return TbFlot.datakeySettingsSchema(true, 'graph');\n}\n\nself.onDestroy = function() {\n    self.ctx.flot.destroy();\n}\n",
+      "settingsSchema" : "{}",
+      "dataKeySettingsSchema" : "{}",
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"entityAliasId\":null,\"filterId\":null,\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"First\",\"color\":\"#2196f3\",\"settings\":{\"showLines\":true,\"fillLines\":true,\"showPoints\":false},\"_hash\":0.8587686344902596,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"},{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Second\",\"color\":\"#ffc107\",\"settings\":{\"showLines\":true,\"fillLines\":true,\"showPoints\":false,\"showPointShape\":\"circle\",\"pointShapeFormatter\":\"var size = radius * Math.sqrt(Math.PI) / 2;\\nctx.moveTo(x - size, y - size);\\nctx.lineTo(x + size, y + size);\\nctx.moveTo(x - size, y + size);\\nctx.lineTo(x + size, y - size);\",\"showPointsLineWidth\":5,\"showPointsRadius\":3,\"axisPosition\":\"left\",\"comparisonSettings\":{\"showValuesForComparison\":true}},\"_hash\":0.12775350966079668,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\",\"units\":null,\"decimals\":null,\"usePostProcessing\":null,\"postFuncBody\":null},{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#f44336\",\"settings\":{\"excludeFromStacking\":false,\"hideDataByDefault\":false,\"disableDataHiding\":false,\"removeFromLegend\":false,\"showLines\":true,\"fillLines\":false,\"showPoints\":false,\"showPointShape\":\"circle\",\"pointShapeFormatter\":\"var size = radius * Math.sqrt(Math.PI) / 2;\\nctx.moveTo(x - size, y - size);\\nctx.lineTo(x + size, y + size);\\nctx.moveTo(x - size, y + size);\\nctx.lineTo(x + size, y - size);\",\"showPointsLineWidth\":5,\"showPointsRadius\":3,\"tooltipValueFormatter\":\"\",\"showSeparateAxis\":false,\"axisTitle\":\"\",\"axisPosition\":\"left\",\"axisTicksFormatter\":\"\",\"thresholds\":[{\"thresholdValueSource\":\"predefinedValue\"}],\"comparisonSettings\":{\"showValuesForComparison\":true,\"comparisonValuesLabel\":\"\",\"color\":\"\"}},\"_hash\":0.558565322305401,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}},\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"shadowSize\":4,\"fontColor\":\"#545454\",\"fontSize\":10,\"xaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"yaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"grid\":{\"color\":\"#545454\",\"tickColor\":\"#DDDDDD\",\"verticalLines\":true,\"horizontalLines\":true,\"outlineWidth\":1},\"stack\":false,\"tooltipIndividual\":false,\"timeForComparison\":\"previousInterval\",\"xaxisSecond\":{\"axisPosition\":\"top\",\"showLabels\":true}},\"title\":\"Last Value Chart\",\"dropShadow\":false,\"enableFullscreen\":false,\"titleStyle\":{\"fontSize\":\"16px\",\"fontWeight\":400},\"mobileHeight\":null,\"showTitleIcon\":false,\"iconColor\":\"rgba(0, 0, 0, 0.87)\",\"iconSize\":\"24px\",\"titleTooltip\":\"\",\"widgetStyle\":{},\"showLegend\":true,\"useDashboardTimewindow\":true,\"legendConfig\":{\"direction\":\"row\",\"position\":\"bottom\",\"sortDataKeys\":false,\"showMin\":false,\"showMax\":false,\"showAvg\":false,\"showTotal\":false}}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "d55e9011-8879-11f0-bbbd-d5b23296cf03"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

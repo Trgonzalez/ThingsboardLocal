@@ -1,0 +1,22 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "custom",
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "fedb9210-8871-11f0-bbbd-d5b23296cf03"
+    },
+    "image" : null,
+    "name" : "Custom",
+    "order" : null,
+    "scada" : false,
+    "title" : "Custom"
+  },
+  "fqns" : [ "advanced_thingsboard_attribute_widget_ataw_", "opt_status", "status_update", "3d_chart", "pool_modern", "chatroom", "chatbot2", "chat3", "chat32", "chat4" ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

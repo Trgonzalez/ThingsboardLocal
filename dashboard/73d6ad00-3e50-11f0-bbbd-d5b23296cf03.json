@@ -9809,6 +9809,18 @@
             "deviceTypes" : [ "Tank" ],
             "deviceNameFilter" : ""
           }
+        },
+        "b7150ef4-2824-31e6-67e6-32a409675dd7" : {
+          "id" : "b7150ef4-2824-31e6-67e6-32a409675dd7",
+          "alias" : "Current User",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : true,
+            "singleEntity" : {
+              "entityType" : "CURRENT_USER",
+              "id" : "13814000-1dd2-11b2-8080-808080808080"
+            }
+          }
         }
       },
       "filters" : {
@@ -10017,13 +10029,6 @@
         "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
       },
       "title" : "Customer A",
-      "public" : false
-    }, {
-      "customerId" : {
-        "entityType" : "CUSTOMER",
-        "id" : "c90e8390-3db2-11f0-bbbd-d5b23296cf03"
-      },
-      "title" : "Cliente Prueba",
       "public" : false
     }, {
       "customerId" : {

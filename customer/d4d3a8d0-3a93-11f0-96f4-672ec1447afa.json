@@ -3,7 +3,7 @@
   "entity" : {
     "additionalInfo" : {
       "description" : "",
-      "homeDashboardId" : null,
+      "homeDashboardId" : "07955ff0-8870-11f0-bbbd-d5b23296cf03",
       "homeDashboardHideToolbar" : true
     },
     "address" : null,
@@ -32,6 +32,22 @@
       "lastUpdateTs" : 1748651205424,
       "longValue" : null,
       "strValue" : "1232123"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "emailRecipients",
+      "lastUpdateTs" : 1757790061319,
+      "longValue" : null,
+      "strValue" : "{\"recipients\":[{\"email\":\"tristan.gonzalez.branca@gmail.com\",\"enabled\":true}]}"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"chatID\":\"941688522\",\"receiveNotifications\":false,\"mute_duration\":null,\"disabled_until\":null,\"nombre\":\"Tris\"}]",
+      "key" : "telegram",
+      "lastUpdateTs" : 1757646124631,
+      "longValue" : null,
+      "strValue" : null
     } ]
   }
 }

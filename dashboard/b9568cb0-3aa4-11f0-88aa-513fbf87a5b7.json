@@ -1511,13 +1511,6 @@
       },
       "title" : "Customer A",
       "public" : false
-    }, {
-      "customerId" : {
-        "entityType" : "CUSTOMER",
-        "id" : "c90e8390-3db2-11f0-bbbd-d5b23296cf03"
-      },
-      "title" : "Cliente Prueba",
-      "public" : false
     } ],
     "externalId" : null,
     "id" : {

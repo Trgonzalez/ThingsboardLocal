@@ -1,0 +1,36 @@
+{
+  "entityType" : "NOTIFICATION_RULE",
+  "entity" : {
+    "additionalConfig" : {
+      "description" : "Envia notificacion a los usuarios del customer dueño del device que genero la alarma"
+    },
+    "enabled" : false,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "NOTIFICATION_RULE",
+      "id" : "9f70a560-90b7-11f0-8d0c-9de3d92fa448"
+    },
+    "name" : "si activa alarma",
+    "recipientsConfig" : {
+      "escalationTable" : {
+        "0" : [ "23799de0-9058-11f0-8d0c-9de3d92fa448" ]
+      },
+      "triggerType" : "ALARM"
+    },
+    "templateId" : {
+      "entityType" : "NOTIFICATION_TEMPLATE",
+      "id" : "90bcc2b0-90b7-11f0-8d0c-9de3d92fa448"
+    },
+    "triggerConfig" : {
+      "triggerType" : "ALARM",
+      "alarmSeverities" : [ ],
+      "alarmTypes" : null,
+      "clearRule" : {
+        "alarmStatuses" : [ ]
+      },
+      "notifyOn" : [ "CREATED" ],
+      "triggerType" : "ALARM"
+    },
+    "triggerType" : "ALARM"
+  }
+}

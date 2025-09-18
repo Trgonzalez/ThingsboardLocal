@@ -41,11 +41,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1756596274605,
+      "lastUpdateTs" : 1758190453578,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -69,39 +69,47 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1756596274604,
-      "longValue" : 1756596274604,
+      "lastUpdateTs" : 1758183256772,
+      "longValue" : 1758183256771,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1758149837327,
+      "longValue" : 3600000,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1756580111433,
-      "longValue" : null,
-      "strValue" : "3600"
+      "lastUpdateTs" : 1758149837294,
+      "longValue" : 3600,
+      "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756595637658,
-      "longValue" : 1756595636236,
+      "lastUpdateTs" : 1758201253558,
+      "longValue" : 1758201250986,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.514613,
+      "doubleValue" : -35.51464002192825,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1755302653517,
+      "lastUpdateTs" : 1757972887927,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -66.914447,
+      "doubleValue" : -66.9144415521592,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1755302683170,
+      "lastUpdateTs" : 1757972887927,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -117,7 +125,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1756499563529,
+      "lastUpdateTs" : 1757805624449,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -125,7 +133,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankLowAlarmFlag",
-      "lastUpdateTs" : 1756499563529,
+      "lastUpdateTs" : 1757805640483,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -133,16 +141,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMaxAlarmThreshold",
-      "lastUpdateTs" : 1756592613538,
-      "longValue" : 70,
+      "lastUpdateTs" : 1757956529248,
+      "longValue" : 90,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMinAlarmThreshold",
-      "lastUpdateTs" : 1756592695931,
-      "longValue" : 40,
+      "lastUpdateTs" : 1757956529248,
+      "longValue" : 30,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -158,6 +166,14 @@
       "jsonValue" : null,
       "key" : "tanqueAlarmFlag",
       "lastUpdateTs" : 1756499510714,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757561656859,
       "longValue" : null,
       "strValue" : null
     } ],

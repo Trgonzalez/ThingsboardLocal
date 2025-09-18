@@ -1,0 +1,79 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "01134310-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "5c9a3360-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "label" : "Tomografo 5",
+    "name" : "equipo medico TEST",
+    "softwareId" : null,
+    "type" : "EquipmentSensor"
+  },
+  "credentials" : {
+    "credentialsId" : "1ZycP4t3CKNvZMCoFyBX",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1757215465770,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1757215465757,
+      "longValue" : 1757215465756,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1757214809342,
+      "longValue" : 1757214807069,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"acousticDev\":{\"label\":\"Desviación acústica\",\"unit\":\"dB\"},\"temperature\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"vibration\":{\"label\":\"Vibración\",\"unit\":\"Hz\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757563603116,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

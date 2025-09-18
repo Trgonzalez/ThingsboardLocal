@@ -50,10 +50,10 @@
             "color" : "rgba(0, 0, 0, 0.87)",
             "padding" : "4px",
             "settings" : {
-              "entitiesTitle" : "Estancia LP",
+              "entitiesTitle" : "Dispositivos",
               "enableSearch" : true,
               "enableSelectColumnDisplay" : false,
-              "enableStickyHeader" : true,
+              "enableStickyHeader" : false,
               "enableStickyAction" : true,
               "showCellActionsMenu" : true,
               "reserveSpaceForHiddenAction" : "true",
@@ -144,7 +144,7 @@
               }
             } ],
             "displayTimewindow" : false,
-            "configMode" : "basic",
+            "configMode" : "advanced",
             "actions" : {
               "rowClick" : [ {
                 "name" : "nav_devDetails",
@@ -184,7 +184,7 @@
                 "label" : "Volumen de tanque",
                 "color" : "#4CAF50",
                 "settings" : {
-                  "yAxisId" : "axis1",
+                  "yAxisId" : "default",
                   "showInLegend" : true,
                   "dataHiddenByDefault" : false,
                   "type" : "line",
@@ -348,7 +348,7 @@
                 "label" : "Temperatura",
                 "color" : "#F44336",
                 "settings" : {
-                  "yAxisId" : "default",
+                  "yAxisId" : "axis1",
                   "showInLegend" : true,
                   "dataHiddenByDefault" : false,
                   "type" : "line",
@@ -424,23 +424,23 @@
                 "statusList" : [ "ACTIVE" ]
               },
               "latestDataKeys" : [ {
-                "name" : "aguadaAlarmThreshold",
+                "name" : "tankMaxAlarmThreshold",
                 "type" : "attribute",
-                "label" : "aguadaAlarmThreshold",
-                "color" : "#f44336",
+                "label" : "tankMaxAlarmThreshold",
+                "color" : "#607d8b",
                 "settings" : {
                   "__thresholdKey" : true
                 },
-                "_hash" : 0.4497841787447372
+                "_hash" : 0.7434718092990319
               }, {
-                "name" : "tanqueAlarmThreshold",
+                "name" : "tankMinAlarmThreshold",
                 "type" : "attribute",
-                "label" : "tanqueAlarmThreshold",
-                "color" : "#ffc107",
+                "label" : "tankMinAlarmThreshold",
+                "color" : "#607d8b",
                 "settings" : {
                   "__thresholdKey" : true
                 },
-                "_hash" : 0.7501722256977553
+                "_hash" : 0.4432859879922736
               } ]
             } ],
             "timewindow" : {
@@ -451,7 +451,7 @@
               "realtime" : {
                 "realtimeType" : 0,
                 "interval" : 3600000,
-                "timewindowMs" : 604800000,
+                "timewindowMs" : 86400000,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
                 "hideLastInterval" : false,
@@ -461,10 +461,7 @@
                 "historyType" : 2,
                 "interval" : 300000,
                 "timewindowMs" : 18000000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748664800892,
-                  "endTimeMs" : 1748751200892
-                },
+                "fixedTimewindow" : null,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
                 "hideLastInterval" : false,
@@ -482,117 +479,22 @@
             "color" : "rgba(0, 0, 0, 0.87)",
             "padding" : "0px",
             "settings" : {
-              "showLegend" : true,
-              "legendConfig" : {
-                "direction" : "column",
+              "comparisonEnabled" : false,
+              "timeForComparison" : "previousInterval",
+              "comparisonCustomIntervalValue" : 7200000,
+              "comparisonXAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
                 "position" : "top",
-                "sortDataKeys" : false,
-                "showMin" : true,
-                "showMax" : true,
-                "showAvg" : true,
-                "showTotal" : false,
-                "showLatest" : true
-              },
-              "thresholds" : [ {
-                "type" : "latestKey",
-                "yAxisId" : "default",
-                "units" : "%",
-                "decimals" : 0,
-                "lineColor" : "rgba(244, 67, 54, 0.58)",
-                "lineType" : "solid",
-                "lineWidth" : 1,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "arrow",
-                "endSymbolSize" : 5,
-                "showLabel" : true,
-                "labelPosition" : "end",
-                "labelFont" : {
-                  "family" : "Roboto",
-                  "size" : 12,
-                  "sizeUnit" : "px",
-                  "style" : "normal",
-                  "weight" : "400",
-                  "lineHeight" : "1"
-                },
-                "labelColor" : "rgba(0, 0, 0, 0.76)",
-                "enableLabelBackground" : false,
-                "labelBackground" : "rgba(255,255,255,0.56)",
-                "latestKey" : "aguadaAlarmThreshold",
-                "latestKeyType" : "attribute"
-              }, {
-                "type" : "latestKey",
-                "yAxisId" : "default",
-                "units" : "%",
-                "decimals" : 0,
-                "lineColor" : "rgba(76, 175, 80, 0.61)",
-                "lineType" : "solid",
-                "lineWidth" : 1,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "arrow",
-                "endSymbolSize" : 5,
-                "showLabel" : true,
-                "labelPosition" : "end",
-                "labelFont" : {
-                  "family" : "Roboto",
-                  "size" : 12,
-                  "sizeUnit" : "px",
-                  "style" : "normal",
-                  "weight" : "400",
-                  "lineHeight" : "1"
-                },
-                "labelColor" : "rgba(0, 0, 0, 0.76)",
-                "enableLabelBackground" : false,
-                "labelBackground" : "rgba(255,255,255,0.56)",
-                "latestKey" : "tanqueAlarmThreshold",
-                "latestKeyType" : "attribute"
-              } ],
-              "dataZoom" : true,
-              "stack" : false,
-              "yAxis" : {
-                "show" : true,
-                "label" : "",
-                "labelFont" : {
-                  "family" : "Roboto",
-                  "size" : 12,
-                  "sizeUnit" : "px",
-                  "style" : "normal",
-                  "weight" : "600",
-                  "lineHeight" : "1"
-                },
-                "labelColor" : "rgba(0, 0, 0, 0.54)",
-                "position" : "left",
-                "showTickLabels" : true,
-                "tickLabelFont" : {
-                  "family" : "Roboto",
-                  "size" : 12,
-                  "sizeUnit" : "px",
-                  "style" : "normal",
-                  "weight" : "400",
-                  "lineHeight" : "1"
-                },
-                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
-                "showTicks" : true,
-                "ticksColor" : "rgba(0, 0, 0, 0.54)",
-                "showLine" : true,
-                "lineColor" : "rgba(0, 0, 0, 0.54)",
-                "showSplitLines" : true,
-                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
-              },
-              "xAxis" : {
-                "show" : true,
-                "label" : "",
-                "labelFont" : {
-                  "family" : "Roboto",
-                  "size" : 12,
-                  "sizeUnit" : "px",
-                  "style" : "normal",
-                  "weight" : "600",
-                  "lineHeight" : "1"
-                },
-                "labelColor" : "rgba(0, 0, 0, 0.54)",
-                "position" : "bottom",
                 "showTickLabels" : true,
                 "tickLabelFont" : {
                   "family" : "Roboto",
@@ -610,55 +512,6 @@
                 "lineColor" : "rgba(0, 0, 0, 0.54)",
                 "showSplitLines" : true,
                 "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
-              },
-              "legendLabelFont" : {
-                "family" : "Roboto",
-                "size" : 12,
-                "sizeUnit" : "px",
-                "style" : "normal",
-                "weight" : "400",
-                "lineHeight" : "16px"
-              },
-              "legendLabelColor" : "rgba(0, 0, 0, 0.76)",
-              "showTooltip" : true,
-              "tooltipTrigger" : "axis",
-              "tooltipValueFont" : {
-                "family" : "Roboto",
-                "size" : 12,
-                "sizeUnit" : "px",
-                "style" : "normal",
-                "weight" : "500",
-                "lineHeight" : "16px"
-              },
-              "tooltipValueColor" : "rgba(0, 0, 0, 0.76)",
-              "tooltipShowDate" : true,
-              "tooltipDateFormat" : {
-                "format" : "dd/MM/yyyy HH:mm",
-                "lastUpdateAgo" : false,
-                "custom" : false,
-                "auto" : false,
-                "autoDateFormatSettings" : { }
-              },
-              "tooltipDateFont" : {
-                "family" : "Roboto",
-                "size" : 11,
-                "sizeUnit" : "px",
-                "style" : "normal",
-                "weight" : "400",
-                "lineHeight" : "16px"
-              },
-              "tooltipDateColor" : "rgba(0, 0, 0, 0.76)",
-              "tooltipDateInterval" : true,
-              "tooltipBackgroundColor" : "rgba(255, 255, 255, 0.76)",
-              "tooltipBackgroundBlur" : 4,
-              "background" : {
-                "type" : "color",
-                "color" : "#fff",
-                "overlay" : {
-                  "enabled" : false,
-                  "color" : "rgba(255,255,255,0.72)",
-                  "blur" : 3
-                }
               },
               "yAxes" : {
                 "default" : {
@@ -699,7 +552,7 @@
                   "max" : 100
                 },
                 "axis1" : {
-                  "units" : "L",
+                  "units" : "°C",
                   "decimals" : 0,
                   "show" : true,
                   "label" : "",
@@ -733,37 +586,73 @@
                   "id" : "axis1",
                   "order" : 1,
                   "min" : 0,
-                  "max" : 44000
+                  "max" : 40
                 }
               },
-              "noAggregationBarWidthSettings" : {
-                "strategy" : "group",
-                "groupWidth" : {
-                  "relative" : true,
-                  "relativeWidth" : 2,
-                  "absoluteWidth" : 1000
+              "thresholds" : [ {
+                "type" : "latestKey",
+                "yAxisId" : "default",
+                "units" : "%",
+                "decimals" : 0,
+                "lineColor" : "rgba(244, 67, 54, 0.58)",
+                "lineType" : "solid",
+                "lineWidth" : 2,
+                "startSymbol" : "none",
+                "startSymbolSize" : 5,
+                "endSymbol" : "arrow",
+                "endSymbolSize" : 5,
+                "showLabel" : true,
+                "labelPosition" : "start",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
                 },
-                "barWidth" : {
-                  "relative" : true,
-                  "relativeWidth" : 2,
-                  "absoluteWidth" : 1000
-                }
+                "labelColor" : "rgba(0, 0, 0, 0.76)",
+                "enableLabelBackground" : false,
+                "labelBackground" : "rgba(255,255,255,0.56)",
+                "latestKey" : "tankMaxAlarmThreshold",
+                "latestKeyType" : "attribute"
+              }, {
+                "type" : "latestKey",
+                "yAxisId" : "default",
+                "units" : "%",
+                "decimals" : 0,
+                "lineColor" : "rgba(76, 175, 80, 0.61)",
+                "lineType" : "solid",
+                "lineWidth" : 2,
+                "startSymbol" : "none",
+                "startSymbolSize" : 5,
+                "endSymbol" : "arrow",
+                "endSymbolSize" : 5,
+                "showLabel" : true,
+                "labelPosition" : "start",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.76)",
+                "enableLabelBackground" : false,
+                "labelBackground" : "rgba(255,255,255,0.56)",
+                "latestKey" : "tankMinAlarmThreshold",
+                "latestKeyType" : "attribute"
+              } ],
+              "dataZoom" : true,
+              "stack" : false,
+              "grid" : {
+                "show" : false,
+                "backgroundColor" : "#FF0000",
+                "borderWidth" : 1,
+                "borderColor" : "#ccc"
               },
-              "animation" : {
-                "animation" : true,
-                "animationThreshold" : 2000,
-                "animationDuration" : 500,
-                "animationEasing" : "cubicOut",
-                "animationDelay" : 0,
-                "animationDurationUpdate" : 300,
-                "animationEasingUpdate" : "cubicOut",
-                "animationDelayUpdate" : 0
-              },
-              "padding" : "12px",
-              "comparisonEnabled" : false,
-              "timeForComparison" : "previousInterval",
-              "comparisonCustomIntervalValue" : 7200000,
-              "comparisonXAxis" : {
+              "xAxis" : {
                 "show" : true,
                 "label" : "",
                 "labelFont" : {
@@ -775,7 +664,7 @@
                   "lineHeight" : "1"
                 },
                 "labelColor" : "rgba(0, 0, 0, 0.54)",
-                "position" : "top",
+                "position" : "bottom",
                 "showTickLabels" : true,
                 "tickLabelFont" : {
                   "family" : "Roboto",
@@ -794,12 +683,20 @@
                 "showSplitLines" : true,
                 "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
               },
-              "grid" : {
-                "show" : false,
-                "backgroundColor" : "#FF0000",
-                "borderWidth" : 1,
-                "borderColor" : "#ccc"
+              "noAggregationBarWidthSettings" : {
+                "strategy" : "group",
+                "groupWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                },
+                "barWidth" : {
+                  "relative" : true,
+                  "relativeWidth" : 2,
+                  "absoluteWidth" : 1000
+                }
               },
+              "showLegend" : true,
               "legendColumnTitleFont" : {
                 "family" : "Roboto",
                 "size" : 12,
@@ -809,6 +706,15 @@
                 "lineHeight" : "16px"
               },
               "legendColumnTitleColor" : "rgba(0, 0, 0, 0.38)",
+              "legendLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendLabelColor" : "rgba(0, 0, 0, 0.76)",
               "legendValueFont" : {
                 "family" : "Roboto",
                 "size" : 12,
@@ -818,6 +724,19 @@
                 "lineHeight" : "16px"
               },
               "legendValueColor" : "rgba(0, 0, 0, 0.87)",
+              "legendConfig" : {
+                "direction" : "column",
+                "position" : "top",
+                "sortDataKeys" : false,
+                "showMin" : true,
+                "showMax" : true,
+                "showAvg" : true,
+                "showTotal" : false,
+                "showLatest" : true,
+                "valueFormat" : null
+              },
+              "showTooltip" : true,
+              "tooltipTrigger" : "axis",
               "tooltipLabelFont" : {
                 "family" : "Roboto",
                 "size" : 12,
@@ -826,14 +745,65 @@
                 "weight" : "400",
                 "lineHeight" : "16px"
               },
-              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)"
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "tooltipValueColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipValueFormatter" : null,
+              "tooltipShowDate" : true,
+              "tooltipDateFormat" : {
+                "format" : "dd/MM/yyyy HH:mm",
+                "lastUpdateAgo" : false,
+                "custom" : false,
+                "auto" : false,
+                "autoDateFormatSettings" : { }
+              },
+              "tooltipDateFont" : {
+                "family" : "Roboto",
+                "size" : 11,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipDateColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipDateInterval" : true,
+              "tooltipHideZeroValues" : null,
+              "tooltipBackgroundColor" : "rgba(255, 255, 255, 0.76)",
+              "tooltipBackgroundBlur" : 4,
+              "animation" : {
+                "animation" : true,
+                "animationThreshold" : 2000,
+                "animationDuration" : 500,
+                "animationEasing" : "cubicOut",
+                "animationDelay" : 0,
+                "animationDurationUpdate" : 300,
+                "animationEasingUpdate" : "cubicOut",
+                "animationDelayUpdate" : 0
+              },
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : "12px"
             },
             "title" : "Nivel vs Tiempo",
             "dropShadow" : true,
             "enableFullscreen" : true,
             "titleStyle" : null,
             "mobileHeight" : null,
-            "configMode" : "basic",
+            "configMode" : "advanced",
             "actions" : { },
             "showTitleIcon" : false,
             "titleIcon" : "thermostat",
@@ -3719,7 +3689,7 @@
                   "dataKeyValueType" : "double",
                   "required" : true,
                   "isEditable" : "editable",
-                  "disabledOnDataKey" : "aguadaAlarmFlag",
+                  "disabledOnDataKey" : "tankHighAlarmFlag",
                   "appearance" : "outline",
                   "subscriptSizing" : "fixed",
                   "slideToggleLabelPosition" : "after",
@@ -3776,7 +3746,7 @@
               }, {
                 "name" : "tankMinAlarmThreshold",
                 "type" : "attribute",
-                "label" : "Límite de nivel de tanque mínimo",
+                "label" : "Límite mínimo de nivel de tanque",
                 "color" : "#607d8b",
                 "settings" : {
                   "dataKeyHidden" : false,
@@ -3784,7 +3754,7 @@
                   "dataKeyValueType" : "double",
                   "required" : true,
                   "isEditable" : "editable",
-                  "disabledOnDataKey" : "tanqueAlarmFlag",
+                  "disabledOnDataKey" : "tankLowAlarmFlag",
                   "appearance" : "outline",
                   "subscriptSizing" : "fixed",
                   "slideToggleLabelPosition" : "after",
@@ -6318,13 +6288,13 @@
                 },
                 "tooltip" : {
                   "show" : true,
-                  "type" : "function",
-                  "pattern" : "<b>${entityName}</b><br/><br/><b>Temperature:</b> ${temperature:1} °C<br/><b>Humidity:</b> ${humidity:0} %<br/><br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>",
-                  "patternFunction" : "var deviceType = data.Tipo;\r\n\r\nfunction buildRow(label, value) {\r\n    return `\r\n        <div style=\"display:flex;flex-direction:row;align-items:baseline;margin-bottom:9px;\">\r\n            <div style=\"font-size:13px;line-height:16px;font-weight:500;color:rgba(0, 0, 0, 0.38);width:120px\">${label}</div>\r\n            <div style=\"font-size:14px;line-height:20px;font-weight:500;letter-spacing:0.25px;color:#29313C\">${value}</div>\r\n        </div>\r\n    `;\r\n}\r\n\r\nif (typeof deviceType !== 'undefined') {\r\n    let content = `\r\n    <div style=\"display:flex;flex-direction:column;margin-bottom:8px;font-family:'Roboto';font-weight:500;font-size:16px;line-height:24px;letter-spacing:0.25px;color:#29313C\">\r\n        <div>${data.entityLabel ?? 'Sin nombre'}</div>\r\n        <div style=\"width: 100%;border-bottom:1px solid rgba(0, 0, 0, 0.12);margin:12px 0;\"></div>\r\n    `;\r\n\r\n    if (deviceType === \"lanza\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`);\r\n    } else if (deviceType === \"estMeteo\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Viento\", `${data.windSpeed?.toFixed(1) ?? 'N/A'} m/s`) +\r\n            buildRow(\"Dirección\", `${data.windDir?.toFixed(0) ?? 'N/A'}°`) +\r\n            buildRow(\"Lluvia\", `${data.rain?.toFixed(1) ?? 'N/A'} mm`) +\r\n            buildRow(\"Presión\", `${data.pressure?.toFixed(1) ?? 'N/A'} hPa`);\r\n    } else if (deviceType === \"pozo\") {\r\n        const estadoPozo = data.pozo == 1 ? \"Con Agua\" : \"Seco\";\r\n        content +=\r\n            buildRow(\"Nivel de Aguada\", `${data.nivelAguada?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Nivel de Tanque\", `${data.nivelTanque?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Pozo\", estadoPozo);\r\n    } else if (deviceType === \"Ultrasonico\") {\r\n        const estadoPozo = data.pozo == 1 ? \"Con Agua\" : \"Seco\";\r\n        content +=\r\n            buildRow(\"Nivel de Tanque\", `${data.waterLevelPerc?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Volumen de Tanque\", `${data.waterVolume?.toFixed(0) ?? 'N/A'} L`) +\r\n            buildRow(\"Temperatura\", `${data.data_temperature_2?.toFixed(1) ?? 'N/A'} °C`)\r\n    } else if (deviceType === \"Freatimetro\") {\r\n        content +=\r\n            buildRow(\"Nivel Napa\", `${data.nivelNapa?.toFixed(1) ?? 'N/A'} m`);\r\n    } else if (deviceType === \"comedero\") {\r\n        content +=\r\n            buildRow(\"Comedero 1\", `${data.comedero1?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 2\", `${data.comedero2?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 3\", `${data.comedero3?.toFixed(0) ?? 'N/A'} %`);\r\n    } else {\r\n        content += buildRow(\"Tipo\", \"Desconocido\");\r\n    }\r\n\r\n    content += `\r\n    <div style=\"text-align:center; margin-top:16px;\">\r\n        <link-act name=\"navigate_to_details\">Detalles</link-act>\r\n    </div>\r\n</div>`;\r\n\r\n\r\n\r\n    return content;\r\n}\r\n\r\nreturn `<b>${data.entityName ?? 'Dispositivo'}</b><br/>Tipo desconocido<br/>`;\r\n",
                   "trigger" : "click",
                   "autoclose" : true,
+                  "type" : "function",
+                  "pattern" : "<b>${entityName}</b><br/><br/><b>Temperature:</b> ${temperature:1} °C<br/><b>Humidity:</b> ${humidity:0} %<br/><br/><link-act name=\"navigate_to_details\">Detalles</link-act><br/>",
                   "offsetX" : 0,
                   "offsetY" : -1,
+                  "patternFunction" : "var deviceType = data.Tipo;\r\n\r\nfunction buildRow(label, value) {\r\n    return `\r\n        <div style=\"display:flex;flex-direction:row;align-items:baseline;margin-bottom:9px;\">\r\n            <div style=\"font-size:13px;line-height:16px;font-weight:500;color:rgba(0, 0, 0, 0.38);width:120px\">${label}</div>\r\n            <div style=\"font-size:14px;line-height:20px;font-weight:500;letter-spacing:0.25px;color:#29313C\">${value}</div>\r\n        </div>\r\n    `;\r\n}\r\n\r\nif (typeof deviceType !== 'undefined') {\r\n    let content = `\r\n    <div style=\"display:flex;flex-direction:column;margin-bottom:8px;font-family:'Roboto';font-weight:500;font-size:16px;line-height:24px;letter-spacing:0.25px;color:#29313C\">\r\n        <div>${data.entityLabel ?? 'Sin nombre'}</div>\r\n        <div style=\"width: 100%;border-bottom:1px solid rgba(0, 0, 0, 0.12);margin:12px 0;\"></div>\r\n    `;\r\n\r\n    if (deviceType === \"lanza\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`);\r\n    } else if (deviceType === \"estMeteo\") {\r\n        content +=\r\n            buildRow(\"Temperatura\", `${data.temperature?.toFixed(1) ?? 'N/A'} °C`) +\r\n            buildRow(\"Humedad\", `${data.humidity?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Viento\", `${data.windSpeed?.toFixed(1) ?? 'N/A'} m/s`) +\r\n            buildRow(\"Dirección\", `${data.windDir?.toFixed(0) ?? 'N/A'}°`) +\r\n            buildRow(\"Lluvia\", `${data.rain?.toFixed(1) ?? 'N/A'} mm`) +\r\n            buildRow(\"Presión\", `${data.pressure?.toFixed(1) ?? 'N/A'} hPa`);\r\n    } else if (deviceType === \"pozo\") {\r\n        const estadoPozo = data.pozo == 1 ? \"Con Agua\" : \"Seco\";\r\n        content +=\r\n            buildRow(\"Nivel de Aguada\", `${data.nivelAguada?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Nivel de Tanque\", `${data.nivelTanque?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Pozo\", estadoPozo);\r\n    } else if (deviceType === \"Ultrasonico\") {\r\n        const estadoPozo = data.pozo == 1 ? \"Con Agua\" : \"Seco\";\r\n        content +=\r\n            buildRow(\"Nivel de Tanque\", `${data.waterLevelPerc?.toFixed(1) ?? 'N/A'} %`) +\r\n            buildRow(\"Volumen de Tanque\", `${data.waterVolume?.toFixed(0) ?? 'N/A'} L`) +\r\n            buildRow(\"Temperatura\", `${data.data_temperature_2?.toFixed(1) ?? 'N/A'} °C`)\r\n    } else if (deviceType === \"Freatimetro\") {\r\n        content +=\r\n            buildRow(\"Nivel Napa\", `${data.nivelNapa?.toFixed(1) ?? 'N/A'} m`);\r\n    } else if (deviceType === \"comedero\") {\r\n        content +=\r\n            buildRow(\"Comedero 1\", `${data.comedero1?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 2\", `${data.comedero2?.toFixed(0) ?? 'N/A'} %`) +\r\n            buildRow(\"Comedero 3\", `${data.comedero3?.toFixed(0) ?? 'N/A'} %`);\r\n    } else {\r\n        content += buildRow(\"Tipo\", \"Desconocido\");\r\n    }\r\n\r\n    content += `\r\n    <div style=\"text-align:center; margin-top:16px;\">\r\n        <link-act name=\"navigate_to_details\">Detalles</link-act>\r\n    </div>\r\n</div>`;\r\n\r\n\r\n\r\n    return content;\r\n}\r\n\r\nreturn `<b>${data.entityName ?? 'Dispositivo'}</b><br/>Tipo desconocido<br/>`;\r\n",
                   "tagActions" : [ {
                     "name" : "navigate_to_details",
                     "type" : "custom",
@@ -6404,7 +6374,7 @@
               "additionalDataSources" : [ ],
               "controlsPosition" : "topleft",
               "zoomActions" : [ "scroll", "doubleClick", "controlButtons" ],
-              "scales" : [ ],
+              "scales" : [ "metric" ],
               "dragModeButton" : false,
               "fitMapBounds" : true,
               "useDefaultCenterPosition" : false,
@@ -7182,7 +7152,7 @@
                 },
                 "groups" : null,
                 "edit" : {
-                  "enabledActions" : [ ],
+                  "enabledActions" : [ "move" ],
                   "attributeScope" : "SERVER_SCOPE",
                   "snappable" : false
                 },
@@ -9385,7 +9355,7 @@
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
-            "configMode" : "basic",
+            "configMode" : "advanced",
             "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "0px",
@@ -9944,220 +9914,6 @@
           "col" : 0,
           "id" : "e7b9a4d7-89fb-2c02-265b-812e3ff93ba0"
         },
-        "93026a93-ce92-70ef-6fce-7102f9ccdea6" : {
-          "type" : "latest",
-          "sizeX" : 6,
-          "sizeY" : 6,
-          "config" : {
-            "datasources" : [ {
-              "type" : "entity",
-              "entityAliasId" : "20cab1b8-7270-c46a-f8b6-adb2483cc89d",
-              "dataKeys" : [ {
-                "name" : "aguadaAlarmFlag",
-                "type" : "attribute",
-                "label" : "Alarma de nivel de aguada bajo",
-                "color" : "#4caf50",
-                "settings" : {
-                  "dataKeyType" : "server",
-                  "dataKeyValueType" : "booleanCheckbox",
-                  "required" : false,
-                  "isEditable" : "editable",
-                  "dataKeyHidden" : false,
-                  "step" : 1
-                },
-                "_hash" : 0.8725278440159361,
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              }, {
-                "name" : "aguadaAlarmThreshold",
-                "type" : "attribute",
-                "label" : "Límite mínimo de nivel de aguada",
-                "color" : "#f44336",
-                "settings" : {
-                  "dataKeyHidden" : false,
-                  "dataKeyType" : "server",
-                  "dataKeyValueType" : "double",
-                  "required" : true,
-                  "isEditable" : "editable",
-                  "disabledOnDataKey" : "aguadaAlarmFlag",
-                  "appearance" : "outline",
-                  "subscriptSizing" : "fixed",
-                  "slideToggleLabelPosition" : "after",
-                  "selectOptions" : [ ],
-                  "radioColor" : null,
-                  "radioColumns" : 1,
-                  "radioLabelPosition" : "after",
-                  "step" : 1,
-                  "minValue" : null,
-                  "maxValue" : null,
-                  "requiredErrorMessage" : "",
-                  "minValueErrorMessage" : "",
-                  "maxValueErrorMessage" : "",
-                  "invalidDateErrorMessage" : "",
-                  "invalidJsonErrorMessage" : "",
-                  "dialogTitle" : "",
-                  "saveButtonLabel" : "",
-                  "cancelButtonLabel" : "",
-                  "useCustomIcon" : false,
-                  "icon" : "",
-                  "customIcon" : "",
-                  "useGetValueFunction" : false,
-                  "getValueFunctionBody" : "",
-                  "useSetValueFunction" : false,
-                  "setValueFunctionBody" : ""
-                },
-                "_hash" : 0.7316078472857874,
-                "aggregationType" : null,
-                "units" : "%",
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              }, {
-                "name" : "tanqueAlarmFlag",
-                "type" : "attribute",
-                "label" : "Alarma de nivel de tanque bajo",
-                "color" : "#ffc107",
-                "settings" : {
-                  "dataKeyType" : "server",
-                  "dataKeyValueType" : "booleanCheckbox",
-                  "required" : false,
-                  "isEditable" : "editable",
-                  "dataKeyHidden" : false,
-                  "step" : 1
-                },
-                "_hash" : 0.5339673667431057,
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              }, {
-                "name" : "tanqueAlarmThreshold",
-                "type" : "attribute",
-                "label" : "Límite de nivel de tanque mínimo",
-                "color" : "#607d8b",
-                "settings" : {
-                  "dataKeyHidden" : false,
-                  "dataKeyType" : "server",
-                  "dataKeyValueType" : "double",
-                  "required" : true,
-                  "isEditable" : "editable",
-                  "disabledOnDataKey" : "tanqueAlarmFlag",
-                  "appearance" : "outline",
-                  "subscriptSizing" : "fixed",
-                  "slideToggleLabelPosition" : "after",
-                  "selectOptions" : [ ],
-                  "radioColor" : null,
-                  "radioColumns" : 1,
-                  "radioLabelPosition" : "after",
-                  "step" : 1,
-                  "minValue" : null,
-                  "maxValue" : null,
-                  "requiredErrorMessage" : "",
-                  "minValueErrorMessage" : "",
-                  "maxValueErrorMessage" : "",
-                  "invalidDateErrorMessage" : "",
-                  "invalidJsonErrorMessage" : "",
-                  "dialogTitle" : "",
-                  "saveButtonLabel" : "",
-                  "cancelButtonLabel" : "",
-                  "useCustomIcon" : false,
-                  "icon" : "",
-                  "customIcon" : "",
-                  "useGetValueFunction" : false,
-                  "getValueFunctionBody" : "",
-                  "useSetValueFunction" : false,
-                  "setValueFunctionBody" : ""
-                },
-                "_hash" : 0.2687091190358901,
-                "aggregationType" : null,
-                "units" : "%",
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              } ],
-              "alarmFilterConfig" : {
-                "statusList" : [ "ACTIVE" ]
-              }
-            } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1694085177686,
-                  "endTimeMs" : 1694171577686
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
-            "showTitle" : true,
-            "backgroundColor" : "#fff",
-            "color" : "rgba(0, 0, 0, 0.87)",
-            "padding" : "8px",
-            "settings" : {
-              "widgetTitle" : "Configuración de alarmas",
-              "showResultMessage" : true,
-              "showActionButtons" : true,
-              "updateAllValues" : false,
-              "saveButtonLabel" : "",
-              "resetButtonLabel" : "",
-              "showGroupTitle" : false,
-              "groupTitle" : "${entityName}",
-              "fieldsAlignment" : "row",
-              "fieldsInRow" : 2,
-              "rowGap" : 0,
-              "columnGap" : 0
-            },
-            "title" : "New Update Multiple Attributes",
-            "dropShadow" : true,
-            "enableFullscreen" : false,
-            "enableDataExport" : false,
-            "widgetStyle" : { },
-            "titleStyle" : {
-              "fontSize" : "16px",
-              "fontWeight" : 400
-            },
-            "useDashboardTimewindow" : true,
-            "showLegend" : false,
-            "actions" : { },
-            "showTitleIcon" : false,
-            "titleIcon" : null,
-            "iconColor" : "rgba(0, 0, 0, 0.87)",
-            "iconSize" : "24px",
-            "titleTooltip" : "",
-            "displayTimewindow" : true
-          },
-          "id" : "93026a93-ce92-70ef-6fce-7102f9ccdea6",
-          "typeFullFqn" : "system.input_widgets.update_multiple_attributes"
-        },
         "3bc57062-2001-8111-cb12-d7f7ffc5d13f" : {
           "typeFullFqn" : "system.input_widgets.update_multiple_attributes",
           "type" : "latest",
@@ -10193,6 +9949,9 @@
                   }, {
                     "value" : "3600",
                     "label" : "1 hora"
+                  }, {
+                    "value" : "300",
+                    "label" : "5 min"
                   } ],
                   "radioColor" : null,
                   "radioColumns" : 1,
@@ -10302,9 +10061,10 @@
           "sizeY" : 1,
           "config" : {
             "datasources" : [ {
-              "type" : "device",
+              "type" : "entity",
               "name" : "",
-              "deviceId" : "b2b83830-7182-11f0-bbbd-d5b23296cf03",
+              "deviceId" : null,
+              "entityAliasId" : "20cab1b8-7270-c46a-f8b6-adb2483cc89d",
               "dataKeys" : [ {
                 "name" : "data_frequency_1",
                 "type" : "timeseries",
@@ -11063,143 +10823,6 @@
           "row" : 0,
           "col" : 0,
           "id" : "0bdf55e8-23e8-0acc-d51f-f32b7080c2b8"
-        },
-        "a4e29395-c89e-f989-2835-55d19c558dbb" : {
-          "typeFullFqn" : "system.input_widgets.update_multiple_attributes",
-          "type" : "latest",
-          "sizeX" : 7.5,
-          "sizeY" : 3,
-          "config" : {
-            "datasources" : [ {
-              "type" : "entity",
-              "name" : "",
-              "deviceId" : null,
-              "entityAliasId" : "20cab1b8-7270-c46a-f8b6-adb2483cc89d",
-              "dataKeys" : [ {
-                "name" : "interval",
-                "type" : "attribute",
-                "label" : "Intervalo",
-                "color" : "#2196f3",
-                "settings" : {
-                  "dataKeyHidden" : false,
-                  "dataKeyType" : "server",
-                  "dataKeyValueType" : "select",
-                  "required" : false,
-                  "isEditable" : "editable",
-                  "disabledOnDataKey" : "",
-                  "appearance" : "outline",
-                  "subscriptSizing" : "fixed",
-                  "slideToggleLabelPosition" : "after",
-                  "selectOptions" : [ {
-                    "value" : "1200",
-                    "label" : "20 minutos"
-                  }, {
-                    "value" : "1800",
-                    "label" : "30 minutos"
-                  }, {
-                    "value" : "3600",
-                    "label" : "1 hora"
-                  } ],
-                  "radioColor" : null,
-                  "radioColumns" : 1,
-                  "radioLabelPosition" : "after",
-                  "step" : 1,
-                  "minValue" : null,
-                  "maxValue" : null,
-                  "requiredErrorMessage" : "",
-                  "minValueErrorMessage" : "",
-                  "maxValueErrorMessage" : "",
-                  "invalidDateErrorMessage" : "",
-                  "invalidJsonErrorMessage" : "",
-                  "dialogTitle" : "",
-                  "saveButtonLabel" : "",
-                  "cancelButtonLabel" : "",
-                  "useCustomIcon" : false,
-                  "icon" : "",
-                  "customIcon" : "",
-                  "useGetValueFunction" : false,
-                  "getValueFunctionBody" : "",
-                  "useSetValueFunction" : false,
-                  "setValueFunctionBody" : ""
-                },
-                "_hash" : 0.3216876039895098,
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : true,
-                "postFuncBody" : "return value;"
-              } ],
-              "alarmFilterConfig" : {
-                "statusList" : [ "ACTIVE" ]
-              }
-            } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1749684448443,
-                  "endTimeMs" : 1749770848443
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
-            "showTitle" : false,
-            "backgroundColor" : "#fff",
-            "color" : "rgba(0, 0, 0, 0.87)",
-            "padding" : "8px",
-            "settings" : {
-              "groupTitle" : "${entityName}",
-              "showActionButtons" : true,
-              "fieldsAlignment" : "row",
-              "fieldsInRow" : 2,
-              "columnGap" : 10,
-              "rowGap" : 5
-            },
-            "title" : "Ultrasonico",
-            "dropShadow" : true,
-            "enableFullscreen" : false,
-            "enableDataExport" : false,
-            "widgetStyle" : { },
-            "titleStyle" : {
-              "fontSize" : "16px",
-              "fontWeight" : 400
-            },
-            "useDashboardTimewindow" : true,
-            "showLegend" : false,
-            "actions" : { },
-            "displayTimewindow" : true,
-            "showTitleIcon" : false,
-            "titleTooltip" : "",
-            "widgetCss" : "",
-            "pageSize" : 1024,
-            "units" : "s",
-            "noDataDisplayMessage" : ""
-          },
-          "row" : 0,
-          "col" : 0,
-          "id" : "a4e29395-c89e-f989-2835-55d19c558dbb"
         }
       },
       "states" : {
@@ -11627,7 +11250,17 @@
                       "sizeY" : 7,
                       "mobileHeight" : null,
                       "row" : 5,
-                      "col" : 7
+                      "col" : 7,
+                      "resizable" : true,
+                      "mobileOrder" : 4
+                    },
+                    "9cecf371-a73b-a4d1-a09a-d92b05b240df" : {
+                      "sizeX" : 7,
+                      "sizeY" : 6,
+                      "row" : 0,
+                      "col" : 0,
+                      "resizable" : true,
+                      "preserveAspectRatio" : false
                     },
                     "3b403520-5f79-0c92-f6fa-da173fe95734" : {
                       "sizeX" : 9,
@@ -11635,7 +11268,7 @@
                       "row" : 0,
                       "col" : 7,
                       "resizable" : true,
-                      "mobileOrder" : 2
+                      "mobileOrder" : 1
                     },
                     "fbbad947-ee8a-279e-04f7-a28b7c1b04bd" : {
                       "sizeX" : 5,
@@ -11643,27 +11276,26 @@
                       "row" : 0,
                       "col" : 16,
                       "resizable" : true,
-                      "mobileOrder" : 1,
-                      "mobileHeight" : null
+                      "mobileOrder" : 2
                     },
                     "dfd80568-f809-99db-a139-69c3cc1f7fcb" : {
                       "sizeX" : 4,
                       "sizeY" : 5,
                       "row" : 0,
-                      "col" : 21
-                    },
-                    "93026a93-ce92-70ef-6fce-7102f9ccdea6" : {
-                      "sizeX" : 7,
-                      "sizeY" : 6,
-                      "preserveAspectRatio" : false,
+                      "col" : 21,
                       "resizable" : true,
-                      "row" : 21,
-                      "col" : 0
+                      "mobileOrder" : 3
                     },
-                    "a4e29395-c89e-f989-2835-55d19c558dbb" : {
+                    "3bc57062-2001-8111-cb12-d7f7ffc5d13f" : {
                       "sizeX" : 7,
                       "sizeY" : 4,
-                      "row" : 16,
+                      "row" : 6,
+                      "col" : 0
+                    },
+                    "98b2aeea-5e5f-558e-fa43-9fcd6ecdb1e5" : {
+                      "sizeX" : 7,
+                      "sizeY" : 2,
+                      "row" : 10,
                       "col" : 0
                     }
                   }
@@ -12073,6 +11705,13 @@
         "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
       },
       "title" : "Campo La Travesia",
+      "public" : false
+    }, {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+      },
+      "title" : "Customer A",
       "public" : false
     } ],
     "externalId" : null,

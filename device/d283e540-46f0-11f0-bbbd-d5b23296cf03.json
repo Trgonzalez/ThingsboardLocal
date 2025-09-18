@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
     },
     "deviceData" : {
       "configuration" : {
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754756902249,
+      "lastUpdateTs" : 1757202205656,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,8 +53,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754756902249,
-      "longValue" : 1754756902249,
+      "lastUpdateTs" : 1757202205649,
+      "longValue" : 1757202205649,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -69,8 +69,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1754756253661,
-      "longValue" : 1754756250810,
+      "lastUpdateTs" : 1757201585347,
+      "longValue" : 1757201582547,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -160,6 +160,14 @@
       "lastUpdateTs" : 1750341946592,
       "longValue" : null,
       "strValue" : "Vertical Cylinder"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"temp\":3}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757536920016,
+      "longValue" : null,
+      "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]
   },

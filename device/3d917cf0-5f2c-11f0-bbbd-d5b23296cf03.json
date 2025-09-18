@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
     },
     "deviceData" : {
       "configuration" : {
@@ -63,6 +63,14 @@
       "key" : "lastActivityTime",
       "lastUpdateTs" : 1755380910652,
       "longValue" : 1755380910324,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"volumen\":2}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757534607713,
+      "longValue" : null,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

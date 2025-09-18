@@ -50,11 +50,11 @@
       "type" : "Success"
     }, {
       "fromIndex" : 6,
-      "toIndex" : 9,
+      "toIndex" : 22,
       "type" : "Alarm Created"
     }, {
       "fromIndex" : 6,
-      "toIndex" : 14,
+      "toIndex" : 26,
       "type" : "Alarm Created"
     }, {
       "fromIndex" : 8,
@@ -76,12 +76,57 @@
       "fromIndex" : 13,
       "toIndex" : 11,
       "type" : "Success"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 15,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 15,
+      "toIndex" : 14,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 17,
+      "type" : "True"
+    }, {
+      "fromIndex" : 17,
+      "toIndex" : 18,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 18,
+      "toIndex" : 19,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 18,
+      "toIndex" : 21,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 21,
+      "toIndex" : 20,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 22,
+      "toIndex" : 9,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 23,
+      "toIndex" : 24,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 25,
+      "toIndex" : 23,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 26,
+      "toIndex" : 25,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 6,
     "nodes" : [ {
       "additionalInfo" : {
-        "layoutX" : 824,
-        "layoutY" : 156
+        "description" : null,
+        "layoutX" : 958,
+        "layoutY" : 69
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -92,7 +137,11 @@
       },
       "configurationVersion" : 1,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757740045445,
+        "failuresEnabled" : true
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -105,8 +154,9 @@
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 52
+        "description" : null,
+        "layoutX" : 938,
+        "layoutY" : 0
       },
       "configuration" : {
         "processingSettings" : {
@@ -119,7 +169,11 @@
       },
       "configurationVersion" : 3,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757739998368,
+        "failuresEnabled" : false
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -132,6 +186,7 @@
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
     }, {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 347,
         "layoutY" : 149
       },
@@ -140,7 +195,11 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757740045445,
+        "failuresEnabled" : true
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -153,8 +212,8 @@
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 266
+        "layoutX" : 996,
+        "layoutY" : 273
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -176,8 +235,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 825,
-        "layoutY" : 379
+        "layoutX" : 772,
+        "layoutY" : 270
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -200,8 +259,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 884,
-        "layoutY" : 528
+        "layoutX" : 844,
+        "layoutY" : 362
       },
       "configuration" : {
         "timeoutInSeconds" : 60
@@ -230,15 +289,14 @@
         "layoutY" : 243
       },
       "configuration" : {
-        "persistAlarmRulesState" : false,
-        "fetchAlarmRulesStateOnStart" : false
+        "persistAlarmRulesState" : false
       },
       "configurationVersion" : 1,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749165562999,
-        "failuresEnabled" : false
+        "allEnabledUntil" : 1757786292976,
+        "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
@@ -253,8 +311,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 74,
-        "layoutY" : 768
+        "layoutX" : 44,
+        "layoutY" : 644
       },
       "configuration" : {
         "restEndpointUrlPattern" : "https://api.telegram.org/bot7813852758:AAFImPbdVAnfT8Y0Ty2lW6ku0zVHzREF9TM/sendMessage",
@@ -283,8 +341,8 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 0,
-        "failuresEnabled" : false
+        "allEnabledUntil" : 1757630036898,
+        "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
@@ -299,20 +357,20 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 73,
-        "layoutY" : 670
+        "layoutX" : 38,
+        "layoutY" : 571
       },
       "configuration" : {
         "scriptLang" : "JS",
-        "jsScript" : "var newMsgList = [];\r\nvar alarmText = '🚨 *Alarma activada*\\n\\n🔔 *' + msg.name + '*\\n📟 Dispositivo: ' + metadata.deviceName +\r\n                '\\n📊 Datos: ' + msg.details.data;\r\n\r\n// El atributo `telegramSubs` debe estar disponible en metadata (usá un nodo de enrichment antes)\r\nvar subs = metadata.telegramSubs ? JSON.parse(metadata.telegramSubs) : {};\r\n\r\nfor (var chatId in subs) {\r\n    if (subs[chatId]) {\r\n        newMsgList.push({\r\n            msg: {\r\n                text: alarmText,\r\n                chat_id: parseInt(chatId)\r\n            },\r\n            metadata: metadata,\r\n            msgType: msgType\r\n        });\r\n    }\r\n}\r\n\r\nreturn newMsgList;",
+        "jsScript" : "// ES5 compatible Script (Rule Engine) — NO cambia msgType\r\n\r\n// Helpers\r\nfunction toArray(v) {\r\n  if (!v) return [];\r\n  if (Object.prototype.toString.call(v) === '[object Array]') return v;\r\n  if (typeof v === 'string') { try { var p = JSON.parse(v); return toArray(p); } catch(e) { return []; } }\r\n  if (typeof v === 'object') return [v];\r\n  return [];\r\n}\r\nfunction parseISO(s) {\r\n  if (s === null || s === undefined || s === '') return NaN;\r\n  if (typeof s === 'number') return s;\r\n  s = String(s).trim();\r\n  if (/^\\d{10}$/.test(s)) return Number(s) * 1000; // epoch s\r\n  if (/^\\d{13}$/.test(s)) return Number(s);        // epoch ms\r\n  var m = /^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2})(?::(\\d{2})(?:\\.(\\d{1,3}))?)?(Z|[+\\-]\\d{2}:?\\d{2})?$/.exec(s);\r\n  if (!m) { var t = Date.parse(s); return isNaN(t) ? NaN : t; }\r\n  var y=+m[1], mo=+m[2]-1, d=+m[3], h=+m[4], mi=+m[5];\r\n  var se=m[6]?+m[6]:0, ms=m[7]?+((m[7]+'000').slice(0,3)):0, tz=m[8]||'Z';\r\n  var utc = Date.UTC(y,mo,d,h,mi,se,ms);\r\n  if (tz==='Z'||tz==='z'||tz===undefined) return utc;\r\n  var sign = tz.charAt(0)==='-'?-1:1, hh,mm;\r\n  if (tz.indexOf(':')!==-1){ hh=+tz.substr(1,2); mm=+tz.substr(4,2); }\r\n  else { hh=+tz.substr(1,2); mm=+tz.substr(3,2)||0; }\r\n  return utc - sign*(hh*60+mm)*60000;\r\n}\r\n\r\n// Recipients desde metadata.notifications\r\nvar list = toArray(metadata.notifications);\r\nvar now  = Date.now();\r\nvar seen = {};\r\nvar recipients = [];\r\nfor (var i=0;i<list.length;i++){\r\n  var u = list[i];\r\n  if (!u || !u.chatID) continue;\r\n  var cid = String(u.chatID);\r\n  if (seen[cid]) continue; seen[cid] = true;\r\n\r\n  // --- GATE FINAL ---\r\n  // Normalizar '' a null para until\r\n  var untilRaw = (u.disabled_until === '') ? null : u.disabled_until;\r\n  var untilTs  = parseISO(untilRaw);\r\n  var hasUntil = !(untilRaw === null || untilRaw === undefined);\r\n  var muted    = (!isNaN(untilTs) && untilTs > now);       // futuro => bloquea\r\n  var expired  = (!isNaN(untilTs) && untilTs <= now);      // pasado => permite\r\n  var flagFalse = (u.receiveNotifications === false) ||\r\n                  (typeof u.receiveNotifications === 'string' &&\r\n                   u.receiveNotifications.trim().toLowerCase() === 'false');\r\n\r\n  var allow = false;\r\n  if (muted) {\r\n    allow = false;                         // aún muteado\r\n  } else if (!hasUntil) {\r\n    allow = !flagFalse;                    // sin until: respetar flag (false bloquea)\r\n  } else {\r\n    // tiene until pero no está muteado: vencido o inválido => permitir\r\n    allow = true;\r\n  }\r\n  if (!allow) continue;\r\n\r\n  recipients.push(u);\r\n}\r\n\r\n// Armar texto (Markdown)\r\nvar name     = msg.name || 'Alarma';\r\nvar devName  = metadata.deviceLabel || metadata.deviceName || metadata.originatorName || 'dispositivo';\r\nvar dataStr  = '';\r\nif (msg.details && typeof msg.details === 'object' && msg.details.data !== undefined) {\r\n  if (typeof msg.details.data === 'object') { try { dataStr = JSON.stringify(msg.details.data); } catch(e){ dataStr = String(msg.details.data); } }\r\n  else { dataStr = String(msg.details.data); }\r\n} else if (msg.data !== undefined) {\r\n  dataStr = String(msg.data);\r\n}\r\n\r\nvar alarmText =\r\n  '🚨 *Alarma:*\\n' +\r\n  '🔹 *Razón:* ' + name + '\\n' +\r\n  '🔹 *Dispositivo:* ' + devName + '\\n' +\r\n  '🔹 *Telemetría:*\\n' +\r\n  dataStr;\r\n\r\n// Emitir un mensaje por destinatario (no cambiar msgType)\r\nvar out = [];\r\nfor (var j=0;j<recipients.length;j++){\r\n  out.push({\r\n    msg: { chat_id: String(recipients[j].chatID), text: alarmText, parse_mode: \"Markdown\" },\r\n    metadata: metadata,\r\n    msgType: 'TELEGRAM_MSG'\r\n  });\r\n}\r\nreturn out;\r\n",
         "tbelScript" : "var newMsgList = [];\r\nvar alarmText = '🚨 *Alarma activada*\\n\\n🔔 *' + msg.name + '*\\n📟 Dispositivo: ' + metadata.deviceName +\r\n                '\\n📊 Datos: ' + msg.details.data;\r\n\r\n// El atributo `telegramSubs` debe estar disponible en metadata (usá un nodo de enrichment antes)\r\nvar subs = metadata.telegramSubs ? JSON.parse(metadata.telegramSubs) : {};\r\n\r\nfor (var chatId in subs) {\r\n    if (subs[chatId]) {\r\n        newMsgList.push({\r\n            msg: {\r\n                text: alarmText,\r\n                chat_id: parseInt(chatId)\r\n            },\r\n            metadata: metadata,\r\n            msgType: msgType\r\n        });\r\n    }\r\n}\r\n\r\nreturn newMsgList;"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 0,
-        "failuresEnabled" : false
+        "allEnabledUntil" : 1757633277879,
+        "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
@@ -327,13 +385,13 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 68,
-        "layoutY" : 585
+        "layoutX" : 38,
+        "layoutY" : 494
       },
       "configuration" : {
         "dataToFetch" : "ATTRIBUTES",
         "dataMapping" : {
-          "telegramSubs" : "telegramSubs"
+          "telegram" : "notifications"
         },
         "fetchTo" : "METADATA"
       },
@@ -341,8 +399,8 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749168442242,
-        "failuresEnabled" : false
+        "allEnabledUntil" : 1757620324629,
+        "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
@@ -357,8 +415,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 683,
-        "layoutY" : 586
+        "layoutX" : 606,
+        "layoutY" : 675
       },
       "configuration" : {
         "restEndpointUrlPattern" : "http://chirpstack.nexoragro.com:8090/api/devices/${cs_dev_eui}/queue",
@@ -405,8 +463,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 384,
-        "layoutY" : 595
+        "layoutX" : 598,
+        "layoutY" : 589
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -433,8 +491,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 384,
-        "layoutY" : 398
+        "layoutX" : 598,
+        "layoutY" : 392
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -461,8 +519,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 376,
-        "layoutY" : 484
+        "layoutX" : 590,
+        "layoutY" : 478
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -493,33 +551,396 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 305,
-        "layoutY" : 770
+        "layoutX" : 899,
+        "layoutY" : 572
       },
       "configuration" : {
-        "templateId" : {
-          "entityType" : "NOTIFICATION_TEMPLATE",
-          "id" : "37709820-85eb-11f0-bbbd-d5b23296cf03"
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
         },
-        "targets" : [ "d467eeb0-3a93-11f0-96f4-672ec1447afa" ]
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 3,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1756593402481,
+        "allEnabledUntil" : 1756865332959,
         "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "6e41b4e0-8516-11f0-bbbd-d5b23296cf03"
+        "id" : "d7f50220-8868-11f0-bbbd-d5b23296cf03"
       },
-      "name" : "Alarma",
+      "name" : "Change Active Timeout",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.notification.TbNotificationNode"
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 895,
+        "layoutY" : 481
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "var segundos = msg.interval;  // reemplazá por data.segundos si viene desde afuera\n\n// Convertir a hex de 2 bytes (4 dígitos)\nvar hex = segundos.toString(16);\nwhile (hex.length < 4) {\n    hex = '0' + hex;\n}\nvar finalHex = '01' + hex;  // Ej: 010009\n\n// HEX a array de bytes\nfunction hexToBytes(hexStr) {\n    var result = [];\n    for (var i = 0; i < hexStr.length; i += 2) {\n        result.push(parseInt(hexStr.substr(i, 2), 16));\n    }\n    return result;\n}\n\n// Bytes a Base64 manual (ThingsBoard compatible)\nfunction bytesToBase64(bytes) {\n    var base64abc = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    var result = \"\", i;\n    for (i = 0; i + 2 < bytes.length; i += 3) {\n        result += base64abc[bytes[i] >> 2];\n        result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n        result += base64abc[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];\n        result += base64abc[bytes[i + 2] & 63];\n    }\n    if (i < bytes.length) {\n        result += base64abc[bytes[i] >> 2];\n        if (i + 1 < bytes.length) {\n            result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n            result += base64abc[(bytes[i + 1] & 15) << 2];\n            result += \"=\";\n        } else {\n            result += base64abc[(bytes[i] & 3) << 4];\n            result += \"==\";\n        }\n    }\n    return result;\n}\n\nvar bytes = hexToBytes(finalHex);\nvar base64Payload = bytesToBase64(bytes);\n\nvar msgPayload = {\n    \n  \"queueItem\": {\n    \"confirmed\": false,\n    \"data\": base64Payload,\n    \"fPort\": 10,\n    \"id\": \"string\",\n    \"isPending\": true\n    \n    \n  }\n\nreturn {msg: msgPayload, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "// Obtenemos el campo intervalo en segundos\r\nvar finalHex = '';\r\n\r\n    if (msg.reboot != null) {\r\n        return\r\n    } else if (msg.interval != null) {\r\n        var segundos = msg.interval;\r\n\r\n    }\r\n\r\n\r\nreturn {\r\n    msg: {\"inactivityTimeout\":msg.interval*1000},\r\n    metadata: metadata,\r\n    msgType: \"POST_ATTRIBUTES_REQUEST\"\r\n};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756865332959,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "d7f52930-8868-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "If interval",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1157,
+        "layoutY" : 137
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "return typeof msg.waterVolume !== 'undefined';",
+        "tbelScript" : "return typeof msg.waterVolume !== 'undefined';\r\n"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756922566567,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be355bc0-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Is Water Volume",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1208,
+        "layoutY" : 208
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : false,
+        "fetchTo" : "METADATA",
+        "clientAttributeNames" : [ ],
+        "latestTsKeyNames" : [ ],
+        "serverAttributeNames" : [ "wv_buf", "wv_ema", "wv_state", "wv_seg_start_ts", "wv_seg_start_v" ],
+        "sharedAttributeNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756923647353,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be35a9e0-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "attrib get",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1283,
+        "layoutY" : 288
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// ==== Configurable ====\r\nvar WINDOW_MIN   = 8;     // ventana para la regresión (min)\r\nvar MAX_POINTS   = 120;   // máx puntos almacenados en buffer\r\nvar ALPHA        = 0.30;  // EMA de la tasa (0..1)\r\nvar RATE_ON      = 0.30;  // L/min para entrar a FILL/DRAIN\r\nvar RATE_OFF     = 0.15;  // L/min para volver a IDLE (histéresis)\r\nvar JUMP_DROP    = 500;   // L: salto imposible -> reset buffer\r\nvar MAX_DT_MIN   = 30;    // si pasan >30 min sin datos -> reset\r\n// ======================\r\n\r\nfunction parseJSON(s, def){ try { return JSON.parse(s); } catch(e){ return def; } }\r\n\r\nvar ts = Number(metadata.ts || Date.now());\r\nif (typeof msg.waterVolume === 'undefined') {\r\n  return {msg: msg, metadata: metadata, msgType: msgType};\r\n}\r\nvar v = Number(msg.waterVolume);\r\nif (!isFinite(v)) {\r\n  return {msg: msg, metadata: metadata, msgType: msgType};\r\n}\r\n\r\nvar buf = parseJSON(metadata.wv_buf || '[]', []);\r\nvar prevEma   = Number(metadata.wv_ema);\r\nif (!isFinite(prevEma)) prevEma = null;\r\nvar prevState = String(metadata.wv_state || 'IDLE');\r\nvar segStartTs = Number(metadata.wv_seg_start_ts);\r\nvar segStartV  = Number(metadata.wv_seg_start_v);\r\nif (!isFinite(segStartTs)) segStartTs = ts;\r\nif (!isFinite(segStartV))  segStartV  = v;\r\n\r\n// Reset por gap o salto imposible\r\nif (buf.length > 0) {\r\n  var last = buf[buf.length-1];\r\n  var lastTs = Number(last[0]), lastV = Number(last[1]);\r\n  if ((ts - lastTs) > MAX_DT_MIN*60000 || Math.abs(v - lastV) > JUMP_DROP) {\r\n    buf = []; prevEma = null; prevState = 'IDLE';\r\n    segStartTs = ts; segStartV = v;\r\n  }\r\n}\r\n\r\n// Agregar muestra\r\nbuf.push([ts, v]);\r\n\r\n// Recortar por ventana de tiempo\r\nvar cutoff = ts - WINDOW_MIN*60000;\r\nvar tmp = [];\r\nfor (var i=0;i<buf.length;i++){ if (buf[i][0] >= cutoff) tmp.push(buf[i]); }\r\nbuf = tmp;\r\n\r\n// Limitar puntos (con llaves para Nashorn)\r\nwhile (buf.length > MAX_POINTS) { buf.shift(); }\r\n\r\n// --- Regresión lineal v(t) para pendiente en L/min ---\r\nvar n = buf.length, slopeLm = 0;\r\nif (n >= 2) {\r\n  var sumt=0, sumv=0;\r\n  for (var i2=0;i2<n;i2++){ sumt += buf[i2][0]; sumv += buf[i2][1]; }\r\n  var mt = sumt/n, mv = sumv/n;\r\n  var s_tt=0, s_tv=0;\r\n  for (var j=0;j<n;j++){\r\n    var dtm = (buf[j][0]-mt)/60000.0; // minutos\r\n    var dv  = (buf[j][1]-mv);\r\n    s_tt += dtm*dtm; s_tv += dtm*dv;\r\n  }\r\n  slopeLm = s_tt>0 ? (s_tv/s_tt) : 0; // L/min\r\n}\r\n\r\n// EMA\r\nvar rate = (prevEma==null) ? slopeLm : (ALPHA*slopeLm + (1-ALPHA)*prevEma);\r\n\r\n// Estado con histéresis\r\nfunction nextState(prev, r){\r\n  if (prev==='FILL')  return (r <=  RATE_OFF ? 'IDLE' : 'FILL');\r\n  if (prev==='DRAIN') return (r >= -RATE_OFF ? 'IDLE' : 'DRAIN');\r\n  if (r >=  RATE_ON) return 'FILL';\r\n  if (r <= -RATE_ON) return 'DRAIN';\r\n  return 'IDLE';\r\n}\r\nvar state = nextState(prevState, rate);\r\n\r\n// Cierre de tramo si cambió de estado\r\nvar segTelemetry = {};\r\nif (state !== prevState) {\r\n  if (prevState!=='IDLE') {\r\n    var durMin = (ts - segStartTs)/60000.0;\r\n    if (durMin > 0.01) {\r\n      var dV = v - segStartV;\r\n      segTelemetry.segmentFlag = 1;\r\n      segTelemetry.segmentType = (prevState==='FILL'?1:-1);\r\n      segTelemetry.segmentDurationMin = +durMin.toFixed(2);\r\n      segTelemetry.segmentDeltaVolume = +dV.toFixed(2);\r\n      segTelemetry.segmentRate = +(dV/durMin).toFixed(3);\r\n    }\r\n  }\r\n  segStartTs = ts; segStartV = v;\r\n}\r\n\r\n// Salida telemetría\r\nvar stateNum = (state==='FILL')?1:((state==='DRAIN')?-1:0);\r\nvar out = {\r\n  waterRate: +rate.toFixed(3),\r\n  state_num: stateNum,\r\n  waterVolume: v\r\n};\r\nfor (var k in segTelemetry){ out[k]=segTelemetry[k]; }\r\n\r\n// Atributos persistentes\r\nvar attrs = {\r\n  wv_buf: JSON.stringify(buf),\r\n  wv_ema: +rate.toFixed(6),\r\n  wv_state: state,\r\n  wv_seg_start_ts: segStartTs,\r\n  wv_seg_start_v: segStartV,\r\n  wv_last_ts: ts\r\n};\r\n\r\n// Empaquetado\r\nmsg = out;\r\nmetadata._attributes = JSON.stringify(attrs);\r\nreturn { msg: msg, metadata: metadata, msgType: 'POST_TELEMETRY_REQUEST' };\r\n",
+        "tbelScript" : "// ==== Configurable ====\r\nvar WINDOW_MIN   = 8;     // ventana para la regresión (min)\r\nvar MAX_POINTS   = 120;   // máx puntos almacenados en buffer\r\nvar ALPHA        = 0.30;  // EMA de la tasa (0..1)\r\nvar RATE_ON      = 0.30;  // L/min para entrar a FILL/DRAIN\r\nvar RATE_OFF     = 0.15;  // L/min para volver a IDLE (histéresis)\r\nvar JUMP_DROP    = 500;   // L: salto imposible -> reset buffer\r\nvar MAX_DT_MIN   = 30;    // si pasan >30 min sin datos -> reset\r\n// ======================\r\n\r\nfunction parseJSON(s, def){ try { return JSON.parse(s); } catch(e){ return def; } }\r\n\r\nvar ts = Number(metadata.ts || Date.now());\r\nif (typeof msg.waterVolume === 'undefined') {\r\n  return {msg: msg, metadata: metadata, msgType: msgType};\r\n}\r\nvar v = Number(msg.waterVolume);\r\nif (!isFinite(v)) {\r\n  return {msg: msg, metadata: metadata, msgType: msgType};\r\n}\r\n\r\nvar buf = parseJSON(metadata.wv_buf || '[]', []);\r\nvar prevEma   = Number(metadata.wv_ema);\r\nif (!isFinite(prevEma)) prevEma = null;\r\nvar prevState = String(metadata.wv_state || 'IDLE');\r\nvar segStartTs = Number(metadata.wv_seg_start_ts);\r\nvar segStartV  = Number(metadata.wv_seg_start_v);\r\nif (!isFinite(segStartTs)) segStartTs = ts;\r\nif (!isFinite(segStartV))  segStartV  = v;\r\n\r\n// Reset por gap o salto imposible\r\nif (buf.length > 0) {\r\n  var last = buf[buf.length-1];\r\n  var lastTs = Number(last[0]), lastV = Number(last[1]);\r\n  if ((ts - lastTs) > MAX_DT_MIN*60000 || Math.abs(v - lastV) > JUMP_DROP) {\r\n    buf = []; prevEma = null; prevState = 'IDLE';\r\n    segStartTs = ts; segStartV = v;\r\n  }\r\n}\r\n\r\n// Agregar muestra\r\nbuf.push([ts, v]);\r\n\r\n// Recortar por ventana de tiempo\r\nvar cutoff = ts - WINDOW_MIN*60000;\r\nvar tmp = [];\r\nfor (var i=0;i<buf.length;i++){ if (buf[i][0] >= cutoff) tmp.push(buf[i]); }\r\nbuf = tmp;\r\n// Limitar puntos\r\nwhile (buf.length > MAX_POINTS) buf.shift();\r\n\r\n// --- Regresión lineal v(t) para pendiente en L/min ---\r\nvar n = buf.length, slopeLm = 0;\r\nif (n >= 2) {\r\n  var sumt=0, sumv=0;\r\n  for (var i=0;i<n;i++){ sumt += buf[i][0]; sumv += buf[i][1]; }\r\n  var mt = sumt/n, mv = sumv/n;\r\n  var s_tt=0, s_tv=0;\r\n  for (var j=0;j<n;j++){\r\n    var dtm = (buf[j][0]-mt)/60000.0; // minutos\r\n    var dv  = (buf[j][1]-mv);\r\n    s_tt += dtm*dtm; s_tv += dtm*dv;\r\n  }\r\n  slopeLm = s_tt>0 ? (s_tv/s_tt) : 0; // L/min\r\n}\r\n\r\n// EMA\r\nvar rate = (prevEma==null) ? slopeLm : (ALPHA*slopeLm + (1-ALPHA)*prevEma);\r\n\r\n// Estado con histéresis\r\nfunction nextState(prev, r){\r\n  if (prev==='FILL')  return (r <=  RATE_OFF ? 'IDLE' : 'FILL');\r\n  if (prev==='DRAIN') return (r >= -RATE_OFF ? 'IDLE' : 'DRAIN');\r\n  // prev IDLE\r\n  if (r >=  RATE_ON) return 'FILL';\r\n  if (r <= -RATE_ON) return 'DRAIN';\r\n  return 'IDLE';\r\n}\r\nvar state = nextState(prevState, rate);\r\n\r\n// Cierre de tramo si cambió de estado\r\nvar segTelemetry = {};\r\nif (state !== prevState) {\r\n  if (prevState!=='IDLE') {\r\n    var durMin = (ts - segStartTs)/60000.0;\r\n    if (durMin > 0.01) {\r\n      var dV = v - segStartV;\r\n      segTelemetry.segmentFlag = 1;\r\n      segTelemetry.segmentType = (prevState==='FILL'?1:-1);\r\n      segTelemetry.segmentDurationMin = +durMin.toFixed(2);\r\n      segTelemetry.segmentDeltaVolume = +dV.toFixed(2);\r\n      segTelemetry.segmentRate = +(dV/durMin).toFixed(3);\r\n    }\r\n  }\r\n  // Nuevo tramo\r\n  segStartTs = ts; segStartV = v;\r\n}\r\n\r\n// Salida telemetría\r\nvar stateNum = (state==='FILL')?1:((state==='DRAIN')?-1:0);\r\nvar out = {\r\n  waterRate: +rate.toFixed(3),   // L/min (suavizada)\r\n  state_num: stateNum,           // 1/0/-1\r\n  // reenviamos el volumen por si querés graficarlo del mismo flujo\r\n  waterVolume: v\r\n};\r\nfor (var k in segTelemetry){ out[k]=segTelemetry[k]; }\r\n\r\n// Atributos persistentes\r\nvar attrs = {\r\n  wv_buf: JSON.stringify(buf),\r\n  wv_ema: +rate.toFixed(6),\r\n  wv_state: state,\r\n  wv_seg_start_ts: segStartTs,\r\n  wv_seg_start_v: segStartV,\r\n  wv_last_ts: ts\r\n};\r\n\r\n// Empaquetado: telemetría en msg, atributos en metadata._attributes\r\nmsg = out;\r\nmetadata._attributes = JSON.stringify(attrs);\r\nreturn { msg: msg, metadata: metadata, msgType: 'POST_TELEMETRY' };\r\n"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756923387492,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be35d0f0-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "calculate delta",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1567,
+        "layoutY" : 222
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "useServerTs" : false,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        }
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756922566567,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be35d0f1-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "save",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1586,
+        "layoutY" : 444
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756923413717,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be35f800-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "save",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1578,
+        "layoutY" : 352
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "var attrs = {};\r\ntry { attrs = JSON.parse(metadata._attributes || '{}'); } catch(e){ attrs = {}; }\r\nreturn { msg: attrs, metadata: metadata, msgType: msgType };\r\n",
+        "tbelScript" : "var attrs = {};\r\ntry { attrs = JSON.parse(metadata._attributes || '{}'); } catch(e){ attrs = {}; }\r\nreturn { msg: attrs, metadata: metadata, msgType: msgType };\r\n"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1756923419451,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "be35f801-88ed-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "atr",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 40,
+        "layoutY" : 407
+      },
+      "configuration" : {
+        "dataMapping" : {
+          "label" : "deviceLabel"
+        },
+        "ignoreNullStrings" : false,
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757779774093,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "9f304ae0-8f60-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "TELEGRAM",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetOriginatorFieldsNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 272,
+        "layoutY" : 573
+      },
+      "configuration" : {
+        "fromTemplate" : "noreply@nexoragro.com",
+        "toTemplate" : "${recipientsCsv}",
+        "ccTemplate" : null,
+        "bccTemplate" : null,
+        "subjectTemplate" : "Alarma - $[originatorLabel]",
+        "mailBodyType" : "false",
+        "bodyTemplate" : "$[name] - $[originatorLabel]\n\n$[details.data]"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757781088374,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "00b9ca40-90bd-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Send mail",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.mail.TbMsgToEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 273,
+        "layoutY" : 643
+      },
+      "configuration" : {
+        "useSystemSmtpSettings" : true,
+        "smtpHost" : "localhost",
+        "smtpPort" : 25,
+        "username" : null,
+        "password" : null,
+        "smtpProtocol" : "smtp",
+        "timeout" : 10000,
+        "enableTls" : false,
+        "tlsVersion" : "TLSv1.2",
+        "enableProxy" : false,
+        "proxyHost" : null,
+        "proxyPort" : null,
+        "proxyUser" : null,
+        "proxyPassword" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "00ba8d90-90bd-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Send email",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.mail.TbSendEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 277,
+        "layoutY" : 489
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "function toCsv(raw){\r\n  var data = raw;\r\n  if (typeof raw === 'string') { try { data = JSON.parse(raw); } catch(e){ data = null; } }\r\n\r\n  // Soporta: {recipients:[{email,enabled}]}, o directamente [{email,enabled}], o array de strings\r\n  var list = [];\r\n  if (Array.isArray(data)) {\r\n    list = data;\r\n  } else if (data && Array.isArray(data.recipients)) {\r\n    list = data.recipients;\r\n  }\r\n\r\n  // Normaliza a emails habilitados\r\n  var emails = [];\r\n  for (var i=0; i<list.length; i++){\r\n    var r = list[i];\r\n    var email = typeof r === 'string' ? r : (r && r.email);\r\n    var enabled = typeof r === 'string' ? true : (r && (r.enabled===true || r.enabled==='true' || r.enabled===1 || r.enabled==='1'));\r\n    if (enabled && email && String(email).trim()) emails.push(String(email).trim());\r\n  }\r\n\r\n  // dedupe (case-insensitive)\r\n  var seen = {}, out = [];\r\n  for (var j=0; j<emails.length; j++){\r\n    var k = emails[j].toLowerCase();\r\n    if (!seen[k]) { seen[k]=1; out.push(emails[j]); }\r\n  }\r\n  return out.join(','); // sin espacios si el nodo es sensible\r\n}\r\n\r\nmetadata.recipientsCsv = toCsv(metadata.emailRecipients || msg.emailRecipients);\r\nreturn { msg: msg, metadata: metadata, msgType: msgType };\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757786267246,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5cf81820-90c7-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "get email recipients",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 269,
+        "layoutY" : 410
+      },
+      "configuration" : {
+        "dataToFetch" : "ATTRIBUTES",
+        "dataMapping" : {
+          "emailRecipients" : "emailRecipients"
+        },
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757785538109,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5cf86640-90c7-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "EMAIL",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
     } ],
     "ruleChainConnections" : null
   },

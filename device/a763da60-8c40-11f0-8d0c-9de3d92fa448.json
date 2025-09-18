@@ -1,0 +1,167 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "a763da60-8c40-11f0-8d0c-9de3d92fa448"
+    },
+    "label" : "Aguada el Peludo",
+    "name" : "Ultrasonico 002",
+    "softwareId" : null,
+    "type" : "Ultrasonico"
+  },
+  "credentials" : {
+    "credentialsId" : "deM4bvM6bUCFXf7WmvDw",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1758191656575,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "fullDist",
+      "lastUpdateTs" : 1758065540433,
+      "longValue" : 28,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1758184516778,
+      "longValue" : 1758184516778,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1757982813521,
+      "longValue" : 3600000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1757982813501,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1758198856574,
+      "longValue" : 1758198856094,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.542328,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1757891018073,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -66.989723,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1757891029940,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowDist",
+      "lastUpdateTs" : 1757977943911,
+      "longValue" : 130,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankHighAlarmFlag",
+      "lastUpdateTs" : 1757619214379,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankLowAlarmFlag",
+      "lastUpdateTs" : 1757619214379,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMaxAlarmThreshold",
+      "lastUpdateTs" : 1757982809343,
+      "longValue" : 95,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMinAlarmThreshold",
+      "lastUpdateTs" : 1757982809343,
+      "longValue" : 30,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankVolume",
+      "lastUpdateTs" : 1757890961573,
+      "longValue" : 44000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757561683709,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

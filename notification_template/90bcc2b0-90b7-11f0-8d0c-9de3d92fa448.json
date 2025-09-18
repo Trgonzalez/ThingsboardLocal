@@ -1,0 +1,28 @@
+{
+  "entityType" : "NOTIFICATION_TEMPLATE",
+  "entity" : {
+    "configuration" : {
+      "deliveryMethodsTemplates" : {
+        "WEB" : {
+          "method" : "WEB",
+          "additionalConfig" : {
+            "icon" : {
+              "enabled" : false
+            },
+            "actionButtonConfig" : null
+          },
+          "body" : "$[alarmOriginatorLabel],  $[alarmOriginatorName], ${alarmDetails}",
+          "enabled" : true,
+          "subject" : "${alarmType}: ${alarmOriginatorName}"
+        }
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "NOTIFICATION_TEMPLATE",
+      "id" : "90bcc2b0-90b7-11f0-8d0c-9de3d92fa448"
+    },
+    "name" : "Alarma Generada",
+    "notificationType" : "ALARM"
+  }
+}

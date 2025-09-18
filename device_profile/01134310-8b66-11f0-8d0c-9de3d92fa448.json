@@ -1,0 +1,92 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "298d3350-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "description" : "",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "01134310-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "image" : null,
+    "name" : "EquipmentSensor",
+    "profileData" : {
+      "alarms" : null,
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "DEFAULT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ {
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "acousticDevRecords" : {
+          "limit" : 100,
+          "refEntityKey" : {
+            "key" : "acousticDev",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        },
+        "temperatureRecords" : {
+          "limit" : 100,
+          "refEntityKey" : {
+            "key" : "temperature",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        },
+        "vibrationRecords" : {
+          "limit" : 100,
+          "refEntityKey" : {
+            "key" : "vibration",
+            "type" : "TS_ROLLING"
+          },
+          "timeWindow" : 86400000
+        }
+      },
+      "expression" : "// Sample script to output raw values of the rolling arguments;\nreturn {\n    \"acousticDevRecords\": acousticDevRecords,\n    \"temperatureRecords\": temperatureRecords,\n    \"vibrationRecords\": vibrationRecords\n};",
+      "output" : {
+        "name" : "",
+        "type" : "TIME_SERIES"
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1757194369461,
+      "failuresEnabled" : true
+    },
+    "name" : "RollingWindowRecords",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SCRIPT"
+  } ]
+}

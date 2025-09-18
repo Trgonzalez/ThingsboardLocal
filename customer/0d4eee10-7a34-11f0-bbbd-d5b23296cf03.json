@@ -4,7 +4,7 @@
     "additionalInfo" : {
       "description" : "",
       "homeDashboardId" : null,
-      "homeDashboardHideToolbar" : true
+      "homeDashboardHideToolbar" : false
     },
     "address" : null,
     "address2" : null,
@@ -37,6 +37,22 @@
     "version" : 4864
   } ],
   "attributes" : {
-    "SERVER_SCOPE" : [ ]
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "emailRecipients",
+      "lastUpdateTs" : 1757791371975,
+      "longValue" : null,
+      "strValue" : "{\"recipients\":[{\"email\":\"icasares@itba.edu.ar\",\"enabled\":false},{\"email\":\"trgonzalez@itba.edu.ar\",\"enabled\":true}]}"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"nombre\":\"Tristan Gonzalez\",\"chatID\":\"941688522\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"chatID\":\"7632398137\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null}]",
+      "key" : "telegram",
+      "lastUpdateTs" : 1758130527170,
+      "longValue" : null,
+      "strValue" : null
+    } ]
   }
 }

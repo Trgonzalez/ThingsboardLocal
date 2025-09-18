@@ -1,0 +1,27 @@
+{
+  "entityType" : "AI_MODEL",
+  "entity" : {
+    "configuration" : {
+      "frequencyPenalty" : null,
+      "maxOutputTokens" : null,
+      "maxRetries" : null,
+      "modelId" : "gemini-2.5-flash",
+      "presencePenalty" : null,
+      "providerConfig" : {
+        "apiKey" : "AIzaSyCRzc_qGufmxckMsVfh_4AfcDAEPIB5sGs"
+      },
+      "provider" : "GOOGLE_AI_GEMINI",
+      "temperature" : null,
+      "timeoutSeconds" : null,
+      "topK" : null,
+      "topP" : null,
+      "modelType" : "CHAT"
+    },
+    "externalId" : null,
+    "name" : "google",
+    "id" : {
+      "entityType" : "AI_MODEL",
+      "id" : "7988ff90-8b63-11f0-8d0c-9de3d92fa448"
+    }
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "a7e226e1-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "Automatic Home Dashboard Assign",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 6,
+      "type" : "End"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 9,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 5,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 0,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 7,
+      "type" : "True"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 2,
+      "type" : "Admin"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 4,
+      "type" : "User"
+    } ],
+    "firstNodeIndex" : 8,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 299,
+        "layoutY" : 91
+      },
+      "configuration" : {
+        "forwardMsgToDefaultRuleChain" : false,
+        "ruleChainId" : "be6b31e0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e11570-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Get API token",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 517,
+        "layoutY" : 463
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://app.nexoragro.com/api/user?sendActivationMail=false",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : null,
+        "ignoreRequestBody" : false,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "X-Authorization" : "Bearer ${token}"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797495669,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e13c80-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Update User",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 518,
+        "layoutY" : 329
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://app.nexoragro.com/api/user/${user}",
+        "requestMethod" : "GET",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : null,
+        "ignoreRequestBody" : true,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "X-Authorization" : "Bearer ${token}"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e16390-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Get User",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 519,
+        "layoutY" : 398
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "msg.additionalInfo.homeDashboardId = metadata.dashboard;\nmsg.additionalInfo.homeDashboardHideToolbar = true;\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797495669,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e18aa0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Dashboard to User",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 204,
+        "layoutY" : 261
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://app.nexoragro.com/api/customer/${customer}/dashboard/${dashboard}",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : null,
+        "ignoreRequestBody" : true,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "X-Authorization" : "Bearer ${token}"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797495669,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e1d8c1-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Dashboard to Customer",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 719,
+        "layoutY" : 81
+      },
+      "configuration" : {
+        "jsScript" : "metadata.dashboard = msg.data[0].id.id;\nreturn {msg: {}, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797537808,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e1ffd0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Dashboard id to metadata",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 508,
+        "layoutY" : 7
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://app.nexoragro.com/api/tenant/dashboards?textSearch=${dashboard}&pageSize=10&page=0",
+        "requestMethod" : "GET",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : null,
+        "ignoreRequestBody" : null,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "X-Authorization" : "Bearer ${token}"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797348712,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e1ffd1-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Find dashboard id",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 180,
+        "layoutY" : 7
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "if (metadata.authority === 'CUSTOMER_USER') {\n    \n} else if (metadata.authority === 'TENANT_ADMIN') {\n    metadata.dashboard = \"NAME_OF_DASHBOARD_FOR_ADMINS\";\n}\nmetadata.dashboard = \"Inicio\";\nmetadata.user = msg.id.id;\nmetadata.customer = msg.customerId.id;\nmetadata.tenant = msg.tenantId.id;\nmetadata.authority = msg.authority;\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797348712,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e226e0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Configuration",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 64,
+        "layoutY" : 91
+      },
+      "configuration" : {
+        "jsScript" : "return msg.id.entityType === 'USER';"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797009890,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e226e1-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Is user?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 521,
+        "layoutY" : 175
+      },
+      "configuration" : {
+        "jsScript" : "if (metadata.authority === 'CUSTOMER_USER') {\n    return [ 'User' ];\n} else if (metadata.authority === 'TENANT_ADMIN') {\n    return [ 'Admin' ];\n}\nreturn [ 'Other' ];"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797537808,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7e27500-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "What user type?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsSwitchNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "be6b31e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 19171
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "d49ce160-3a93-11f0-96f4-672ec1447afa"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 19243
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

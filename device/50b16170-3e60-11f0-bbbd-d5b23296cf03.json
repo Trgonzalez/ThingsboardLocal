@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "50b16170-3e60-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Estacion Meteorologica Casco",
     "name" : "Estacion Lote 1",
     "softwareId" : null,
     "type" : "estMeteo"
@@ -41,11 +41,19 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "Operational_Status",
+      "lastUpdateTs" : 1756869588401,
+      "longValue" : null,
+      "strValue" : "IN OPERATION"
+    }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067882655,
+      "lastUpdateTs" : 1757190728095,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -61,31 +69,31 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798258,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1757190337696,
+      "longValue" : 1757190337696,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596798653,
-      "longValue" : 1756596798526,
+      "lastUpdateTs" : 1758202219578,
+      "longValue" : 1758202218948,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.048427275118954,
+      "doubleValue" : -35.04593160032193,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749089094664,
+      "lastUpdateTs" : 1757890085873,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.3930067192182,
+      "doubleValue" : -59.39940759026076,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749089094664,
+      "lastUpdateTs" : 1757890085873,
       "longValue" : null,
       "strValue" : null
     } ],

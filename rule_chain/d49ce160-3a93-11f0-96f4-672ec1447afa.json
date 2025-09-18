@@ -40,16 +40,24 @@
       "type" : "RPC Request to Device"
     }, {
       "fromIndex" : 2,
-      "toIndex" : 12,
+      "toIndex" : 10,
+      "type" : "Timeseries Updated"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 16,
       "type" : "Attributes Updated"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 16,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 21,
+      "type" : "Entity Created"
     }, {
       "fromIndex" : 6,
       "toIndex" : 2,
       "type" : "Success"
-    }, {
-      "fromIndex" : 6,
-      "toIndex" : 9,
-      "type" : "Alarm Created"
     }, {
       "fromIndex" : 8,
       "toIndex" : 7,
@@ -59,21 +67,46 @@
       "toIndex" : 8,
       "type" : "Success"
     }, {
+      "fromIndex" : 10,
+      "toIndex" : 14,
+      "type" : "True"
+    }, {
       "fromIndex" : 11,
-      "toIndex" : 10,
+      "toIndex" : 12,
       "type" : "Success"
     }, {
       "fromIndex" : 12,
       "toIndex" : 13,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 14,
+      "toIndex" : 15,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 15,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 17,
       "type" : "True"
     }, {
-      "fromIndex" : 13,
-      "toIndex" : 11,
+      "fromIndex" : 17,
+      "toIndex" : 18,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 18,
+      "toIndex" : 20,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 20,
+      "toIndex" : 19,
       "type" : "Success"
     } ],
     "firstNodeIndex" : 6,
     "nodes" : [ {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 824,
         "layoutY" : 156
       },
@@ -86,7 +119,11 @@
       },
       "configurationVersion" : 1,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757282592983,
+        "failuresEnabled" : true
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -126,6 +163,7 @@
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
     }, {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 347,
         "layoutY" : 149
       },
@@ -134,7 +172,11 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757784574890,
+        "failuresEnabled" : true
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -215,8 +257,8 @@
     }, {
       "additionalInfo" : {
         "description" : "Process incoming messages from devices with the alarm rules defined in the device profile. Dispatch all incoming messages with \"Success\" relation type.",
-        "layoutX" : 204,
-        "layoutY" : 240
+        "layoutX" : 195,
+        "layoutY" : 238
       },
       "configuration" : {
         "persistAlarmRulesState" : false,
@@ -226,8 +268,8 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749165562999,
-        "failuresEnabled" : false
+        "allEnabledUntil" : 1757784491497,
+        "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
@@ -316,8 +358,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 0,
-        "layoutY" : 580
+        "layoutX" : 19,
+        "layoutY" : 575
       },
       "configuration" : {
         "dataToFetch" : "ATTRIBUTES",
@@ -346,103 +388,27 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 683,
-        "layoutY" : 586
+        "layoutX" : 1072,
+        "layoutY" : 244
       },
       "configuration" : {
-        "restEndpointUrlPattern" : "http://chirpstack.nexoragro.com:8090/api/devices/${cs_dev_eui}/queue",
-        "requestMethod" : "POST",
-        "useSimpleClientHttpFactory" : false,
-        "parseToPlainText" : false,
-        "ignoreRequestBody" : false,
-        "enableProxy" : false,
-        "useSystemProxyProperties" : false,
-        "proxyScheme" : null,
-        "proxyHost" : null,
-        "proxyPort" : 0,
-        "proxyUser" : null,
-        "proxyPassword" : null,
-        "readTimeoutMs" : 0,
-        "maxParallelRequestsCount" : 0,
-        "headers" : {
-          "Content-Type" : "application/json",
-          "accept" : "application/json",
-          "Grpc-Metadata-Authorization" : "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjaGlycHN0YWNrIiwiaXNzIjoiY2hpcnBzdGFjayIsInN1YiI6ImE1ODJjN2I0LTYxOWItNDExZi1hMGY4LTY5MDNkMzNkNjZmNiIsInR5cCI6ImtleSJ9.F-z7ZEULNyf0uBhGAJbwss5N6KpGnSFA0wle1CQK-qw"
-        },
-        "credentials" : {
-          "type" : "anonymous"
-        },
-        "maxInMemoryBufferSizeInKb" : 256
-      },
-      "configurationVersion" : 3,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1749767752146,
-        "failuresEnabled" : true
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "77019e10-47db-11f0-bbbd-d5b23296cf03"
-      },
-      "name" : "restApi",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 384,
-        "layoutY" : 595
-      },
-      "configuration" : {
-        "scriptLang" : "TBEL",
-        "jsScript" : "var segundos = msg.interval;  // reemplazá por data.segundos si viene desde afuera\n\n// Convertir a hex de 2 bytes (4 dígitos)\nvar hex = segundos.toString(16);\nwhile (hex.length < 4) {\n    hex = '0' + hex;\n}\nvar finalHex = '01' + hex;  // Ej: 010009\n\n// HEX a array de bytes\nfunction hexToBytes(hexStr) {\n    var result = [];\n    for (var i = 0; i < hexStr.length; i += 2) {\n        result.push(parseInt(hexStr.substr(i, 2), 16));\n    }\n    return result;\n}\n\n// Bytes a Base64 manual (ThingsBoard compatible)\nfunction bytesToBase64(bytes) {\n    var base64abc = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\";\n    var result = \"\", i;\n    for (i = 0; i + 2 < bytes.length; i += 3) {\n        result += base64abc[bytes[i] >> 2];\n        result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n        result += base64abc[((bytes[i + 1] & 15) << 2) | (bytes[i + 2] >> 6)];\n        result += base64abc[bytes[i + 2] & 63];\n    }\n    if (i < bytes.length) {\n        result += base64abc[bytes[i] >> 2];\n        if (i + 1 < bytes.length) {\n            result += base64abc[((bytes[i] & 3) << 4) | (bytes[i + 1] >> 4)];\n            result += base64abc[(bytes[i + 1] & 15) << 2];\n            result += \"=\";\n        } else {\n            result += base64abc[(bytes[i] & 3) << 4];\n            result += \"==\";\n        }\n    }\n    return result;\n}\n\nvar bytes = hexToBytes(finalHex);\nvar base64Payload = bytesToBase64(bytes);\n\nvar msgPayload = {\n    \n  \"queueItem\": {\n    \"confirmed\": false,\n    \"data\": base64Payload,\n    \"fPort\": 10,\n    \"id\": \"string\",\n    \"isPending\": true\n    \n    \n  }\n\nreturn {msg: msgPayload, metadata: metadata, msgType: msgType};",
-        "tbelScript" : "// Obtenemos el campo intervalo en segundos\nvar segundos = msg.interval;\n\n// Generamos el hex de 2 bytes (4 dígitos), completando con ceros a la izquierda\nvar hexSeg = Integer.toString(segundos, 16);\nhexSeg = padStart(hexSeg, 4, '0');\n\n// Anteponemos el byte fijo '01'\nvar finalHex = '01' + hexSeg; // ej: '010009'\n\n// Convertimos el hex a bytes y luego a Base64\nvar bytesArr = hexToBytes(finalHex); // -> lista de bytes\nvar payloadBase64 = bytesToBase64(bytesArr);\n\nvar csPayload = {\n\n    \"queueItem\": {\n        \n        \"data\": payloadBase64,\n        \"fPort\": 10,\n        \"id\": \"string\",\n        \"isPending\": true\n\n\n    }\n};\nreturn {\n    msg: csPayload,\n    metadata: metadata,\n    msgType: msgType\n};"
+        "scriptLang" : "JS",
+        "jsScript" : "// True si el payload trae chat del usuario\r\n\r\nvar raw = msg.timeseries[0].values.chat\r\nif (!raw) return false;\r\ntry { raw = typeof raw === 'string' ? JSON.parse(raw) : raw; } catch(e) {}\r\nreturn raw && raw.role === 'user' && (raw.content || '').trim().length > 0;\r\n",
+        "tbelScript" : ""
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749770956078,
+        "allEnabledUntil" : 1757283408703,
         "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "77021340-47db-11f0-bbbd-d5b23296cf03"
+        "id" : "46a96520-8c34-11f0-8d0c-9de3d92fa448"
       },
-      "name" : "body",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 384,
-        "layoutY" : 398
-      },
-      "configuration" : {
-        "scriptLang" : "TBEL",
-        "jsScript" : "if (msg.hasOwnProperty(\"estado\")) {\r\n    return { msg: msg, metadata: metadata, msgType: msgType };\r\n} else {\r\n    return null; // ignora otros atributos\r\n}\r\n",
-        "tbelScript" : "return msg.interval != null;"
-      },
-      "configurationVersion" : 0,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1749770791168,
-        "failuresEnabled" : true
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "7702af80-47db-11f0-bbbd-d5b23296cf03"
-      },
-      "name" : "filterEstado",
+      "name" : "is User Chat?",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -450,39 +416,354 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 376,
-        "layoutY" : 484
+        "layoutX" : 1065,
+        "layoutY" : 486
       },
       "configuration" : {
-        "tellFailureIfAbsent" : true,
-        "fetchTo" : "METADATA",
-        "clientAttributeNames" : [ "dev_eui" ],
-        "sharedAttributeNames" : [ ],
-        "serverAttributeNames" : [ ],
-        "latestTsKeyNames" : [ ],
-        "getLatestValueWithTs" : false
+        "modelId" : {
+          "entityType" : "AI_MODEL",
+          "id" : "7988ff90-8b63-11f0-8d0c-9de3d92fa448"
+        },
+        "systemPrompt" : "Sos un asistente IoT agro en español, de argentina, tu nombre es Nexi. Respondé breve y claro a lo que escriba el usuario.\nPrimero centrate en el ultimo mensaje, y despues si necesitas busca contexto en el historial.\nSi te piden datos de algun dispositivo, comparacion o lo que sea, y no tenes el dato, inventalo ya que necesito hacer mockups para el brochure.",
+        "userPrompt" : "$[*]",
+        "responseFormat" : {
+          "type" : "TEXT"
+        },
+        "timeoutSeconds" : 60,
+        "forceAck" : true
       },
-      "configurationVersion" : 1,
+      "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1749770761606,
+        "allEnabledUntil" : 1757888023059,
         "failuresEnabled" : true
       },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "e81ffeb0-47e1-11f0-bbbd-d5b23296cf03"
+        "id" : "fc0b7fa0-8c36-11f0-8d0c-9de3d92fa448"
       },
-      "name" : "atributos dispo",
+      "name" : "chatbot",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+      "type" : "org.thingsboard.rule.engine.ai.TbAiNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1063,
+        "layoutY" : 568
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// Empaquetar respuesta del modelo en formato chat\r\nvar text = msg.response || '';\r\nvar out = {\r\n  role: 'assistant',\r\n  content: text,\r\n  ts: Date.now()\r\n};\r\nvar payload = { chat: JSON.stringify(out) };\r\n\r\n// Devolvemos listo para Save Time Series\r\nreturn { msg: payload, metadata: metadata, msgType: 'POST_TELEMETRY_REQUEST' };\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757283723308,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fc0bf4d0-8c36-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "send msg",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1062,
+        "layoutY" : 648
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "defaultTTL" : 0,
+        "useServerTs" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757283819955,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "35b994d0-8c37-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "save chat",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1065,
+        "layoutY" : 323
+      },
+      "configuration" : {
+        "latestTsKeyNames" : [ "chat" ],
+        "aggregation" : "NONE",
+        "fetchMode" : "ALL",
+        "orderBy" : "DESC",
+        "limit" : 5,
+        "useMetadataIntervalPatterns" : false,
+        "startIntervalPattern" : "",
+        "endIntervalPattern" : "",
+        "startInterval" : 2,
+        "startIntervalTimeUnit" : "HOURS",
+        "endInterval" : 1,
+        "endIntervalTimeUnit" : "MILLISECONDS"
+      },
+      "configurationVersion" : 2,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757285745851,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "64dc9e90-8c39-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "fetch chat history",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetTelemetryNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1064,
+        "layoutY" : 405
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "var historyArr = [];\r\nif (metadata.chat) {\r\n  if (typeof metadata.chat === 'string') {\r\n    // caso raro: viene como string JSON de array\r\n    try { historyArr = JSON.parse(metadata.chat); } catch(e) { historyArr = []; }\r\n  } else if (Array.isArray(metadata.chat)) {\r\n    historyArr = metadata.chat;\r\n  } else {\r\n    historyArr = [];\r\n  }\r\n}\r\n\r\nvar parts = [];\r\nfor (var i = 0; i < historyArr.length; i++) {\r\n  var it = historyArr[i];\r\n  if (!it || !it.value) continue;\r\n  try {\r\n    var obj = JSON.parse(it.value);\r\n    var who = obj.role === 'user' ? 'Usuario' : 'Asistente';\r\n    parts.push(who + ': ' + obj.content);\r\n  } catch (e) {\r\n    // fallback por si value no es JSON\r\n    parts.push(String(it.value));\r\n  }\r\n}\r\n\r\n// quedate con los últimos 25\r\nvar last25 = parts.slice(-25);\r\nmsg.history = last25.join('\\n');\r\n\r\nreturn { msg: msg, metadata: metadata, msgType: msgType };\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757285153285,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "505f4ca0-8c3a-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "trans",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 382,
+        "layoutY" : 353
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "return 'receiveEmail' in msg ",
+        "tbelScript" : "var raw = msg.receiveEmail\r\nif (!raw) return false;\r\ntry { raw = typeof raw === 'string' ? JSON.parse(raw) : raw; } catch(e) {}\r\nreturn raw && raw.role === 'user' && (raw.content || '').trim().length > 0;\r\n"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757788026651,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "acf718b0-90c4-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "is EmailNoti",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 382,
+        "layoutY" : 435
+      },
+      "configuration" : {
+        "dataToFetch" : "ATTRIBUTES",
+        "dataMapping" : {
+          "emailRecipients" : "emailRecipients"
+        },
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757787437321,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "29255710-90c7-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "search email recipients",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 371,
+        "layoutY" : 518
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// IN:\r\n//  - metadata.userEmail (string)\r\n//  - metadata.emailRecipients (string u objeto)  <-- atributo actual del Customer\r\n//  - msg.receiveEmail (bool | \"true\"/\"false\" | 1/0)\r\n// OUT:\r\n//  - msg = { emailRecipients: \"<json...>\" }     <-- guardar en Customer (SERVER attr)\r\n//  - metadata.recipientsCsv = \"a@x.com,b@y.com\"\r\n\r\nfunction toBool(v) {\r\n  if (typeof v === 'boolean') return v;\r\n  if (typeof v === 'number') return v !== 0;\r\n  if (typeof v === 'string') return v.trim().toLowerCase() === 'true' || v.trim() === '1';\r\n  return false;\r\n}\r\n\r\nfunction parseRecipients(raw) {\r\n  if (raw == null || raw === '') return { recipients: [] };\r\n  var data = raw;\r\n  if (typeof raw === 'string') {\r\n    try { data = JSON.parse(raw); } catch (e) {\r\n      // Si era CSV simple, lo convertimos\r\n      var arr = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);\r\n      return { recipients: arr.map(function(e){ return { email: e, enabled: true }; }) };\r\n    }\r\n  }\r\n  if (Array.isArray(data)) return { recipients: data };\r\n  if (data && Array.isArray(data.recipients)) return { recipients: data.recipients };\r\n  return { recipients: [] };\r\n}\r\n\r\nvar email = (metadata.userEmail || '').trim();\r\nif (!email) {\r\n  metadata.mergeError = 'Falta metadata.userEmail';\r\n  return { msg: { /* no guarda */ }, metadata: metadata, msgType: msgType };\r\n}\r\n\r\nvar want = toBool(msg.receiveEmail != null ? msg.receiveEmail : msg['receiveEmail']);\r\n\r\n// Estado actual del Customer\r\nvar store = parseRecipients(metadata.emailRecipients || msg.emailRecipients);\r\nvar list = store.recipients\r\n  .filter(function(r){ return r && r.email; })\r\n  .map(function(r){\r\n    return { email: String(r.email).trim(), enabled: toBool(r.enabled) };\r\n  });\r\n\r\n// Upsert por email (case-insensitive)\r\nvar found = false, i;\r\nfor (i = 0; i < list.length; i++) {\r\n  if (list[i].email.toLowerCase() === email.toLowerCase()) {\r\n    list[i].enabled = want;\r\n    found = true;\r\n    break;\r\n  }\r\n}\r\nif (!found) list.push({ email: email, enabled: want });\r\n\r\n// Dedupe manteniendo la última\r\nvar seen = {};\r\nfor (i = list.length - 1; i >= 0; i--) {\r\n  var k = list[i].email.toLowerCase();\r\n  if (seen[k]) list.splice(i, 1); else seen[k] = 1;\r\n}\r\n\r\n// (Opcional) ordenar por email\r\nlist.sort(function(a,b){\r\n  var A = a.email.toLowerCase(), B = b.email.toLowerCase();\r\n  return A < B ? -1 : (A > B ? 1 : 0);\r\n});\r\n\r\nvar updated = { recipients: list };\r\n\r\n// Salidas\r\nmetadata.recipientsCsv = list.filter(function(r){ return toBool(r.enabled); })\r\n                             .map(function(r){ return r.email; })\r\n                             .join(',');\r\n\r\n// Para no guardar keys de más, dejamos solo la que queremos persistir\r\nmsg = { emailRecipients: JSON.stringify(updated) };\r\n\r\nreturn { msg: msg, metadata: metadata, msgType: \"POST_ATTRIBUTES_REQUEST\" };\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757790077615,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "347e35a0-90cc-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "change notification status",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 369,
+        "layoutY" : 680
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : true,
+        "updateAttributesOnlyOnValueChange" : false
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757789897016,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e39fbc70-90cc-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "save attribute",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 365,
+        "layoutY" : 606
+      },
+      "configuration" : {
+        "originatorSource" : "CUSTOMER",
+        "relationsQuery" : {
+          "direction" : "FROM",
+          "maxLevel" : 1,
+          "filters" : [ {
+            "relationType" : "Contains",
+            "entityTypes" : [ ],
+            "negate" : false
+          } ],
+          "fetchLastLevelOnly" : false
+        },
+        "entityType" : null,
+        "entityNamePattern" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "4252cd20-90d2-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "originator",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 408,
+        "layoutY" : 45
+      },
+      "configuration" : {
+        "forwardMsgToDefaultRuleChain" : false,
+        "ruleChainId" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "454035d0-90e2-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "call assignment",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainInputNode"
     } ],
     "ruleChainConnections" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "d49ce160-3a93-11f0-96f4-672ec1447afa"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 19243
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }

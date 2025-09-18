@@ -1,0 +1,34 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "customs2.delete_timeseries",
+    "name" : "Delete Timeseries",
+    "deprecated" : false,
+    "image" : null,
+    "description" : "Clear Timeseries of All the Devices Older Some Days",
+    "descriptor" : {
+      "type" : "static",
+      "sizeX" : 10,
+      "sizeY" : 5.5,
+      "resources" : [ ],
+      "templateHtml" : "<div fxFlex fxLayout=\"column\" style=\"height: 100%;\" fxLayoutAlign=\"space-around stretch\">\r\n    <h3 style=\"text-align: center;\">Delete Timeseries of All the Devices Older Some Days </h3>\r\n    <button mat-raised-button color=\"primary\" (click)=\"showAlert()\">Start</button>\r\n  </div>",
+      "templateCss" : ".claim-form {\n    overflow: hidden;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n}\n",
+      "controllerScript" : "let timeoutSec = 5; \nasync function getDatasourceKeys (device) {\n    let end =0;\n    let cnt = 0;\n    let entityService = self.ctx.$scope.$injector.get(self.ctx.servicesMap.get('entityService'));\n    let datasource = device.id;\n    \n    entityService.getEntityKeys({entityType: datasource.entityType, id: datasource.id}, '', 'timeseries').subscribe(\n        function(data){\n            keys = \"\";\n            for(let a=0; a<data.length; a++)\n            {\n                keys += data[a].toString();\n                if(a+1 != data.length)keys += \",\";\n            }\n            end=1;\n    });\n    while(end==0)\n    {\n        cnt++;\n        if(cnt>timeoutSec*10)break;\n        await sleep(100);\n    }\n    if(end>0){ return keys;}\n    else{ return null;}\n}\n\nasync function deleteData (device) {\n    let end =0;\n    let cnt = 0;\n    \n    let attributeService = self.ctx.$scope.$injector.get(self.ctx.servicesMap.get('attributeService'));\n    let datasource = device.id;\n\n    let str =keys+\"&startTs=\"+(device.createdTime).toString() +\n                \"&endTs=\"+(Date.now()-self.ctx.settings.olderThanDays*24*60*60*1000).toString(); \n                \n    attributeService.deleteEntityTimeseries\n    (   {entityType: datasource.entityType, id: datasource.id},\n        [{  key:str  }],\n        false\n        ).subscribe(\n            function(data)\n            {\n                 end=1;\n            });\n    while(end==0)\n    {\n        cnt++;\n        if(cnt>timeoutSec*10)break;\n        await sleep(100);\n    }\n    if(end>0){ return 1;}\n    else{ return null;}\n}\n\nasync function getDeviceList (page, pageSize) {\n    let end =0;\n    let cnt = 0;\n    let result;\n    \n    let deviceService = self.ctx.$scope.$injector.get(self.ctx.servicesMap.get('deviceService'));\n \n    var pageLink = self.ctx.pageLink();\n    pageLink.page = page;\n    pageLink.pageSize=pageSize;\n    \n    deviceService.getTenantDeviceInfos( pageLink ).\n    subscribe(\n    async function(data)\n    {\n        end=1;\n        result = data;\n    });\n    while(end==0)\n    {\n        cnt++;\n        if(cnt>timeoutSec*10)break;\n        await sleep(100);\n    }\n    if(end>0){ return result;}\n    else{ return null;}\n}\n\nasync function  deleteOldTimeseries () {\n    let hasNext = true;\n    \n    for(let b=0; hasNext;b++)\n    {\n        let deviceList = await getDeviceList(b,100);\n        if(!deviceList)break;\n        hasNext = deviceList.hasNext;\n        \n        console.log(deviceList);\n        for(let a=0;a<deviceList.data.length;a++)\n        {\n            console.log(deviceList.data[a].name);\n            ready = 0;\n            \n            keys = await getDatasourceKeys(deviceList.data[a]);\n            if(keys==null || keys==\"\")continue;\n            console.log(keys);\n            \n            result = await deleteData(deviceList.data[a]);\n            if(result>0)console.log(\"Deleted!\");\n        }\n    }\n}\n\nfunction sleep(ms) {\n  return new Promise(resolve => setTimeout(resolve, ms));\n}\n\n\nself.onInit = function () \n{\n    self.ctx.$scope.showAlert = async function() {\n        if (self.ctx.settings.olderThanDays>0) {\n            console.log(\"Start delete older than \"+ self.ctx.settings.olderThanDays+\" days\");\n            \n            await deleteOldTimeseries();\n            \n            console.log(\"end delete\");\n            window.alert(\"Deleted Old Timeseries.\");  \n        }else{\n            let msg = \"Enter a value higher than 0\";\n            console.log(msg);\n             window.alert(msg);  \n        }\n    };\n}\n\n",
+      "settingsSchema" : "{\r\n    \"schema\": {\r\n        \"type\": \"object\",\r\n        \"title\": \"Settings\",\r\n        \"properties\": {\r\n            \"olderThanDays\": {\r\n                \"title\": \"Older than days\",\r\n                \"type\": \"integer\",\r\n                \"default\": 30\r\n            }\r\n        }\r\n    },\r\n    \"form\": [\r\n        \"olderThanDays\"\r\n    ]\r\n}",
+      "dataKeySettingsSchema" : "{}",
+      "defaultConfig" : "{\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"olderThanDays\":30},\"title\":\"Delete Timeseries\",\"dropShadow\":false,\"enableFullscreen\":false,\"titleStyle\":{\"fontSize\":\"16px\",\"fontWeight\":400},\"mobileHeight\":null,\"showTitleIcon\":false,\"iconColor\":\"rgba(0, 0, 0, 0.87)\",\"iconSize\":\"24px\",\"titleTooltip\":\"\",\"widgetStyle\":{},\"showLegend\":false,\"useDashboardTimewindow\":true,\"legendConfig\":{\"direction\":\"column\",\"position\":\"left\",\"sortDataKeys\":false,\"showMin\":false,\"showMax\":false,\"showAvg\":false,\"showTotal\":false},\"datasources\":[],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}}}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "d55da5b0-8879-11f0-bbbd-d5b23296cf03"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

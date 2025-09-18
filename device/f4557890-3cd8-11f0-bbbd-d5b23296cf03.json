@@ -45,6 +45,14 @@
       "longValue" : null,
       "strValue" : null
     }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "command",
+      "lastUpdateTs" : 1756868212263,
+      "longValue" : null,
+      "strValue" : "startMission"
+    }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
@@ -75,22 +83,6 @@
       "key" : "lastActivityTime",
       "lastUpdateTs" : 1748800545661,
       "longValue" : 1748800542684,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -34.58288437969906,
-      "jsonValue" : null,
-      "key" : "latitude",
-      "lastUpdateTs" : 1749260514060,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -58.379073143005364,
-      "jsonValue" : null,
-      "key" : "longitude",
-      "lastUpdateTs" : 1749260514060,
-      "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : true,

@@ -6324,6 +6324,82 @@
           "row" : 0,
           "col" : 0,
           "id" : "6d20c747-b20d-63a9-9eb3-9b0ebadf7fcc"
+        },
+        "30edbb4c-3afa-d2d8-f2df-ddc3c8e6c215" : {
+          "typeFullFqn" : "tenant.chat4",
+          "type" : "timeseries",
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "b473ca8c-bcb7-5f80-a81a-a70f87b478ef",
+              "dataKeys" : [ {
+                "name" : "chat",
+                "type" : "timeseries",
+                "label" : "chat",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.5282288219524203
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "outlineWidth" : 1
+              },
+              "legend" : {
+                "show" : true,
+                "position" : "nw",
+                "backgroundColor" : "#f0f0f0",
+                "backgroundOpacity" : 0.85,
+                "labelBoxBorderColor" : "rgba(1, 1, 1, 0.45)"
+              },
+              "decimals" : 1,
+              "stack" : false,
+              "tooltipIndividual" : false
+            },
+            "title" : "chat4",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "mobileHeight" : null,
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "30edbb4c-3afa-d2d8-f2df-ddc3c8e6c215"
         }
       },
       "states" : {
@@ -6345,6 +6421,13 @@
                   "resizable" : true,
                   "row" : 0,
                   "col" : 11
+                },
+                "30edbb4c-3afa-d2d8-f2df-ddc3c8e6c215" : {
+                  "sizeX" : 8,
+                  "sizeY" : 5,
+                  "mobileHeight" : null,
+                  "row" : 8,
+                  "col" : 0
                 }
               },
               "gridSettings" : {
@@ -6625,6 +6708,18 @@
             "resolveMultiple" : true,
             "deviceNameFilter" : "",
             "deviceTypes" : [ "thermostat" ]
+          }
+        },
+        "b473ca8c-bcb7-5f80-a81a-a70f87b478ef" : {
+          "id" : "b473ca8c-bcb7-5f80-a81a-a70f87b478ef",
+          "alias" : "Current User",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : true,
+            "singleEntity" : {
+              "entityType" : "CURRENT_USER",
+              "id" : "13814000-1dd2-11b2-8080-808080808080"
+            }
           }
         }
       },

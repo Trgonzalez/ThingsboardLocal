@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "762c90a0-3e60-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Lanza Suelo Lote 2",
     "name" : "Lanza Suelo Lote 1",
     "softwareId" : null,
     "type" : "lanza"
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067882655,
+      "lastUpdateTs" : 1757715416346,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -77,31 +77,31 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798257,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1757715328682,
+      "longValue" : 1757715328682,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596798652,
-      "longValue" : 1756596797973,
+      "lastUpdateTs" : 1758202219579,
+      "longValue" : 1758202218419,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.04312692554263,
+      "doubleValue" : -35.04210574579297,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749089112762,
+      "lastUpdateTs" : 1757890069221,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.38441127757705,
+      "doubleValue" : -59.390855146281964,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749089112762,
+      "lastUpdateTs" : 1757890069221,
       "longValue" : null,
       "strValue" : null
     }, {

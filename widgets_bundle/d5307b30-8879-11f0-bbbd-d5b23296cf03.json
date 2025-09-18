@@ -1,0 +1,22 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "customs2",
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "d5307b30-8879-11f0-bbbd-d5b23296cf03"
+    },
+    "image" : null,
+    "name" : "Custom widgets",
+    "order" : null,
+    "scada" : false,
+    "title" : "Custom widgets"
+  },
+  "fqns" : [ "customs2.my_chart", "customs2.delete_timeseries" ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

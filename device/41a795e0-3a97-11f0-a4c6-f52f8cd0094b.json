@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1749322554824,
+      "lastUpdateTs" : 1757117677904,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -61,16 +61,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1749322554823,
-      "longValue" : 1749322554823,
+      "lastUpdateTs" : 1757117677904,
+      "longValue" : 1757117677904,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1749321936658,
-      "longValue" : 1749321935876,
+      "lastUpdateTs" : 1757117049664,
+      "longValue" : 1757117048075,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -94,6 +94,14 @@
       "jsonValue" : "[[-34.59425068059119,-58.414401080323806],[-34.58545363606258,-58.40702401556025],[-34.58909268711521,-58.40054763893642],[-34.594709938456454,-58.402520574861576]]",
       "key" : "perimeter",
       "lastUpdateTs" : 1748716540097,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"real\":\"dev\"}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1757538933804,
       "longValue" : null,
       "strValue" : null
     } ],

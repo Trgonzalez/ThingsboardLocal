@@ -1,0 +1,18 @@
+{
+  "entityType" : "NOTIFICATION_TARGET",
+  "entity" : {
+    "configuration" : {
+      "type" : "PLATFORM_USERS",
+      "description" : null,
+      "usersFilter" : {
+        "type" : "ORIGINATOR_ENTITY_OWNER_USERS"
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "NOTIFICATION_TARGET",
+      "id" : "72e5f8c0-90c0-11f0-8d0c-9de3d92fa448"
+    },
+    "name" : "Users del device"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "bed8e7d0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "be6b31e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "name" : "Get API token",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 2,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 4,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 0,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 0,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 0,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 3,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 1,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 483,
+        "layoutY" : 205
+      },
+      "configuration" : {
+        "jsScript" : "var newMsg = 'originalMessage' in metadata ? JSON.parse(metadata.originalMessage) : { msg: msg, metadata: metadata, msgType: msgType };\n\nif ('token' in msg) {\n    newMsg.metadata.token = msg.token;\n}\nif ('refreshToken' in msg) {\n    newMsg.metadata.refreshToken = msg.refreshToken;\n}\n\nreturn newMsg;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797205892,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "bed8c0c0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Message from metadata",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 107,
+        "layoutY" : 40
+      },
+      "configuration" : {
+        "jsScript" : "metadata.originalMessage = JSON.stringify({ msg: msg, metadata: metadata, msgType: msgType });\nreturn { msg: msg, metadata: metadata, msgType: msgType };"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797205892,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "bed8e7d0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Message to metadata",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 429,
+        "layoutY" : 359
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "bed8e7d1-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "End",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbRuleChainOutputNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 675,
+        "layoutY" : 44
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://app.nexoragro.com//api/auth/login",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : null,
+        "ignoreRequestBody" : null,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797205892,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "bed8e7d2-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Login",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 377,
+        "layoutY" : 40
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "var loginCredentials = {\n  \"username\": \"tenant@thingsboard.org\",\n  \"password\": \"Nexoragro2025\"\n};\n\nreturn {msg: loginCredentials, metadata: metadata, msgType: msgType};",
+        "tbelScript" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757797205892,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "bed90ee0-8876-11f0-bbbd-d5b23296cf03"
+      },
+      "name" : "Login credentials",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "be6b31e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 19171
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

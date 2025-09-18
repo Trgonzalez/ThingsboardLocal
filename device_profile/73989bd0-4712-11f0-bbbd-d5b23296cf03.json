@@ -58,7 +58,8 @@
         "decimalsByDefault" : 0,
         "name" : "batteryPercentage",
         "type" : "TIME_SERIES"
-      }
+      },
+      "useLatestTs" : false
     },
     "configurationVersion" : 0,
     "debugSettings" : {
@@ -121,7 +122,8 @@
         "decimalsByDefault" : 0,
         "name" : "waterDistance",
         "type" : "TIME_SERIES"
-      }
+      },
+      "useLatestTs" : false
     },
     "configurationVersion" : 0,
     "debugSettings" : {

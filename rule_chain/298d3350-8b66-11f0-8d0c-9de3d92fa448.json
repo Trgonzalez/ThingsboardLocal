@@ -1,0 +1,409 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "2a28d710-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "298d3350-8b66-11f0-8d0c-9de3d92fa448"
+    },
+    "name" : "Equipment Health Analysis",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 2,
+      "toIndex" : 1,
+      "type" : "Post attributes"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "RPC Request from Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 4,
+      "type" : "Other"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 5,
+      "type" : "RPC Request to Device"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 7,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 0,
+      "type" : "False"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "True"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 9,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 10,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 11,
+      "type" : "True"
+    } ],
+    "firstNodeIndex" : 6,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "layoutX" : 991,
+        "layoutY" : 156
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "useServerTs" : false,
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        }
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a25c9d0-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Save Timeseries",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 710,
+        "layoutY" : 91
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "scope" : "CLIENT_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a26b430-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Save Client Attributes",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 373,
+        "layoutY" : 311
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a270250-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Message Type Switch",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 703,
+        "layoutY" : 385
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a277780-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Log RPC from Device",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 702,
+        "layoutY" : 446
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);",
+        "tbelScript" : "return '\\nIncoming message:\\n' + JSON.stringify(msg) + '\\nIncoming metadata:\\n' + JSON.stringify(metadata);"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a27c5a0-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Log Other",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbLogNode"
+    }, {
+      "additionalInfo" : {
+        "layoutX" : 701,
+        "layoutY" : 509
+      },
+      "configuration" : {
+        "timeoutInSeconds" : 60
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a283ad0-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "RPC Call Request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 73,
+        "layoutY" : 307
+      },
+      "configuration" : {
+        "persistAlarmRulesState" : false,
+        "fetchAlarmRulesStateOnStart" : false
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a28d710-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Device Profile Node",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.profile.TbDeviceProfileNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 703,
+        "layoutY" : 256
+      },
+      "configuration" : {
+        "messageNames" : [ "vibrationRecords", "temperatureRecords", "acousticDevRecords" ],
+        "metadataNames" : [ ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a294c40-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Rolling data present?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 990,
+        "layoutY" : 350
+      },
+      "configuration" : {
+        "interval" : 5,
+        "strategy" : "LAST",
+        "maxPendingMsgs" : 100,
+        "maxRetries" : 3
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757215200537,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a2a36a0-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Deduplicate API calls",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.deduplication.TbMsgDeduplicationNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 990,
+        "layoutY" : 436
+      },
+      "configuration" : {
+        "modelId" : {
+          "entityType" : "AI_MODEL",
+          "id" : "7988ff90-8b63-11f0-8d0c-9de3d92fa448"
+        },
+        "systemPrompt" : "You are an AI predictive maintenance assistant that detects alarm conditions in telemetry data of industrial devices based on incident patterns.\n\nOutput JSON only. If an alarm condition is detected, output:\n{\n  \"type\": \"Bearing Wear | Misalignment | Overheating | Imbalance\",\n  \"severity\": \"CRITICAL | MAJOR | MINOR | WARNING\",\n  \"details\": { \"summary\": \"2–3 sentences in plain English of concise, plain-language summary for maintenance teams; include units when citing values.\" }\n}\nIf no alarm condition is detected, output: {}\nAnalize the last value in realtion with te previous ones. dont send an alarm twice\nInputs: time-stamped vibration (mm/s), temperature (°C), acoustic spectrum deviation (%).\n\nTelemetry thresholds:\n- Vibration (mm/s): ≤4.5 normal; 4.5–5.0 WARNING; 5.0–6.0 MINOR; 6.0–7.1 MAJOR; >7.1 CRITICAL\n- Temperature (°C): ≤75 normal; 75–80 WARNING; 80–85 MAJOR; >85 CRITICAL\n- Acoustic deviation (%): ≤15 normal; 15–25 WARNING; 25–40 MINOR; 40–60 MAJOR; >60 CRITICAL\n\nIncident patterns:\n- Bearing Wear: gradual vibration rise + temperature spike.\n- Misalignment: sudden vibration spike without temperature change.\n- Imbalance: rising vibration + irregular acoustics; temperature near normal.\n- Overheating: temperature >85 °C ≥10 min or Δtemp ≥10 °C/10 min with Δvib <1.0 mm/s; or 75–85 °C ≥30 min with normal vib/acoustic.\n\nSeverity policy:\n- Start with the max of per-signal severities; if ≥2 signals are abnormal, escalate one level (cap at CRITICAL).\n- Ignore very brief blips (<2 samples just over a boundary) unless strongly pattern-matched.\n- Be conservative; use input units.",
+        "userPrompt" : "Here are the latest readings from ${deviceName}:\n\n$[*]",
+        "responseFormat" : {
+          "type" : "JSON_SCHEMA",
+          "schema" : {
+            "$schema" : "http://json-schema.org/draft-07/schema#",
+            "title" : "IndustrialEquipmentHealthAnalysis",
+            "type" : "object",
+            "properties" : {
+              "anomaly" : {
+                "type" : "string",
+                "description" : "A short label or category for the detected anomaly, e.g., 'Bearing Wear' or 'Misalignment'."
+              },
+              "summary" : {
+                "type" : "string",
+                "description" : "A human-readable summary describing the current equipment health and recommended actions."
+              }
+            },
+            "additionalProperties" : false
+          }
+        },
+        "timeoutSeconds" : 60,
+        "forceAck" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757215126241,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a5a9570-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "AI request",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.ai.TbAiNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 986,
+        "layoutY" : 515
+      },
+      "configuration" : {
+        "messageNames" : [ "anomaly" ],
+        "metadataNames" : [ ],
+        "checkAllKeys" : true
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a5b0aa0-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Anomaly detected?",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbCheckMessageNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 990,
+        "layoutY" : 588
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n}\n\ndetails.msg = msg.summary;\n\nreturn details;",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : false,
+        "alarmType" : "$[anomaly]",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ],
+        "propagateToOwner" : false,
+        "propagateToTenant" : false,
+        "dynamicSeverity" : false
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 0,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2a5d0670-8b66-11f0-8d0c-9de3d92fa448"
+      },
+      "name" : "Anomaly Alarm",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

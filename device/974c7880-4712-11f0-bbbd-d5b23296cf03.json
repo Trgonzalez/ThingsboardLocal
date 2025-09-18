@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "974c7880-4712-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Freatimetro Bajo Lote 3",
     "name" : "Freatimetro Bajo Lote 3",
     "softwareId" : null,
     "type" : "Freatimetro"
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067885658,
+      "lastUpdateTs" : 1757720399341,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -61,33 +61,33 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798255,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1757720308708,
+      "longValue" : 1757720308708,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596801656,
-      "longValue" : 1756596800166,
+      "lastUpdateTs" : 1758202222578,
+      "longValue" : 1758202220535,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : null,
+      "doubleValue" : -35.044464623359495,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749681786893,
+      "lastUpdateTs" : 1757890076801,
       "longValue" : null,
-      "strValue" : "-35.040725797"
+      "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : null,
+      "doubleValue" : -59.39332911045906,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749681827281,
+      "lastUpdateTs" : 1757890076801,
       "longValue" : null,
-      "strValue" : "-59.38687"
+      "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]
   },

@@ -3940,14 +3940,7 @@
     },
     "name" : "Smart energy monitoring",
     "resources" : null,
-    "assignedCustomers" : [ {
-      "customerId" : {
-        "entityType" : "CUSTOMER",
-        "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
-      },
-      "title" : "Public",
-      "public" : true
-    } ],
+    "assignedCustomers" : [ ],
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",

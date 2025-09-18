@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "948c5700-3fd3-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Comedero Lote 1",
     "name" : "Comedero Lote 1",
     "softwareId" : null,
     "type" : "comedero"
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1754067885658,
+      "lastUpdateTs" : 1757190728096,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -101,31 +101,31 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1754067798245,
-      "longValue" : 1754067798245,
+      "lastUpdateTs" : 1757190337653,
+      "longValue" : 1757190337653,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1756596801656,
-      "longValue" : 1756596799635,
+      "lastUpdateTs" : 1758202222578,
+      "longValue" : 1758202220006,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.040725797864994,
+      "doubleValue" : -35.04084984088257,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1749089152221,
+      "lastUpdateTs" : 1757890122727,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.39686911447094,
+      "doubleValue" : -59.396816021937276,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1749089152221,
+      "lastUpdateTs" : 1757890122727,
       "longValue" : null,
       "strValue" : null
     }, {
