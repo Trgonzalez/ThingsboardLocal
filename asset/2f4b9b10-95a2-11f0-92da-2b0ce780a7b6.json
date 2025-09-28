@@ -1,0 +1,50 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "2b8f0840-95a2-11f0-92da-2b0ce780a7b6"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "2f4b9b10-95a2-11f0-92da-2b0ce780a7b6"
+    },
+    "label" : null,
+    "name" : "Campo1",
+    "type" : "SI Field"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2f4b9b10-95a2-11f0-92da-2b0ce780a7b6"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "68cd1a60-3e60-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 19293
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[[-33.35143002298295,-68.81243705749513],[-33.36813349337812,-68.78025054931642],[-33.37551640898179,-68.78625869750978],[-33.35888604538702,-68.81844520568849]]",
+      "key" : "perimeter",
+      "lastUpdateTs" : 1758384122171,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

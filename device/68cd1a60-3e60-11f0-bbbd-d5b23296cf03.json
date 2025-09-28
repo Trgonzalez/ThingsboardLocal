@@ -38,7 +38,20 @@
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "2f4b9b10-95a2-11f0-92da-2b0ce780a7b6"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "68cd1a60-3e60-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 19293
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
       "booleanValue" : null,
@@ -93,8 +106,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1758202219579,
-      "longValue" : 1758202219477,
+      "lastUpdateTs" : 1759023511340,
+      "longValue" : 1759023510455,
       "strValue" : null
     }, {
       "booleanValue" : null,

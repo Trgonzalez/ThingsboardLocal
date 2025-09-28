@@ -28,7 +28,7 @@
       "entityType" : "DEVICE",
       "id" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
     },
-    "label" : "",
+    "label" : "Field Tester",
     "name" : "FieldTester",
     "softwareId" : null,
     "type" : "default"

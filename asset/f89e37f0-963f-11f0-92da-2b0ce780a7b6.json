@@ -1,0 +1,56 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : null,
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "2b8f0840-95a2-11f0-92da-2b0ce780a7b6"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "f89e37f0-963f-11f0-92da-2b0ce780a7b6"
+    },
+    "label" : null,
+    "name" : "Campo 2",
+    "type" : "SI Field"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "f89e37f0-963f-11f0-92da-2b0ce780a7b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 19294
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "owner",
+      "lastUpdateTs" : 1758386195017,
+      "longValue" : null,
+      "strValue" : ""
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[[-35.38457160381764,-67.22259521484376],[-35.62604706595698,-66.83532714843751]]",
+      "key" : "perimeter",
+      "lastUpdateTs" : 1758482072342,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

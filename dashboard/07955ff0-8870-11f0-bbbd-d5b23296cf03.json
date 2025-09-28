@@ -1288,6 +1288,13 @@
       },
       "title" : "Campo La Travesia",
       "public" : false
+    }, {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+      },
+      "title" : "Customer A",
+      "public" : false
     } ],
     "externalId" : null,
     "id" : {

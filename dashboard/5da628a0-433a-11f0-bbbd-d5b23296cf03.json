@@ -714,7 +714,7 @@
               "name" : "",
               "entityAliasId" : "2bb2294a-838e-2048-409e-448b9e5c377b",
               "dataKeys" : [ {
-                "name" : "voltage",
+                "name" : "waterLevelPerc",
                 "type" : "timeseries",
                 "label" : "${entityName}",
                 "color" : "#2196f3",
@@ -729,7 +729,7 @@
                     "stepType" : "start",
                     "smooth" : false,
                     "lineType" : "solid",
-                    "lineWidth" : 1.5,
+                    "lineWidth" : 2,
                     "showPoints" : false,
                     "showPointLabel" : false,
                     "pointLabelPosition" : "top",
@@ -742,8 +742,10 @@
                       "lineHeight" : "1"
                     },
                     "pointLabelColor" : "rgba(0, 0, 0, 0.76)",
-                    "pointShape" : "circle",
-                    "pointSize" : 14,
+                    "enablePointLabelBackground" : false,
+                    "pointLabelBackground" : "rgba(255,255,255,0.56)",
+                    "pointShape" : "emptyCircle",
+                    "pointSize" : 4,
                     "fillAreaSettings" : {
                       "type" : "none",
                       "opacity" : 0.4,
@@ -768,6 +770,8 @@
                       "lineHeight" : "1"
                     },
                     "labelColor" : "rgba(0, 0, 0, 0.76)",
+                    "enableLabelBackground" : false,
+                    "labelBackground" : "rgba(255,255,255,0.56)",
                     "backgroundSettings" : {
                       "type" : "none",
                       "opacity" : 0.4,
@@ -776,15 +780,16 @@
                         "end" : 0
                       }
                     }
+                  },
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : false,
+                    "comparisonValuesLabel" : "",
+                    "color" : ""
                   }
                 },
-                "_hash" : 0.7248259589863468,
+                "_hash" : 0.611394991668422,
                 "units" : "V",
-                "decimals" : 2,
-                "aggregationType" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
+                "decimals" : 2
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
@@ -792,9 +797,6 @@
               "latestDataKeys" : [ ]
             } ],
             "timewindow" : {
-              "hideInterval" : false,
-              "hideLastInterval" : false,
-              "hideQuickInterval" : false,
               "hideAggregation" : false,
               "hideAggInterval" : false,
               "hideTimezone" : false,
@@ -825,7 +827,8 @@
                 "showMax" : false,
                 "showAvg" : true,
                 "showTotal" : false,
-                "showLatest" : false
+                "showLatest" : false,
+                "valueFormat" : null
               },
               "thresholds" : [ {
                 "type" : "constant",
@@ -1089,7 +1092,75 @@
                 "animationEasingUpdate" : "cubicOut",
                 "animationDelayUpdate" : 0
               },
-              "padding" : "12px"
+              "padding" : "12px",
+              "comparisonEnabled" : false,
+              "timeForComparison" : "previousInterval",
+              "comparisonCustomIntervalValue" : 7200000,
+              "comparisonXAxis" : {
+                "show" : true,
+                "label" : "",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "600",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgba(0, 0, 0, 0.54)",
+                "position" : "top",
+                "showTickLabels" : true,
+                "tickLabelFont" : {
+                  "family" : "Roboto",
+                  "size" : 10,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                "ticksFormat" : { },
+                "showTicks" : true,
+                "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                "showLine" : true,
+                "lineColor" : "rgba(0, 0, 0, 0.54)",
+                "showSplitLines" : true,
+                "splitLinesColor" : "rgba(0, 0, 0, 0.12)"
+              },
+              "grid" : {
+                "show" : false,
+                "backgroundColor" : null,
+                "borderWidth" : 1,
+                "borderColor" : "#ccc"
+              },
+              "legendColumnTitleFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "legendColumnTitleColor" : "rgba(0, 0, 0, 0.38)",
+              "legendValueFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "500",
+                "lineHeight" : "16px"
+              },
+              "legendValueColor" : "rgba(0, 0, 0, 0.87)",
+              "tooltipLabelFont" : {
+                "family" : "Roboto",
+                "size" : 12,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "16px"
+              },
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipHideZeroValues" : null
             },
             "title" : "Voltage",
             "dropShadow" : true,
