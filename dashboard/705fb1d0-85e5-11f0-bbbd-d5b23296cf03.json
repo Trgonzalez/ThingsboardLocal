@@ -1669,6 +1669,434 @@
           "row" : 0,
           "col" : 0,
           "id" : "42786926-b8ab-6eae-2685-003a1ab94240"
+        },
+        "0715df6d-0b1b-e8a0-3213-6153944ae4a0" : {
+          "typeFullFqn" : "system.cards.entities_table",
+          "type" : "latest",
+          "sizeX" : 7.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 86400000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1748637797991,
+                  "endTimeMs" : 1748724197991
+                },
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "4px",
+            "settings" : {
+              "entitiesTitle" : "Dispositivos",
+              "enableSearch" : true,
+              "enableSelectColumnDisplay" : true,
+              "enableStickyHeader" : false,
+              "enableStickyAction" : true,
+              "showCellActionsMenu" : true,
+              "reserveSpaceForHiddenAction" : "true",
+              "displayEntityName" : false,
+              "entityNameColumnTitle" : "",
+              "displayEntityLabel" : false,
+              "entityLabelColumnTitle" : "",
+              "displayEntityType" : false,
+              "displayPagination" : false,
+              "defaultPageSize" : 10,
+              "pageStepCount" : 3,
+              "pageStepIncrement" : 10,
+              "defaultSortOrder" : "name",
+              "useRowStyleFunction" : false,
+              "rowStyleFunction" : ""
+            },
+            "title" : "Entities table",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "65a9e3f5-693c-b0fa-72a6-37c2b49e610d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "label",
+                "type" : "entityField",
+                "label" : "Nombre",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.010070857757604412,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "active",
+                "type" : "attribute",
+                "label" : "Estado",
+                "color" : "#4caf50",
+                "settings" : {
+                  "customTitle" : "",
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : true,
+                  "cellStyleFunction" : "var color;\nif (value === \"true\") {\n    color = 'rgb(39, 134, 34)';\n} else {\n    color = 'rgb(255, 0, 0)';\n}\nreturn {\n    color: color,\n    fontSize: '18px'\n};",
+                  "useCellContentFunction" : true,
+                  "cellContentFunction" : "value = '&#11044;';\nreturn value;",
+                  "defaultColumnVisibility" : "visible",
+                  "columnSelectionToDisplay" : "enabled",
+                  "disableSorting" : false
+                },
+                "_hash" : 0.3661306593657292,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "battVal",
+                "type" : "attribute",
+                "label" : "Batería",
+                "color" : "#f44336",
+                "settings" : {
+                  "customTitle" : "",
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : true,
+                  "cellContentFunction" : "if (value || value === 0) {\r\n    let progress = '39, 134, 34, 1'; // verde\r\n    let background = '234, 235, 255, 1';\r\n    let background2 = '240, 235, 255, 1';\r\n    let textColor = '#ffffff';\r\n\r\n    if (value < 25) {\r\n        progress = '209, 39, 48, 1'; // rojo\r\n        textColor = '#000000';\r\n    } else if (value < 70) {\r\n        progress = '255, 213, 102, 1'; // amarillo\r\n        textColor = '#000000';\r\n    }\r\n\r\n    const percent = value + '%';\r\n    const barHeight = '28px';\r\n    const barWidth = '60px';\r\n    const borderRadius = '6px';\r\n\r\n    return `\r\n    <div style=\"display: flex; align-items: center; gap: 6px;\">\r\n        <div style=\"position: relative; display: flex; align-items: center;\">\r\n            <!-- Batería -->\r\n            <div style=\"position: relative; width: ${barWidth}; height: ${barHeight}; background: rgba(${background}); border-radius: ${borderRadius}; overflow: hidden; box-shadow: inset 0 0 2px rgba(0,0,0,0.2);\">\r\n                <div style=\"position: absolute; top: 0; left: 0; width: ${value}%; height: 100%; background: rgba(${progress}); border-radius: ${borderRadius};\"></div>\r\n                <div style=\"position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: ${textColor};\">\r\n                    ${parseFloat(value).toFixed(0)}%\r\n                </div>\r\n            </div>\r\n             <!-- Polo positivo (pegado) -->\r\n            <div style=\"width: 6px; height: 9px; background-color: rgba(${background2}); margin-left: 1px; border-radius: 2px;\"></div>\r\n        \r\n    </div>\r\n    `;\r\n} else {\r\n    return 'N/A';\r\n}\r\n",
+                  "defaultColumnVisibility" : "visible",
+                  "columnSelectionToDisplay" : "enabled",
+                  "disableSorting" : false
+                },
+                "_hash" : 0.4036150317729671,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "displayTimewindow" : false,
+            "configMode" : "advanced",
+            "actions" : {
+              "rowClick" : [ {
+                "name" : "nav_devDetails",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "custom",
+                "customFunction" : "var deviceService = widgetContext.deviceService;\n\ndeviceService.getDevice(entityId.id, {\n    ignoreLoading: true\n}).subscribe(\n    function(device) {\n        var deviceType = device.type;\n        var params = {\n            entityId: entityId,\n            entityName: entityName,\n            entityLabel: entityLabel\n        };\n        var targetDashboardStateId;\n        switch (deviceType) {\n            case \"estMeteo\":\n                targetDashboardStateId =\n                    \"estMeteo_details\";\n                break;\n            case \"pozo\":\n                targetDashboardStateId = \"pozo_details\";\n                break;\n            case \"lanza\":\n                targetDashboardStateId =\n                \"lanza_details\";\n                break;\n            case \"comedero\":\n                targetDashboardStateId =\n                \"comedero_details\";\n                break;\n            case \"Freatimetro\":\n                targetDashboardStateId =\n                \"freatimetro_details\"; \n                break;\n            case \"Ultrasonico\":\n                targetDashboardStateId = \"pozo_details\";\n                break;\n\n        }\n        if (targetDashboardStateId) {\n            widgetContext.stateController.updateState(\n                targetDashboardStateId, params,\n                false);\n        }\n    }\n);",
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "f69d6e48-030f-98cf-7c5d-2917e9f3dc66"
+              } ],
+              "actionCellButton" : [ {
+                "name" : "Reporte CSV",
+                "icon" : "mdi:file-download",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #reportForm=\"ngForm\" [formGroup]=\"reportFormGroup\"\r\n      (ngSubmit)=\"generateReport()\" class=\"edit-entity-form\">\r\n\r\n  <mat-toolbar color=\"primary\">\r\n    <h2>Generar reporte CSV</h2>\r\n    <span fxFlex></span>\r\n    <button mat-icon-button (click)=\"cancel()\" type=\"button\" [disabled]=\"(loading$ | async)\">\r\n      <mat-icon class=\"material-icons\">close</mat-icon>\r\n    </button>\r\n  </mat-toolbar>\r\n\r\n  <!-- Contenedor fijo para no mover layout -->\r\n  <div style=\"height: 4px;\">\r\n    <mat-progress-bar color=\"warn\" mode=\"indeterminate\"\r\n                      *ngIf=\"loading$ | async\"></mat-progress-bar>\r\n  </div>\r\n\r\n  <div mat-dialog-content fxLayout=\"column\">\r\n    <mat-form-field fxFlex class=\"mat-block\">\r\n      <mat-label>Fecha inicio</mat-label>\r\n      <input matInput [matDatepicker]=\"startPicker\" formControlName=\"startDate\" required>\r\n      <mat-datepicker-toggle matSuffix [for]=\"startPicker\"></mat-datepicker-toggle>\r\n      <mat-datepicker #startPicker></mat-datepicker>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field fxFlex class=\"mat-block\">\r\n      <mat-label>Fecha fin</mat-label>\r\n      <input matInput [matDatepicker]=\"endPicker\" formControlName=\"endDate\" required>\r\n      <mat-datepicker-toggle matSuffix [for]=\"endPicker\"></mat-datepicker-toggle>\r\n      <mat-datepicker #endPicker></mat-datepicker>\r\n    </mat-form-field>\r\n\r\n    <!-- Estado / Mensajes -->\r\n    <div style=\"min-height:24px;\">\r\n      <span *ngIf=\"status\" style=\"color:#d32f2f;\">{{status}}</span>\r\n      <span *ngIf=\"!status && success\" style=\"color:#2e7d32;\">\r\n        <mat-icon inline style=\"font-size:18px;vertical-align:middle;\">check_circle</mat-icon>\r\n        Reporte generado\r\n      </span>\r\n    </div>\r\n  </div>\r\n\r\n  <div mat-dialog-actions fxLayoutAlign=\"end center\">\r\n    <button mat-button color=\"primary\"\r\n            type=\"button\"\r\n            [disabled]=\"(loading$ | async)\"\r\n            (click)=\"cancel()\" cdkFocusInitial>\r\n      Cancelar\r\n    </button>\r\n    <button mat-raised-button color=\"primary\"\r\n            type=\"submit\"\r\n            [disabled]=\"(loading$ | async) || reportForm.invalid\">\r\n      <span *ngIf=\"!(loading$ | async)\">Generar reporte</span>\r\n      <span *ngIf=\"loading$ | async\">Generando…</span>\r\n    </button>\r\n  </div>\r\n</form>\r\n",
+                "customCss" : ".edit-entity-form {\r\n    width: 320px;\r\n}",
+                "customFunction" : "let $injector = widgetContext.$scope.$injector;\r\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\r\nopenReportDialog();\r\n\r\nfunction openReportDialog() {\r\n  customDialog.customDialog(htmlTemplate, ReportDialogController).subscribe();\r\n}\r\n\r\n/* ============ Config ============ */\r\nconst BUCKET_MS = 60_000;   // agrupar por minuto\r\nconst KEY_BATCH_SIZE = 10;  // cuántas keys por request (evita URLs gigantes)\r\nconst PER_KEY_LIMIT = 200_000; // puntos máximos por key (sobra para 1 año a 1/h)\r\n\r\n/* ============ Auth helpers ============ */\r\nfunction readLocalJwt() {\r\n  try {\r\n    for (const k of ['jwt_token','tb.auth_token','token']) {\r\n      const v = localStorage.getItem(k);\r\n      if (v && typeof v === 'string') return v.replace(/^Bearer\\s+/i,'');\r\n    }\r\n  } catch(_) {}\r\n  return null;\r\n}\r\nfunction isJwtExpired(jwt) {\r\n  try {\r\n    const p = JSON.parse(atob(jwt.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));\r\n    if (!p?.exp) return false;\r\n    return Math.floor(Date.now()/1000) >= p.exp;\r\n  } catch(_) { return false; }\r\n}\r\nasync function refreshJwtIfPossible() {\r\n  try {\r\n    const res = await fetch('/api/auth/token', { method:'POST', credentials:'include' });\r\n    if (!res.ok) return null;\r\n    const data = await res.json();\r\n    const t = data?.token || data?.jwtToken || null;\r\n    if (t) { try { localStorage.setItem('jwt_token', t); } catch(_) {} }\r\n    return t;\r\n  } catch(_) { return null; }\r\n}\r\nasync function getJwtToken() {\r\n  let t = readLocalJwt();\r\n  if (t && !isJwtExpired(t)) return t;\r\n  const r = await refreshJwtIfPossible();\r\n  return r || t || null;\r\n}\r\nasync function fetchWithAuth(url, options = {}) {\r\n  let jwt = await getJwtToken();\r\n  const headers = new Headers(options.headers || {});\r\n  if (jwt) headers.set('X-Authorization', 'Bearer ' + jwt);\r\n  headers.set('accept', headers.get('accept') || 'application/json');\r\n\r\n  let res = await fetch(url, { ...options, headers });\r\n  if (res.status === 401) {\r\n    const newJwt = await refreshJwtIfPossible();\r\n    if (newJwt) {\r\n      headers.set('X-Authorization', 'Bearer ' + newJwt);\r\n      res = await fetch(url, { ...options, headers });\r\n    }\r\n  }\r\n  console.log(jwt)\r\n  console.log(res)\r\n  return res;\r\n}\r\n\r\n/* ============ Device helpers ============ */\r\nfunction getDeviceId() {\r\n  try {\r\n    if (typeof entityId !== 'undefined' && entityId?.id) return entityId.id;\r\n    const a = widgetContext?.ctx?.stateController?.getEntityId?.();\r\n    if (a?.id) return a.id;\r\n    const b = widgetContext?.ctx?.defaultSubscription?.targetEntity?.id?.id;\r\n    if (b) return b;\r\n    const c = widgetContext?.ctx?.datasources?.[0]?.entity?.id?.id;\r\n    if (c) return c;\r\n  } catch(_) {}\r\n  return null;\r\n}\r\nasync function getDeviceLabelOrName(deviceId) {\r\n  try {\r\n    const res = await fetchWithAuth(`/api/device/${deviceId}`);\r\n    if (!res.ok) return 'dispositivo';\r\n    const dev = await res.json();\r\n    return (dev?.label && String(dev.label).trim()) || dev?.name || 'dispositivo';\r\n  } catch(_) { return 'dispositivo'; }\r\n}\r\n\r\n/* ============ Fechas ============ */\r\nfunction getDateString(v) {\r\n  if (typeof v === 'string') return v;\r\n  if (v instanceof Date) return v.toISOString().slice(0,10);\r\n  return '';\r\n}\r\nfunction normalizeDateString(input) {\r\n  if (!input) return '';\r\n  if (/^\\d{4}-\\d{2}-\\d{2}$/.test(input)) return input; // YYYY-MM-DD\r\n  const m = String(input).match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})$/); // DD/MM/YYYY\r\n  if (m) return `${m[3]}-${m[2]}-${m[1]}`;\r\n  const d = new Date(input);\r\n  return isNaN(d) ? '' : d.toISOString().slice(0,10);\r\n}\r\nfunction toDDMMYYYY(iso) { // 'YYYY-MM-DD' -> 'dd-mm-aaaa'\r\n  const [y,m,d] = iso.split('-');\r\n  return `${d}-${m}-${y}`;\r\n}\r\nfunction pad2(n){ return String(n).padStart(2,'0'); }\r\nfunction fmtIsoLocalMinute(ts) { // 'YYYY-MM-DD HH:mm'\r\n  const d = new Date(ts);\r\n  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())} `\r\n       + `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;\r\n}\r\n\r\n/* ============ visibleKeys SOLO SERVER_SCOPE ============ */\r\nasync function getServerVisibleKeys(deviceId) {\r\n  const url = `/api/plugins/telemetry/DEVICE/${deviceId}/values/attributes?serverKeys=visibleKeys`;\r\n  const res = await fetchWithAuth(url);\r\n  if (!res.ok) throw new Error('No se pudo leer visibleKeys (SERVER_SCOPE)');\r\n  const data = await res.json();\r\n\r\n  let items = [];\r\n  if (Array.isArray(data)) items = data;\r\n  else if (Array.isArray(data.server)) items = data.server;\r\n\r\n  const it = items.find(x => x?.key === 'visibleKeys' && x?.value);\r\n  if (!it) throw new Error('visibleKeys no existe en SERVER_SCOPE');\r\n  let vk = typeof it.value === 'string' ? JSON.parse(it.value) : it.value;\r\n  if (!vk || typeof vk !== 'object' || !Object.keys(vk).length) {\r\n    throw new Error('visibleKeys (SERVER_SCOPE) está vacío');\r\n  }\r\n\r\n  const keys = Object.keys(vk);\r\n  const meta = {};\r\n  keys.forEach(k => {\r\n    const o = vk[k] || {};\r\n    meta[k] = { label: o.label || k, unit: o.unit || '' };\r\n  });\r\n  return { keys, meta };\r\n}\r\n\r\n/* ============ Fetch único por key (o lote), SIN interval ni agg ============ */\r\n/**\r\n * Devuelve series crudas dentro del rango, en lotes de keys, con limit alto.\r\n * { key1:[{ts,value},...], key2:[...], ... }\r\n */\r\nasync function fetchTimeseriesRaw(deviceId, keys, startTs, endTs, keyBatchSize = KEY_BATCH_SIZE, perKeyLimit = PER_KEY_LIMIT) {\r\n  const out = {};\r\n  keys.forEach(k => out[k] = []);\r\n\r\n  for (let i = 0; i < keys.length; i += keyBatchSize) {\r\n    const group = keys.slice(i, i + keyBatchSize);\r\n\r\n    const url = `/api/plugins/telemetry/DEVICE/${deviceId}/values/timeseries`\r\n      + `?keys=${encodeURIComponent(group.join(','))}`\r\n      + `&startTs=${startTs}&endTs=${endTs}`\r\n      + `&limit=${perKeyLimit}`   // trae TODO en un solo tiro por key\r\n      + `&useStrictDataTypes=false`;\r\n\r\n    const res = await fetchWithAuth(url);\r\n   \r\n    if (!res.ok) {\r\n      const txt = await res.text();\r\n      throw new Error(txt || `Error ${res.status} en Telemetry`);\r\n    }\r\n    const chunk = await res.json();\r\n\r\n    for (const k of group) {\r\n      const arr = Array.isArray(chunk?.[k]) ? chunk[k] : [];\r\n      if (arr.length) out[k] = out[k].concat(arr);\r\n    }\r\n  }\r\n\r\n  // ordenar por ts\r\n  for (const k of keys) out[k].sort((a,b)=>a.ts - b.ts);\r\n  return out;\r\n}\r\n\r\n/* ============ Bucket por minuto y CSV ============ */\r\nfunction bucketTsMin(ts) {\r\n  return Math.floor(ts / BUCKET_MS) * BUCKET_MS;\r\n}\r\n\r\nfunction buildCsvBucketed(seriesByKey, keys, meta) {\r\n  const headers = [\r\n    'fecha',\r\n    'hora',\r\n    'fecha hora', // YYYY-MM-DD HH:mm\r\n    ...keys.map(k => {\r\n      const {label, unit} = meta[k] || {label:k, unit:''};\r\n      return unit ? `${label} (${unit})` : label;\r\n    })\r\n  ];\r\n\r\n  // mapear último valor por minuto\r\n  const maps = {};\r\n  const bucketSet = new Set();\r\n\r\n  for (const k of keys) {\r\n    const m = new Map();\r\n    for (const p of (seriesByKey[k] || [])) {\r\n      const b = bucketTsMin(p.ts);\r\n      m.set(b, p.value);      // queda el último del minuto\r\n      bucketSet.add(b);\r\n    }\r\n    maps[k] = m;\r\n  }\r\n\r\n  const buckets = Array.from(bucketSet).sort((a,b)=>a-b);\r\n\r\n  let csv = headers.join(',') + '\\n';\r\n  for (const b of buckets) {\r\n    const d = new Date(b);\r\n    const fecha = d.toLocaleDateString();\r\n    const hora  = `${pad2(d.getHours())}:${pad2(d.getMinutes())}`; // estable para gráficos\r\n    const fh    = fmtIsoLocalMinute(b);\r\n    const row = [\r\n      fecha,\r\n      hora,\r\n      fh,\r\n      ...keys.map(k => maps[k].has(b) ? maps[k].get(b) : '')\r\n    ];\r\n    csv += row.join(',') + '\\n';\r\n  }\r\n  return csv;\r\n}\r\n\r\n/* ============ Dialog Controller ============ */\r\nfunction ReportDialogController(instance) {\r\n  const vm = instance;\r\n\r\n  // Loading reactivo y flags de UI\r\n  vm.loading$ = new widgetContext.rxjs.BehaviorSubject(false);\r\n  vm.status = '';\r\n  vm.success = false;\r\n\r\n  vm.reportFormGroup = vm.fb.group({\r\n    startDate: [null, vm.validators.required],\r\n    endDate:   [null, vm.validators.required]\r\n  });\r\n\r\n  vm.cancel = () => vm.dialogRef.close(null);\r\n\r\n  vm.generateReport = async function () {\r\n    vm.status = '';\r\n    vm.success = false;\r\n    vm.loading$.next(true);\r\n\r\n    try {\r\n      if (vm.reportFormGroup.invalid) {\r\n        vm.status = 'Selecciona ambas fechas.';\r\n        return;\r\n      }\r\n\r\n      // === Fechas ===\r\n      const startRaw  = vm.reportFormGroup.get('startDate').value;\r\n      const endRaw    = vm.reportFormGroup.get('endDate').value;\r\n      const startDate = getDateString(startRaw) || normalizeDateString(String(startRaw||''));\r\n      const endDate   = getDateString(endRaw)   || normalizeDateString(String(endRaw||''));\r\n      if (!startDate || !endDate) {\r\n        vm.status = 'Selecciona ambas fechas.';\r\n        return;\r\n      }\r\n      const startTs = new Date(`${startDate}T00:00:00`).getTime();\r\n      const endTs   = new Date(`${endDate}T23:59:59`).getTime();\r\n      if (isNaN(startTs) || isNaN(endTs)) {\r\n        vm.status = 'Formato de fecha inválido.';\r\n        return;\r\n      }\r\n\r\n      // === Device & visibleKeys (SERVER_SCOPE) ===\r\n      const deviceId    = getDeviceId();\r\n      if (!deviceId) { vm.status = 'No se pudo resolver el Device ID.'; return; }\r\n      const deviceLabel = await getDeviceLabelOrName(deviceId);\r\n      const { keys, meta } = await getServerVisibleKeys(deviceId);\r\n\r\n      // === Telemetría cruda en lotes (rápido) ===\r\n      const seriesByKey = await fetchTimeseriesRaw(deviceId, keys, startTs, endTs, KEY_BATCH_SIZE, PER_KEY_LIMIT);\r\n      const hasAny = keys.some(k => (seriesByKey[k]||[]).length > 0);\r\n      if (!hasAny) { vm.status = 'No hay datos en ese rango.'; return; }\r\n\r\n      // === CSV bucketizado por minuto + columna \"fecha hora\" ===\r\n      const csvCore = buildCsvBucketed(seriesByKey, keys, meta);\r\n\r\n      // === Blob y nombre de archivo (¡definidos acá!)\r\n      const BOM = '\\uFEFF';\r\n      const blob = new Blob([BOM + csvCore], { type: 'text/csv;charset=utf-8' });\r\n      const prettyStart = toDDMMYYYY(startDate); // dd-mm-aaaa\r\n      const prettyEnd   = toDDMMYYYY(endDate);\r\n      const safeLabel   = String(deviceLabel).trim().replace(/[^\\w\\s\\-\\.]/g, '').replace(/\\s+/g,'_');\r\n      const fileName    = `${safeLabel}_reporte_${prettyStart}_a_${prettyEnd}.csv`;\r\n\r\n      // === Apagar loading ANTES del click, mostrar éxito y refrescar UI ===\r\n      vm.loading$.next(false);\r\n      vm.success = true;\r\n      instance.$scope?.$applyAsync?.();\r\n      await Promise.resolve(); // yieldea 1 tick para que Angular pinte\r\n\r\n      // === Disparar descarga ===\r\n      const url = URL.createObjectURL(blob);\r\n      const a = document.createElement('a');\r\n      a.href = url;\r\n      a.download = fileName;\r\n      document.body.appendChild(a);\r\n      a.click();\r\n\r\n      // Limpieza y cierre (deja que el click salga primero)\r\n      setTimeout(() => {\r\n        try { URL.revokeObjectURL(url); } catch(_) {}\r\n        try { document.body.removeChild(a); } catch(_) {}\r\n        // cerrar el diálogo automáticamente\r\n        vm.dialogRef.close({ ok: true, fileName });\r\n      }, 2000);\r\n\r\n    } catch (err) {\r\n      vm.status = 'Error: ' + (err?.message || err);\r\n    } finally {\r\n      // asegurar que quede apagado si hubo early return con error\r\n      if (vm.loading$.getValue()) vm.loading$.next(false);\r\n      instance.$scope?.$applyAsync?.();\r\n    }\r\n  };\r\n}\r\n\r\n",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "6cb03410-b1ae-35bc-1273-9f0836c96bf3"
+              } ]
+            },
+            "showTitleIcon" : false,
+            "titleIcon" : "list",
+            "iconColor" : null,
+            "titleFont" : null,
+            "titleColor" : null
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0715df6d-0b1b-e8a0-3213-6153944ae4a0"
+        },
+        "37e61454-97b3-a8cd-bf64-85788b76efb5" : {
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest",
+          "sizeX" : 5,
+          "sizeY" : 3.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "db7ff95c-2c8c-be42-7d04-db503c8c356d",
+              "dataKeys" : [ {
+                "name" : "title",
+                "type" : "entityField",
+                "label" : "Title",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.23278673876621192
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1724146213845,
+                  "endTimeMs" : 1724232613845
+                },
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#FFFFFF",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "",
+            "settings" : {
+              "useMarkdownTextFunction" : false,
+              "markdownTextPattern" : "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Sidebar Menu</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">\r\n</head>\r\n\r\n<body>\r\n    <div class=\"logo-container\">\r\n        <img src=\"/api/images/public/eccgkajobndCxIy5sq6CzrRsqVljRfM\" alt=\"Logo\" class=\"logo\">\r\n    </div>\r\n    <div id=\"customerTitle\" style=\"display:none;\" >${entityName}</div>\r\n    <div class=\"sidebar\">\r\n        <a class=\"menu-item\" id=\"liveApp\">\r\n            <i class=\"fa-solid fa-map\"></i> Mapa\r\n        </a>\r\n        <div class=\"menu-item\" id=\"Devices\">\r\n            <i class=\"fas fa-wifi\"></i> Dispositivos\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Reports\" data-action=\"click\">\r\n            <i class=\"fas fa-book\"></i> Reports\r\n            <i class=\"fas fa-chevron-down\" id=\"reportsArrow\" style=\"margin-left:auto;\"></i>\r\n        </div>\r\n        <div class=\"submenu\" id=\"reportsSubmenu\">\r\n            <a id=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i>Water Salinity Reports</a>\r\n            <a id=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i>Energy Reports</a>\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Automated\">\r\n            <i class=\"fa-solid fa-file\"></i> Automated Reports\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Alerts\">\r\n            <i class=\"fas fa-bell\"></i> Alertas\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Settings\">\r\n            <i class=\"fas fa-gear\"></i> Ajustes\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Contact\">\r\n            <i class=\"fas fa-question-circle\"></i> Contacto\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n",
+              "markdownTextFunction" : "// === Mapeo itemId → stateId (AJUSTAR A TU DASHBOARD) ===\r\nconst stateMap = {\r\n  liveApp:     'default',\r\n  Devices:     'devices',\r\n  Reports:     null, // solo expande submenú\r\n  WaterReport: 'water_report_state',\r\n  EnergyReport:'energy_report_state',\r\n  Automated:   'automated_reports_state',\r\n  Alerts:      'alarms',\r\n  Contact:     'contact_state'\r\n};\r\n\r\n// ID único para este render (evita choques si hay varios widgets)\r\nconst uid = 'sb_' + Math.random().toString(36).slice(2);\r\n\r\n// HTML (sin <script> y sin href que cambie la URL)\r\nconst html =\r\n  '<div id=\"'+uid+'\" class=\"sidebar\">' +\r\n\r\n    '<a class=\"menu-item\" data-item=\"liveApp\">' +\r\n      '<i class=\"fa-solid fa-map\"></i> Mapa' +\r\n    '</a>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Devices\">' +\r\n      '<i class=\"fas fa-wifi\"></i> Devices' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Reports\" data-expand=\"reportsSubmenu\">' +\r\n      '<i class=\"fas fa-book\"></i> Reports' +\r\n      '<i class=\"fas fa-chevron-down\" style=\"margin-left:auto;\"></i>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"submenu\" id=\"reportsSubmenu\">' +\r\n      '<a data-item=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i> Water Salinity Reports</a>' +\r\n      '<a data-item=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i> Energy Reports</a>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Automated\">' +\r\n      '<i class=\"fa-solid fa-file\"></i> Automated Reports' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Alerts\">' +\r\n      '<i class=\"fas fa-bell\"></i> Alerts' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Contact\">' +\r\n      '<i class=\"fas fa-question-circle\"></i> Contact' +\r\n    '</div>' +\r\n\r\n  '</div>';\r\n\r\n// Bind de eventos después de que TB inserta el HTML\r\nsetTimeout(function () {\r\n  const root = document.getElementById(uid);\r\n  if (!root || root.__bound) return;\r\n  root.__bound = true;\r\n\r\n  const submenu = root.querySelector('#reportsSubmenu');\r\n\r\n  function clearActive() {\r\n    root.querySelectorAll('.active').forEach(n => {\r\n      n.classList.remove('active');\r\n      n.setAttribute('aria-disabled', 'false');\r\n    });\r\n  }\r\n  function setActive(el) {\r\n    clearActive();\r\n    el.classList.add('active');\r\n    el.setAttribute('aria-disabled', 'true');\r\n  }\r\n  function openStateFor(itemId) {\r\n    const stateId = stateMap[itemId];\r\n    if (!stateId) return; // p.ej. Reports\r\n    try {\r\n      // usa ctx del scope de la función de valor\r\n      if (ctx && ctx.stateController && typeof ctx.stateController.openState === 'function') {\r\n        ctx.stateController.openState(stateId);\r\n        return;\r\n      }\r\n      if (ctx && ctx.actionsApi && typeof ctx.actionsApi.openDashboard === 'function') {\r\n        ctx.actionsApi.openDashboard(null, { stateId }, { openInDialog: false });\r\n      }\r\n    } catch (e) { /* silencioso */ }\r\n  }\r\n\r\n  // Delegación de clicks (sin cambiar la URL)\r\n  root.addEventListener('click', function (e) {\r\n    const item = e.target.closest('[data-item]');\r\n    if (!item || !root.contains(item)) return;\r\n    const id = item.getAttribute('data-item');\r\n\r\n    // Toggle Reports (expansor)\r\n    if (id === 'Reports') {\r\n      e.preventDefault();\r\n      submenu && submenu.classList.toggle('open');\r\n      setActive(item);\r\n      return;\r\n    }\r\n\r\n    e.preventDefault();\r\n    setActive(item);\r\n    openStateFor(id);\r\n  });\r\n\r\n  // Activo inicial (opcional)\r\n  const initial = root.querySelector('[data-item=\"Devices\"]');\r\n  if (initial) {\r\n    setActive(initial);\r\n    // openStateFor('Devices'); // descomentá si querés abrir al cargar\r\n  }\r\n}, 0);\r\n\r\n// devolver el HTML al widget\r\nreturn html;\r\n",
+              "applyDefaultMarkdownStyle" : false,
+              "markdownCss" : "/* Mantener oculto el logo */\r\n.logo-container { display:none !important; margin:0 !important; padding:0 !important; }\r\n\r\n/* Base */\r\nbody {\r\n    font-family: 'Roboto', sans-serif;\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: #fff;\r\n}\r\n\r\n/* (Tu bloque extra de logo no es necesario si está oculto) */\r\n/* .logo-container { ... }  — eliminado */\r\n\r\n/* .logo { ... } — innecesario si no se muestra el logo */\r\n/* .logo { width:auto; max-width:100%; } */\r\n\r\n.sidebar {\r\n    width: 100%;\r\n    height: 100vh;\r\n    background-color: #ffffff;\r\n    padding: 0;\r\n}\r\n\r\n/* Ítems de menú */\r\n.menu-item, .submenu a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    height: 60px;              /* 50px en submenú abajo */\r\n    padding: 0 20px;\r\n    width: 100%;\r\n    color: #333;\r\n    text-decoration: none;\r\n    font-size: 16px;           /* 14px en submenú abajo */\r\n    cursor: pointer;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.menu-item:hover,\r\n.submenu a:hover {\r\n    background-color: rgba(235, 235, 235, 0.5); /* 50% opacity */\r\n}\r\n\r\n.menu-item i,\r\n.submenu a i {\r\n    margin-right: 10px;\r\n}\r\n\r\n/* Submenú */\r\n.submenu {\r\n    padding-left: 0;\r\n    display: none;             /* oculto por defecto */\r\n    user-select: none;\r\n    flex-direction: column;\r\n}\r\n\r\n.submenu a {\r\n    height: 50px;\r\n    font-size: 14px;\r\n    background-color: #eee;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n}\r\n\r\n.submenu a:hover {\r\n    background-color: rgba(235, 96, 96, 0.7); /* 70% opacity */\r\n}\r\n\r\n/* Flecha rotada cuando Reports está activo (si usás el ícono con ese id) */\r\n#Reports:target + #reportsSubmenu + .menu-item .fa-chevron-down,\r\n#Reports:target .fa-chevron-down {\r\n    transform: rotate(180deg);\r\n}\r\n\r\n/* Abrir submenú cuando \"Reports\" es el :target */\r\n#Reports:target + #reportsSubmenu {\r\n    display: flex;\r\n}\r\n\r\n/* Estado ACTIVO usando :target (hash) */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    background: #1f6feb;\r\n    color: #fff;\r\n}\r\n\r\n/* Deshabilitado visual mientras está activo */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    pointer-events: none;      /* no clickeable mientras activo */\r\n    cursor: default;\r\n}\r\n\r\n/* Borde superior en Contact (lo mantenemos) */\r\n#Settings{\r\n    border-top: solid #b8bfd4 1px;\r\n}\r\n"
+            },
+            "title" : "Markdown/HTML Card",
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true,
+            "actions" : {
+              "elementClick" : [ {
+                "name" : "liveApp",
+                "icon" : "map",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "default",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "7ae4f14c-e248-b709-2194-e251d4fb4def"
+              }, {
+                "name" : "Devices",
+                "icon" : "wifi",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "devices",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "d1499cfd-7409-e619-b835-ff1edac50622"
+              }, {
+                "name" : "Automated",
+                "icon" : "description",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "Automated Reports",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : true,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "011cac58-e56e-b396-d969-94361e3d8f5a"
+              }, {
+                "name" : "Alerts",
+                "icon" : "notifications",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "alarms",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : true,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "24e6e7a0-0adc-b860-7c12-6be7d528142e"
+              }, {
+                "name" : "Contact",
+                "icon" : "help",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openURL",
+                "openNewBrowserTab" : true,
+                "url" : "https://www.google.com",
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "52b5652f-de35-1ce5-b83e-63bde7f86f51"
+              }, {
+                "name" : "Reports",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "custom",
+                "customFunction" : "// Arrays for categorizing customers\r\nvar OnlyWater = [\"Customer A\",];\r\nvar OnlyEnergy = [\"Customer B\", \"Customer C\"];\r\nvar AllReports = [\"Customer D\"];\r\n\r\n// Retrieve the customer_title from the hidden div\r\nvar customerTitle = widgetContext.$container.find('#customerTitle').text().trim();\r\n\r\n// Find the submenu elements\r\nvar waterReport = widgetContext.$container.find('#WaterReport');\r\nvar energyReport = widgetContext.$container.find('#EnergyReport');\r\n\r\n// Find the Reports submenu and arrow\r\nvar reportsSubmenu = widgetContext.$container.find('#reportsSubmenu');\r\nvar reportsArrow = widgetContext.$container.find('#reportsArrow');\r\n\r\n// Toggle the visibility of the submenu directly based on the current state\r\nif (reportsSubmenu.is(':visible')) {\r\n    reportsSubmenu.hide();\r\n    reportsArrow.removeClass('rotate');\r\n} else {\r\n    reportsSubmenu.show();\r\n    reportsArrow.addClass('rotate');\r\n}\r\n\r\n// Determine which report options to show based on the customer title\r\nif (OnlyWater.includes(customerTitle)) {\r\n    waterReport.show();\r\n    energyReport.hide();\r\n} else if (OnlyEnergy.includes(customerTitle)) {\r\n    waterReport.hide();\r\n    energyReport.show();\r\n} else if (AllReports.includes(customerTitle)) {\r\n    waterReport.show();\r\n    energyReport.show();\r\n} else {\r\n    // Default behavior: Show all reports if the customer is not listed in any array\r\n    waterReport.show();\r\n    energyReport.show();\r\n}\r\n",
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "d5c95e9f-c076-8c41-6b8a-edd6a750070a"
+              }, {
+                "name" : "WaterReport",
+                "icon" : "water_drop",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "reports",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : true,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "f9505310-c43c-e0e0-4706-497157b80574"
+              }, {
+                "name" : "EnergyReport",
+                "icon" : "bolt",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "Energy Reports",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : true,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "7c95a652-62a4-f26e-3631-5477d63c6c3b"
+              }, {
+                "name" : "Settings",
+                "icon" : "settings",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "updateDashboardState",
+                "targetDashboardStateId" : "settings",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "e2df470d-2e7b-2607-6316-9159a05bc1fd"
+              } ]
+            },
+            "enableDataExport" : false,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "margin" : "0px"
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "37e61454-97b3-a8cd-bf64-85788b76efb5"
+        },
+        "8d95af08-7386-b320-a65c-149c240e9bfd" : {
+          "typeFullFqn" : "system.cards.html_card",
+          "type" : "static",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "static",
+              "name" : "function",
+              "dataKeys" : [ {
+                "name" : "f(x)",
+                "type" : "function",
+                "label" : "Random",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.15479322438769105,
+                "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "rgba(255, 255, 255, 0.97)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0",
+            "settings" : {
+              "cardHtml" : "CHATBOT\r\n<!-- Raíz opcional (no se usa para incrustar, la burbuja flota) -->\r\n<div id=\"n8n-chat-root\"></div>\r\n\r\n<script type=\"module\">\r\n  // --- CONFIG ---\r\n  const WEBHOOK_URL = 'https://backend.nexoragro.com/webhook/67044a01-2acb-4377-9a32-8c090b67939d/chat';\r\n  const CHAT_SESSION_KEY = 'sessionId'; // n8n espera \"sessionId\"\r\n\r\n  // --- Obtener userId de ThingsBoard ---\r\n  function getTbUserId() {\r\n    try {\r\n      const u = JSON.parse(localStorage.getItem('user') || 'null');\r\n      const idFromUser = u?.userId?.id || u?.user?.id?.id;\r\n      if (idFromUser) return idFromUser;\r\n\r\n      const tok =\r\n        localStorage.getItem('jwt_token') ||\r\n        localStorage.getItem('tb.auth_token') ||\r\n        localStorage.getItem('token');\r\n      if (tok) {\r\n        const base64 = (tok.split('.')[1] || '').replace(/-/g, '+').replace(/_/g, '/');\r\n        const payload = JSON.parse(atob(base64));\r\n        return payload.userId || payload.sub || null;\r\n      }\r\n    } catch (_) {}\r\n    return null;\r\n  }\r\n  \r\n  \r\nfunction injectStyle(css) {\r\n  const id = 'n8n-chat-custom-style';\r\n  if (document.getElementById(id)) return;\r\n  const s = document.createElement('style');\r\n  s.id = id;\r\n  s.textContent = css;\r\n  document.head.appendChild(s);\r\n}\r\n\r\n  const sessionId = getTbUserId() || 'anon';\r\n\r\n  // --- 1) Cargar CSS y esperar a que esté listo ---\r\n  function loadCss(href) {\r\n    return new Promise((resolve, reject) => {\r\n      const id = 'n8n-chat-style';\r\n      if (document.getElementById(id)) return resolve();\r\n      const link = document.createElement('link');\r\n      link.id = id;\r\n      link.rel = 'stylesheet';\r\n      link.href = href + '?v=' + Date.now(); // cache-busting\r\n      link.onload = resolve;\r\n      link.onerror = reject;\r\n      document.head.appendChild(link);\r\n    });\r\n  }\r\n\r\n  // --- 2) Importar el módulo y crear la burbuja ---\r\n  async function boot() {\r\n    // Asegurar estilos cargados (evita el \"texto pelado\")\r\n    await loadCss('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css');\r\n\r\n\r\n// Estilos personalizados (después del CSS oficial)\r\n\r\ninjectStyle(`\r\n  :root {\r\n    /* Colores (tu tema) */\r\n    --chat--color-primary: #0a2342;\r\n    --chat--color-primary-shade-50: #092037;\r\n    --chat--color-primary-shade-100: #071a2d;\r\n    --chat--color-secondary: #0a2342;\r\n\r\n    /* Header compacto */\r\n    --chat--header-height: auto;\r\n    --chat--header--padding: 0.6rem;\r\n    --chat--heading--font-size: clamp(1rem, 0.9rem + 0.6vw, 1.15rem);\r\n    --chat--subtitle--font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);\r\n    --chat--subtitle--line-height: 1.3;\r\n\r\n    /* Tipografía de mensajes (clamp) */\r\n    --chat--message--font-size:  10px !important;\r\n    --chat--message-line-height: 1;\r\n\r\n    /* Ventana y toggle (responsive) */\r\n    --chat--window--width: min(80vw, 600px);\r\n    --chat--window--height: min(80vh, 620px);\r\n    --chat--toggle--size: clamp(56px, 12vw, 72px);\r\n\r\n    /* Input más bajo */\r\n    --chat--textarea--height: 44px;\r\n\r\n    /* Bordes suaves */\r\n    .n8n-chat, .n8n-chat * { font-size:1rem !important; line-height:1.35 !important; }\r\n    --chat--border-radius: 14px;\r\n\r\n    /* Header y burbuja usuario en azul marino */\r\n    --chat--header--background: var(--chat--color-primary);\r\n    --chat--header--color: #fff;\r\n    --chat--message--user--background: var(--chat--color-primary);\r\n    --chat--message--user--color: #fff;\r\n  }\r\n`);\r\n\r\n\r\n    // Import ESM oficial\r\n    const { createChat } = await import('https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js');\r\n\r\n    // ¡No pasamos un contenedor de embedding! (así no ocupa fullscreen)\r\n    createChat({\r\n      webhookUrl: WEBHOOK_URL,\r\n      chatSessionKey: CHAT_SESSION_KEY,\r\n      loadPreviousSession: true,\r\n      metadata: { sessionId },\r\n\r\n      // UX mínima de burbuja\r\n      position: 'bottom-right',\r\n      launcherTitle: 'Asistente',\r\n      initialMessages: ['Hola 👋 ¿en qué te ayudo?'],\r\n      i18n: {\r\n\t\ten: {\r\n\t\t\ttitle: 'Asistente',\r\n\t\t\tsubtitle: \"\",\r\n\t\t\tfooter: '',\r\n\t\t\tgetStarted: '',\r\n\t\t\tinputPlaceholder: 'Escribí tu consulta...',\r\n\t\t},\r\n      },\r\n      \r\n\r\n      // Si tu versión soporta theme, descomenta:\r\n       theme: { primary: '#111827' }\r\n    });\r\n  }\r\n\r\n  boot().catch(err => {\r\n    console.error('n8n chat error:', err);\r\n    // Fallback visual mínimo por si CSP bloquea el CSS\r\n    const warn = document.createElement('div');\r\n    warn.style.cssText = 'position:fixed;bottom:12px;right:12px;padding:8px 12px;background:#111;color:#fff;border-radius:8px;font:14px/1.2 system-ui;';\r\n    warn.textContent = 'No se pudo cargar el CSS de @n8n/chat (revisar CSP).';\r\n    document.body.appendChild(warn);\r\n  });\r\n</script>\r\n\r\n",
+              "cardCss" : ""
+            },
+            "title" : "HTML Card",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "8d95af08-7386-b320-a65c-149c240e9bfd"
         }
       },
       "states" : {
@@ -1686,15 +2114,9 @@
                 },
                 "eacd4f17-e502-99ac-f9fc-930c1f29eeca" : {
                   "sizeX" : 3,
-                  "sizeY" : 3,
+                  "sizeY" : 2,
                   "row" : 0,
                   "col" : 5
-                },
-                "81cd62eb-2713-c805-9597-000101379690" : {
-                  "sizeX" : 4,
-                  "sizeY" : 4,
-                  "row" : 0,
-                  "col" : 11
                 },
                 "149e7b15-dffb-2cc4-6196-1a60ac42e51f" : {
                   "sizeX" : 3,
@@ -1716,9 +2138,9 @@
                   "col" : 0
                 },
                 "c97cf698-6801-a9a3-c140-f41f767a01eb" : {
-                  "sizeX" : 8,
+                  "sizeX" : 3,
                   "sizeY" : 4,
-                  "row" : 8,
+                  "row" : 4,
                   "col" : 11
                 },
                 "42786926-b8ab-6eae-2685-003a1ab94240" : {
@@ -1726,6 +2148,26 @@
                   "sizeY" : 3,
                   "row" : 13,
                   "col" : 0
+                },
+                "0715df6d-0b1b-e8a0-3213-6153944ae4a0" : {
+                  "sizeX" : 11,
+                  "sizeY" : 4,
+                  "resizable" : true,
+                  "row" : 8,
+                  "col" : 11
+                },
+                "37e61454-97b3-a8cd-bf64-85788b76efb5" : {
+                  "sizeX" : 4,
+                  "sizeY" : 4,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "8d95af08-7386-b320-a65c-149c240e9bfd" : {
+                  "sizeX" : 2,
+                  "sizeY" : 1,
+                  "resizable" : true,
+                  "row" : 2,
+                  "col" : 5
                 }
               },
               "gridSettings" : {

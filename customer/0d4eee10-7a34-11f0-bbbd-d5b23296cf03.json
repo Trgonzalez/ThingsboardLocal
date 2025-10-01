@@ -48,9 +48,33 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Tristan Gonzalez\",\"chatID\":\"941688522\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"chatID\":\"7632398137\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null}]",
+      "jsonValue" : "[[-35.318907076088436,-67.03685760498048],[-35.317226259886716,-66.88064575195314],[-35.60916184445094,-66.87755584716798],[-35.609999212161824,-67.03445434570314]]",
+      "key" : "fieldPerimeter",
+      "lastUpdateTs" : 1759190403472,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.421611207235635,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1759190019982,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -66.97899699211122,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1759190019982,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"nombre\":\"Tristan Gonzalez\",\"chatID\":\"941688522\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"chatID\":\"7632398137\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Diego Casares\",\"chatID\":\"7691221952\",\"receiveNotifications\":true}]",
       "key" : "telegram",
-      "lastUpdateTs" : 1758130527170,
+      "lastUpdateTs" : 1759272176862,
       "longValue" : null,
       "strValue" : null
     } ]

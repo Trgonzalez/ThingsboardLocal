@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1758982480345,
+      "lastUpdateTs" : 1759328092358,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -69,8 +69,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1758914083010,
-      "longValue" : 1758914083010,
+      "lastUpdateTs" : 1759328085274,
+      "longValue" : 1759328085274,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -93,23 +93,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1759022074367,
-      "longValue" : 1759022074205,
+      "lastUpdateTs" : 1759346119340,
+      "longValue" : 1759346118686,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.51434313431818,
+      "doubleValue" : -35.514596389526815,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1759023575597,
+      "lastUpdateTs" : 1759190685132,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -66.91463470458986,
+      "doubleValue" : -66.91444158554079,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1759023575597,
+      "lastUpdateTs" : 1759190685132,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -177,7 +177,15 @@
       "longValue" : null,
       "strValue" : null
     } ],
-    "SHARED_SCOPE" : [ ]
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1759175360021,
+      "longValue" : null,
+      "strValue" : null
+    } ]
   },
   "calculatedFields" : [ ]
 }

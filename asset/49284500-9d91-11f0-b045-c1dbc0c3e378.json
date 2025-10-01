@@ -1,0 +1,53 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "977c4d50-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "label" : null,
+    "name" : "La Travesia",
+    "type" : "Root Property"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[[-35.31799866183907,-67.03737258911134],[-35.31722828874738,-66.88064575195314],[-35.6081500195264,-66.87781333923341],[-35.60937118476571,-67.034969329834]]",
+      "key" : "fieldPerimeter",
+      "lastUpdateTs" : 1759192108014,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.422022133865156,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1759266232590,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -66.97250604629518,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1759266232590,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

@@ -77,23 +77,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1759023511343,
-      "longValue" : 1759023509902,
+      "lastUpdateTs" : 1759349407358,
+      "longValue" : 1759349406803,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.04593160032193,
+      "doubleValue" : -35.04584355876419,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1757890085873,
+      "lastUpdateTs" : 1759102043202,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -59.39940759026076,
+      "doubleValue" : -59.39903140068055,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1757890085873,
+      "lastUpdateTs" : 1759102043202,
       "longValue" : null,
       "strValue" : null
     } ],
