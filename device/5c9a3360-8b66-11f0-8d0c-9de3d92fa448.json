@@ -52,6 +52,14 @@
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1759430269254,
+      "longValue" : null,
+      "strValue" : "WARNING"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "inactivityAlarmTime",
       "lastUpdateTs" : 1757215465757,
       "longValue" : 1757215465756,

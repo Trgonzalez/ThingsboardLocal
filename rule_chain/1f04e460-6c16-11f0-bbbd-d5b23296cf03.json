@@ -45,6 +45,10 @@
       "toIndex" : 12,
       "type" : "Attributes Updated"
     }, {
+      "fromIndex" : 2,
+      "toIndex" : 28,
+      "type" : "Alarm Cleared"
+    }, {
       "fromIndex" : 6,
       "toIndex" : 2,
       "type" : "Success"
@@ -56,6 +60,22 @@
       "fromIndex" : 6,
       "toIndex" : 26,
       "type" : "Alarm Created"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 28,
+      "type" : "Alarm Cleared"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 28,
+      "type" : "Alarm Created"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 28,
+      "type" : "Alarm Severity Updated"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 28,
+      "type" : "Alarm Updated"
     }, {
       "fromIndex" : 8,
       "toIndex" : 7,
@@ -120,13 +140,17 @@
       "fromIndex" : 26,
       "toIndex" : 25,
       "type" : "Success"
+    }, {
+      "fromIndex" : 28,
+      "toIndex" : 27,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 6,
     "nodes" : [ {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 958,
-        "layoutY" : 69
+        "layoutX" : 1187,
+        "layoutY" : 22
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -197,7 +221,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1757740045445,
+        "allEnabledUntil" : 1759438095899,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -212,8 +236,8 @@
       "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 996,
-        "layoutY" : 273
+        "layoutX" : 1199,
+        "layoutY" : 85
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -235,8 +259,8 @@
       "type" : "org.thingsboard.rule.engine.action.TbLogNode"
     }, {
       "additionalInfo" : {
-        "layoutX" : 772,
-        "layoutY" : 270
+        "layoutX" : 1162,
+        "layoutY" : 147
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -259,8 +283,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 844,
-        "layoutY" : 362
+        "layoutX" : 1159,
+        "layoutY" : 195
       },
       "configuration" : {
         "timeoutInSeconds" : 60
@@ -295,7 +319,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1757786292976,
+        "allEnabledUntil" : 1759437850565,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -341,7 +365,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1757630036898,
+        "allEnabledUntil" : 1759441719457,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -415,8 +439,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 606,
-        "layoutY" : 675
+        "layoutX" : 1176,
+        "layoutY" : 436
       },
       "configuration" : {
         "restEndpointUrlPattern" : "http://chirpstack.nexoragro.com:8090/api/devices/${cs_dev_eui}/queue",
@@ -455,7 +479,7 @@
         "entityType" : "RULE_NODE",
         "id" : "1f3172a0-6c16-11f0-bbbd-d5b23296cf03"
       },
-      "name" : "restApi",
+      "name" : "Send New Interval",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -463,8 +487,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 598,
-        "layoutY" : 589
+        "layoutX" : 1172,
+        "layoutY" : 352
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -483,7 +507,7 @@
         "entityType" : "RULE_NODE",
         "id" : "1f3172a1-6c16-11f0-bbbd-d5b23296cf03"
       },
-      "name" : "body",
+      "name" : "Reboot or Interval",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -491,8 +515,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 598,
-        "layoutY" : 392
+        "layoutX" : 891,
+        "layoutY" : 264
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -511,7 +535,7 @@
         "entityType" : "RULE_NODE",
         "id" : "1f31c0c0-6c16-11f0-bbbd-d5b23296cf03"
       },
-      "name" : "filterEstado",
+      "name" : "Interval or Reboot?",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -519,8 +543,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 590,
-        "layoutY" : 478
+        "layoutX" : 1138,
+        "layoutY" : 265
       },
       "configuration" : {
         "tellFailureIfAbsent" : true,
@@ -543,7 +567,7 @@
         "entityType" : "RULE_NODE",
         "id" : "1f320ee0-6c16-11f0-bbbd-d5b23296cf03"
       },
-      "name" : "atributos dispo",
+      "name" : "Get DevEUI",
       "queueName" : null,
       "ruleChainId" : null,
       "singletonMode" : false,
@@ -551,8 +575,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 899,
-        "layoutY" : 572
+        "layoutX" : 1440,
+        "layoutY" : 408
       },
       "configuration" : {
         "processingSettings" : {
@@ -583,8 +607,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 895,
-        "layoutY" : 481
+        "layoutX" : 1428,
+        "layoutY" : 331
       },
       "configuration" : {
         "scriptLang" : "TBEL",
@@ -611,8 +635,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1157,
-        "layoutY" : 137
+        "layoutX" : 1571,
+        "layoutY" : 48
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -639,8 +663,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1208,
-        "layoutY" : 208
+        "layoutX" : 1568,
+        "layoutY" : 112
       },
       "configuration" : {
         "tellFailureIfAbsent" : false,
@@ -671,8 +695,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1283,
-        "layoutY" : 288
+        "layoutX" : 1577,
+        "layoutY" : 181
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -699,8 +723,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1567,
-        "layoutY" : 222
+        "layoutX" : 1782,
+        "layoutY" : 2
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -729,8 +753,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1586,
-        "layoutY" : 444
+        "layoutX" : 1820,
+        "layoutY" : 139
       },
       "configuration" : {
         "processingSettings" : {
@@ -761,8 +785,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 1578,
-        "layoutY" : 352
+        "layoutX" : 1804,
+        "layoutY" : 60
       },
       "configuration" : {
         "scriptLang" : "JS",
@@ -872,7 +896,11 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1759441719457,
+        "failuresEnabled" : true
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -941,6 +969,62 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 649,
+        "layoutY" : 404
+      },
+      "configuration" : {
+        "processingSettings" : {
+          "type" : "ON_EVERY_MESSAGE"
+        },
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false,
+        "updateAttributesOnlyOnValueChange" : true
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a3284e30-9fb5-11f0-b045-c1dbc0c3e378"
+      },
+      "name" : "Update Alarm status",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 633,
+        "layoutY" : 327
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// ALARM → setear solo 2 atributos en el device\r\nfunction upper(s){ return (s==null?'':String(s)).toUpperCase(); }\r\n\r\nvar status   = upper(msg.status);       // ACTIVE_UNACK, CLEARED_ACK, etc.\r\nvar severity = upper(msg.severity||''); // CRITICAL, WARNING, ...\r\nvar cleared  = (msg.cleared === true) || (String(msg.cleared) === 'true') || /^CLEARED/.test(status);\r\n\r\n// Si está cleared -> \"off\", si no -> severidad (o INDETERMINATE de fallback)\r\nvar alarmSeverityAttr = cleared ? 'off' : (severity || 'INDETERMINATE');\r\n\r\n// Tipo/nombre legible de la alarma\r\nvar alarmTypeAttr = msg.type || msg.name || '';\r\n\r\n// Devolver body listo para Save Attributes\r\nreturn {\r\n  msg: {\r\n    alarm_type: alarmTypeAttr,\r\n    alarm_severity: alarmSeverityAttr\r\n  },\r\n  metadata: metadata,\r\n  msgType: 'POST_ATTRIBUTES_REQUEST'\r\n};\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1759437850565,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a3289c50-9fb5-11f0-b045-c1dbc0c3e378"
+      },
+      "name" : "alarm status (resume)",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
     } ],
     "ruleChainConnections" : null
   },

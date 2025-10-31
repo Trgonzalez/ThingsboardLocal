@@ -26,15 +26,15 @@
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "a763da60-8c40-11f0-8d0c-9de3d92fa448"
+      "id" : "75823bb0-a2cd-11f0-b045-c1dbc0c3e378"
     },
-    "label" : "Aguada el Peludo",
-    "name" : "Ultrasonico 002",
+    "label" : "Aguada Los Verdes",
+    "name" : "Ultrasonico 003",
     "softwareId" : null,
     "type" : "Ultrasonico"
   },
   "credentials" : {
-    "credentialsId" : "deM4bvM6bUCFXf7WmvDw",
+    "credentialsId" : "QCdjfzyYXpONO0RNTxe9",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1761874432348,
+      "lastUpdateTs" : 1761701281358,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,7 +53,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1761924828779,
+      "lastUpdateTs" : 1760794121225,
       "longValue" : null,
       "strValue" : "off"
     }, {
@@ -61,7 +61,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1761824010486,
+      "lastUpdateTs" : 1760714597547,
       "longValue" : null,
       "strValue" : "Nivel de tanque bajo"
     }, {
@@ -69,23 +69,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "fullDist",
-      "lastUpdateTs" : 1759787454242,
-      "longValue" : 25,
+      "lastUpdateTs" : 1760660393788,
+      "longValue" : 58,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1761870840441,
-      "longValue" : 1761870840440,
+      "lastUpdateTs" : 1761701281358,
+      "longValue" : 0,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityTimeout",
-      "lastUpdateTs" : 1758432402096,
+      "lastUpdateTs" : 1760660393817,
       "longValue" : 3600000,
       "strValue" : null
     }, {
@@ -93,7 +93,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1758432402064,
+      "lastUpdateTs" : 1760660393788,
       "longValue" : 3600,
       "strValue" : null
     }, {
@@ -101,23 +101,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1761935629356,
-      "longValue" : 1761935627643,
+      "lastUpdateTs" : 1761935263347,
+      "longValue" : 1761935261125,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -35.54231863611639,
+      "doubleValue" : -35.5063553,
       "jsonValue" : null,
       "key" : "latitude",
-      "lastUpdateTs" : 1759189932975,
+      "lastUpdateTs" : 1760630984076,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : -66.98974728584291,
+      "doubleValue" : -66.9984182,
       "jsonValue" : null,
       "key" : "longitude",
-      "lastUpdateTs" : 1759189932975,
+      "lastUpdateTs" : 1760630997397,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -125,15 +125,15 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lowDist",
-      "lastUpdateTs" : 1757977943911,
-      "longValue" : 130,
+      "lastUpdateTs" : 1760660388968,
+      "longValue" : 158,
       "strValue" : null
     }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1757619214379,
+      "lastUpdateTs" : 1760714597451,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -141,7 +141,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankLowAlarmFlag",
-      "lastUpdateTs" : 1757619214379,
+      "lastUpdateTs" : 1760660402757,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -149,15 +149,15 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMaxAlarmThreshold",
-      "lastUpdateTs" : 1760717601781,
-      "longValue" : 85,
+      "lastUpdateTs" : 1760714597451,
+      "longValue" : 80,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMinAlarmThreshold",
-      "lastUpdateTs" : 1761824428118,
+      "lastUpdateTs" : 1760714597451,
       "longValue" : 60,
       "strValue" : null
     }, {
@@ -165,17 +165,17 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankVolume",
-      "lastUpdateTs" : 1757890961573,
+      "lastUpdateTs" : 1760632630977,
       "longValue" : 44000,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "jsonValue" : null,
       "key" : "visibleKeys",
-      "lastUpdateTs" : 1757561683709,
+      "lastUpdateTs" : 1760990883286,
       "longValue" : null,
-      "strValue" : null
+      "strValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}"
     } ],
     "SHARED_SCOPE" : [ ]
   },

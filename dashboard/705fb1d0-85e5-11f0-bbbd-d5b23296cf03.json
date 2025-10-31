@@ -2097,6 +2097,197 @@
           "row" : 0,
           "col" : 0,
           "id" : "8d95af08-7386-b320-a65c-149c240e9bfd"
+        },
+        "c4415509-6dd8-ff70-5be8-e8ec0eee5f73" : {
+          "typeFullFqn" : "system.cards.markdown_card",
+          "type" : "latest",
+          "sizeX" : 5,
+          "sizeY" : 3.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "entityAliasId" : "65a9e3f5-693c-b0fa-72a6-37c2b49e610d",
+              "dataKeys" : [ {
+                "name" : "name",
+                "type" : "entityField",
+                "label" : "Nombre",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.18788394870546488
+              }, {
+                "name" : "type",
+                "type" : "entityField",
+                "label" : "Tipo",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.7277008645532687
+              }, {
+                "name" : "data_temperature_2",
+                "type" : "timeseries",
+                "label" : "data_temperature_2",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.3113716288501823
+              }, {
+                "name" : "waterLevelPerc",
+                "type" : "timeseries",
+                "label" : "waterLevelPerc",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.3588994643776008
+              }, {
+                "name" : "waterVolume",
+                "type" : "timeseries",
+                "label" : "waterVolume",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.11598182185513584
+              }, {
+                "name" : "rain",
+                "type" : "timeseries",
+                "label" : "rain",
+                "color" : "#9c27b0",
+                "settings" : { },
+                "_hash" : 0.20112760147397624
+              }, {
+                "name" : "windDir",
+                "type" : "timeseries",
+                "label" : "windDir",
+                "color" : "#8bc34a",
+                "settings" : { },
+                "_hash" : 0.05847622555323728
+              }, {
+                "name" : "temperature",
+                "type" : "timeseries",
+                "label" : "temperature",
+                "color" : "#e91e63",
+                "settings" : { },
+                "_hash" : 0.012523065486068519
+              }, {
+                "name" : "humidity",
+                "type" : "timeseries",
+                "label" : "humidity",
+                "color" : "#ffeb3b",
+                "settings" : { },
+                "_hash" : 0.946407427496765
+              }, {
+                "name" : "windSpeed",
+                "type" : "timeseries",
+                "label" : "windSpeed",
+                "color" : "#ffeb3b",
+                "settings" : { },
+                "_hash" : 0.41291441643142546
+              }, {
+                "name" : "pressure",
+                "type" : "timeseries",
+                "label" : "pressure",
+                "color" : "#03a9f4",
+                "settings" : { },
+                "_hash" : 0.6169344540672429
+              }, {
+                "name" : "comedero1",
+                "type" : "timeseries",
+                "label" : "comedero1",
+                "color" : "#ff9800",
+                "settings" : { },
+                "_hash" : 0.5308682453811485
+              }, {
+                "name" : "comedero2",
+                "type" : "timeseries",
+                "label" : "comedero2",
+                "color" : "#673ab7",
+                "settings" : { },
+                "_hash" : 0.40970797413494
+              }, {
+                "name" : "comedero3",
+                "type" : "timeseries",
+                "label" : "comedero3",
+                "color" : "#cddc39",
+                "settings" : { },
+                "_hash" : 0.6186957887381043
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1757198970022,
+                  "endTimeMs" : 1757285370022
+                },
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#FFFFFF00",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "useMarkdownTextFunction" : true,
+              "markdownTextPattern" : "<!-- ====== Dropdown de filtros (se llena con los types del data source) + Grid de cards ====== -->\r\n\r\n<script>\r\n// === Helpers cortos ===\r\nfunction getTypeRaw(it){return (it&&(it.Tipo||it.tipo||it.type||it.deviceType))||'';}\r\nfunction getTypeLc(it){var t=getTypeRaw(it);return String(t).replace(/^\\s+|\\s+$/g,'').toLowerCase();}\r\nfunction getLabel(it){return (it&&(it.entityLabel||it.label||it.name))||('Device '+((it&&(it.entityId||it.id))||''));}\r\nfunction esc(s){s=(s==null)?'':String(s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;');}\r\nfunction dedupByEntityId(arr){var seen={},out=[];for(var i=0;i<arr.length;i++){var it=arr[i],id=it&&(it.entityId||it.id);if(!id||seen[id])continue;seen[id]=1;out.push(it);}return out;}\r\nfunction n(v,d){if(v==null||v===''||isNaN(Number(v)))return'N/A';var num=Number(v);return(typeof d==='number')?num.toFixed(d):String(num);}\r\nfunction buildRow(k,v){\r\n  return '<div class=\"kv\" style=\"display:flex;justify-content:space-between;align-items:baseline;margin:6px 0;\">'\r\n       +   '<div class=\"k\" style=\"font-size:13px;font-weight:500;color:rgba(0,0,0,.38);margin-right:8px;\">'+esc(k)+'</div>'\r\n       +   '<div class=\"v\" style=\"font-size:14px;font-weight:600;color:#29313C;text-align:right;\">'+esc(v)+'</div>'\r\n       + '</div>';\r\n}\r\n// Auto-sizing por longitud (mapea a tus clases CSS title--xl|lg|md|sm|xs)\r\nfunction titleClassFor(label){\r\n  var len=(label||'').length;\r\n  if (len<=18) return 'title--xl';\r\n  if (len<=26) return 'title--lg';\r\n  if (len<=34) return 'title--md';\r\n  if (len<=46) return 'title--sm';\r\n  return 'title--xs';\r\n}\r\n</script>\r\n\r\n<script>\r\n// === Mapeo de tipo -> etiqueta visible (custom type) ===\r\nvar customTypeMap = {\r\n  'ultrasonico': 'Aguada',\r\n  'estmeteo': 'Estación meteo',\r\n  'freatimetro': 'Freatímetro',\r\n  'pozo': 'Pozo',\r\n  'comedero': 'Comedero',\r\n  'lanza': 'Lanza'\r\n};\r\n\r\n// === Dataset y orden ===\r\nvar list = Array.isArray(data) ? data.slice() : [];\r\nvar devices = dedupByEntityId(list);\r\ndevices.sort(function(a,b){\r\n  var ta=getTypeLc(a), tb=getTypeLc(b);\r\n  if(ta<tb) return -1; if(ta>tb) return 1;\r\n  var la=getLabel(a).toLowerCase(), lb=getLabel(b).toLowerCase();\r\n  if(la<lb) return -1; if(la>lb) return 1;\r\n  return 0;\r\n});\r\n\r\n// === Construir opciones de filtro SOLO con types presentes ===\r\nvar typeInfo = {}; // {typeLc: {label: 'Aguada', raw:'ultrasonico'}}\r\nfor (var i=0;i<devices.length;i++){\r\n  var it = devices[i];\r\n  var tLc = getTypeLc(it);\r\n  var tRaw = String(getTypeRaw(it)||'');\r\n  if(!tLc) continue;\r\n  if (!typeInfo[tLc]) {\r\n    typeInfo[tLc] = {\r\n      raw: tRaw,\r\n      label: customTypeMap[tLc] || tRaw || '—'\r\n    };\r\n  }\r\n}\r\n// ordenar opciones por label visible\r\nvar typeOptions = Object.keys(typeInfo).sort(function(a,b){\r\n  var la = (typeInfo[a].label||'').toLowerCase();\r\n  var lb = (typeInfo[b].label||'').toLowerCase();\r\n  if(la<lb) return -1; if(la>lb) return 1; return 0;\r\n});\r\n\r\n// === IDs únicos para esta instancia ===\r\nvar UID = 'flt_' + Math.random().toString(36).slice(2,8);\r\nvar containerId = 'cards_' + UID;\r\nvar dropdownId  = 'dd_' + UID;\r\nvar listId      = 'ddlist_' + UID;\r\nvar btnId       = 'ddbtn_' + UID;\r\nvar chkAllId    = 'ddall_' + UID;\r\n\r\n// === Render ===\r\nvar html = '';\r\n// Barra de filtro\r\nhtml += ''\r\n+ '<div class=\"filter-bar\">'\r\n+ '  <button type=\"button\" class=\"filter-btn\" id=\"'+esc(btnId)+'\" aria-expanded=\"false\" aria-controls=\"'+esc(dropdownId)+'\">'\r\n+ '    Filtrar ('+typeOptions.length+')'\r\n+ '    <svg class=\"chev\" viewBox=\"0 0 20 20\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M5.5 7.5l4.5 4 4.5-4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>'\r\n+ '  </button>'\r\n+ '  <div class=\"dropdown-panel\" id=\"'+esc(dropdownId)+'\" hidden>'\r\n+ '    <div class=\"dropdown-head\">'\r\n+ '      <label class=\"chk\"><input type=\"checkbox\" id=\"'+esc(chkAllId)+'\" checked> <span>Seleccionar todo</span></label>'\r\n+ '    </div>'\r\n+ '    <div class=\"dropdown-list\" id=\"'+esc(listId)+'\">';\r\nfor (var j=0;j<typeOptions.length;j++){\r\n  var key = typeOptions[j];\r\n  var optId = UID+'_opt_'+j;\r\n  html += '<label class=\"chk\"><input type=\"checkbox\" class=\"dd-opt\" id=\"'+esc(optId)+'\" data-type=\"'+esc(key)+'\" checked> <span>'+esc(typeInfo[key].label)+'</span></label>';\r\n}\r\nhtml += '    </div>'\r\n+ '  </div>'\r\n+ '</div>';\r\n\r\n// Grid de cards\r\nhtml += '<div id=\"'+esc(containerId)+'\" class=\"flex-container wrap\">';\r\nfor (var i2=0;i2<devices.length;i2++){\r\n  var it2 = devices[i2];\r\n  var deviceId = (it2&&(it2.entityId||it2.id)) || '';\r\n  var label = getLabel(it2);\r\n  var typeRaw = String(getTypeRaw(it2)||'');\r\n  var typeLc  = getTypeLc(it2);\r\n  var titleCls = titleClassFor(label);\r\n  var chipLabel = customTypeMap[typeLc] || typeRaw || '—';\r\n\r\n  var infoHtml = '';\r\n  if (typeLc==='lanza'){\r\n    infoHtml+=buildRow('Temperatura', n(it2.temperature,1)+' °C');\r\n    infoHtml+=buildRow('Humedad', n(it2.humidity,0)+' %');\r\n  } else if (typeLc==='estmeteo'){\r\n    infoHtml+=buildRow('Temperatura', n(it2.temperature,1)+' °C');\r\n    infoHtml+=buildRow('Humedad', n(it2.humidity,0)+' %');\r\n    infoHtml+=buildRow('Viento', n(it2.windSpeed,1)+' m/s');\r\n    infoHtml+=buildRow('Dirección', n(it2.windDir,0)+'°');\r\n    infoHtml+=buildRow('Lluvia', n(it2.rain,1)+' mm');\r\n    infoHtml+=buildRow('Presión', n(it2.pressure,1)+' hPa');\r\n  } else if (typeLc==='pozo'){\r\n    var estadoPozo = (String(it2.pozo)==='1') ? 'Con Agua' : 'Seco';\r\n    infoHtml+=buildRow('Nivel de Aguada', n(it2.nivelAguada,1)+' %');\r\n    infoHtml+=buildRow('Nivel de Tanque', n(it2.nivelTanque,1)+' %');\r\n    infoHtml+=buildRow('Pozo', estadoPozo);\r\n  } else if (typeLc==='ultrasonico'){\r\n    infoHtml+=buildRow('Nivel de Tanque', n(it2.waterLevelPerc,1)+' %');\r\n    infoHtml+=buildRow('Volumen de Tanque', (n(it2.waterVolume,0)==='N/A'?'N/A':n(it2.waterVolume,0)+' L'));\r\n    infoHtml+=buildRow('Temperatura', n(it2.data_temperature_2,1)+' °C');\r\n  } else if (typeLc==='freatimetro'){\r\n    infoHtml+=buildRow('Nivel Napa', n(it2.nivelNapa,1)+' m');\r\n  } else if (typeLc==='comedero'){\r\n    infoHtml+=buildRow('Comedero 1', n(it2.comedero1,0)+' %');\r\n    infoHtml+=buildRow('Comedero 2', n(it2.comedero2,0)+' %');\r\n    infoHtml+=buildRow('Comedero 3', n(it2.comedero3,0)+' %');\r\n  } else {\r\n    infoHtml+=buildRow('Tipo', chipLabel);\r\n  }\r\n\r\n  html += ''\r\n    + '<div class=\"flex-item\" data-id=\"'+esc(deviceId)+'\" data-type=\"'+esc(typeLc)+'\">'\r\n    + '  <div class=\"card card--equal\">'\r\n    + '    <div class=\"content\">'\r\n    + '      <h2 class=\"device-title '+titleCls+'\">'+esc(label)+'</h2>'\r\n    + '      <i class=\"chip\">'+esc(chipLabel)+'</i>'\r\n    + '      <div class=\"info-block\" style=\"margin-top:10px;text-align:left;\">'+infoHtml+'</div>'\r\n    + '    </div>'\r\n    + '    <div class=\"card-buttons noselect\">'\r\n    + '      <button id=\"goToDetails\" tb-action [actionId]=\"\\'goToDetails\\'\"'\r\n    + '              data-entity-id=\"'+esc(deviceId)+'\"'\r\n    + '              data-entity-name=\"'+esc(label)+'\"'\r\n    + '              data-entity-label=\"'+esc(label)+'\"'\r\n    + '              class=\"button\" type=\"button\"'\r\n    + '              style=\"width:100%;border-right:none;display:flex;align-items:center;justify-content:center;\">'\r\n    + '        Ver detalles'\r\n    + '      </button>'\r\n    + '    </div>'\r\n    + '  </div>'\r\n    + '</div>';\r\n}\r\nhtml += '</div>';\r\n\r\n// === Script de interacción (se ejecuta luego de inyectar el HTML) ===\r\nhtml += '<script>(function(){'\r\n+ '  var btn=document.getElementById(\"'+esc(btnId)+'\");'\r\n+ '  var dd=document.getElementById(\"'+esc(dropdownId)+'\");'\r\n+ '  var list=document.getElementById(\"'+esc(listId)+'\");'\r\n+ '  var all=document.getElementById(\"'+esc(chkAllId)+'\");'\r\n+ '  var container=document.getElementById(\"'+esc(containerId)+'\");'\r\n+ '  if(!btn||!dd||!list||!all||!container) return;'\r\n+ '  function getSelected(){'\r\n+ '    var chks=list.querySelectorAll(\"input.dd-opt\");'\r\n+ '    var sel=[];'\r\n+ '    for(var i=0;i<chks.length;i++){ if(chks[i].checked){ sel.push(chks[i].getAttribute(\"data-type\")); } }'\r\n+ '    return sel;'\r\n+ '  }'\r\n+ '  function apply(){'\r\n+ '    var sel=getSelected();'\r\n+ '    var items=container.querySelectorAll(\".flex-item\");'\r\n+ '    var showAll = sel.length===0 ? false : true;'\r\n+ '    for(var i=0;i<items.length;i++){'\r\n+ '      var t=items[i].getAttribute(\"data-type\")||\"\";'\r\n+ '      var visible = showAll && sel.indexOf(t)>=0;'\r\n+ '      items[i].style.display = visible? \"\":\"none\";'\r\n+ '    }'\r\n+ '  }'\r\n+ '  function syncAll(){'\r\n+ '    var chks=list.querySelectorAll(\"input.dd-opt\");'\r\n+ '    var allChecked=true;'\r\n+ '    for(var i=0;i<chks.length;i++){ if(!chks[i].checked){ allChecked=false; break;} }'\r\n+ '    all.checked=allChecked;'\r\n+ '  }'\r\n+ '  btn.addEventListener(\"click\",function(e){'\r\n+ '    var isHidden=dd.hasAttribute(\"hidden\");'\r\n+ '    if(isHidden){ dd.removeAttribute(\"hidden\"); btn.setAttribute(\"aria-expanded\",\"true\"); }'\r\n+ '    else { dd.setAttribute(\"hidden\",\"\"); btn.setAttribute(\"aria-expanded\",\"false\"); }'\r\n+ '  });'\r\n+ '  document.addEventListener(\"click\",function(e){'\r\n+ '    if(!dd.contains(e.target) && e.target!==btn){ dd.setAttribute(\"hidden\",\"\"); btn.setAttribute(\"aria-expanded\",\"false\"); }'\r\n+ '  });'\r\n+ '  all.addEventListener(\"change\",function(){'\r\n+ '    var chks=list.querySelectorAll(\"input.dd-opt\");'\r\n+ '    for(var i=0;i<chks.length;i++){ chks[i].checked=all.checked; }'\r\n+ '    apply();'\r\n+ '  });'\r\n+ '  list.addEventListener(\"change\",function(e){'\r\n+ '    if(e.target && e.target.classList.contains(\"dd-opt\")){'\r\n+ '      syncAll();'\r\n+ '      apply();'\r\n+ '    }'\r\n+ '  });'\r\n+ '  apply();'\r\n+ '})();</script>';\r\n\r\nreturn html;\r\n</script>\r\n",
+              "markdownTextFunction" : "// === Helpers ===\r\nfunction getTypeRaw(it){return (it&&(it.Tipo||it.tipo||it.type||it.deviceType))||'';}\r\nfunction getTypeLc(it){var t=getTypeRaw(it);return String(t).replace(/^\\s+|\\s+$/g,'').toLowerCase();}\r\nfunction getLabel(it){return (it&&(it.entityLabel||it.label||it.name))||('Device '+((it&&(it.entityId||it.id))||''));}\r\nfunction esc(s){s=(s==null)?'':String(s);return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;');}\r\nfunction dedupByEntityId(arr){var seen={},out=[];for(var i=0;i<arr.length;i++){var it=arr[i],id=it&&(it.entityId||it.id);if(!id||seen[id])continue;seen[id]=1;out.push(it);}return out;}\r\nfunction n(v,d){if(v==null||v===''||isNaN(Number(v)))return'N/A';var num=Number(v);return(typeof d==='number')?num.toFixed(d):String(num);}\r\nfunction buildRow(k,v){\r\n  return '<div class=\"kv\" style=\"display:flex;justify-content:space-between;align-items:baseline;margin:6px 0;\">'\r\n       +   '<div class=\"k\" style=\"font-size:13px;font-weight:500;color:rgba(0,0,0,.38);margin-right:8px;\">'+esc(k)+'</div>'\r\n       +   '<div class=\"v\" style=\"font-size:14px;font-weight:600;color:#29313C;text-align:right;\">'+esc(v)+'</div>'\r\n       + '</div>';\r\n}\r\nfunction titleClassFor(label){\r\n  var len=(label||'').length;\r\n  if (len<=18) return 'title--xl';\r\n  if (len<=26) return 'title--lg';\r\n  if (len<=34) return 'title--md';\r\n  if (len<=46) return 'title--sm';\r\n  return 'title--xs';\r\n}\r\n\r\n// Mapa visible para el chip (case-insensitive)\r\nvar customTypeMap = {\r\n  'ultrasonico': 'Aguada',\r\n  'estmeteo': 'Estación meteo',\r\n  'freatimetro': 'Freatímetro',\r\n  'pozo': 'Pozo',\r\n  'comedero': 'Comedero',\r\n  'lanza': 'Lanza'\r\n};\r\nfunction getDisplayType(it){\r\n  var lc = getTypeLc(it);\r\n  var raw = getTypeRaw(it);\r\n  return customTypeMap[lc] || (raw||lc) || '—';\r\n}\r\n\r\n// === Dataset & orden (por \"custom type\" visible y luego por label) ===\r\nvar list = Array.isArray(data) ? data.slice() : [];\r\nvar devices = dedupByEntityId(list);\r\ndevices.sort(function(a,b){\r\n  var ta=getDisplayType(a).toLowerCase(), tb=getDisplayType(b).toLowerCase();\r\n  if(ta<tb) return -1; if(ta>tb) return 1;\r\n  var la=getLabel(a).toLowerCase(), lb=getLabel(b).toLowerCase();\r\n  if(la<lb) return -1; if(la>lb) return 1;\r\n  return 0;\r\n});\r\n\r\n// === Tipos únicos presentes (ordenados por etiqueta visible) ===\r\nvar typeDisplayByLc = {};\r\nfor (var i=0;i<devices.length;i++){\r\n  var lc = getTypeLc(devices[i]); if (!lc) continue;\r\n  if (!typeDisplayByLc.hasOwnProperty(lc)) typeDisplayByLc[lc] = getDisplayType(devices[i]);\r\n}\r\nvar typesLcSorted = Object.keys(typeDisplayByLc).sort(function(a,b){\r\n  var la=(typeDisplayByLc[a]||'').toLowerCase(), lb=(typeDisplayByLc[b]||'').toLowerCase();\r\n  if(la<lb) return -1; if(la>lb) return 1; return 0;\r\n});\r\n\r\n// === UID para aislar esta instancia ===\r\nvar UID = 'u' + Math.random().toString(36).slice(2,8);\r\n\r\n// === Dropdown con delegación + Master (FIX: ignorar input del master en el handler de panel) ===\r\nvar dropdownHtml = ''\r\n  + '<details class=\"tb-dd\" data-uid=\"'+UID+'\" style=\"position:relative;display:inline-block;margin:0 0 10px 0;\">'\r\n  + '  <summary class=\"tb-dd-btn\" '\r\n  + '           onclick=\"(function(sm){var det=sm.parentNode;var wrap=sm.closest(\\'.cards-wrapper\\');var ov=wrap.querySelector(\\'.dd-backdrop[data-uid='+UID+']\\');'\r\n  + '             setTimeout(function(){ ov.style.display = det.hasAttribute(\\'open\\')?\\'block\\':\\'none\\'; },0);'\r\n  + '           })(this)\" '\r\n  + '           style=\"list-style:none;cursor:pointer;padding:8px 12px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;font-weight:600;color:#374151;user-select:none;\">'\r\n  + '    Filtrar por tipo'\r\n  + '  </summary>'\r\n  + '  <div class=\"tb-dd-panel\" data-uid=\"'+UID+'\" '\r\n  + '       oninput=\"(function(panel,e){'\r\n  + '         if(e && e.target && e.target.getAttribute && e.target.getAttribute(\\'data-role\\')===\\'master\\') return;'\r\n  + '         var wrap=panel.closest(\\'.cards-wrapper\\'); if(!wrap) return;'\r\n  + '         var boxes=panel.querySelectorAll(\\'input[type=checkbox][data-role=type]\\');'\r\n  + '         var active=[], allChecked=true;'\r\n  + '         for(var i=0;i<boxes.length;i++){ if(boxes[i].checked){ active.push(boxes[i].getAttribute(\\'data-type\\')); } else { allChecked=false; } }'\r\n  + '         var cards=wrap.querySelectorAll(\\'.cards .flex-item\\');'\r\n  + '         if(active.length===0){ for(var k=0;k<cards.length;k++){ cards[k].style.display=\\'none\\'; } }'\r\n  + '         else { for(var k2=0;k2<cards.length;k2++){ var t=String(cards[k2].getAttribute(\\'data-type-lc\\')||\\'\\'); cards[k2].style.display=(active.indexOf(t)>-1)?\\'\\':\\'none\\'; } }'\r\n  + '         var master=panel.querySelector(\\'input[type=checkbox][data-role=master]\\'); if(master){ master.checked=allChecked; }'\r\n  + '       })(this,event)\" '\r\n  + '       style=\"position:absolute;z-index:9999;min-width:240px;padding:8px;background:#fff;border:1px solid #e5e7eb;border-top:none;border-bottom-left-radius:8px;border-bottom-right-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,.08);\">'\r\n  + '    <div style=\"display:flex;flex-direction:column;gap:6px;\">'\r\n  + '      <label style=\"display:flex;align-items:center;gap:8px;cursor:pointer;padding-bottom:6px;border-bottom:1px solid #f1f5f9;margin-bottom:6px;\">'\r\n  + '        <input type=\"checkbox\" checked data-role=\"master\" '\r\n  + '          onchange=\"(function(cb){'\r\n  + '            var panel=cb.closest(\\'.tb-dd-panel\\'); var wrap=cb.closest(\\'.cards-wrapper\\'); if(!panel||!wrap) return;'\r\n  + '            var boxes=panel.querySelectorAll(\\'input[type=checkbox][data-role=type]\\');'\r\n  + '            for(var i=0;i<boxes.length;i++){ boxes[i].checked=cb.checked; }'\r\n  + '            var cards=wrap.querySelectorAll(\\'.cards .flex-item\\');'\r\n  + '            if(!cb.checked){ for(var k=0;k<cards.length;k++){ cards[k].style.display=\\'none\\'; } }'\r\n  + '            else { for(var k2=0;k2<cards.length;k2++){ cards[k2].style.display=\\'\\'; } }'\r\n  + '          })(this)\">'\r\n  + '        <span style=\"font-size:13px;color:#0f172a;font-weight:600;\">Seleccionar todo</span>'\r\n  + '      </label>';\r\n\r\nfor (var j=0;j<typesLcSorted.length;j++){\r\n  var lcKey = typesLcSorted[j], display = String(typeDisplayByLc[lcKey]||lcKey);\r\n  dropdownHtml += ''\r\n    + '<label style=\"display:flex;align-items:center;gap:8px;cursor:pointer;\">'\r\n    +   '<input type=\"checkbox\" checked data-role=\"type\" data-type=\"'+esc(lcKey)+'\">'\r\n    +   '<span style=\"font-size:13px;color:#111827;font-weight:500;\">'+esc(display)+'</span>'\r\n    + '</label>';\r\n}\r\ndropdownHtml += '    </div>'\r\n              + '  </div>'\r\n              + '</details>'\r\n              // Backdrop para cerrar al click afuera\r\n              + '<div class=\"dd-backdrop\" data-uid=\"'+UID+'\" '\r\n              + '     onclick=\"(function(ov){var wrap=ov.closest(\\'.cards-wrapper\\'); var det=wrap.querySelector(\\'details.tb-dd[data-uid='+UID+']\\'); if(det){det.removeAttribute(\\'open\\');} ov.style.display=\\'none\\';})(this)\" '\r\n              + '     style=\"display:none; position:fixed; inset:0; background:transparent; z-index:9998;\"></div>';\r\n\r\n// === Cards ===\r\nvar cardsHtml = '<div class=\"cards flex-container wrap\">';\r\nfor (var z=0; z<devices.length; z++){\r\n  var it = devices[z];\r\n  var deviceId = (it&&(it.entityId||it.id)) || '';\r\n  var label = getLabel(it);\r\n  var typeRaw = String(getTypeRaw(it)||'');\r\n  var typeLc  = getTypeLc(it);\r\n  var titleCls = titleClassFor(label);\r\n  var chipLabel = getDisplayType(it);\r\n\r\n  var infoHtml = '';\r\n  if (typeLc==='lanza'){\r\n    infoHtml+=buildRow('Temperatura', n(it.temperature,1)+' °C');\r\n    infoHtml+=buildRow('Humedad', n(it.humidity,0)+' %');\r\n  } else if (typeLc==='estmeteo'){\r\n    infoHtml+=buildRow('Temperatura', n(it.temperature,1)+' °C');\r\n    infoHtml+=buildRow('Humedad', n(it.humidity,0)+' %');\r\n    infoHtml+=buildRow('Viento', n(it.windSpeed,1)+' m/s');\r\n    infoHtml+=buildRow('Dirección', n(it.windDir,0)+'°');\r\n    infoHtml+=buildRow('Lluvia', n(it.rain,1)+' mm');\r\n    infoHtml+=buildRow('Presión', n(it.pressure,1)+' hPa');\r\n  } else if (typeLc==='pozo'){\r\n    var estadoPozo = (String(it.pozo)==='1') ? 'Con Agua' : 'Seco';\r\n    infoHtml+=buildRow('Nivel de Aguada', n(it.nivelAguada,1)+' %');\r\n    infoHtml+=buildRow('Nivel de Tanque', n(it.nivelTanque,1)+' %');\r\n    infoHtml+=buildRow('Pozo', estadoPozo);\r\n  } else if (typeLc==='ultrasonico'){\r\n    infoHtml+=buildRow('Nivel de Tanque', n(it.waterLevelPerc,1)+' %');\r\n    infoHtml+=buildRow('Volumen de Tanque', (n(it.waterVolume,0)==='N/A'?'N/A':n(it.waterVolume,0)+' L'));\r\n    infoHtml+=buildRow('Temperatura', n(it.data_temperature_2,1)+' °C');\r\n  } else if (typeLc==='freatimetro'){\r\n    infoHtml+=buildRow('Nivel Napa', n(it.nivelNapa,1)+' m');\r\n  } else if (typeLc==='comedero'){\r\n    infoHtml+=buildRow('Comedero 1', n(it.comedero1,0)+' %');\r\n    infoHtml+=buildRow('Comedero 2', n(it.comedero2,0)+' %');\r\n    infoHtml+=buildRow('Comedero 3', n(it.comedero3,0)+' %');\r\n  } else {\r\n    infoHtml+=buildRow('Tipo', chipLabel);\r\n  }\r\n\r\n  cardsHtml += ''\r\n    + '<div class=\"flex-item\" data-type-lc=\"'+esc(typeLc)+'\" data-id=\"'+esc(deviceId)+'\">'\r\n    + '  <div class=\"card card--equal\">'\r\n    + '    <div class=\"content\">'\r\n    + '      <h2 class=\"device-title '+titleClassFor(label)+'\">'+esc(label)+'</h2>'\r\n    + '      <i class=\"chip\">'+esc(chipLabel)+'</i>'\r\n    + '      <div class=\"info-block\" style=\"margin-top:10px;text-align:left;\">'+infoHtml+'</div>'\r\n    + '    </div>'\r\n    + '    <div class=\"card-buttons noselect\">'\r\n    + '      <button id=\"goToDetails\" tb-action [actionId]=\"\\'goToDetails\\'\"'\r\n    + '              data-entity-id=\"'+esc(deviceId)+'\"'\r\n    + '              data-entity-name=\"'+esc(label)+'\"'\r\n    + '              data-entity-label=\"'+esc(label)+'\"'\r\n    + '              class=\"button\" type=\"button\"'\r\n    + '              style=\"width:100%;border-right:none;display:flex;align-items:center;justify-content:center;\">'\r\n    + '        Ver detalles'\r\n    + '      </button>'\r\n    + '    </div>'\r\n    + '  </div>'\r\n    + '</div>';\r\n}\r\ncardsHtml += '</div>';\r\n\r\n// === Output ===\r\nvar html = '';\r\nhtml += '<div class=\"cards-wrapper\" style=\"display:flex;flex-direction:column;gap:6px;\">';\r\nhtml += dropdownHtml; // dropdown arriba + backdrop\r\nhtml += cardsHtml;    // cards debajo\r\nhtml += '</div>';\r\n\r\nreturn html;\r\n",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : "/* ====== BASE LAYOUT ====== */\r\n.flex-container {\r\n  padding: 0;\r\n  margin: 0;\r\n  list-style: none;\r\n\r\n  display: -webkit-box;\r\n  display: -moz-box;\r\n  display: -ms-flexbox;\r\n  display: -moz-flex;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n}\r\n.wrap {\r\n  -webkit-flex-wrap: wrap;\r\n  flex-wrap: wrap;\r\n}\r\n.flex-item {\r\n  margin: 10px;         /* separación entre cards */\r\n  font-size: 1em;\r\n  flex: 1 1 325px;      /* 2–3 columnas según ancho */\r\n  max-width: 380px;     /* límite de ancho por card */\r\n}\r\n\r\n/* ====== CLEARFIX ====== */\r\n.row:after { content: \"\"; display: table; clear: both; }\r\n\r\n/* ====== CARD ====== */\r\n.card {\r\n  min-width: 325px;\r\n  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);\r\n  padding: 0;\r\n  font-family: 'Poppins', Helvetica, Arial, sans-serif;\r\n  border-radius: 12px;\r\n  overflow: hidden;               /* respeta el radio */\r\n  height: 100%;                   /* igualar alturas */\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  text-align: center;\r\n  background-color: #fff;\r\n  flex: 1 1 auto;                 /* empuja el botón al pie */\r\n}\r\n\r\n.chip {\r\n  display: inline-block;\r\n  margin-top: 2px;                /* más pegado al título */\r\n  border-radius: 6px;\r\n  padding: 2px 6px;\r\n  font-size: 1rem;\r\n  font-weight: 500;\r\n  background-color: #e2e8f0;\r\n  color: #334155;\r\n}\r\n\r\n.noselect {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n}\r\n\r\n/* ====== BUTTONS ====== */\r\n.card-buttons {\r\n  border-top: 1px solid #e6e6e6;  /* separador claro (no tan oscuro) */\r\n  background-color: #fff;\r\n  overflow: hidden;\r\n  border-bottom-left-radius: 12px;\r\n  border-bottom-right-radius: 12px;\r\n  padding: 0;\r\n}\r\n\r\n.button {\r\n  background-color: #f3f4f6;      /* gris claro, sin borde oscuro */\r\n  color: #374151;\r\n  cursor: pointer;\r\n  float: left;\r\n  font-weight: 600;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  text-align: center;\r\n  text-transform: uppercase;\r\n  transition: background-color .15s ease, transform .08s ease, box-shadow .15s ease, opacity .15s ease;\r\n  width: 100%;                    /* ocupa todo el ancho */\r\n  border: 0;                      /* sin bordes */\r\n  border-right: 0;\r\n\r\n  display: flex; align-items: center; justify-content: center;\r\n}\r\n.button:hover {\r\n  background-color: #e5e7eb;      /* más contraste en hover */\r\n  opacity: .98;\r\n  transform: translateY(-1px);\r\n  box-shadow: 0 6px 14px rgba(0,0,0,0.08);\r\n}\r\n.button:focus-visible {\r\n  outline: none;\r\n  box-shadow: 0 0 0 3px rgba(59,130,246,0.35);\r\n}\r\n\r\n/* ====== TÍTULO ADAPTABLE (1–2 líneas, alturas consistentes) ====== */\r\n.device-title {\r\n  margin: 0 0 4px 0;              /* un toque más pegado al chip */\r\n  line-height: 1.2;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;          /* máximo 2 líneas visibles */\r\n  -webkit-box-orient: vertical;\r\n  overflow: hidden;\r\n  word-break: break-word;\r\n  min-height: 2.4em;              /* reserva ≈ 2 líneas para que todas las cards calcen */\r\n}\r\n\r\n/* escalas por longitud (las asigna tu HTML: title--xl|lg|md|sm|xs) */\r\n.device-title.title--xl { font-size: 1.6rem; }\r\n.device-title.title--lg { font-size: 1.4rem; }\r\n.device-title.title--md { font-size: 1.2rem; }\r\n.device-title.title--sm { font-size: 1.05rem; }\r\n.device-title.title--xs { font-size: 0.95rem; }\r\n\r\n/* =======================\r\n   Dropdown de filtros (menu)\r\n   ======================= */\r\n.cards-wrapper { gap: 10px; }\r\n\r\n/* Contenedor <details> */\r\n.tb-dd{\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n/* Botón/summary del dropdown */\r\n.tb-dd-btn{\r\n  list-style: none;                 /* quita marker default */\r\n  cursor: pointer;\r\n  padding: 10px 14px;\r\n  background: #ffffff;\r\n  border: 1px solid #e5e7eb;\r\n  border-radius: 10px;\r\n  color: #111827;\r\n  font-weight: 600;\r\n  line-height: 1;\r\n  box-shadow: 0 2px 6px rgba(0,0,0,.05);\r\n  user-select: none;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n}\r\n\r\n/* Flecha (caret) */\r\n.tb-dd-btn::after{\r\n  content: \"\";\r\n  width: 0; height: 0;\r\n  border-left: 5px solid transparent;\r\n  border-right: 5px solid transparent;\r\n  border-top: 6px solid #6b7280;   /* gris */\r\n  transition: transform .15s ease;\r\n}\r\n.tb-dd[open] .tb-dd-btn::after{\r\n  transform: rotate(180deg);\r\n}\r\n\r\n/* Panel del dropdown */\r\n.tb-dd-panel{\r\n  position: absolute;\r\n  z-index: 10000;\r\n  min-width: 280px;\r\n  padding: 10px;\r\n  margin-top: 6px;\r\n  background: #ffffff;\r\n  border: 1px solid #e5e7eb;\r\n  border-radius: 12px;\r\n  box-shadow: 0 12px 24px rgba(0,0,0,.10);\r\n}\r\n\r\n/* Lista de opciones en 2 columnas cuando hay espacio */\r\n.tb-dd-panel > div{\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));\r\n  gap: 8px 12px;\r\n}\r\n\r\n/* Opción */\r\n.tb-dd-opt{\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  padding: 8px 10px;\r\n  border-radius: 8px;\r\n  transition: background-color .12s ease, transform .08s ease;\r\n}\r\n.tb-dd-opt:hover{\r\n  background: #f8fafc;\r\n}\r\n\r\n/* Checkbox personalizado */\r\n.tb-dd-opt input[type=\"checkbox\"]{\r\n  appearance: none;              /* ocultar nativo */\r\n  -webkit-appearance: none;\r\n  width: 0; height: 0;           /* visualmente oculto pero presente */\r\n  position: absolute;\r\n  pointer-events: none;\r\n}\r\n.tb-dd-check{\r\n  width: 18px; height: 18px;\r\n  border: 1.5px solid #cbd5e1;\r\n  border-radius: 5px;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  background: #fff;\r\n  transition: border-color .12s ease, background-color .12s ease;\r\n}\r\n.tb-dd-opt input[type=\"checkbox\"]:checked + .tb-dd-check{\r\n  border-color: #0ea5e9;\r\n  background: #0ea5e9;\r\n}\r\n.tb-dd-check .tick{\r\n  width: 10px; height: 10px;\r\n  background: #ffffff;\r\n  border-radius: 2px;\r\n  transform: scale(0);\r\n  transition: transform .12s ease;\r\n}\r\n.tb-dd-opt input[type=\"checkbox\"]:checked + .tb-dd-check .tick{\r\n  transform: scale(1);\r\n}\r\n\r\n/* Texto de la opción */\r\n.tb-dd-text{\r\n  font-size: 13px;\r\n  color: #111827;\r\n  font-weight: 500;\r\n}\r\n\r\n/* Accesibilidad al navegar con teclado */\r\n.tb-dd-btn:focus-visible,\r\n.tb-dd-opt:focus-within{\r\n  outline: none;\r\n  box-shadow: 0 0 0 3px rgba(59,130,246,.35);\r\n}\r\n\r\n/* Responsivo: si el menú está cerca del borde derecho, no desborde */\r\n@media (max-width: 640px){\r\n  .tb-dd-panel{\r\n    min-width: 220px;\r\n    right: 0;    /* pegar al borde derecho en pantallas chicas */\r\n  }\r\n}\r\n/* ========= Alineación con las cards ========= */\r\n/* En muchos dashboards hay padding en el contenedor; igualamos el inicio */\r\n.cards-wrapper{ padding-left:10px !important; padding-right:10px !important; }\r\n.cards-wrapper .tb-dd{ margin-left:0 !important; }        /* sin sangría extra */\r\n.cards{ margin-left:-10px !important; margin-right:-10px !important; } /* compensa padding para que .flex-item(margin:10px) quede alineado */\r\n\r\n/* ========= Botón del dropdown ========= */\r\n.tb-dd-btn{\r\n  list-style:none;\r\n  cursor:pointer;\r\n  padding:12px 16px !important;\r\n  background:#fff;\r\n  border:1px solid #e5e7eb;\r\n  border-radius:10px;\r\n  color:#0f172a;\r\n  font-weight:700;\r\n  font-size:14.5px !important;\r\n  line-height:1;\r\n  box-shadow:0 2px 6px rgba(0,0,0,.05);\r\n  display:inline-flex; align-items:center; gap:10px;\r\n}\r\n.tb-dd-btn::after{\r\n  content:\"\";\r\n  width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #6b7280;\r\n  transition:transform .15s ease;\r\n}\r\n.tb-dd[open] .tb-dd-btn::after{ transform:rotate(180deg); }\r\n\r\n/* ========= Panel del dropdown ========= */\r\n.tb-dd-panel{\r\n  position:absolute; z-index:10000;\r\n  min-width:300px !important;\r\n  padding:12px !important;\r\n  margin-top:6px;\r\n  background:#fff;border:1px solid #e5e7eb;border-radius:12px;\r\n  box-shadow:0 12px 24px rgba(0,0,0,.10);\r\n}\r\n.tb-dd-panel > div{\r\n  display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr));\r\n  gap:10px 14px;\r\n}\r\n\r\n/* ========= Opción con checkbox moderno ========= */\r\n.tb-dd-opt{\r\n  display:flex; align-items:center; gap:12px;\r\n  padding:10px 12px; border-radius:10px;\r\n  transition:background-color .12s ease;\r\n}\r\n.tb-dd-opt:hover{ background:#f8fafc; }\r\n\r\n/* ocultamos el checkbox nativo, dejamos solo el visual */\r\n.tb-dd-opt input[type=\"checkbox\"]{\r\n  appearance:none; -webkit-appearance:none;\r\n  position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);\r\n}\r\n\r\n/* casilla visual */\r\n.tb-dd-check{\r\n  width:20px; height:20px;\r\n  border:2px solid #cbd5e1; border-radius:6px;\r\n  background:#fff; display:inline-flex; align-items:center; justify-content:center;\r\n  transition:border-color .15s ease, background-color .15s ease, box-shadow .15s ease;\r\n  position:relative;\r\n}\r\n/* tick dibujado */\r\n.tb-dd-check::after{\r\n  content:\"\"; width:10px; height:6px;\r\n  border:2px solid transparent; border-right-color:#fff; border-bottom-color:#fff;\r\n  transform:rotate(45deg) scale(0); transform-origin:center;\r\n  transition:transform .12s ease;\r\n}\r\n\r\n/* checked (acepta tanto hermano directo + como general ~ por si cambian el orden) */\r\n.tb-dd-opt input[type=\"checkbox\"]:checked + .tb-dd-check,\r\n.tb-dd-opt input[type=\"checkbox\"]:checked ~ .tb-dd-check{\r\n  background:#2563eb; border-color:#2563eb; box-shadow:0 0 0 2px rgba(37,99,235,.15);\r\n}\r\n.tb-dd-opt input[type=\"checkbox\"]:checked + .tb-dd-check::after,\r\n.tb-dd-opt input[type=\"checkbox\"]:checked ~ .tb-dd-check::after{\r\n  transform:rotate(45deg) scale(1);\r\n}\r\n\r\n/* texto más legible */\r\n.tb-dd-text{ font-size:14.5px !important; color:#0f172a; font-weight:600; }\r\n\r\n/* focus accesible */\r\n.tb-dd-opt:focus-within .tb-dd-check{ box-shadow:0 0 0 3px rgba(37,99,235,.35); }\r\n\r\n/* móvil: evita desborde a la derecha */\r\n@media (max-width: 640px){\r\n  .tb-dd-panel{ right:0; min-width:240px !important; }\r\n}\r\n\r\n"
+            },
+            "title" : "Markdown/HTML Card",
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "actions" : {
+              "elementClick" : [ {
+                "name" : "goToDetails",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "custom",
+                "customFunction" : "var deviceService = widgetContext.deviceService;\r\n\r\nvar targetEl = (widgetContext && widgetContext.$event && widgetContext.$event.target)\r\n  ? widgetContext.$event.target\r\n  : (typeof document !== 'undefined' ? document.activeElement : null);\r\n\r\nfunction getAttr(el, name) {\r\n  if (!el) return null;\r\n  var v = el.getAttribute(name);\r\n  return (v !== null && v !== undefined && v !== '') ? v : null;\r\n}\r\n\r\nvar buttonEntityId    = getAttr(targetEl, 'data-entity-id');\r\nvar buttonEntityName  = getAttr(targetEl, 'data-entity-name');\r\nvar buttonEntityLabel = getAttr(targetEl, 'data-entity-label');\r\n\r\nvar eId    = buttonEntityId ? { entityType: 'DEVICE', id: buttonEntityId } : entityId;\r\nvar eName  = buttonEntityName || entityName || (buttonEntityId || '');\r\nvar eLabel = buttonEntityLabel || entityLabel || (buttonEntityId || '');\r\n\r\ndeviceService.getDevice(eId.id, { ignoreLoading: true }).subscribe(function(device) {\r\n  var deviceType = device.type;\r\n  var params = { entityId: eId, entityName: eName, entityLabel: eLabel };\r\n  var target = null;\r\n\r\n  switch (deviceType) {\r\n    case \"estMeteo\":    target=\"estMeteo_details\"; break;\r\n    case \"pozo\":        target=\"pozo_details\";     break;\r\n    case \"Ultrasonico\": target=\"pozo_details\";     break;\r\n    case \"lanza\":       target=\"lanza_details\";    break;\r\n    case \"comedero\":    target=\"comedero_details\"; break;\r\n    case \"Freatimetro\": target=\"freatimetro_details\"; break;\r\n  }\r\n\r\n  if (target) {\r\n    widgetContext.stateController.updateState(target, params, true);\r\n  }\r\n});\r\n",
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "154e40d1-c746-a571-10d7-b464dd7598f3"
+              } ]
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c4415509-6dd8-ff70-5be8-e8ec0eee5f73"
         }
       },
       "states" : {
@@ -2132,8 +2323,8 @@
                   "col" : 15
                 },
                 "b9f932d5-a9cc-d56d-7e05-04539206d364" : {
-                  "sizeX" : 11,
-                  "sizeY" : 10,
+                  "sizeX" : 3,
+                  "sizeY" : 3,
                   "row" : 3,
                   "col" : 0
                 },
@@ -2168,6 +2359,12 @@
                   "resizable" : true,
                   "row" : 2,
                   "col" : 5
+                },
+                "c4415509-6dd8-ff70-5be8-e8ec0eee5f73" : {
+                  "sizeX" : 11,
+                  "sizeY" : 7,
+                  "row" : 6,
+                  "col" : 0
                 }
               },
               "gridSettings" : {

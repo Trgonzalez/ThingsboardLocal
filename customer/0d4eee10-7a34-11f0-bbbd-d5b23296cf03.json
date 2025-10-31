@@ -42,9 +42,9 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "emailRecipients",
-      "lastUpdateTs" : 1757791371975,
+      "lastUpdateTs" : 1761822972761,
       "longValue" : null,
-      "strValue" : "{\"recipients\":[{\"email\":\"icasares@itba.edu.ar\",\"enabled\":false},{\"email\":\"trgonzalez@itba.edu.ar\",\"enabled\":true}]}"
+      "strValue" : "{\"recipients\":[{\"email\":\"diegovcasares@gmail.com\",\"enabled\":true},{\"email\":\"icasares@itba.edu.ar\",\"enabled\":true},{\"email\":\"trgonzalez@itba.edu.ar\",\"enabled\":true}]}"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
@@ -72,11 +72,19 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Tristan Gonzalez\",\"chatID\":\"941688522\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"chatID\":\"7632398137\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Diego Casares\",\"chatID\":\"7691221952\",\"receiveNotifications\":true}]",
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true}]",
       "key" : "telegram",
-      "lastUpdateTs" : 1759272176862,
+      "lastUpdateTs" : 1761486698711,
       "longValue" : null,
       "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "wsLink",
+      "lastUpdateTs" : 1761327040104,
+      "longValue" : null,
+      "strValue" : "https://www.ecowitt.net/home/share?authorize=DF7DH7"
     } ]
   }
 }

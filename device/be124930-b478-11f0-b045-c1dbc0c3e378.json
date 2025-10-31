@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "d4d3a8d0-3a93-11f0-96f4-672ec1447afa"
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
     },
     "deviceData" : {
       "configuration" : {
@@ -20,32 +20,32 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+      "id" : "199d12b0-3e9c-11f0-bbbd-d5b23296cf03"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
+      "id" : "be124930-b478-11f0-b045-c1dbc0c3e378"
     },
-    "label" : "Field Tester",
-    "name" : "FieldTester",
+    "label" : "Temperatura 1",
+    "name" : "Dragino S31",
     "softwareId" : null,
-    "type" : "default"
+    "type" : "lanza"
   },
   "credentials" : {
-    "credentialsId" : "r0a8Jf0nGX8xRB5a0W62",
+    "credentialsId" : "RBdokMlkobGoseP9tkhj",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1760630212842,
+      "lastUpdateTs" : 1761856342347,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,24 +53,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1760630212834,
-      "longValue" : 1760630212834,
+      "lastUpdateTs" : 1761856080361,
+      "longValue" : 1761856080361,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1760629606354,
-      "longValue" : 1760629605319,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : "{\"volumen\":2}",
-      "key" : "visibleKeys",
-      "lastUpdateTs" : 1757534607713,
-      "longValue" : null,
+      "lastUpdateTs" : 1761937324353,
+      "longValue" : 1761937323444,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

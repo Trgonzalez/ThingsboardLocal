@@ -52,6 +52,22 @@
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1759431596145,
+      "longValue" : null,
+      "strValue" : "CRITICAL"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "alarm_type",
+      "lastUpdateTs" : 1759431629890,
+      "longValue" : null,
+      "strValue" : "Bajo nivel"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "depth",
       "lastUpdateTs" : 1753907497173,
       "longValue" : 0,

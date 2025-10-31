@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1759328092358,
+      "lastUpdateTs" : 1761246079361,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -60,24 +60,40 @@
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1761869059266,
+      "longValue" : null,
+      "strValue" : "CRITICAL"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "alarm_type",
+      "lastUpdateTs" : 1761240660516,
+      "longValue" : null,
+      "strValue" : "Nivel de tanque bajo"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "fullDist",
-      "lastUpdateTs" : 1759018276336,
-      "longValue" : 22,
+      "lastUpdateTs" : 1759787478768,
+      "longValue" : 31,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1759328085274,
-      "longValue" : 1759328085274,
+      "lastUpdateTs" : 1761244316790,
+      "longValue" : 1761244316790,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityTimeout",
-      "lastUpdateTs" : 1758149837327,
+      "lastUpdateTs" : 1761246644416,
       "longValue" : 3600000,
       "strValue" : null
     }, {
@@ -85,7 +101,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1758149837294,
+      "lastUpdateTs" : 1761246644367,
       "longValue" : 3600,
       "strValue" : null
     }, {
@@ -93,8 +109,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1759346119340,
-      "longValue" : 1759346118686,
+      "lastUpdateTs" : 1761935740358,
+      "longValue" : 1761935739650,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -125,7 +141,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1757805624449,
+      "lastUpdateTs" : 1759787480423,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -141,16 +157,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMaxAlarmThreshold",
-      "lastUpdateTs" : 1757956529248,
-      "longValue" : 90,
+      "lastUpdateTs" : 1761822855843,
+      "longValue" : 85,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMinAlarmThreshold",
-      "lastUpdateTs" : 1757956529248,
-      "longValue" : 30,
+      "lastUpdateTs" : 1761824438091,
+      "longValue" : 65,
       "strValue" : null
     }, {
       "booleanValue" : null,
