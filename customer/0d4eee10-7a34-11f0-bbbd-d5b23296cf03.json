@@ -80,6 +80,14 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true}]",
+      "key" : "whatsapp",
+      "lastUpdateTs" : 1762295453275,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
       "jsonValue" : null,
       "key" : "wsLink",
       "lastUpdateTs" : 1761327040104,

@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
     },
     "deviceData" : {
       "configuration" : {
@@ -20,7 +20,7 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
     },
     "externalId" : null,
     "firmwareId" : null,
@@ -31,7 +31,7 @@
     "label" : "aguada",
     "name" : "DDS75 001",
     "softwareId" : null,
-    "type" : "default"
+    "type" : "Ultrasonico"
   },
   "credentials" : {
     "credentialsId" : "jiz7uttn0hdjch3j3r4q",
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1761859140383,
+      "lastUpdateTs" : 1762003081205,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,16 +53,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1761859140377,
-      "longValue" : 1761859140377,
+      "lastUpdateTs" : 1762003081198,
+      "longValue" : 1762003081198,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1761858505346,
-      "longValue" : 1761858502868,
+      "lastUpdateTs" : 1762002454358,
+      "longValue" : 1762002451781,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

@@ -288,7 +288,7 @@
       "type" : "SIMPLE",
       "arguments" : {
         "fullDist" : {
-          "defaultValue" : "0",
+          "defaultValue" : "40",
           "refEntityKey" : {
             "key" : "fullDist",
             "scope" : "SERVER_SCOPE",
@@ -296,7 +296,7 @@
           }
         },
         "lowDist" : {
-          "defaultValue" : "0",
+          "defaultValue" : "130",
           "refEntityKey" : {
             "key" : "lowDist",
             "scope" : "SERVER_SCOPE",
@@ -309,9 +309,16 @@
             "key" : "data_distance_1",
             "type" : "TS_LATEST"
           }
+        },
+        "measDist1" : {
+          "defaultValue" : "0",
+          "refEntityKey" : {
+            "key" : "data_Distance",
+            "type" : "TS_LATEST"
+          }
         }
       },
-      "expression" : "(measDist-lowDist)/(fullDist-lowDist) *100",
+      "expression" : "(measDist+(measDist1/10)-lowDist)/(fullDist-lowDist) *100",
       "output" : {
         "decimalsByDefault" : 1,
         "name" : "waterLevelPerc",
@@ -322,7 +329,7 @@
     "configurationVersion" : 0,
     "debugSettings" : {
       "allEnabled" : false,
-      "allEnabledUntil" : 1757717713763,
+      "allEnabledUntil" : 1761939738965,
       "failuresEnabled" : true
     },
     "name" : "Tank Fill Percentage",
@@ -336,7 +343,7 @@
       "type" : "SIMPLE",
       "arguments" : {
         "fullDist" : {
-          "defaultValue" : "0",
+          "defaultValue" : "40",
           "refEntityKey" : {
             "key" : "fullDist",
             "scope" : "SERVER_SCOPE",
@@ -344,7 +351,7 @@
           }
         },
         "lowDist" : {
-          "defaultValue" : "0",
+          "defaultValue" : "130",
           "refEntityKey" : {
             "key" : "lowDist",
             "scope" : "SERVER_SCOPE",
@@ -358,6 +365,13 @@
             "type" : "TS_LATEST"
           }
         },
+        "measDist1" : {
+          "defaultValue" : "0",
+          "refEntityKey" : {
+            "key" : "data_Distance",
+            "type" : "TS_LATEST"
+          }
+        },
         "tankVol" : {
           "defaultValue" : "10000",
           "refEntityKey" : {
@@ -367,7 +381,7 @@
           }
         }
       },
-      "expression" : "(measDist-lowDist)/(fullDist-lowDist) *tankVol",
+      "expression" : "(measDist+(measDist1/10)-lowDist)/(fullDist-lowDist) *tankVol",
       "output" : {
         "decimalsByDefault" : 1,
         "name" : "waterVolume",

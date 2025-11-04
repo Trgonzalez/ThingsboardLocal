@@ -4057,7 +4057,7 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 3600000,
+                "interval" : 1800000,
                 "timewindowMs" : 604800000,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
@@ -9189,6 +9189,172 @@
           "row" : 0,
           "col" : 0,
           "id" : "fabaa211-d864-f512-5aaa-5642c5a64595"
+        },
+        "34354905-2fd2-7d5f-99ba-419d54cefbde" : {
+          "typeFullFqn" : "system.label_value_card",
+          "type" : "latest",
+          "sizeX" : 4.5,
+          "sizeY" : 1,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : "",
+              "deviceId" : null,
+              "entityAliasId" : "6b08fb94-54f4-49d9-5a8c-9409e66b8970",
+              "dataKeys" : [ {
+                "name" : "data_Distance",
+                "type" : "timeseries",
+                "label" : "data_Distance",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.8944762005987635,
+                "aggregationType" : "NONE",
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "    const secs = Number(time-timePrev)/1000;\r\n    if (!isFinite(secs)) {\r\n        return '';\r\n    }\r\n    if (secs >= 3600) {\r\n        const hs = secs / 3600;\r\n        return hs.toFixed(2) + ' hs';\r\n    } else if (secs >= 60) {\r\n        const mins = secs / 60;\r\n        return mins.toFixed(0) + ' min';\r\n    } else {\r\n        return secs.toFixed(0) + ' s';\r\n    }\r\n"
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1754260604418,
+                  "endTimeMs" : 1754347004418
+                },
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "autoScale" : true,
+              "showLabel" : true,
+              "label" : "Intervalo:",
+              "labelFont" : {
+                "family" : "Roboto",
+                "size" : 20,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "24px"
+              },
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showIcon" : true,
+              "iconSize" : 24,
+              "iconSizeUnit" : "px",
+              "icon" : "schedule",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "#5469FF",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "valueFont" : {
+                "family" : "Roboto",
+                "size" : 20,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "24px"
+              },
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : "12px"
+            },
+            "title" : "Label & value card",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "units" : "",
+            "decimals" : 0,
+            "useDashboardTimewindow" : true,
+            "widgetStyle" : { },
+            "actions" : { },
+            "configMode" : "basic",
+            "displayTimewindow" : true,
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "titleFont" : {
+              "size" : 12,
+              "sizeUnit" : "px",
+              "family" : null,
+              "weight" : null,
+              "style" : null,
+              "lineHeight" : "1.6"
+            },
+            "titleIcon" : "",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "14px",
+            "timewindowStyle" : {
+              "showIcon" : true,
+              "iconSize" : "14px",
+              "icon" : "query_builder",
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : null,
+                "weight" : null,
+                "style" : null,
+                "lineHeight" : "1"
+              },
+              "color" : null
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "34354905-2fd2-7d5f-99ba-419d54cefbde"
         }
       },
       "states" : {
@@ -9772,7 +9938,7 @@
                 "208c634c-f5bd-f809-dc5e-ed4259f13f90" : {
                   "sizeX" : 10,
                   "sizeY" : 4,
-                  "row" : 29,
+                  "row" : 34,
                   "col" : 14
                 },
                 "a5a088e4-be2c-4ed4-c329-7ee102dface0" : {
@@ -9780,6 +9946,12 @@
                   "sizeY" : 2,
                   "row" : 44,
                   "col" : 0
+                },
+                "34354905-2fd2-7d5f-99ba-419d54cefbde" : {
+                  "sizeX" : 10,
+                  "sizeY" : 4,
+                  "row" : 29,
+                  "col" : 14
                 }
               },
               "gridSettings" : {

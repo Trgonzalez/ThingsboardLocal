@@ -61,7 +61,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1761869059266,
+      "lastUpdateTs" : 1762295460975,
       "longValue" : null,
       "strValue" : "CRITICAL"
     }, {
@@ -109,8 +109,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1761935740358,
-      "longValue" : 1761935739650,
+      "lastUpdateTs" : 1762295461347,
+      "longValue" : 1762295460933,
       "strValue" : null
     }, {
       "booleanValue" : null,

@@ -260,8 +260,8 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 300000,
-                "timewindowMs" : 36000000,
+                "interval" : 10000,
+                "timewindowMs" : 3600000,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
                 "hideLastInterval" : false,
@@ -484,7 +484,7 @@
                   "splitLinesColor" : "rgba(0, 0, 0, 0.12)",
                   "id" : "axis1",
                   "order" : 1,
-                  "min" : 0,
+                  "min" : 3.5,
                   "max" : 4.2
                 }
               },
@@ -632,6 +632,140 @@
           "row" : 0,
           "col" : 0,
           "id" : "aef171c8-43c2-88c4-c64a-56e505943afb"
+        },
+        "140d5d64-57c1-cd1d-fe41-0bd62f6a4c44" : {
+          "typeFullFqn" : "system.cards.timeseries_table",
+          "type" : "timeseries",
+          "sizeX" : 8,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "device",
+              "name" : "",
+              "deviceId" : "be124930-b478-11f0-b045-c1dbc0c3e378",
+              "entityAliasId" : null,
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "data_temperature",
+                "type" : "timeseries",
+                "label" : "Temperature",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.5808700957407995,
+                "units" : "°C",
+                "decimals" : 2
+              }, {
+                "name" : "data_humidity",
+                "type" : "timeseries",
+                "label" : "data_humidity",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.5806240180235657,
+                "units" : "%",
+                "decimals" : 2
+              }, {
+                "name" : "data_BAT",
+                "type" : "timeseries",
+                "label" : "data_BAT",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.8088327804045218,
+                "units" : "V",
+                "decimals" : 3
+              }, {
+                "name" : "data_DATALOG",
+                "type" : "timeseries",
+                "label" : "data_DATALOG",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.762165493630944,
+                "decimals" : 0
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              },
+              "latestDataKeys" : [ ]
+            } ],
+            "timewindow" : {
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "hideTimezone" : false,
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 3600000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : null,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              },
+              "timezone" : null
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "enableSearch" : true,
+              "enableSelectColumnDisplay" : true,
+              "enableStickyHeader" : true,
+              "enableStickyAction" : true,
+              "showCellActionsMenu" : true,
+              "reserveSpaceForHiddenAction" : "true",
+              "showTimestamp" : true,
+              "dateFormat" : {
+                "format" : "yyyy-MM-dd HH:mm:ss"
+              },
+              "displayPagination" : false,
+              "useEntityLabel" : true,
+              "defaultPageSize" : 10,
+              "pageStepCount" : 3,
+              "pageStepIncrement" : 10,
+              "hideEmptyLines" : false,
+              "disableStickyHeader" : false,
+              "useRowStyleFunction" : false,
+              "rowStyleFunction" : ""
+            },
+            "title" : "Timeseries table",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : { },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "displayTimewindow" : true,
+            "configMode" : "advanced",
+            "titleFont" : null,
+            "titleColor" : null,
+            "titleIcon" : null
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "140d5d64-57c1-cd1d-fe41-0bd62f6a4c44"
         }
       },
       "states" : {
@@ -642,11 +776,17 @@
             "main" : {
               "widgets" : {
                 "aef171c8-43c2-88c4-c64a-56e505943afb" : {
-                  "sizeX" : 19,
+                  "sizeX" : 13,
                   "sizeY" : 7,
                   "mobileHeight" : null,
                   "row" : 0,
                   "col" : 0
+                },
+                "140d5d64-57c1-cd1d-fe41-0bd62f6a4c44" : {
+                  "sizeX" : 10,
+                  "sizeY" : 7,
+                  "row" : 0,
+                  "col" : 13
                 }
               },
               "gridSettings" : {
