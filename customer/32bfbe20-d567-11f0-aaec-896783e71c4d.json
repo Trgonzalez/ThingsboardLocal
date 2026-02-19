@@ -1,0 +1,45 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "",
+      "homeDashboardId" : null,
+      "homeDashboardHideToolbar" : true
+    },
+    "address" : null,
+    "address2" : null,
+    "city" : null,
+    "country" : null,
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
+    },
+    "name" : "Plural",
+    "phone" : null,
+    "state" : null,
+    "title" : "Plural",
+    "zip" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "emailRecipients",
+      "lastUpdateTs" : 1765457165755,
+      "longValue" : null,
+      "strValue" : "{\"recipients\":[{\"email\":\"ihuntrogue1@gmail.com\",\"enabled\":true},{\"email\":\"operaciones@plural.com.ar\",\"enabled\":true}]}"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"nombre\":\"Plural\",\"chatID\":\"8266382582\",\"receiveNotifications\":true},{\"nombre\":\"tris\",\"chatID\":\"941688522\",\"receiveNotifications\":true}]",
+      "key" : "telegram",
+      "lastUpdateTs" : 1765457010181,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

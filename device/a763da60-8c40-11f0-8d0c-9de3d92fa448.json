@@ -41,11 +41,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1762274227360,
+      "lastUpdateTs" : 1771430881628,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,17 +53,25 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1762216598217,
+      "lastUpdateTs" : 1762814374405,
       "longValue" : null,
-      "strValue" : "CRITICAL"
+      "strValue" : "off"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1761824010486,
+      "lastUpdateTs" : 1762789133999,
       "longValue" : null,
-      "strValue" : "Nivel de tanque bajo"
+      "strValue" : "Nivel de tanque alto"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.6,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1770143564022,
+      "longValue" : null,
+      "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
@@ -77,8 +85,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1762274222716,
-      "longValue" : 1762274222716,
+      "lastUpdateTs" : 1771430881623,
+      "longValue" : 1771430881623,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -101,8 +109,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1762295842344,
-      "longValue" : 1762295840070,
+      "lastUpdateTs" : 1771427223094,
+      "longValue" : 1771427222162,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -129,11 +137,19 @@
       "longValue" : 130,
       "strValue" : null
     }, {
-      "booleanValue" : true,
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1770143571508,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
+    }, {
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1757619214379,
+      "lastUpdateTs" : 1764151417576,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -149,16 +165,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMaxAlarmThreshold",
-      "lastUpdateTs" : 1760717601781,
-      "longValue" : 85,
+      "lastUpdateTs" : 1762860777926,
+      "longValue" : 90,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMinAlarmThreshold",
-      "lastUpdateTs" : 1761824428118,
-      "longValue" : 60,
+      "lastUpdateTs" : 1764151417576,
+      "longValue" : 40,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -171,9 +187,9 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
       "key" : "visibleKeys",
-      "lastUpdateTs" : 1757561683709,
+      "lastUpdateTs" : 1770143571508,
       "longValue" : null,
       "strValue" : null
     } ],

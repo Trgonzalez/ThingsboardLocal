@@ -1295,6 +1295,13 @@
       },
       "title" : "Customer A",
       "public" : false
+    }, {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
+      },
+      "title" : "Plural",
+      "public" : false
     } ],
     "externalId" : null,
     "id" : {

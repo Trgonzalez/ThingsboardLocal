@@ -1,0 +1,34 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "test",
+    "name" : "console test",
+    "deprecated" : false,
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "rpc",
+      "sizeX" : 4,
+      "sizeY" : 2,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"console-wrap\">\r\n  <div class=\"row\">\r\n    <input class=\"cmd\"\r\n           placeholder=\"Backlog command (e.g. TelePeriod 60; Power OFF)\"\r\n           [(ngModel)]=\"cmd\"\r\n           (keyup.enter)=\"send()\"/>\r\n    <button mat-raised-button color=\"primary\" (click)=\"send()\">Send</button>\r\n    <button mat-button (click)=\"clear()\">Clear</button>\r\n  </div>\r\n\r\n  <div class=\"hint\">\r\n    Sends one-way RPC via <code>controlApi.sendOneWayCommand()</code>.\r\n  </div>\r\n\r\n  <pre class=\"log\">{{log}}</pre>\r\n</div>\r\n",
+      "templateCss" : ".console-wrap {\r\n  height: 100%;\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 8px;\r\n}\r\n\r\n.row {\r\n  display: flex;\r\n  gap: 8px;\r\n  align-items: center;\r\n}\r\n\r\n.cmd {\r\n  flex: 1;\r\n  padding: 10px 12px;\r\n  border: 1px solid rgba(0,0,0,.2);\r\n  border-radius: 8px;\r\n  font-size: 14px;\r\n}\r\n\r\n.hint {\r\n  font-size: 12px;\r\n  opacity: 0.75;\r\n}\r\n\r\n.log {\r\n  flex: 1;\r\n  margin: 0;\r\n  padding: 12px;\r\n  border-radius: 10px;\r\n  background: rgba(0,0,0,.04);\r\n  overflow: auto;\r\n  white-space: pre-wrap;\r\n}\r\n",
+      "controllerScript" : "self.onInit = function () {\r\n  self.ctx.$scope.cmd = \"\";\r\n  self.ctx.$scope.log = \"\";\r\n\r\n  function append(line) {\r\n    const ts = new Date().toISOString();\r\n    self.ctx.$scope.log = `[${ts}] ${line}\\n` + self.ctx.$scope.log;\r\n    self.ctx.detectChanges();\r\n  }\r\n\r\n  self.ctx.$scope.clear = function () {\r\n    self.ctx.$scope.log = \"\";\r\n    self.ctx.detectChanges();\r\n  };\r\n\r\n  self.ctx.$scope.send = function () {\r\n    const method = (self.ctx.settings && self.ctx.settings.rpcMethod) || \"backlog\";\r\n    const timeout = (self.ctx.settings && self.ctx.settings.timeout) || 5000;\r\n\r\n    const cmd = (self.ctx.$scope.cmd || \"\").trim();\r\n    if (!cmd) {\r\n      append(\"Nothing to send.\");\r\n      return;\r\n    }\r\n\r\n    append(`> ${method} ${cmd}`);\r\n\r\n    // IMPORTANT: params is sent as a STRING (not JSON), to avoid extra quoting issues\r\n    const obs = self.ctx.controlApi.sendOneWayCommand(method, cmd, timeout);\r\n\r\n    obs.subscribe(\r\n      function () {\r\n        append(\"OK (command delivered to server). Check RESULT telemetry for ACK.\");\r\n      },\r\n      function (rej) {\r\n        append(`ERROR: ${rej.status} ${rej.statusText || \"\"}`.trim());\r\n      }\r\n    );\r\n  };\r\n};\r\n",
+      "dataKeySettingsForm" : [ ],
+      "settingsDirective" : "tb-gpio-control-widget-settings",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"Basic GPIO Control\"}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "9b62ac20-0d17-11f1-8fce-55f815a3848a"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

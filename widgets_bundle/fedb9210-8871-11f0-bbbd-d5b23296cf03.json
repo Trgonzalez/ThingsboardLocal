@@ -14,7 +14,7 @@
     "scada" : false,
     "title" : "Custom"
   },
-  "fqns" : [ "advanced_thingsboard_attribute_widget_ataw_", "opt_status", "status_update", "3d_chart", "pool_modern", "chatroom", "chatbot2", "chat3", "chat32", "chat4", "custom_html_card" ],
+  "fqns" : [ "advanced_thingsboard_attribute_widget_ataw_", "opt_status", "status_update", "3d_chart", "pool_modern", "chatroom", "chatbot2", "chat3", "chat32", "chat4", "custom_html_card", "qr_code_scanner2" ],
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]

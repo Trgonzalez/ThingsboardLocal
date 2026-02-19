@@ -17,7 +17,7 @@
             "datasources" : [ {
               "type" : "device",
               "name" : "",
-              "deviceId" : "b2b83830-7182-11f0-bbbd-d5b23296cf03",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
               "dataKeys" : [ {
                 "name" : "interval",
                 "type" : "attribute",
@@ -779,11 +779,11 @@
             "datasources" : [ {
               "type" : "device",
               "name" : "",
-              "deviceId" : "ff749680-6c11-11f0-bbbd-d5b23296cf03",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
               "dataKeys" : [ {
-                "name" : "rssi",
+                "name" : "data_Distance",
                 "type" : "timeseries",
-                "label" : "RSSI",
+                "label" : "data_Distance",
                 "color" : "#2196f3",
                 "settings" : {
                   "yAxisId" : "default",
@@ -854,84 +854,7 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.23587140207633506,
-                "units" : null,
-                "decimals" : 0
-              }, {
-                "name" : "snr",
-                "type" : "timeseries",
-                "label" : "snr",
-                "color" : "#4caf50",
-                "settings" : {
-                  "yAxisId" : "default",
-                  "showInLegend" : true,
-                  "dataHiddenByDefault" : false,
-                  "type" : "line",
-                  "lineSettings" : {
-                    "showLine" : true,
-                    "step" : false,
-                    "stepType" : "start",
-                    "smooth" : false,
-                    "lineType" : "solid",
-                    "lineWidth" : 2,
-                    "showPoints" : false,
-                    "showPointLabel" : false,
-                    "pointLabelPosition" : "top",
-                    "pointLabelFont" : {
-                      "family" : "Roboto",
-                      "size" : 11,
-                      "sizeUnit" : "px",
-                      "style" : "normal",
-                      "weight" : "400",
-                      "lineHeight" : "1"
-                    },
-                    "pointLabelColor" : "rgba(0, 0, 0, 0.76)",
-                    "enablePointLabelBackground" : false,
-                    "pointLabelBackground" : "rgba(255,255,255,0.56)",
-                    "pointShape" : "emptyCircle",
-                    "pointSize" : 4,
-                    "fillAreaSettings" : {
-                      "type" : "none",
-                      "opacity" : 0.4,
-                      "gradient" : {
-                        "start" : 100,
-                        "end" : 0
-                      }
-                    }
-                  },
-                  "barSettings" : {
-                    "showBorder" : false,
-                    "borderWidth" : 2,
-                    "borderRadius" : 0,
-                    "showLabel" : false,
-                    "labelPosition" : "top",
-                    "labelFont" : {
-                      "family" : "Roboto",
-                      "size" : 11,
-                      "sizeUnit" : "px",
-                      "style" : "normal",
-                      "weight" : "400",
-                      "lineHeight" : "1"
-                    },
-                    "labelColor" : "rgba(0, 0, 0, 0.76)",
-                    "enableLabelBackground" : false,
-                    "labelBackground" : "rgba(255,255,255,0.56)",
-                    "backgroundSettings" : {
-                      "type" : "none",
-                      "opacity" : 0.4,
-                      "gradient" : {
-                        "start" : 100,
-                        "end" : 0
-                      }
-                    }
-                  },
-                  "comparisonSettings" : {
-                    "showValuesForComparison" : false,
-                    "comparisonValuesLabel" : "",
-                    "color" : ""
-                  }
-                },
-                "_hash" : 0.8292947829359569,
+                "_hash" : 0.8574971302100811,
                 "decimals" : 0
               } ],
               "alarmFilterConfig" : {
@@ -946,8 +869,8 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 5000,
-                "timewindowMs" : 600000,
+                "interval" : 300000,
+                "timewindowMs" : 86400000,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
                 "hideLastInterval" : false,
@@ -957,10 +880,7 @@
                 "historyType" : 0,
                 "interval" : 1000,
                 "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1754534233198,
-                  "endTimeMs" : 1754620633198
-                },
+                "fixedTimewindow" : null,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
                 "hideLastInterval" : false,
@@ -987,7 +907,8 @@
                 "showMax" : false,
                 "showAvg" : false,
                 "showTotal" : false,
-                "showLatest" : true
+                "showLatest" : true,
+                "valueFormat" : null
               },
               "thresholds" : [ {
                 "type" : "constant",
@@ -1255,7 +1176,8 @@
                 "weight" : "400",
                 "lineHeight" : "16px"
               },
-              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)"
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipHideZeroValues" : null
             },
             "title" : "Señal Freatimetro",
             "dropShadow" : true,
@@ -1318,7 +1240,7 @@
             "datasources" : [ {
               "type" : "device",
               "name" : "",
-              "deviceId" : "b2b83830-7182-11f0-bbbd-d5b23296cf03",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
               "dataKeys" : [ {
                 "name" : "rssi",
                 "type" : "timeseries",
@@ -1523,7 +1445,8 @@
                 "showMax" : false,
                 "showAvg" : false,
                 "showTotal" : false,
-                "showLatest" : true
+                "showLatest" : true,
+                "valueFormat" : null
               },
               "thresholds" : [ {
                 "type" : "constant",
@@ -1791,7 +1714,8 @@
                 "weight" : "400",
                 "lineHeight" : "16px"
               },
-              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)"
+              "tooltipLabelColor" : "rgba(0, 0, 0, 0.76)",
+              "tooltipHideZeroValues" : null
             },
             "title" : "Señal Ultrasonico",
             "dropShadow" : true,
@@ -2585,7 +2509,7 @@
             "datasources" : [ {
               "type" : "device",
               "name" : "",
-              "deviceId" : "b2b83830-7182-11f0-bbbd-d5b23296cf03",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
               "dataKeys" : [ {
                 "name" : "rssi",
                 "type" : "timeseries",
@@ -3004,19 +2928,134 @@
             "settings" : {
               "mapType" : "geoMap",
               "layers" : [ {
-                "label" : "{i18n:widgets.maps.layer.roadmap}",
-                "provider" : "openstreet",
-                "layerType" : "OpenStreetMap.Mapnik"
-              }, {
                 "label" : "{i18n:widgets.maps.layer.satellite}",
                 "provider" : "openstreet",
                 "layerType" : "Esri.WorldImagery"
+              }, {
+                "label" : "{i18n:widgets.maps.layer.roadmap}",
+                "provider" : "openstreet",
+                "layerType" : "OpenStreetMap.Mapnik"
               }, {
                 "label" : "{i18n:widgets.maps.layer.hybrid}",
                 "provider" : "openstreet",
                 "layerType" : "Esri.WorldImagery",
                 "referenceLayer" : "openstreetmap_hybrid"
               } ],
+              "imageSource" : null,
+              "markers" : [ {
+                "dsType" : "device",
+                "dsLabel" : "",
+                "xKey" : {
+                  "name" : "data_latitude",
+                  "type" : "timeseries",
+                  "label" : "data_latitude",
+                  "color" : "#2196f3",
+                  "settings" : { },
+                  "_hash" : 0.35221434729311996
+                },
+                "yKey" : {
+                  "name" : "data_longitude",
+                  "type" : "timeseries",
+                  "label" : "data_longitude",
+                  "color" : "#2196f3",
+                  "settings" : { },
+                  "_hash" : 0.12645428135045877
+                },
+                "markerType" : "shape",
+                "markerShape" : {
+                  "shape" : "markerShape1",
+                  "size" : 34,
+                  "color" : {
+                    "type" : "constant",
+                    "color" : "#307FE5"
+                  }
+                },
+                "markerIcon" : {
+                  "iconContainer" : "iconContainer1",
+                  "icon" : "mdi:lightbulb-on",
+                  "size" : 48,
+                  "color" : {
+                    "type" : "constant",
+                    "color" : "#307FE5"
+                  }
+                },
+                "markerImage" : {
+                  "type" : "image",
+                  "image" : "/assets/markers/shape1.svg",
+                  "imageSize" : 34
+                },
+                "markerOffsetX" : 0.5,
+                "markerOffsetY" : 1,
+                "positionFunction" : "return {x: origXPos, y: origYPos};",
+                "markerClustering" : {
+                  "enable" : false,
+                  "zoomOnClick" : true,
+                  "maxZoom" : null,
+                  "maxClusterRadius" : 80,
+                  "zoomAnimation" : true,
+                  "showCoverageOnHover" : true,
+                  "spiderfyOnMaxZoom" : false,
+                  "chunkedLoad" : false,
+                  "lazyLoad" : true,
+                  "useClusterMarkerColorFunction" : false,
+                  "clusterMarkerColorFunction" : null
+                },
+                "label" : {
+                  "show" : true,
+                  "type" : "pattern",
+                  "pattern" : "${entityName}"
+                },
+                "tooltip" : {
+                  "show" : true,
+                  "trigger" : "click",
+                  "autoclose" : true,
+                  "type" : "pattern",
+                  "pattern" : "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Temperature:</b> ${temperature} °C<br/><small>See tooltip settings for details</small>",
+                  "offsetX" : 0,
+                  "offsetY" : -1
+                },
+                "click" : {
+                  "type" : "doNothing"
+                },
+                "edit" : {
+                  "enabledActions" : [ ],
+                  "attributeScope" : "SERVER_SCOPE",
+                  "snappable" : false
+                },
+                "dsDeviceId" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
+              } ],
+              "polygons" : [ ],
+              "circles" : [ ],
+              "additionalDataSources" : [ {
+                "dsType" : "device",
+                "dsLabel" : "",
+                "dataKeys" : [ {
+                  "name" : "rssi",
+                  "type" : "timeseries",
+                  "label" : "rssi",
+                  "color" : "#2196f3",
+                  "settings" : { },
+                  "_hash" : 0.6660671843895523
+                }, {
+                  "name" : "snr",
+                  "type" : "timeseries",
+                  "label" : "snr",
+                  "color" : "#2196f3",
+                  "settings" : { },
+                  "_hash" : 0.5438748327107464
+                } ],
+                "dsDeviceId" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
+              } ],
+              "controlsPosition" : "topleft",
+              "zoomActions" : [ "scroll", "doubleClick", "controlButtons" ],
+              "scales" : [ ],
+              "dragModeButton" : false,
+              "fitMapBounds" : true,
+              "useDefaultCenterPosition" : false,
+              "defaultCenterPosition" : "0,0",
+              "defaultZoomLevel" : null,
+              "mapPageSize" : 16384,
+              "mapActionButtons" : [ ],
               "trips" : [ {
                 "dsType" : "device",
                 "dsLabel" : "",
@@ -3144,121 +3183,6 @@
                   "tagActions" : null
                 }
               } ],
-              "markers" : [ {
-                "dsType" : "device",
-                "dsLabel" : "",
-                "xKey" : {
-                  "name" : "data_latitude",
-                  "type" : "timeseries",
-                  "label" : "data_latitude",
-                  "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.35221434729311996
-                },
-                "yKey" : {
-                  "name" : "data_longitude",
-                  "type" : "timeseries",
-                  "label" : "data_longitude",
-                  "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.12645428135045877
-                },
-                "markerType" : "shape",
-                "markerShape" : {
-                  "shape" : "markerShape1",
-                  "size" : 34,
-                  "color" : {
-                    "type" : "constant",
-                    "color" : "#307FE5"
-                  }
-                },
-                "markerIcon" : {
-                  "iconContainer" : "iconContainer1",
-                  "icon" : "mdi:lightbulb-on",
-                  "size" : 48,
-                  "color" : {
-                    "type" : "constant",
-                    "color" : "#307FE5"
-                  }
-                },
-                "markerImage" : {
-                  "type" : "image",
-                  "image" : "/assets/markers/shape1.svg",
-                  "imageSize" : 34
-                },
-                "markerOffsetX" : 0.5,
-                "markerOffsetY" : 1,
-                "positionFunction" : "return {x: origXPos, y: origYPos};",
-                "markerClustering" : {
-                  "enable" : false,
-                  "zoomOnClick" : true,
-                  "maxZoom" : null,
-                  "maxClusterRadius" : 80,
-                  "zoomAnimation" : true,
-                  "showCoverageOnHover" : true,
-                  "spiderfyOnMaxZoom" : false,
-                  "chunkedLoad" : false,
-                  "lazyLoad" : true,
-                  "useClusterMarkerColorFunction" : false,
-                  "clusterMarkerColorFunction" : null
-                },
-                "label" : {
-                  "show" : true,
-                  "type" : "pattern",
-                  "pattern" : "${entityName}"
-                },
-                "tooltip" : {
-                  "show" : true,
-                  "trigger" : "click",
-                  "autoclose" : true,
-                  "type" : "pattern",
-                  "pattern" : "<b>${entityName}</b><br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><b>Temperature:</b> ${temperature} °C<br/><small>See tooltip settings for details</small>",
-                  "offsetX" : 0,
-                  "offsetY" : -1
-                },
-                "click" : {
-                  "type" : "doNothing"
-                },
-                "edit" : {
-                  "enabledActions" : [ ],
-                  "attributeScope" : "SERVER_SCOPE",
-                  "snappable" : false
-                },
-                "dsDeviceId" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
-              } ],
-              "polygons" : [ ],
-              "circles" : [ ],
-              "additionalDataSources" : [ {
-                "dsType" : "device",
-                "dsLabel" : "",
-                "dataKeys" : [ {
-                  "name" : "rssi",
-                  "type" : "timeseries",
-                  "label" : "rssi",
-                  "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.6660671843895523
-                }, {
-                  "name" : "snr",
-                  "type" : "timeseries",
-                  "label" : "snr",
-                  "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5438748327107464
-                } ],
-                "dsDeviceId" : "3d917cf0-5f2c-11f0-bbbd-d5b23296cf03"
-              } ],
-              "controlsPosition" : "topleft",
-              "zoomActions" : [ "scroll", "doubleClick", "controlButtons" ],
-              "scales" : [ ],
-              "dragModeButton" : false,
-              "fitMapBounds" : true,
-              "useDefaultCenterPosition" : false,
-              "defaultCenterPosition" : "0,0",
-              "defaultZoomLevel" : null,
-              "minZoomLevel" : 16,
-              "mapPageSize" : 16384,
-              "mapActionButtons" : [ ],
               "tripTimeline" : {
                 "showTimelineControl" : false,
                 "timeStep" : 1000,
@@ -3282,8 +3206,7 @@
                   "blur" : 3
                 }
               },
-              "padding" : "8px",
-              "imageSource" : null
+              "padding" : "8px"
             },
             "title" : "Route Map",
             "dropShadow" : true,
@@ -3500,7 +3423,7 @@
             "datasources" : [ {
               "type" : "device",
               "name" : "",
-              "deviceId" : "b2b83830-7182-11f0-bbbd-d5b23296cf03",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
               "dataKeys" : [ {
                 "name" : "dr",
                 "type" : "timeseries",
@@ -4526,6 +4449,172 @@
           "row" : 0,
           "col" : 0,
           "id" : "bbb04344-8e4c-f385-b21e-0dedd66a6a69"
+        },
+        "c4aaece8-6dcd-ce6e-8c9f-ce4ff0371584" : {
+          "typeFullFqn" : "system.label_value_card",
+          "type" : "latest",
+          "sizeX" : 4.5,
+          "sizeY" : 1,
+          "config" : {
+            "datasources" : [ {
+              "type" : "device",
+              "name" : "",
+              "deviceId" : "574e2ee0-d510-11f0-aaec-896783e71c4d",
+              "entityAliasId" : null,
+              "dataKeys" : [ {
+                "name" : "data_Distance",
+                "type" : "timeseries",
+                "label" : "data_Distance",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.8944762005987635,
+                "aggregationType" : "NONE",
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "    const secs = Number(time-timePrev)/1000;\r\n    if (!isFinite(secs)) {\r\n        return '';\r\n    }\r\n    \r\n    if (secs >= 3600) {\r\n        const hs = secs / 3600;\r\n        return hs.toFixed(2) + ' hs';\r\n    } else if (secs >= 60) {\r\n        const mins = secs / 60;\r\n        return mins.toFixed(0) + ' min';\r\n    } else {\r\n        return secs.toFixed(0) + ' s';\r\n    }\r\n"
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1754260604418,
+                  "endTimeMs" : 1754347004418
+                },
+                "quickInterval" : "CURRENT_DAY",
+                "hideInterval" : false,
+                "hideLastInterval" : false,
+                "hideFixedInterval" : false,
+                "hideQuickInterval" : false
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "rgba(0, 0, 0, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "autoScale" : true,
+              "showLabel" : true,
+              "label" : "Intervalo:",
+              "labelFont" : {
+                "family" : "Roboto",
+                "size" : 20,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "24px"
+              },
+              "labelColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "showIcon" : true,
+              "iconSize" : 24,
+              "iconSizeUnit" : "px",
+              "icon" : "schedule",
+              "iconColor" : {
+                "type" : "constant",
+                "color" : "#5469FF",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "valueFont" : {
+                "family" : "Roboto",
+                "size" : 20,
+                "sizeUnit" : "px",
+                "style" : "normal",
+                "weight" : "400",
+                "lineHeight" : "24px"
+              },
+              "valueColor" : {
+                "type" : "constant",
+                "color" : "rgba(0, 0, 0, 0.87)",
+                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+              },
+              "background" : {
+                "type" : "color",
+                "color" : "#fff",
+                "overlay" : {
+                  "enabled" : false,
+                  "color" : "rgba(255,255,255,0.72)",
+                  "blur" : 3
+                }
+              },
+              "padding" : "12px"
+            },
+            "title" : "Label & value card",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "units" : "",
+            "decimals" : 0,
+            "useDashboardTimewindow" : true,
+            "widgetStyle" : { },
+            "actions" : { },
+            "configMode" : "basic",
+            "displayTimewindow" : true,
+            "margin" : "0px",
+            "borderRadius" : "0px",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "titleFont" : {
+              "size" : 12,
+              "sizeUnit" : "px",
+              "family" : null,
+              "weight" : null,
+              "style" : null,
+              "lineHeight" : "1.6"
+            },
+            "titleIcon" : "",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "14px",
+            "timewindowStyle" : {
+              "showIcon" : true,
+              "iconSize" : "14px",
+              "icon" : "query_builder",
+              "iconPosition" : "left",
+              "font" : {
+                "size" : 12,
+                "sizeUnit" : "px",
+                "family" : null,
+                "weight" : null,
+                "style" : null,
+                "lineHeight" : "1"
+              },
+              "color" : null
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c4aaece8-6dcd-ce6e-8c9f-ce4ff0371584"
         }
       },
       "states" : {
@@ -4700,12 +4789,6 @@
                   "row" : 0,
                   "col" : 0
                 },
-                "45232fde-4fb5-eb99-73fe-95a01bb03b7c" : {
-                  "sizeX" : 11,
-                  "sizeY" : 4,
-                  "row" : 6,
-                  "col" : 0
-                },
                 "161633e1-fa4c-dee1-6961-afc416b40979" : {
                   "sizeX" : 12,
                   "sizeY" : 6,
@@ -4717,6 +4800,12 @@
                   "sizeY" : 4,
                   "row" : 6,
                   "col" : 11
+                },
+                "c4aaece8-6dcd-ce6e-8c9f-ce4ff0371584" : {
+                  "sizeX" : 11,
+                  "sizeY" : 4,
+                  "row" : 6,
+                  "col" : 0
                 }
               },
               "gridSettings" : {
@@ -4808,7 +4897,18 @@
           }
         }
       },
-      "entityAliases" : { },
+      "entityAliases" : {
+        "0d6cfb57-0077-977e-ab76-29f1dddd66b7" : {
+          "id" : "0d6cfb57-0077-977e-ab76-29f1dddd66b7",
+          "alias" : "devActual",
+          "filter" : {
+            "type" : "stateEntity",
+            "resolveMultiple" : false,
+            "stateEntityParamName" : null,
+            "defaultStateEntity" : null
+          }
+        }
+      },
       "filters" : { },
       "timewindow" : {
         "hideAggregation" : false,

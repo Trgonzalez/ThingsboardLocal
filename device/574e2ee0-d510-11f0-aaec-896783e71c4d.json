@@ -1,10 +1,14 @@
 {
   "entityType" : "DEVICE",
   "entity" : {
-    "additionalInfo" : null,
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
     },
     "deviceData" : {
       "configuration" : {
@@ -16,40 +20,32 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "b2b83830-7182-11f0-bbbd-d5b23296cf03"
+      "id" : "574e2ee0-d510-11f0-aaec-896783e71c4d"
     },
-    "label" : "martinez viejard",
-    "name" : "martinez viejo",
+    "label" : "Havanna",
+    "name" : "DS-US2-LB-0002",
     "softwareId" : null,
-    "type" : "default"
+    "type" : "Ultrasonico"
   },
   "credentials" : {
-    "credentialsId" : "rqCNU7RnDRnJZROn40MK",
+    "credentialsId" : "PB4wgQcfA5Ldgsx7mCFC",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "active",
-      "lastUpdateTs" : 1764814138170,
-      "longValue" : null,
-      "strValue" : null
-    }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "aguadaAlarmFlag",
-      "lastUpdateTs" : 1756499510714,
+      "key" : "active",
+      "lastUpdateTs" : 1771502763079,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -57,23 +53,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1764810500309,
+      "lastUpdateTs" : 1769897493418,
       "longValue" : null,
-      "strValue" : "CRITICAL"
+      "strValue" : "off"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1764810500309,
+      "lastUpdateTs" : 1769897493418,
       "longValue" : null,
-      "strValue" : "Nivel de tanque alto"
+      "strValue" : "Nivel de tanque muy alto"
     }, {
       "booleanValue" : null,
-      "doubleValue" : 3.6,
+      "doubleValue" : 3.3,
       "jsonValue" : null,
       "key" : "battery_nominal",
-      "lastUpdateTs" : 1765039335471,
+      "lastUpdateTs" : 1771502935000,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -81,71 +77,111 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "fullDist",
-      "lastUpdateTs" : 1759787478768,
-      "longValue" : 31,
+      "lastUpdateTs" : 1765330427654,
+      "longValue" : 10,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1764814138163,
-      "longValue" : 1764814138163,
+      "lastUpdateTs" : 1771502763079,
+      "longValue" : 0,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityTimeout",
-      "lastUpdateTs" : 1761246644416,
-      "longValue" : 3600000,
+      "lastUpdateTs" : 1765936618448,
+      "longValue" : 1200000,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1761246644367,
-      "longValue" : 3600,
+      "lastUpdateTs" : 1765936618416,
+      "longValue" : 1200,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "label",
-      "lastUpdateTs" : 1765022757921,
+      "lastUpdateTs" : 1765327562248,
       "longValue" : null,
-      "strValue" : "Reservorio Corrales"
+      "strValue" : "Tanque Havanna Billignhurst"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "labelSetting",
+      "lastUpdateTs" : 1765327562215,
+      "longValue" : null,
+      "strValue" : "Tanque Havanna Billignhurst"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1764810499673,
-      "longValue" : 1764810499635,
+      "lastUpdateTs" : 1771519557094,
+      "longValue" : 1771519556717,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -34.58971471361456,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1765326366101,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -58.40953767299653,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1765326366101,
+      "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lowDist",
-      "lastUpdateTs" : 1755300741396,
-      "longValue" : 130,
+      "lastUpdateTs" : 1765898944983,
+      "longValue" : 80,
       "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1770143550353,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
     }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1759787480423,
+      "lastUpdateTs" : 1765389861715,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "tankHighAlarmFlag2",
+      "lastUpdateTs" : 1765906869250,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "tankLowAlarmFlag",
-      "lastUpdateTs" : 1757805640483,
+      "lastUpdateTs" : 1765906869250,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -153,51 +189,35 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankMaxAlarmThreshold",
-      "lastUpdateTs" : 1762984723256,
-      "longValue" : 91,
+      "lastUpdateTs" : 1765907061939,
+      "longValue" : 52,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "tankMinAlarmThreshold",
-      "lastUpdateTs" : 1761824438091,
-      "longValue" : 65,
+      "key" : "tankMaxAlarmThreshold2",
+      "lastUpdateTs" : 1765907061939,
+      "longValue" : 80,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankVolume",
-      "lastUpdateTs" : 1755301781997,
-      "longValue" : 44000,
-      "strValue" : null
-    }, {
-      "booleanValue" : true,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "tanqueAlarmFlag",
-      "lastUpdateTs" : 1756499510714,
-      "longValue" : null,
+      "lastUpdateTs" : 1765898944983,
+      "longValue" : 450,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "{}",
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
       "key" : "visibleKeys",
-      "lastUpdateTs" : 1765328331843,
+      "lastUpdateTs" : 1765292661104,
       "longValue" : null,
       "strValue" : null
     } ],
-    "SHARED_SCOPE" : [ {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : "{\"data_temperature_2\":{\"label\":\"Temperatura\",\"unit\":\"°C\"},\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
-      "key" : "visibleKeys",
-      "lastUpdateTs" : 1759175360021,
-      "longValue" : null,
-      "strValue" : null
-    } ]
+    "SHARED_SCOPE" : [ ]
   },
   "calculatedFields" : [ ]
 }

@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
     },
     "deviceData" : {
       "configuration" : {
@@ -20,108 +20,100 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "199d12b0-3e9c-11f0-bbbd-d5b23296cf03"
+      "id" : "55b2a560-c0da-11f0-b045-c1dbc0c3e378"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "762c90a0-3e60-11f0-bbbd-d5b23296cf03"
+      "id" : "865e6880-c00c-11f0-b045-c1dbc0c3e378"
     },
-    "label" : "Lanza Suelo Lote 2",
-    "name" : "Lanza Suelo Lote 1",
+    "label" : "tranquera",
+    "name" : "Tranquera Dragino",
     "softwareId" : null,
-    "type" : "lanza"
+    "type" : "Tranquera"
   },
   "credentials" : {
-    "credentialsId" : "jxvkkIaQC83A9vfdzMbU",
+    "credentialsId" : "CwLgKrJiWWPn1atHYM99",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1769890448150,
+      "lastUpdateTs" : 1763515811225,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "battVal",
-      "lastUpdateTs" : 1749082532462,
-      "longValue" : 52,
-      "strValue" : null
-    }, {
-      "booleanValue" : true,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "humidityAlarmFlag",
-      "lastUpdateTs" : 1748798359647,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1763402919303,
       "longValue" : null,
-      "strValue" : null
+      "strValue" : "off"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "humidityAlarmThreshold",
-      "lastUpdateTs" : 1748798772900,
-      "longValue" : 30,
+      "key" : "alarm_type",
+      "lastUpdateTs" : 1763132018036,
+      "longValue" : null,
+      "strValue" : "Puerta abierta"
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "gateOpenAlarmFlag",
+      "lastUpdateTs" : 1763512083033,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "gateTimeoutFlag",
+      "lastUpdateTs" : 1763129986583,
+      "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1769890406380,
-      "longValue" : 1769890406379,
+      "lastUpdateTs" : 1763515811219,
+      "longValue" : 1763515811219,
       "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "label",
+      "lastUpdateTs" : 1763131186026,
+      "longValue" : null,
+      "strValue" : "tranquera22"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1771519686090,
-      "longValue" : 1771519685864,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -35.04217192251423,
-      "jsonValue" : null,
-      "key" : "latitude",
-      "lastUpdateTs" : 1759102022180,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -59.39096331596375,
-      "jsonValue" : null,
-      "key" : "longitude",
-      "lastUpdateTs" : 1759102022180,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : true,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "temperatureAlarmFlag",
-      "lastUpdateTs" : 1748798311776,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "temperatureAlarmThreshold",
-      "lastUpdateTs" : 1749306965362,
-      "longValue" : 25,
+      "lastUpdateTs" : 1763515165358,
+      "longValue" : 1763515164301,
       "strValue" : null
     } ],
-    "SHARED_SCOPE" : [ ]
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "label",
+      "lastUpdateTs" : 1763131209819,
+      "longValue" : null,
+      "strValue" : "tranquera 4"
+    } ]
   },
   "calculatedFields" : [ ]
 }

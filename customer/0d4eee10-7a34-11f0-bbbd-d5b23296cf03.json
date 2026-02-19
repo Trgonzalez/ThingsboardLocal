@@ -72,17 +72,17 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true}]",
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"chatID\":\"\",\"receiveNotifications\":false,\"mute_duration\":\"5m\",\"disabled_until\":\"2025-11-05T19:47:23.131Z\"}]",
       "key" : "telegram",
-      "lastUpdateTs" : 1761486698711,
+      "lastUpdateTs" : 1762371743236,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true}]",
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":false,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"nombre\":\"Diego Casares\",\"chatID\":\"5491166932324\",\"receiveNotifications\":true}]",
       "key" : "whatsapp",
-      "lastUpdateTs" : 1762295453275,
+      "lastUpdateTs" : 1762789826006,
       "longValue" : null,
       "strValue" : null
     }, {

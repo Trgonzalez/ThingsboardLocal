@@ -1,7 +1,7 @@
 {
   "entityType" : "DASHBOARD",
   "entity" : {
-    "title" : "Main TEST",
+    "title" : "Main Plural",
     "image" : null,
     "mobileHide" : false,
     "mobileOrder" : null,
@@ -680,19 +680,6 @@
                 "usePostProcessing" : null,
                 "postFuncBody" : null
               }, {
-                "name" : "mainValue",
-                "type" : "timeseries",
-                "label" : "Variable Principal",
-                "color" : "#ffc107",
-                "settings" : { },
-                "_hash" : 0.5748827547002325,
-                "aggregationType" : "NONE",
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              }, {
                 "name" : "data_batPerc",
                 "type" : "timeseries",
                 "label" : "Batería",
@@ -1019,7 +1006,7 @@
             "padding" : "",
             "settings" : {
               "useMarkdownTextFunction" : false,
-              "markdownTextPattern" : "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Sidebar Menu</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">\r\n</head>\r\n\r\n<body>\r\n    <div class=\"logo-container\">\r\n        <img src=\"/api/images/public/eccgkajobndCxIy5sq6CzrRsqVljRfM\" alt=\"Logo\" class=\"logo\">\r\n    </div>\r\n    <div id=\"customerTitle\" style=\"display:none;\" >${entityName}</div>\r\n    <div class=\"sidebar\">\r\n        <a class=\"menu-item\" id=\"liveApp\">\r\n            <i class=\"fa-solid fa-map\"></i> Mapa\r\n        </a>\r\n        <div class=\"menu-item\" id=\"Devices\">\r\n            <i class=\"fas fa-wifi\"></i> Dispositivos\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Reports\" data-action=\"click\">\r\n            <i class=\"fas fa-book\"></i> Reports\r\n            <i class=\"fas fa-chevron-down\" id=\"reportsArrow\" style=\"margin-left:auto;\"></i>\r\n        </div>\r\n        <div class=\"submenu\" id=\"reportsSubmenu\">\r\n            <a id=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i>Estación Meteorologica</a>\r\n            <a id=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i>Energy Reports</a>\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Summary\">\r\n            <i class=\"fa-solid fa-grip\"></i> Resumen\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Alerts\">\r\n            <i class=\"fas fa-bell\"></i> Alertas\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Settings\">\r\n            <i class=\"fas fa-gear\"></i> Ajustes\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Contact\">\r\n            <i class=\"fas fa-question-circle\"></i> Contacto\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n",
+              "markdownTextPattern" : "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Sidebar Menu</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">\r\n</head>\r\n\r\n<body>\r\n    <div class=\"logo-container\">\r\n        <img src=\"/api/images/public/eccgkajobndCxIy5sq6CzrRsqVljRfM\" alt=\"Logo\" class=\"logo\">\r\n    </div>\r\n    <div id=\"customerTitle\" style=\"display:none;\" >${entityName}</div>\r\n    <div class=\"sidebar\">\r\n        <a class=\"menu-item\" id=\"liveApp\">\r\n            <i class=\"fa-solid fa-map\"></i> Mapa\r\n        </a>\r\n        <div class=\"menu-item\" id=\"Devices\">\r\n            <i class=\"fas fa-wifi\"></i> Dispositivos\r\n        </div>\r\n        <!--<div class=\"menu-item\" id=\"Reports\" data-action=\"click\">\r\n            <i class=\"fas fa-book\"></i> Reports\r\n            <i class=\"fas fa-chevron-down\" id=\"reportsArrow\" style=\"margin-left:auto;\"></i>\r\n        </div> -->\r\n        <div class=\"submenu\" id=\"reportsSubmenu\">\r\n            <a id=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i>Estación Meteorologica</a>\r\n            <a id=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i>Energy Reports</a>\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Summary\">\r\n            <i class=\"fa-solid fa-grip\"></i> Resumen\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Alerts\">\r\n            <i class=\"fas fa-bell\"></i> Alertas\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Settings\">\r\n            <i class=\"fas fa-gear\"></i> Ajustes\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Contact\">\r\n            <i class=\"fas fa-question-circle\"></i> Contacto\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n",
               "markdownTextFunction" : "// === Mapeo itemId → stateId (AJUSTAR A TU DASHBOARD) ===\r\nconst stateMap = {\r\n  liveApp:     'default',\r\n  Devices:     'devices',\r\n  Reports:     null, // solo expande submenú\r\n  WaterReport: 'water_report_state',\r\n  EnergyReport:'energy_report_state',\r\n  Automated:   'automated_reports_state',\r\n  Alerts:      'alarms',\r\n  Contact:     'contact_state'\r\n};\r\n\r\n// ID único para este render (evita choques si hay varios widgets)\r\nconst uid = 'sb_' + Math.random().toString(36).slice(2);\r\n\r\n// HTML (sin <script> y sin href que cambie la URL)\r\nconst html =\r\n  '<div id=\"'+uid+'\" class=\"sidebar\">' +\r\n\r\n    '<a class=\"menu-item\" data-item=\"liveApp\">' +\r\n      '<i class=\"fa-solid fa-map\"></i> Mapa' +\r\n    '</a>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Devices\">' +\r\n      '<i class=\"fas fa-wifi\"></i> Devices' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Reports\" data-expand=\"reportsSubmenu\">' +\r\n      '<i class=\"fas fa-book\"></i> Reports' +\r\n      '<i class=\"fas fa-chevron-down\" style=\"margin-left:auto;\"></i>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"submenu\" id=\"reportsSubmenu\">' +\r\n      '<a data-item=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i> Water Salinity Reports</a>' +\r\n      '<a data-item=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i> Energy Reports</a>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Automated\">' +\r\n      '<i class=\"fa-solid fa-file\"></i> Automated Reports' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Alerts\">' +\r\n      '<i class=\"fas fa-bell\"></i> Alerts' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Contact\">' +\r\n      '<i class=\"fas fa-question-circle\"></i> Contact' +\r\n    '</div>' +\r\n\r\n  '</div>';\r\n\r\n// Bind de eventos después de que TB inserta el HTML\r\nsetTimeout(function () {\r\n  const root = document.getElementById(uid);\r\n  if (!root || root.__bound) return;\r\n  root.__bound = true;\r\n\r\n  const submenu = root.querySelector('#reportsSubmenu');\r\n\r\n  function clearActive() {\r\n    root.querySelectorAll('.active').forEach(n => {\r\n      n.classList.remove('active');\r\n      n.setAttribute('aria-disabled', 'false');\r\n    });\r\n  }\r\n  function setActive(el) {\r\n    clearActive();\r\n    el.classList.add('active');\r\n    el.setAttribute('aria-disabled', 'true');\r\n  }\r\n  function openStateFor(itemId) {\r\n    const stateId = stateMap[itemId];\r\n    if (!stateId) return; // p.ej. Reports\r\n    try {\r\n      // usa ctx del scope de la función de valor\r\n      if (ctx && ctx.stateController && typeof ctx.stateController.openState === 'function') {\r\n        ctx.stateController.openState(stateId);\r\n        return;\r\n      }\r\n      if (ctx && ctx.actionsApi && typeof ctx.actionsApi.openDashboard === 'function') {\r\n        ctx.actionsApi.openDashboard(null, { stateId }, { openInDialog: false });\r\n      }\r\n    } catch (e) { /* silencioso */ }\r\n  }\r\n\r\n  // Delegación de clicks (sin cambiar la URL)\r\n  root.addEventListener('click', function (e) {\r\n    const item = e.target.closest('[data-item]');\r\n    if (!item || !root.contains(item)) return;\r\n    const id = item.getAttribute('data-item');\r\n\r\n    // Toggle Reports (expansor)\r\n    if (id === 'Reports') {\r\n      e.preventDefault();\r\n      submenu && submenu.classList.toggle('open');\r\n      setActive(item);\r\n      return;\r\n    }\r\n\r\n    e.preventDefault();\r\n    setActive(item);\r\n    openStateFor(id);\r\n  });\r\n\r\n  // Activo inicial (opcional)\r\n  const initial = root.querySelector('[data-item=\"Devices\"]');\r\n  if (initial) {\r\n    setActive(initial);\r\n    // openStateFor('Devices'); // descomentá si querés abrir al cargar\r\n  }\r\n}, 0);\r\n\r\n// devolver el HTML al widget\r\nreturn html;\r\n",
               "applyDefaultMarkdownStyle" : false,
               "markdownCss" : "/* Mantener oculto el logo */\r\n.logo-container { display:none !important; margin:0 !important; padding:0 !important; }\r\n\r\n/* Base */\r\nbody {\r\n    font-family: 'Roboto', sans-serif;\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: #fff;\r\n}\r\n\r\n/* (Tu bloque extra de logo no es necesario si está oculto) */\r\n/* .logo-container { ... }  — eliminado */\r\n\r\n/* .logo { ... } — innecesario si no se muestra el logo */\r\n/* .logo { width:auto; max-width:100%; } */\r\n\r\n.sidebar {\r\n    width: 100%;\r\n    height: 100vh;\r\n    background-color: #ffffff;\r\n    padding: 0;\r\n}\r\n\r\n/* Ítems de menú */\r\n.menu-item, .submenu a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    height: 60px;              /* 50px en submenú abajo */\r\n    padding: 0 20px;\r\n    width: 100%;\r\n    color: #333;\r\n    text-decoration: none;\r\n    font-size: 16px;           /* 14px en submenú abajo */\r\n    cursor: pointer;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.menu-item:hover,\r\n.submenu a:hover {\r\n    background-color: rgba(235, 235, 235, 0.5); /* 50% opacity */\r\n}\r\n\r\n.menu-item i,\r\n.submenu a i {\r\n    margin-right: 10px;\r\n}\r\n\r\n/* Submenú */\r\n.submenu {\r\n    padding-left: 0;\r\n    display: none;             /* oculto por defecto */\r\n    user-select: none;\r\n    flex-direction: column;\r\n}\r\n\r\n.submenu a {\r\n    height: 50px;\r\n    font-size: 14px;\r\n    background-color: #eee;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n}\r\n\r\n.submenu a:hover {\r\n    background-color: rgba(235, 96, 96, 0.7); /* 70% opacity */\r\n}\r\n\r\n/* Flecha rotada cuando Reports está activo (si usás el ícono con ese id) */\r\n#Reports:target + #reportsSubmenu + .menu-item .fa-chevron-down,\r\n#Reports:target .fa-chevron-down {\r\n    transform: rotate(180deg);\r\n}\r\n\r\n/* Abrir submenú cuando \"Reports\" es el :target */\r\n#Reports:target + #reportsSubmenu {\r\n    display: flex;\r\n}\r\n\r\n/* Estado ACTIVO usando :target (hash) */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    background: #1f6feb;\r\n    color: #fff;\r\n}\r\n\r\n/* Deshabilitado visual mientras está activo */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    pointer-events: none;      /* no clickeable mientras activo */\r\n    cursor: default;\r\n}\r\n\r\n/* Borde superior en Contact (lo mantenemos) */\r\n#Settings{\r\n    border-top: solid #b8bfd4 1px;\r\n}\r\n"
@@ -1099,7 +1086,7 @@
                 "showWidgetActionFunction" : "return true;",
                 "type" : "openURL",
                 "openNewBrowserTab" : true,
-                "url" : "https://www.google.com",
+                "url" : "https://nexoragro.com",
                 "openInSeparateDialog" : false,
                 "openInPopover" : false,
                 "id" : "52b5652f-de35-1ce5-b83e-63bde7f86f51"
@@ -3289,19 +3276,6 @@
               "deviceId" : null,
               "entityAliasId" : "6b08fb94-54f4-49d9-5a8c-9409e66b8970",
               "dataKeys" : [ {
-                "name" : "label",
-                "type" : "entityField",
-                "label" : "Nombre",
-                "color" : "#607d8b",
-                "settings" : { },
-                "_hash" : 0.900035371090289,
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
-              }, {
                 "name" : "interval",
                 "type" : "attribute",
                 "label" : "Intervalo",
@@ -3582,7 +3556,7 @@
               "dataKeys" : [ {
                 "name" : "tankHighAlarmFlag",
                 "type" : "attribute",
-                "label" : "Alarma de nivel de tanque alto",
+                "label" : "Alarma de nivel alto 1",
                 "color" : "#4caf50",
                 "settings" : {
                   "dataKeyType" : "server",
@@ -3602,7 +3576,7 @@
               }, {
                 "name" : "tankMaxAlarmThreshold",
                 "type" : "attribute",
-                "label" : "Límite máximo de nivel de tanque",
+                "label" : "Porcentaje",
                 "color" : "#f44336",
                 "settings" : {
                   "dataKeyHidden" : false,
@@ -3638,6 +3612,96 @@
                   "setValueFunctionBody" : ""
                 },
                 "_hash" : 0.7316078472857874,
+                "aggregationType" : null,
+                "units" : "%",
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "tankHighAlarmFlag2",
+                "type" : "attribute",
+                "label" : "Alarma de nivel alto 2",
+                "color" : "#607d8b",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "booleanCheckbox",
+                  "required" : false,
+                  "isEditable" : "editable",
+                  "disabledOnDataKey" : "",
+                  "appearance" : "outline",
+                  "subscriptSizing" : "fixed",
+                  "slideToggleLabelPosition" : "after",
+                  "selectOptions" : [ ],
+                  "radioColor" : null,
+                  "radioColumns" : 1,
+                  "radioLabelPosition" : "after",
+                  "step" : 1,
+                  "minValue" : null,
+                  "maxValue" : null,
+                  "requiredErrorMessage" : "",
+                  "minValueErrorMessage" : "",
+                  "maxValueErrorMessage" : "",
+                  "invalidDateErrorMessage" : "",
+                  "invalidJsonErrorMessage" : "",
+                  "dialogTitle" : "",
+                  "saveButtonLabel" : "",
+                  "cancelButtonLabel" : "",
+                  "useCustomIcon" : false,
+                  "icon" : "",
+                  "customIcon" : "",
+                  "useGetValueFunction" : false,
+                  "getValueFunctionBody" : "",
+                  "useSetValueFunction" : false,
+                  "setValueFunctionBody" : ""
+                },
+                "_hash" : 0.5046126522793398,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "tankMaxAlarmThreshold2",
+                "type" : "attribute",
+                "label" : "Porcentaje",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "dataKeyHidden" : false,
+                  "dataKeyType" : "server",
+                  "dataKeyValueType" : "double",
+                  "required" : true,
+                  "isEditable" : "editable",
+                  "disabledOnDataKey" : "tankHighAlarmFlag2",
+                  "appearance" : "outline",
+                  "subscriptSizing" : "fixed",
+                  "slideToggleLabelPosition" : "after",
+                  "selectOptions" : [ ],
+                  "radioColor" : null,
+                  "radioColumns" : 1,
+                  "radioLabelPosition" : "after",
+                  "step" : 1,
+                  "minValue" : null,
+                  "maxValue" : null,
+                  "requiredErrorMessage" : "",
+                  "minValueErrorMessage" : "",
+                  "maxValueErrorMessage" : "",
+                  "invalidDateErrorMessage" : "",
+                  "invalidJsonErrorMessage" : "",
+                  "dialogTitle" : "",
+                  "saveButtonLabel" : "",
+                  "cancelButtonLabel" : "",
+                  "useCustomIcon" : false,
+                  "icon" : "",
+                  "customIcon" : "",
+                  "useGetValueFunction" : false,
+                  "getValueFunctionBody" : "",
+                  "useSetValueFunction" : false,
+                  "setValueFunctionBody" : ""
+                },
+                "_hash" : 0.24528978388810518,
                 "aggregationType" : null,
                 "units" : "%",
                 "decimals" : null,
@@ -3962,83 +4026,6 @@
                 "funcBody" : null,
                 "usePostProcessing" : null,
                 "postFuncBody" : null
-              }, {
-                "name" : "data_temperature_2",
-                "type" : "timeseries",
-                "label" : "Temperatura",
-                "color" : "#F44336",
-                "settings" : {
-                  "yAxisId" : "axis1",
-                  "showInLegend" : true,
-                  "dataHiddenByDefault" : false,
-                  "type" : "line",
-                  "lineSettings" : {
-                    "showLine" : true,
-                    "step" : false,
-                    "stepType" : "start",
-                    "smooth" : false,
-                    "lineType" : "solid",
-                    "lineWidth" : 2,
-                    "showPoints" : false,
-                    "showPointLabel" : false,
-                    "pointLabelPosition" : "top",
-                    "pointLabelFont" : {
-                      "family" : "Roboto",
-                      "size" : 11,
-                      "sizeUnit" : "px",
-                      "style" : "normal",
-                      "weight" : "400",
-                      "lineHeight" : "1"
-                    },
-                    "pointLabelColor" : "rgba(0, 0, 0, 0.76)",
-                    "enablePointLabelBackground" : false,
-                    "pointLabelBackground" : "rgba(255,255,255,0.56)",
-                    "pointShape" : "emptyCircle",
-                    "pointSize" : 4,
-                    "fillAreaSettings" : {
-                      "type" : "none",
-                      "opacity" : 0.4,
-                      "gradient" : {
-                        "start" : 100,
-                        "end" : 0
-                      }
-                    }
-                  },
-                  "barSettings" : {
-                    "showBorder" : false,
-                    "borderWidth" : 2,
-                    "borderRadius" : 0,
-                    "showLabel" : false,
-                    "labelPosition" : "top",
-                    "labelFont" : {
-                      "family" : "Roboto",
-                      "size" : 11,
-                      "sizeUnit" : "px",
-                      "style" : "normal",
-                      "weight" : "400",
-                      "lineHeight" : "1"
-                    },
-                    "labelColor" : "rgba(0, 0, 0, 0.76)",
-                    "enableLabelBackground" : false,
-                    "labelBackground" : "rgba(255,255,255,0.56)",
-                    "backgroundSettings" : {
-                      "type" : "none",
-                      "opacity" : 0.4,
-                      "gradient" : {
-                        "start" : 100,
-                        "end" : 0
-                      }
-                    }
-                  },
-                  "comparisonSettings" : {
-                    "showValuesForComparison" : false,
-                    "comparisonValuesLabel" : "",
-                    "color" : ""
-                  }
-                },
-                "_hash" : 0.4743401939350059,
-                "units" : "°C",
-                "decimals" : 0
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
@@ -4061,6 +4048,22 @@
                   "__thresholdKey" : true
                 },
                 "_hash" : 0.4432859879922736
+              }, {
+                "name" : "tankMaxAlarmThreshold2",
+                "type" : "attribute",
+                "label" : "tankMaxAlarmThreshold2",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.8631789782282323
+              }, {
+                "name" : "tankMaxAlarmThreshold2",
+                "type" : "attribute",
+                "label" : "tankMaxAlarmThreshold2 2",
+                "color" : "#9c27b0",
+                "settings" : {
+                  "__thresholdKey" : true
+                },
+                "_hash" : 0.5178791451644068
               } ]
             } ],
             "timewindow" : {
@@ -4070,7 +4073,7 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 1800000,
+                "interval" : 300000,
                 "timewindowMs" : 604800000,
                 "quickInterval" : "CURRENT_DAY",
                 "hideInterval" : false,
@@ -4089,7 +4092,7 @@
                 "hideQuickInterval" : false
               },
               "aggregation" : {
-                "type" : "AVG",
+                "type" : "NONE",
                 "limit" : 25000
               },
               "timezone" : null
@@ -4172,10 +4175,7 @@
                   "max" : 100
                 },
                 "axis1" : {
-                  "units" : "°C",
-                  "decimals" : 0,
-                  "show" : true,
-                  "label" : "",
+                  "show" : false,
                   "labelFont" : {
                     "family" : "Roboto",
                     "size" : 12,
@@ -4185,7 +4185,6 @@
                     "lineHeight" : "1"
                   },
                   "labelColor" : "rgba(0, 0, 0, 0.54)",
-                  "position" : "right",
                   "showTickLabels" : true,
                   "tickLabelFont" : {
                     "family" : "Roboto",
@@ -4239,7 +4238,7 @@
                 "yAxisId" : "default",
                 "units" : "%",
                 "decimals" : 0,
-                "lineColor" : "#FFAF40",
+                "lineColor" : "#048AD3",
                 "lineType" : "solid",
                 "lineWidth" : 2,
                 "startSymbol" : "none",
@@ -4256,10 +4255,37 @@
                   "weight" : "400",
                   "lineHeight" : "1"
                 },
-                "labelColor" : "#FFAF40",
+                "labelColor" : "#048AD3",
                 "enableLabelBackground" : false,
                 "labelBackground" : "rgba(255,255,255,0.56)",
                 "latestKey" : "tankMinAlarmThreshold",
+                "latestKeyType" : "attribute"
+              }, {
+                "type" : "latestKey",
+                "yAxisId" : "default",
+                "units" : "%",
+                "decimals" : 0,
+                "lineColor" : "rgb(244, 67, 54)",
+                "lineType" : "solid",
+                "lineWidth" : 2,
+                "startSymbol" : "none",
+                "startSymbolSize" : 5,
+                "endSymbol" : "arrow",
+                "endSymbolSize" : 5,
+                "showLabel" : true,
+                "labelPosition" : "insideEndTop",
+                "labelFont" : {
+                  "family" : "Roboto",
+                  "size" : 12,
+                  "sizeUnit" : "px",
+                  "style" : "normal",
+                  "weight" : "400",
+                  "lineHeight" : "1"
+                },
+                "labelColor" : "rgb(244, 67, 54)",
+                "enableLabelBackground" : false,
+                "labelBackground" : "rgba(255,255,255,0.56)",
+                "latestKey" : "tankMaxAlarmThreshold2",
                 "latestKeyType" : "attribute"
               } ],
               "dataZoom" : true,
@@ -5292,13 +5318,13 @@
               "deviceId" : null,
               "entityAliasId" : "6b08fb94-54f4-49d9-5a8c-9409e66b8970",
               "dataKeys" : [ {
-                "name" : "data_frequency_1",
-                "type" : "timeseries",
-                "label" : "data_frequency_1",
+                "name" : "interval",
+                "type" : "attribute",
+                "label" : "interval",
                 "color" : "#2196f3",
                 "settings" : { },
-                "_hash" : 0.9977997268768006,
-                "aggregationType" : "NONE",
+                "_hash" : 0.8036502655861414,
+                "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
                 "funcBody" : null,
@@ -7459,7 +7485,7 @@
             "pageSize" : 1024,
             "noDataDisplayMessage" : "",
             "borderRadius" : "4px",
-            "configMode" : "basic",
+            "configMode" : "advanced",
             "actions" : {
               "click" : [ {
                 "id" : "8e969843-d739-a122-235c-bef303297e08",
@@ -8045,7 +8071,7 @@
             "padding" : "",
             "settings" : {
               "useMarkdownTextFunction" : false,
-              "markdownTextPattern" : "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Sidebar Menu</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">\r\n</head>\r\n\r\n<body>\r\n    <div class=\"logo-container\">\r\n        <img src=\"/api/images/public/eccgkajobndCxIy5sq6CzrRsqVljRfM\" alt=\"Logo\" class=\"logo\">\r\n    </div>\r\n    <div id=\"customerTitle\" style=\"display:none;\" >${entityName}</div>\r\n    <div class=\"sidebar\">\r\n        <a class=\"menu-item\" id=\"liveApp\">\r\n            <i class=\"fa-solid fa-map\"></i> Mapa\r\n        </a>\r\n        <div class=\"menu-item\" id=\"Devices\">\r\n            <i class=\"fas fa-wifi\"></i> Dispositivos\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Reports\" data-action=\"click\">\r\n            <i class=\"fas fa-book\"></i> Reports\r\n            <i class=\"fas fa-chevron-down\" id=\"reportsArrow\" style=\"margin-left:auto;\"></i>\r\n        </div>\r\n        <div class=\"submenu\" id=\"reportsSubmenu\">\r\n            <a id=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i>Estación Meteorologica</a>\r\n            <a id=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i>Energy Reports</a>\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Summary\">\r\n            <i class=\"fa-solid fa-grip\"></i> Resumen\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Alerts\">\r\n            <i class=\"fas fa-bell\"></i> Alertas\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Settings\">\r\n            <i class=\"fas fa-gear\"></i> Ajustes\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Contact\">\r\n            <i class=\"fas fa-question-circle\"></i> Contacto\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n",
+              "markdownTextPattern" : "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Sidebar Menu</title>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">\r\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\">\r\n</head>\r\n\r\n<body>\r\n    <div class=\"logo-container\">\r\n        <img src=\"/api/images/public/eccgkajobndCxIy5sq6CzrRsqVljRfM\" alt=\"Logo\" class=\"logo\">\r\n    </div>\r\n    <div id=\"customerTitle\" style=\"display:none;\" >${entityName}</div>\r\n    <div class=\"sidebar\">\r\n        <a class=\"menu-item\" id=\"liveApp\">\r\n            <i class=\"fa-solid fa-map\"></i> Mapa\r\n        </a>\r\n        <div class=\"menu-item\" id=\"Devices\">\r\n            <i class=\"fas fa-wifi\"></i> Dispositivos\r\n        </div>\r\n        <!--<div class=\"menu-item\" id=\"Reports\" data-action=\"click\">\r\n            <i class=\"fas fa-book\"></i> Reports\r\n            <i class=\"fas fa-chevron-down\" id=\"reportsArrow\" style=\"margin-left:auto;\"></i>\r\n        </div> -->\r\n        <div class=\"submenu\" id=\"reportsSubmenu\">\r\n            <a id=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i>Estación Meteorologica</a>\r\n            <a id=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i>Energy Reports</a>\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Summary\">\r\n            <i class=\"fa-solid fa-grip\"></i> Resumen\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Alerts\">\r\n            <i class=\"fas fa-bell\"></i> Alertas\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Settings\">\r\n            <i class=\"fas fa-gear\"></i> Ajustes\r\n        </div>\r\n        <div class=\"menu-item\" id=\"Contact\">\r\n            <i class=\"fas fa-question-circle\"></i> Contacto\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>\r\n",
               "markdownTextFunction" : "// === Mapeo itemId → stateId (AJUSTAR A TU DASHBOARD) ===\r\nconst stateMap = {\r\n  liveApp:     'default',\r\n  Devices:     'devices',\r\n  Reports:     null, // solo expande submenú\r\n  WaterReport: 'water_report_state',\r\n  EnergyReport:'energy_report_state',\r\n  Automated:   'automated_reports_state',\r\n  Alerts:      'alarms',\r\n  Contact:     'contact_state'\r\n};\r\n\r\n// ID único para este render (evita choques si hay varios widgets)\r\nconst uid = 'sb_' + Math.random().toString(36).slice(2);\r\n\r\n// HTML (sin <script> y sin href que cambie la URL)\r\nconst html =\r\n  '<div id=\"'+uid+'\" class=\"sidebar\">' +\r\n\r\n    '<a class=\"menu-item\" data-item=\"liveApp\">' +\r\n      '<i class=\"fa-solid fa-map\"></i> Mapa' +\r\n    '</a>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Devices\">' +\r\n      '<i class=\"fas fa-wifi\"></i> Devices' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Reports\" data-expand=\"reportsSubmenu\">' +\r\n      '<i class=\"fas fa-book\"></i> Reports' +\r\n      '<i class=\"fas fa-chevron-down\" style=\"margin-left:auto;\"></i>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"submenu\" id=\"reportsSubmenu\">' +\r\n      '<a data-item=\"WaterReport\"><i class=\"fa-solid fa-droplet\"></i> Water Salinity Reports</a>' +\r\n      '<a data-item=\"EnergyReport\"><i class=\"fa-solid fa-bolt\"></i> Energy Reports</a>' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Automated\">' +\r\n      '<i class=\"fa-solid fa-file\"></i> Automated Reports' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Alerts\">' +\r\n      '<i class=\"fas fa-bell\"></i> Alerts' +\r\n    '</div>' +\r\n\r\n    '<div class=\"menu-item\" data-item=\"Contact\">' +\r\n      '<i class=\"fas fa-question-circle\"></i> Contact' +\r\n    '</div>' +\r\n\r\n  '</div>';\r\n\r\n// Bind de eventos después de que TB inserta el HTML\r\nsetTimeout(function () {\r\n  const root = document.getElementById(uid);\r\n  if (!root || root.__bound) return;\r\n  root.__bound = true;\r\n\r\n  const submenu = root.querySelector('#reportsSubmenu');\r\n\r\n  function clearActive() {\r\n    root.querySelectorAll('.active').forEach(n => {\r\n      n.classList.remove('active');\r\n      n.setAttribute('aria-disabled', 'false');\r\n    });\r\n  }\r\n  function setActive(el) {\r\n    clearActive();\r\n    el.classList.add('active');\r\n    el.setAttribute('aria-disabled', 'true');\r\n  }\r\n  function openStateFor(itemId) {\r\n    const stateId = stateMap[itemId];\r\n    if (!stateId) return; // p.ej. Reports\r\n    try {\r\n      // usa ctx del scope de la función de valor\r\n      if (ctx && ctx.stateController && typeof ctx.stateController.openState === 'function') {\r\n        ctx.stateController.openState(stateId);\r\n        return;\r\n      }\r\n      if (ctx && ctx.actionsApi && typeof ctx.actionsApi.openDashboard === 'function') {\r\n        ctx.actionsApi.openDashboard(null, { stateId }, { openInDialog: false });\r\n      }\r\n    } catch (e) { /* silencioso */ }\r\n  }\r\n\r\n  // Delegación de clicks (sin cambiar la URL)\r\n  root.addEventListener('click', function (e) {\r\n    const item = e.target.closest('[data-item]');\r\n    if (!item || !root.contains(item)) return;\r\n    const id = item.getAttribute('data-item');\r\n\r\n    // Toggle Reports (expansor)\r\n    if (id === 'Reports') {\r\n      e.preventDefault();\r\n      submenu && submenu.classList.toggle('open');\r\n      setActive(item);\r\n      return;\r\n    }\r\n\r\n    e.preventDefault();\r\n    setActive(item);\r\n    openStateFor(id);\r\n  });\r\n\r\n  // Activo inicial (opcional)\r\n  const initial = root.querySelector('[data-item=\"Devices\"]');\r\n  if (initial) {\r\n    setActive(initial);\r\n    // openStateFor('Devices'); // descomentá si querés abrir al cargar\r\n  }\r\n}, 0);\r\n\r\n// devolver el HTML al widget\r\nreturn html;\r\n",
               "applyDefaultMarkdownStyle" : false,
               "markdownCss" : "/* Mantener oculto el logo */\r\n.logo-container { display:none !important; margin:0 !important; padding:0 !important; }\r\n\r\n/* Base */\r\nbody {\r\n    font-family: 'Roboto', sans-serif;\r\n    margin: 0;\r\n    padding: 0;\r\n    background-color: #fff;\r\n}\r\n\r\n/* (Tu bloque extra de logo no es necesario si está oculto) */\r\n/* .logo-container { ... }  — eliminado */\r\n\r\n/* .logo { ... } — innecesario si no se muestra el logo */\r\n/* .logo { width:auto; max-width:100%; } */\r\n\r\n.sidebar {\r\n    width: 100%;\r\n    height: 100vh;\r\n    background-color: #ffffff;\r\n    padding: 0;\r\n}\r\n\r\n/* Ítems de menú */\r\n.menu-item, .submenu a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    height: 60px;              /* 50px en submenú abajo */\r\n    padding: 0 20px;\r\n    width: 100%;\r\n    color: #333;\r\n    text-decoration: none;\r\n    font-size: 16px;           /* 14px en submenú abajo */\r\n    cursor: pointer;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.menu-item:hover,\r\n.submenu a:hover {\r\n    background-color: rgba(235, 235, 235, 0.5); /* 50% opacity */\r\n}\r\n\r\n.menu-item i,\r\n.submenu a i {\r\n    margin-right: 10px;\r\n}\r\n\r\n/* Submenú */\r\n.submenu {\r\n    padding-left: 0;\r\n    display: none;             /* oculto por defecto */\r\n    user-select: none;\r\n    flex-direction: column;\r\n}\r\n\r\n.submenu a {\r\n    height: 50px;\r\n    font-size: 14px;\r\n    background-color: #eee;\r\n    transition: background-color 0.3s ease, color .2s ease;\r\n}\r\n\r\n.submenu a:hover {\r\n    background-color: rgba(235, 96, 96, 0.7); /* 70% opacity */\r\n}\r\n\r\n/* Flecha rotada cuando Reports está activo (si usás el ícono con ese id) */\r\n#Reports:target + #reportsSubmenu + .menu-item .fa-chevron-down,\r\n#Reports:target .fa-chevron-down {\r\n    transform: rotate(180deg);\r\n}\r\n\r\n/* Abrir submenú cuando \"Reports\" es el :target */\r\n#Reports:target + #reportsSubmenu {\r\n    display: flex;\r\n}\r\n\r\n/* Estado ACTIVO usando :target (hash) */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    background: #1f6feb;\r\n    color: #fff;\r\n}\r\n\r\n/* Deshabilitado visual mientras está activo */\r\n.menu-item:target,\r\n.submenu a:target {\r\n    pointer-events: none;      /* no clickeable mientras activo */\r\n    cursor: default;\r\n}\r\n\r\n/* Borde superior en Contact (lo mantenemos) */\r\n#Settings{\r\n    border-top: solid #b8bfd4 1px;\r\n}\r\n"
@@ -9228,172 +9254,6 @@
           "row" : 0,
           "col" : 0,
           "id" : "fabaa211-d864-f512-5aaa-5642c5a64595"
-        },
-        "34354905-2fd2-7d5f-99ba-419d54cefbde" : {
-          "typeFullFqn" : "system.label_value_card",
-          "type" : "latest",
-          "sizeX" : 4.5,
-          "sizeY" : 1,
-          "config" : {
-            "datasources" : [ {
-              "type" : "entity",
-              "name" : "",
-              "deviceId" : null,
-              "entityAliasId" : "6b08fb94-54f4-49d9-5a8c-9409e66b8970",
-              "dataKeys" : [ {
-                "name" : "data_Distance",
-                "type" : "timeseries",
-                "label" : "data_Distance",
-                "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.8944762005987635,
-                "aggregationType" : "NONE",
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : true,
-                "postFuncBody" : "    const secs = Number(time-timePrev)/1000;\r\n    if (!isFinite(secs)) {\r\n        return '';\r\n    }\r\n    if (secs >= 3600) {\r\n        const hs = secs / 3600;\r\n        return hs.toFixed(2) + ' hs';\r\n    } else if (secs >= 60) {\r\n        const mins = secs / 60;\r\n        return mins.toFixed(0) + ' min';\r\n    } else {\r\n        return secs.toFixed(0) + ' s';\r\n    }\r\n"
-              } ],
-              "alarmFilterConfig" : {
-                "statusList" : [ "ACTIVE" ]
-              }
-            } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1754260604418,
-                  "endTimeMs" : 1754347004418
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
-            "showTitle" : false,
-            "backgroundColor" : "rgba(0, 0, 0, 0)",
-            "color" : "rgba(0, 0, 0, 0.87)",
-            "padding" : "0px",
-            "settings" : {
-              "autoScale" : true,
-              "showLabel" : true,
-              "label" : "Intervalo:",
-              "labelFont" : {
-                "family" : "Roboto",
-                "size" : 20,
-                "sizeUnit" : "px",
-                "style" : "normal",
-                "weight" : "400",
-                "lineHeight" : "24px"
-              },
-              "labelColor" : {
-                "type" : "constant",
-                "color" : "rgba(0, 0, 0, 0.87)",
-                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
-              },
-              "showIcon" : true,
-              "iconSize" : 24,
-              "iconSizeUnit" : "px",
-              "icon" : "schedule",
-              "iconColor" : {
-                "type" : "constant",
-                "color" : "#5469FF",
-                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
-              },
-              "valueFont" : {
-                "family" : "Roboto",
-                "size" : 20,
-                "sizeUnit" : "px",
-                "style" : "normal",
-                "weight" : "400",
-                "lineHeight" : "24px"
-              },
-              "valueColor" : {
-                "type" : "constant",
-                "color" : "rgba(0, 0, 0, 0.87)",
-                "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
-              },
-              "background" : {
-                "type" : "color",
-                "color" : "#fff",
-                "overlay" : {
-                  "enabled" : false,
-                  "color" : "rgba(255,255,255,0.72)",
-                  "blur" : 3
-                }
-              },
-              "padding" : "12px"
-            },
-            "title" : "Label & value card",
-            "dropShadow" : true,
-            "enableFullscreen" : false,
-            "titleStyle" : {
-              "fontSize" : "16px",
-              "fontWeight" : 400
-            },
-            "units" : "",
-            "decimals" : 0,
-            "useDashboardTimewindow" : true,
-            "widgetStyle" : { },
-            "actions" : { },
-            "configMode" : "basic",
-            "displayTimewindow" : true,
-            "margin" : "0px",
-            "borderRadius" : "0px",
-            "widgetCss" : "",
-            "pageSize" : 1024,
-            "noDataDisplayMessage" : "",
-            "showTitleIcon" : false,
-            "titleTooltip" : "",
-            "titleFont" : {
-              "size" : 12,
-              "sizeUnit" : "px",
-              "family" : null,
-              "weight" : null,
-              "style" : null,
-              "lineHeight" : "1.6"
-            },
-            "titleIcon" : "",
-            "iconColor" : "rgba(0, 0, 0, 0.87)",
-            "iconSize" : "14px",
-            "timewindowStyle" : {
-              "showIcon" : true,
-              "iconSize" : "14px",
-              "icon" : "query_builder",
-              "iconPosition" : "left",
-              "font" : {
-                "size" : 12,
-                "sizeUnit" : "px",
-                "family" : null,
-                "weight" : null,
-                "style" : null,
-                "lineHeight" : "1"
-              },
-              "color" : null
-            }
-          },
-          "row" : 0,
-          "col" : 0,
-          "id" : "34354905-2fd2-7d5f-99ba-419d54cefbde"
         },
         "c979e0ca-848f-07da-2365-5280f1f33323" : {
           "typeFullFqn" : "system.status_widget",
@@ -11463,6 +11323,38 @@
                       "col" : 4
                     }
                   }
+                },
+                "lg" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 24,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 24,
+                    "viewFormat" : "grid",
+                    "autoFillHeight" : true,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "bde68678-7e78-3712-8d2b-627b5b8e8b11" : {
+                      "sizeX" : 20,
+                      "sizeY" : 10,
+                      "resizable" : true,
+                      "row" : 0,
+                      "col" : 4
+                    },
+                    "35346681-a6d0-f40e-e68f-4998d0978a2e" : {
+                      "sizeX" : 4,
+                      "sizeY" : 10,
+                      "row" : 0,
+                      "col" : 0
+                    }
+                  }
                 }
               }
             }
@@ -11507,14 +11399,14 @@
                   },
                   "widgets" : {
                     "ec20cec1-99ac-8c09-a11c-c1d2a049e756" : {
-                      "sizeX" : 11,
-                      "sizeY" : 8,
+                      "sizeX" : 20,
+                      "sizeY" : 11,
                       "row" : 0,
-                      "col" : 5
+                      "col" : 4
                     },
                     "35346681-a6d0-f40e-e68f-4998d0978a2e" : {
-                      "sizeX" : 5,
-                      "sizeY" : 13,
+                      "sizeX" : 4,
+                      "sizeY" : 11,
                       "row" : 0,
                       "col" : 0
                     }
@@ -11731,7 +11623,10 @@
                   "sizeX" : 8,
                   "sizeY" : 1,
                   "row" : 2,
-                  "col" : 4
+                  "col" : 4,
+                  "resizable" : true,
+                  "mobileHide" : true,
+                  "desktopHide" : true
                 }
               },
               "gridSettings" : {
@@ -11779,7 +11674,7 @@
                 "ba33a64d-74d2-e8d7-8d0e-ee2e2d10d17c" : {
                   "sizeX" : 10,
                   "sizeY" : 9,
-                  "row" : 20,
+                  "row" : 24,
                   "col" : 14
                 },
                 "fa593b45-ec47-29c1-96b2-7a2a886f9c3f" : {
@@ -11789,17 +11684,17 @@
                   "row" : 4,
                   "col" : 14
                 },
+                "208c634c-f5bd-f809-dc5e-ed4259f13f90" : {
+                  "sizeX" : 10,
+                  "sizeY" : 4,
+                  "row" : 20,
+                  "col" : 14
+                },
                 "a5a088e4-be2c-4ed4-c329-7ee102dface0" : {
                   "sizeX" : 14,
                   "sizeY" : 2,
                   "row" : 44,
                   "col" : 0
-                },
-                "34354905-2fd2-7d5f-99ba-419d54cefbde" : {
-                  "sizeX" : 10,
-                  "sizeY" : 4,
-                  "row" : 29,
-                  "col" : 14
                 }
               },
               "gridSettings" : {
@@ -11929,7 +11824,7 @@
                     "ba33a64d-74d2-e8d7-8d0e-ee2e2d10d17c" : {
                       "sizeX" : 10,
                       "sizeY" : 9,
-                      "row" : 20,
+                      "row" : 24,
                       "col" : 13
                     },
                     "fa593b45-ec47-29c1-96b2-7a2a886f9c3f" : {
@@ -11942,7 +11837,7 @@
                     "208c634c-f5bd-f809-dc5e-ed4259f13f90" : {
                       "sizeX" : 10,
                       "sizeY" : 4,
-                      "row" : 29,
+                      "row" : 20,
                       "col" : 13
                     },
                     "a5a088e4-be2c-4ed4-c329-7ee102dface0" : {
@@ -12223,13 +12118,13 @@
                   "widgets" : {
                     "a1a9e001-a144-0878-d695-aae0affe8182" : {
                       "sizeX" : 20,
-                      "sizeY" : 13,
+                      "sizeY" : 10,
                       "row" : 0,
-                      "col" : 5
+                      "col" : 4
                     },
                     "35346681-a6d0-f40e-e68f-4998d0978a2e" : {
                       "sizeX" : 4,
-                      "sizeY" : 13,
+                      "sizeY" : 10,
                       "row" : 0,
                       "col" : 0
                     }
@@ -12721,27 +12616,27 @@
         "toolbarAlwaysOpen" : true,
         "titleColor" : "rgba(0,0,0,0.870588)",
         "showDashboardLogo" : true,
-        "dashboardLogoUrl" : "tb-image;/api/images/tenant/logo_title_white_(1).png",
+        "dashboardLogoUrl" : "tb-image;/api/images/tenant/logo_title_white.png",
         "hideToolbar" : false,
         "showFilters" : false,
         "showUpdateDashboardImage" : false,
         "dashboardCss" : ".tb-widget-container > .tb-widget {\r\n  border-radius: 12px !important;\r\n  overflow: hidden;\r\n}\r\n.tb-powered-by-footer {\r\n  display: none !important;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/* 1) Desactivar el autoscale por transform */\r\n.tb-widget .auto-scale,\r\n.tb-widget .tb-auto-scale,\r\n.tb-widget .value.auto-scale,\r\n.tb-widget .tb-value-auto-scale {\r\n  transform: none !important;\r\n  transform-origin: center !important;\r\n}\r\n\r\n/* 2) La tarjeta llena su alto y el contenido no se “achica de más” */\r\n.tb-widget .mat-card, \r\n.tb-widget .tb-card,\r\n.tb-widget .mat-card-content,\r\n.tb-widget .tb-card-content {\r\n  height: 100%;\r\n}\r\n.tb-widget .mat-card-content,\r\n.tb-widget .tb-card-content {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between; /* o center */\r\n  gap: 12px;\r\n}\r\n\r\n/* 3) Tipografía fluida (no se hace minúscula) */\r\n.tb-widget .tb-card-title,\r\n.tb-widget .mat-card-title,\r\n.tb-widget .title {\r\n  font-size: clamp(14px, 1.4vw, 18px) !important;\r\n  line-height: 1.2;\r\n}\r\n.tb-widget .value, \r\n.tb-widget .tb-card-value,\r\n.tb-widget .latest-value {\r\n  font-size: clamp(18px, 2.2vw, 32px) !important;\r\n  line-height: 1.1;\r\n  font-weight: 600;\r\n}\r\n\r\n/* 4) Bordes/espacios más sobrios (evita “mucho borde” al reducir) */\r\n.tb-widget .mat-card, \r\n.tb-widget .tb-card {\r\n  padding: clamp(8px, 1.2vw, 14px) !important;\r\n  border-radius: 12px;\r\n}\r\n"
       }
     },
-    "name" : "Main TEST",
+    "name" : "Main Plural",
     "resources" : null,
     "assignedCustomers" : [ {
       "customerId" : {
         "entityType" : "CUSTOMER",
-        "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+        "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
       },
-      "title" : "Campo La Travesia",
+      "title" : "Plural",
       "public" : false
     } ],
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",
-      "id" : "3dbe2550-998f-11f0-b045-c1dbc0c3e378"
+      "id" : "40674570-d55d-11f0-aaec-896783e71c4d"
     }
   },
   "relations" : [ ],

@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "16775330-3e50-11f0-bbbd-d5b23296cf03"
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
     },
     "deviceData" : {
       "configuration" : {
@@ -20,105 +20,89 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "199d12b0-3e9c-11f0-bbbd-d5b23296cf03"
+      "id" : "01134310-8b66-11f0-8d0c-9de3d92fa448"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "762c90a0-3e60-11f0-bbbd-d5b23296cf03"
+      "id" : "67fcb3d0-060a-11f1-aaec-896783e71c4d"
     },
-    "label" : "Lanza Suelo Lote 2",
-    "name" : "Lanza Suelo Lote 1",
+    "label" : "",
+    "name" : "Sonoff1",
     "softwareId" : null,
-    "type" : "lanza"
+    "type" : "EquipmentSensor"
   },
   "credentials" : {
-    "credentialsId" : "jxvkkIaQC83A9vfdzMbU",
-    "credentialsType" : "ACCESS_TOKEN",
-    "credentialsValue" : null
+    "credentialsId" : "b6556f01e83e3eb2d90d2893498a939098eaa162f7d288b777eb5d09ecce2f01",
+    "credentialsType" : "MQTT_BASIC",
+    "credentialsValue" : "{\"clientId\":\"6i0uupczjtolzg44z647\",\"userName\":\"bszqzluux2knizbjzqdc\",\"password\":\"9ndlh596mt649t6d6haz\"}"
   },
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1769890448150,
+      "lastUpdateTs" : 1770734430275,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
-      "doubleValue" : null,
+      "doubleValue" : 3.6,
       "jsonValue" : null,
-      "key" : "battVal",
-      "lastUpdateTs" : 1749082532462,
-      "longValue" : 52,
-      "strValue" : null
-    }, {
-      "booleanValue" : true,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "humidityAlarmFlag",
-      "lastUpdateTs" : 1748798359647,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1770677719023,
       "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "humidityAlarmThreshold",
-      "lastUpdateTs" : 1748798772900,
-      "longValue" : 30,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1769890406380,
-      "longValue" : 1769890406379,
+      "lastUpdateTs" : 1770734430271,
+      "longValue" : 1770734430271,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1771519686090,
-      "longValue" : 1771519685864,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -35.04217192251423,
-      "jsonValue" : null,
-      "key" : "latitude",
-      "lastUpdateTs" : 1759102022180,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : -59.39096331596375,
-      "jsonValue" : null,
-      "key" : "longitude",
-      "lastUpdateTs" : 1759102022180,
-      "longValue" : null,
-      "strValue" : null
-    }, {
-      "booleanValue" : true,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "temperatureAlarmFlag",
-      "lastUpdateTs" : 1748798311776,
-      "longValue" : null,
+      "lastUpdateTs" : 1770733796160,
+      "longValue" : 1770733795614,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "temperatureAlarmThreshold",
-      "lastUpdateTs" : 1749306965362,
-      "longValue" : 25,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1770731586248,
+      "longValue" : 1770731586248,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1770733795633,
+      "longValue" : 1770733795633,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1770731733769,
+      "longValue" : null,
+      "strValue" : "door_state"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"door_state\":{\"label\":\"Estado\",\"unit\":\"\"},\"last_open_ts\":{\"label\":\"Última apertura\",\"unit\":\"\"},\"open_duration_s\":{\"label\":\"Duración apertura\",\"unit\":\"s\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1770731733769,
+      "longValue" : null,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

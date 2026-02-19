@@ -28,8 +28,8 @@
       "entityType" : "DEVICE",
       "id" : "20c21590-b5d4-11f0-b045-c1dbc0c3e378"
     },
-    "label" : "aguada",
-    "name" : "DDS75 001",
+    "label" : "Reservorio Corrales Destete",
+    "name" : "DS-US1-LS-0001",
     "softwareId" : null,
     "type" : "Ultrasonico"
   },
@@ -41,28 +41,164 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1762003081205,
+      "lastUpdateTs" : 1771507782089,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
-      "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1762003081198,
-      "longValue" : 1762003081198,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1771417802479,
+      "longValue" : null,
+      "strValue" : "off"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "alarm_type",
+      "lastUpdateTs" : 1767423263633,
+      "longValue" : null,
+      "strValue" : "Nivel de tanque alto"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1764680494647,
+      "longValue" : 4,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "fullDist",
+      "lastUpdateTs" : 1765033389592,
+      "longValue" : 36,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1771432201630,
+      "longValue" : 1771432201629,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1765033389611,
+      "longValue" : 3600000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1765033389592,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "label",
+      "lastUpdateTs" : 1765034337378,
+      "longValue" : null,
+      "strValue" : "Reservorio Corrales"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1762002454358,
-      "longValue" : 1762002451781,
+      "lastUpdateTs" : 1771518579091,
+      "longValue" : 1771518578385,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -35.42316307979918,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1765040424962,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -66.97269916534425,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1765040424962,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowDist",
+      "lastUpdateTs" : 1765033389592,
+      "longValue" : 152,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1770143525277,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankHighAlarmFlag",
+      "lastUpdateTs" : 1766067753409,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankLowAlarmFlag",
+      "lastUpdateTs" : 1765499644888,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMaxAlarmThreshold",
+      "lastUpdateTs" : 1766067753409,
+      "longValue" : 85,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMinAlarmThreshold",
+      "lastUpdateTs" : 1765499644888,
+      "longValue" : 55,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankVolume",
+      "lastUpdateTs" : 1765033389592,
+      "longValue" : 240000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1764693336299,
+      "longValue" : null,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

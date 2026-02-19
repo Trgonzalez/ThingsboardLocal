@@ -29,7 +29,7 @@
       "id" : "be124930-b478-11f0-b045-c1dbc0c3e378"
     },
     "label" : "Temperatura 1",
-    "name" : "Dragino S31",
+    "name" : "TH-S31-LS-0001",
     "softwareId" : null,
     "type" : "lanza"
   },
@@ -41,28 +41,36 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1761856342347,
+      "lastUpdateTs" : 1765297680781,
       "longValue" : null,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1764690057306,
+      "longValue" : 4,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1761856080361,
-      "longValue" : 1761856080361,
+      "lastUpdateTs" : 1765297680777,
+      "longValue" : 1765297680777,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1762295752357,
-      "longValue" : 1762295749635,
+      "lastUpdateTs" : 1765297030658,
+      "longValue" : 1765297028384,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

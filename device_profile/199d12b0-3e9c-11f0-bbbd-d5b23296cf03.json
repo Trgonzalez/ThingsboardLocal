@@ -113,15 +113,15 @@
         "type" : "DEFAULT"
       },
       "provisionConfiguration" : {
-        "type" : "DISABLED",
-        "provisionDeviceSecret" : null
+        "type" : "ALLOW_CREATE_NEW_DEVICES",
+        "provisionDeviceSecret" : "xtevg0lhipgj3syib2zc"
       },
       "transportConfiguration" : {
         "type" : "DEFAULT"
       }
     },
-    "provisionDeviceKey" : null,
-    "provisionType" : "DISABLED",
+    "provisionDeviceKey" : "63ahhb09ikujbbt06dzl",
+    "provisionType" : "ALLOW_CREATE_NEW_DEVICES",
     "softwareId" : null,
     "transportType" : "DEFAULT",
     "type" : "DEFAULT"
@@ -131,6 +131,52 @@
     "SERVER_SCOPE" : [ ]
   },
   "calculatedFields" : [ {
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "BatMaxV" : {
+          "defaultValue" : "3.6",
+          "refEntityKey" : {
+            "key" : "battery_nominal",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "BatMinV" : {
+          "defaultValue" : "3",
+          "refEntityKey" : {
+            "key" : "battery_min",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "BatV" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "data_Bat",
+            "type" : "TS_LATEST"
+          }
+        }
+      },
+      "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
+      "output" : {
+        "name" : "",
+        "type" : "TIME_SERIES"
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1764682580618,
+      "failuresEnabled" : true
+    },
+    "name" : "BatPercentage",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SCRIPT"
+  }, {
     "configuration" : {
       "type" : "SCRIPT",
       "arguments" : {

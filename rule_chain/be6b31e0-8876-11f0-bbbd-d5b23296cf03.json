@@ -218,6 +218,19 @@
     "type" : "Uses",
     "typeGroup" : "COMMON",
     "version" : 19171
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "1f04e460-6c16-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "be6b31e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 24283
   } ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]

@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1761856084347,
+      "lastUpdateTs" : 1769890451173,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,8 +53,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "battVal",
-      "lastUpdateTs" : 1749082543410,
-      "longValue" : 73,
+      "lastUpdateTs" : 1770691080827,
+      "longValue" : 74,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -101,16 +101,32 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1761856020360,
-      "longValue" : 1761856020360,
+      "lastUpdateTs" : 1769890406379,
+      "longValue" : 1769890406379,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1762295728355,
-      "longValue" : 1762295726791,
+      "lastUpdateTs" : 1771519689088,
+      "longValue" : 1771519687551,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1770729725074,
+      "longValue" : 1770729725074,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1770729725577,
+      "longValue" : 1770729725577,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -192,7 +208,7 @@
           }
         }
       },
-      "expression" : "var result = {};\r\n\r\nif (comedero1.values.size() >= 2) {\r\n    var delta1 = comedero1.last - comedero1.first;\r\n    if (delta1 < 0) {\r\n        result[\"consumoComedero1\"] = -toFixed(delta1, 2);\r\n    }\r\n}\r\n\r\nif (comedero2.values.size() >= 2) {\r\n    var delta2 = comedero2.last - comedero2.first;\r\n    if (delta2 < 0) {\r\n        result[\"consumoComedero2\"] = -toFixed(delta2, 2);\r\n    }\r\n}\r\n\r\nif (comedero3.values.size() >= 2) {\r\n    var delta3 = comedero3.last - comedero3.first;\r\n    if (delta3 < 0) {\r\n        result[\"consumoComedero3\"] = -toFixed(delta3, 2);\r\n    }\r\n}\r\n\r\nreturn result;",
+      "expression" : "var result = {};\r\n\r\n// Asumo que comedero1, comedero2, comedero3 ya están definidos como time‐series arguments o similares\r\nif (comedero1.values.size() >= 2) {\r\n    var delta1 = comedero1.last - comedero1.first;\r\n    if (delta1 < 0) {\r\n        result.consumoComedero1 = -(delta1);\r\n    }\r\n}\r\nif (comedero2.values.size() >= 2) {\r\n    var delta2 = comedero2.last - comedero2.first;\r\n    if (delta2 < 0) {\r\n        result.consumoComedero2 = -(delta2);\r\n    }\r\n}\r\nif (comedero3.values.size() >= 2) {\r\n    var delta3 = comedero3.last - comedero3.first;\r\n    if (delta3 < 0) {\r\n        result.consumoComedero3 = -(delta3);\r\n    }\r\n}\r\n\r\nreturn result;",
       "output" : {
         "name" : "",
         "type" : "TIME_SERIES"

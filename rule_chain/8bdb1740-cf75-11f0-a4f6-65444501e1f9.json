@@ -1,0 +1,509 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Send notification to WA and Email"
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "8c441240-cf75-11f0-a4f6-65444501e1f9"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "8bdb1740-cf75-11f0-a4f6-65444501e1f9"
+    },
+    "name" : "Send Sensor Alarm Noti",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 0,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 5,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 4,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 6,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 8,
+      "toIndex" : 9,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 10,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 11,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 3,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 7,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 12,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 375,
+        "layoutY" : 543
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://api.telegram.org/bot7813852758:AAFImPbdVAnfT8Y0Ty2lW6ku0zVHzREF9TM/sendMessage",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : false,
+        "ignoreRequestBody" : false,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1759441719457,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c4068c0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "telegram",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 378,
+        "layoutY" : 466
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// ES5 compatible Script (Rule Engine) — NO cambia msgType\r\n\r\n// Helpers\r\nfunction toArray(v) {\r\n  if (!v) return [];\r\n  if (Object.prototype.toString.call(v) === '[object Array]') return v;\r\n  if (typeof v === 'string') { try { var p = JSON.parse(v); return toArray(p); } catch(e) { return []; } }\r\n  if (typeof v === 'object') return [v];\r\n  return [];\r\n}\r\nfunction parseISO(s) {\r\n  if (s === null || s === undefined || s === '') return NaN;\r\n  if (typeof s === 'number') return s;\r\n  s = String(s).trim();\r\n  if (/^\\d{10}$/.test(s)) return Number(s) * 1000; // epoch s\r\n  if (/^\\d{13}$/.test(s)) return Number(s);        // epoch ms\r\n  var m = /^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2})(?::(\\d{2})(?:\\.(\\d{1,3}))?)?(Z|[+\\-]\\d{2}:?\\d{2})?$/.exec(s);\r\n  if (!m) { var t = Date.parse(s); return isNaN(t) ? NaN : t; }\r\n  var y=+m[1], mo=+m[2]-1, d=+m[3], h=+m[4], mi=+m[5];\r\n  var se=m[6]?+m[6]:0, ms=m[7]?+((m[7]+'000').slice(0,3)):0, tz=m[8]||'Z';\r\n  var utc = Date.UTC(y,mo,d,h,mi,se,ms);\r\n  if (tz==='Z'||tz==='z'||tz===undefined) return utc;\r\n  var sign = tz.charAt(0)==='-'?-1:1, hh,mm;\r\n  if (tz.indexOf(':')!==-1){ hh=+tz.substr(1,2); mm=+tz.substr(4,2); }\r\n  else { hh=+tz.substr(1,2); mm=+tz.substr(3,2)||0; }\r\n  return utc - sign*(hh*60+mm)*60000;\r\n}\r\n\r\n// Recipients desde metadata.notifications\r\nvar list = toArray(metadata.notifications);\r\nvar now  = Date.now();\r\nvar seen = {};\r\nvar recipients = [];\r\nfor (var i=0;i<list.length;i++){\r\n  var u = list[i];\r\n  if (!u || !u.chatID) continue;\r\n  var cid = String(u.chatID);\r\n  if (seen[cid]) continue; seen[cid] = true;\r\n\r\n  // --- GATE FINAL ---\r\n  // Normalizar '' a null para until\r\n  var untilRaw = (u.disabled_until === '') ? null : u.disabled_until;\r\n  var untilTs  = parseISO(untilRaw);\r\n  var hasUntil = !(untilRaw === null || untilRaw === undefined);\r\n  var muted    = (!isNaN(untilTs) && untilTs > now);       // futuro => bloquea\r\n  var expired  = (!isNaN(untilTs) && untilTs <= now);      // pasado => permite\r\n  var flagFalse = (u.receiveNotifications === false) ||\r\n                  (typeof u.receiveNotifications === 'string' &&\r\n                   u.receiveNotifications.trim().toLowerCase() === 'false');\r\n\r\n  var allow = false;\r\n  if (muted) {\r\n    allow = false;                         // aún muteado\r\n  } else if (!hasUntil) {\r\n    allow = !flagFalse;                    // sin until: respetar flag (false bloquea)\r\n  } else {\r\n    // tiene until pero no está muteado: vencido o inválido => permitir\r\n    allow = true;\r\n  }\r\n  if (!allow) continue;\r\n\r\n  recipients.push(u);\r\n}\r\n\r\n// Armar texto (Markdown)\r\nvar name     = msg.name || 'Alarma';\r\nvar devName  = metadata.deviceLabel || metadata.deviceName || metadata.originatorName || 'dispositivo';\r\nvar dataStr  = '';\r\nif (msg.details && typeof msg.details === 'object' && msg.details.data !== undefined) {\r\n  if (typeof msg.details.data === 'object') { try { dataStr = JSON.stringify(msg.details.data); } catch(e){ dataStr = String(msg.details.data); } }\r\n  else { dataStr = String(msg.details.data); }\r\n} else if (msg.data !== undefined) {\r\n  dataStr = String(msg.data);\r\n}\r\n\r\nvar alarmText =\r\n  '🚨 *Alarma:*\\n' +\r\n  '🔹 *Razón:* ' + name + '\\n' +\r\n  '🔹 *Dispositivo:* ' + devName + '\\n' +\r\n  '🔹 *Telemetría:*\\n' +\r\n  dataStr;\r\n\r\n// Emitir un mensaje por destinatario (no cambiar msgType)\r\nvar out = [];\r\nfor (var j=0;j<recipients.length;j++){\r\n  out.push({\r\n    msg: { chat_id: String(recipients[j].chatID), text: alarmText, parse_mode: \"Markdown\" },\r\n    metadata: metadata,\r\n    msgType: 'TELEGRAM_MSG'\r\n  });\r\n}\r\nreturn out;\r\n",
+        "tbelScript" : "var newMsgList = [];\r\nvar alarmText = '🚨 *Alarma activada*\\n\\n🔔 *' + msg.name + '*\\n📟 Dispositivo: ' + metadata.deviceName +\r\n                '\\n📊 Datos: ' + msg.details.data;\r\n\r\n// El atributo `telegramSubs` debe estar disponible en metadata (usá un nodo de enrichment antes)\r\nvar subs = metadata.telegramSubs ? JSON.parse(metadata.telegramSubs) : {};\r\n\r\nfor (var chatId in subs) {\r\n    if (subs[chatId]) {\r\n        newMsgList.push({\r\n            msg: {\r\n                text: alarmText,\r\n                chat_id: parseInt(chatId)\r\n            },\r\n            metadata: metadata,\r\n            msgType: msgType\r\n        });\r\n    }\r\n}\r\n\r\nreturn newMsgList;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1762296246567,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c40b6e0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "script",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 379,
+        "layoutY" : 397
+      },
+      "configuration" : {
+        "dataToFetch" : "ATTRIBUTES",
+        "dataMapping" : {
+          "telegram" : "notifications"
+        },
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757620324629,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c410500-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "atributos customer",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 382,
+        "layoutY" : 322
+      },
+      "configuration" : {
+        "dataMapping" : {
+          "label" : "deviceLabel"
+        },
+        "ignoreNullStrings" : false,
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757779774093,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c415320-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "TELEGRAM",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetOriginatorFieldsNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 592,
+        "layoutY" : 467
+      },
+      "configuration" : {
+        "fromTemplate" : "noreply@nexoragro.com",
+        "toTemplate" : "${recipientsCsv}",
+        "ccTemplate" : null,
+        "bccTemplate" : null,
+        "subjectTemplate" : "Alarma - $[originatorLabel]",
+        "mailBodyType" : "false",
+        "bodyTemplate" : "$[name] - $[originatorLabel]\n\n$[details.data]"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757781088374,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c417a30-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "Send mail",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.mail.TbMsgToEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 594,
+        "layoutY" : 544
+      },
+      "configuration" : {
+        "useSystemSmtpSettings" : true,
+        "smtpHost" : "localhost",
+        "smtpPort" : 25,
+        "username" : null,
+        "password" : null,
+        "smtpProtocol" : "smtp",
+        "timeout" : 10000,
+        "enableTls" : false,
+        "tlsVersion" : "TLSv1.2",
+        "enableProxy" : false,
+        "proxyHost" : null,
+        "proxyPort" : null,
+        "proxyUser" : null,
+        "proxyPassword" : null
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1759441719457,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c41c850-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "Send email",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.mail.TbSendEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 593,
+        "layoutY" : 398
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "function toCsv(raw){\r\n  var data = raw;\r\n  if (typeof raw === 'string') { try { data = JSON.parse(raw); } catch(e){ data = null; } }\r\n\r\n  // Soporta: {recipients:[{email,enabled}]}, o directamente [{email,enabled}], o array de strings\r\n  var list = [];\r\n  if (Array.isArray(data)) {\r\n    list = data;\r\n  } else if (data && Array.isArray(data.recipients)) {\r\n    list = data.recipients;\r\n  }\r\n\r\n  // Normaliza a emails habilitados\r\n  var emails = [];\r\n  for (var i=0; i<list.length; i++){\r\n    var r = list[i];\r\n    var email = typeof r === 'string' ? r : (r && r.email);\r\n    var enabled = typeof r === 'string' ? true : (r && (r.enabled===true || r.enabled==='true' || r.enabled===1 || r.enabled==='1'));\r\n    if (enabled && email && String(email).trim()) emails.push(String(email).trim());\r\n  }\r\n\r\n  // dedupe (case-insensitive)\r\n  var seen = {}, out = [];\r\n  for (var j=0; j<emails.length; j++){\r\n    var k = emails[j].toLowerCase();\r\n    if (!seen[k]) { seen[k]=1; out.push(emails[j]); }\r\n  }\r\n  return out.join(','); // sin espacios si el nodo es sensible\r\n}\r\n\r\nmetadata.recipientsCsv = toCsv(metadata.emailRecipients || msg.emailRecipients);\r\nreturn { msg: msg, metadata: metadata, msgType: msgType };\r\n",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757786267246,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c423d80-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "get email recipients",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 589,
+        "layoutY" : 322
+      },
+      "configuration" : {
+        "dataToFetch" : "ATTRIBUTES",
+        "dataMapping" : {
+          "emailRecipients" : "emailRecipients"
+        },
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1757785538109,
+        "failuresEnabled" : false
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c426490-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "EMAIL",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 796,
+        "layoutY" : 321
+      },
+      "configuration" : {
+        "dataMapping" : {
+          "label" : "deviceLabel"
+        },
+        "ignoreNullStrings" : false,
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1762296246567,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c428ba0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "WPP",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetOriginatorFieldsNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 796,
+        "layoutY" : 396
+      },
+      "configuration" : {
+        "dataToFetch" : "ATTRIBUTES",
+        "dataMapping" : {
+          "whatsapp" : "notifications"
+        },
+        "fetchTo" : "METADATA"
+      },
+      "configurationVersion" : 1,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1762366082260,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c42b2b0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "get recipients",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 797,
+        "layoutY" : 465
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "// ES5 compatible Script (Rule Engine) — NO cambia msgType\r\n\r\n// Helpers\r\nfunction toArray(v) {\r\n  if (!v) return [];\r\n  if (Object.prototype.toString.call(v) === '[object Array]') return v;\r\n  if (typeof v === 'string') { try { var p = JSON.parse(v); return toArray(p); } catch(e) { return []; } }\r\n  if (typeof v === 'object') return [v];\r\n  return [];\r\n}\r\nfunction parseISO(s) {\r\n  if (s === null || s === undefined || s === '') return NaN;\r\n  if (typeof s === 'number') return s;\r\n  s = String(s).trim();\r\n  if (/^\\d{10}$/.test(s)) return Number(s) * 1000; // epoch s\r\n  if (/^\\d{13}$/.test(s)) return Number(s);        // epoch ms\r\n  var m = /^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2})(?::(\\d{2})(?:\\.(\\d{1,3}))?)?(Z|[+\\-]\\d{2}:?\\d{2})?$/.exec(s);\r\n  if (!m) { var t = Date.parse(s); return isNaN(t) ? NaN : t; }\r\n  var y=+m[1], mo=+m[2]-1, d=+m[3], h=+m[4], mi=+m[5];\r\n  var se=m[6]?+m[6]:0, ms=m[7]?+((m[7]+'000').slice(0,3)):0, tz=m[8]||'Z';\r\n  var utc = Date.UTC(y,mo,d,h,mi,se,ms);\r\n  if (tz==='Z'||tz==='z'||tz===undefined) return utc;\r\n  var sign = tz.charAt(0)==='-'?-1:1, hh,mm;\r\n  if (tz.indexOf(':')!==-1){ hh=+tz.substr(1,2); mm=+tz.substr(4,2); }\r\n  else { hh=+tz.substr(1,2); mm=+tz.substr(3,2)||0; }\r\n  return utc - sign*(hh*60+mm)*60000;\r\n}\r\nfunction trimParam(s, maxLen) {\r\n  maxLen = maxLen || 1024; // límite de parámetro de template de WhatsApp (aprox. 1024 chars)\r\n  s = (s === null || s === undefined) ? '' : String(s);\r\n  return s.length > maxLen ? s.slice(0, maxLen) : s;\r\n}\r\nfunction getFirstName(fullName) {\r\n  if (!fullName) return '';\r\n  fullName = String(fullName).trim();\r\n  var p = fullName.indexOf(' ');\r\n  return p > 0 ? fullName.slice(0, p) : fullName;\r\n}\r\n\r\n// Recipients desde metadata.notifications\r\nvar list = toArray(metadata.notifications);\r\nvar now  = Date.now();\r\nvar seen = {};\r\nvar recipients = [];\r\nfor (var i=0;i<list.length;i++){\r\n  var u = list[i];\r\n  if (!u || !u.chatID) continue;\r\n  var cid = String(u.chatID);\r\n  if (seen[cid]) continue; seen[cid] = true;\r\n\r\n  // --- GATE FINAL ---\r\n  // Normalizar '' a null para until\r\n  var untilRaw = (u.disabled_until === '') ? null : u.disabled_until;\r\n  var untilTs  = parseISO(untilRaw);\r\n  var hasUntil = !(untilRaw === null || untilRaw === undefined);\r\n  var muted    = (!isNaN(untilTs) && untilTs > now);       // futuro => bloquea\r\n  var expired  = (!isNaN(untilTs) && untilTs <= now);      // pasado => permite\r\n  var flagFalse = (u.receiveNotifications === false) ||\r\n                  (typeof u.receiveNotifications === 'string' &&\r\n                   u.receiveNotifications.trim().toLowerCase() === 'false');\r\n\r\n  var allow = false;\r\n  if (muted) {\r\n    allow = false;                         // aún muteado\r\n  } else if (!hasUntil) {\r\n    allow = !flagFalse;                    // sin until: respetar flag (false bloquea)\r\n  } else {\r\n    // tiene until pero no está muteado: vencido o inválido => permitir\r\n    allow = true;\r\n  }\r\n  if (!allow) continue;\r\n\r\n  recipients.push(u);\r\n}\r\n\r\n// Armar valores\r\nvar reason   = msg.name || 'Alarma'; // (3) estado/razón\r\nvar devName  = metadata.deviceLabel || metadata.deviceName || metadata.originatorName || 'dispositivo'; // (2)\r\nvar dataStr  = '';\r\nif (msg.details && typeof msg.details === 'object' && msg.details.data !== undefined) {\r\n  if (typeof msg.details.data === 'object') { try { dataStr = JSON.stringify(msg.details.data); } catch(e){ dataStr = String(msg.details.data); } }\r\n  else { dataStr = String(msg.details.data); }\r\n} else if (msg.data !== undefined) {\r\n  dataStr = String(msg.data);\r\n}\r\n// sanitizar/limitar parámetros para WhatsApp\r\nreason  = trimParam(reason, 1024);\r\ndevName = trimParam(devName, 1024);\r\ndataStr = trimParam(dataStr, 1024);\r\n\r\n// Emitir un mensaje por destinatario (NO cambia msgType)\r\nvar out = [];\r\nfor (var j=0;j<recipients.length;j++){\r\n  var r = recipients[j];\r\n  var firstName = getFirstName(r.nombre || '') || 'Hola';\r\n  firstName = trimParam(firstName, 60); // razonable para nombre\r\n\r\n  // Payload para WhatsApp Template API\r\n  var waPayload = {\r\n    messaging_product: \"whatsapp\",\r\n    to: String(r.chatID),                 // (phone en formato E.164 sin '+')\r\n    type: \"template\",\r\n    template: {\r\n      name: \"sensor_status\",\r\n      language: { code: \"es_AR\" },          // ajustá si tu template está en otro idioma/locale\r\n      components: [\r\n        {\r\n          type: \"body\",\r\n          parameters: [\r\n            { type: \"text\", text: firstName }, // (1) Nombre (trim al primer espacio)\r\n            { type: \"text\", text: devName },   // (2) Dispositivo\r\n            { type: \"text\", text: reason },    // (3) Estado / razón\r\n            { type: \"text\", text: dataStr }    // (4) Telemetría\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  };\r\n\r\n  out.push({\r\n    msg: waPayload,            // el siguiente nodo HTTP debe usar el body del mensaje\r\n    metadata: metadata,        // preservamos metadata\r\n    msgType: msgType           // NO cambiamos el msgType original\r\n  });\r\n}\r\n\r\nreturn out;\r\n",
+        "tbelScript" : "var newMsgList = [];\r\nvar alarmText = '🚨 *Alarma activada*\\n\\n🔔 *' + msg.name + '*\\n📟 Dispositivo: ' + metadata.deviceName +\r\n                '\\n📊 Datos: ' + msg.details.data;\r\n\r\n// El atributo `telegramSubs` debe estar disponible en metadata (usá un nodo de enrichment antes)\r\nvar subs = metadata.telegramSubs ? JSON.parse(metadata.telegramSubs) : {};\r\n\r\nfor (var chatId in subs) {\r\n    if (subs[chatId]) {\r\n        newMsgList.push({\r\n            msg: {\r\n                text: alarmText,\r\n                chat_id: parseInt(chatId)\r\n            },\r\n            metadata: metadata,\r\n            msgType: msgType\r\n        });\r\n    }\r\n}\r\n\r\nreturn newMsgList;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1762366126053,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c42d9c0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "script",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 798,
+        "layoutY" : 542
+      },
+      "configuration" : {
+        "restEndpointUrlPattern" : "https://graph.facebook.com/v21.0/866163109910145/messages",
+        "requestMethod" : "POST",
+        "useSimpleClientHttpFactory" : false,
+        "parseToPlainText" : false,
+        "ignoreRequestBody" : false,
+        "enableProxy" : false,
+        "useSystemProxyProperties" : false,
+        "proxyScheme" : null,
+        "proxyHost" : null,
+        "proxyPort" : 0,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "readTimeoutMs" : 0,
+        "maxParallelRequestsCount" : 0,
+        "headers" : {
+          "Content-Type" : "application/json",
+          "Authorization" : "Bearer EAALLkuQzvZB0BP4pcQiro0kLXBBDVZCFU03SmdW5mzCb3s0KdF526pjlpTzMNyqVZBPD7cLCsmOhtf7TxVRModAZCuOBWypZCchmfPCMWUzwx7kEFdzWoXvdpi1GlP5BonGqZAFANsZCZBh6E6tqCwTfiRGbZC8UqA9IZCFL3kjp6Lpzn83OADOlZBLyLrbr7gVgwZDZD"
+        },
+        "credentials" : {
+          "type" : "anonymous"
+        },
+        "maxInMemoryBufferSizeInKb" : 256
+      },
+      "configurationVersion" : 3,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1762366148830,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c4300d0-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "Send WA MSG",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.rest.TbRestApiCallNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 597,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8c441240-cf75-11f0-a4f6-65444501e1f9"
+      },
+      "name" : "New Alarm ACK",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.flow.TbAckNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "1f04e460-6c16-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "8bdb1740-cf75-11f0-a4f6-65444501e1f9"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 24311
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
