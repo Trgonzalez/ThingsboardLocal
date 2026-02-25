@@ -37,11 +37,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1764814138170,
+      "lastUpdateTs" : 1772043294088,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -57,7 +57,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1764810500309,
+      "lastUpdateTs" : 1772039216743,
       "longValue" : null,
       "strValue" : "CRITICAL"
     }, {
@@ -89,8 +89,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1764814138163,
-      "longValue" : 1764814138163,
+      "lastUpdateTs" : 1772042644462,
+      "longValue" : 1772042644462,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -121,8 +121,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1764810499673,
-      "longValue" : 1764810499635,
+      "lastUpdateTs" : 1772043429095,
+      "longValue" : 1772043427911,
       "strValue" : null
     }, {
       "booleanValue" : null,

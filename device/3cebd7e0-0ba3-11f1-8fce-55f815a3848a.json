@@ -18,7 +18,7 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "d4120680-3a93-11f0-96f4-672ec1447afa"
+      "id" : "acf54890-0cc6-11f1-8fce-55f815a3848a"
     },
     "externalId" : null,
     "firmwareId" : null,
@@ -29,7 +29,7 @@
     "label" : null,
     "name" : "tasmota_EDE178",
     "softwareId" : null,
-    "type" : "default"
+    "type" : "EnergyMeter"
   },
   "credentials" : {
     "credentialsId" : "oDcJZFxFO9DFwq39QbKG",
@@ -56,7 +56,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1771498539656,
+      "lastUpdateTs" : 1772024143404,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -72,66 +72,35 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1771455181732,
-      "longValue" : 1771455181732,
+      "lastUpdateTs" : 1771974064128,
+      "longValue" : 1771974064128,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1771519854090,
-      "longValue" : 1771519851750,
+      "lastUpdateTs" : 1772043945089,
+      "longValue" : 1772043943564,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastConnectTime",
-      "lastUpdateTs" : 1771498539655,
-      "longValue" : 1771498539655,
+      "lastUpdateTs" : 1772042383359,
+      "longValue" : 1772042383359,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastDisconnectTime",
-      "lastUpdateTs" : 1771454529080,
-      "longValue" : 1771454529080,
+      "lastUpdateTs" : 1772042371578,
+      "longValue" : 1772042371578,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]
   },
-  "calculatedFields" : [ {
-    "configuration" : {
-      "type" : "SCRIPT",
-      "arguments" : {
-        "energy_total_kwh" : {
-          "limit" : 2,
-          "refEntityKey" : {
-            "key" : "energy_total_kwh",
-            "type" : "TS_ROLLING"
-          },
-          "timeWindow" : 86400000
-        }
-      },
-      "expression" : "var delta = 0.0;\r\nvar lastTs = null;\r\n\r\nif (energy_total_kwh.values.size() >= 2) {\r\n    var firstPoint = energy_total_kwh.values.get(0);\r\n    var lastPoint  = energy_total_kwh.values.get(energy_total_kwh.values.size() - 1);\r\n\r\n    var first = firstPoint.value;\r\n    var last  = lastPoint.value;\r\n\r\n    lastTs = lastPoint.ts;\r\n\r\n    // Anti-reset: si el contador baja, ignoramos el intervalo\r\n    if (last >= first) {\r\n        delta = last - first;\r\n    } else {\r\n        delta = 0.0;\r\n    }\r\n}\r\n\r\n// 5 decimales\r\ndelta = Math.round(delta * 100000.0) / 100000.0;\r\n\r\n// Time Series Output con timestamp explícito\r\nreturn {\r\n    ts: lastTs,\r\n    values: {\r\n        deltaEnergy_kWh: delta\r\n    }\r\n};",
-      "output" : {
-        "name" : "",
-        "type" : "TIME_SERIES"
-      }
-    },
-    "configurationVersion" : 0,
-    "debugSettings" : {
-      "allEnabled" : false,
-      "allEnabledUntil" : 1771418925458,
-      "failuresEnabled" : true
-    },
-    "name" : "Telemetry delta calculation",
-    "tenantId" : {
-      "entityType" : "TENANT",
-      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
-    },
-    "type" : "SCRIPT"
-  } ]
+  "calculatedFields" : [ ]
 }

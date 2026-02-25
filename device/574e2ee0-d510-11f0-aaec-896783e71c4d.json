@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1771502763079,
+      "lastUpdateTs" : 1772027100073,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,7 +53,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1769897493418,
+      "lastUpdateTs" : 1771699566529,
       "longValue" : null,
       "strValue" : "off"
     }, {
@@ -61,9 +61,9 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1769897493418,
+      "lastUpdateTs" : 1771699566529,
       "longValue" : null,
-      "strValue" : "Nivel de tanque muy alto"
+      "strValue" : "Nivel de tanque alto"
     }, {
       "booleanValue" : null,
       "doubleValue" : 3.3,
@@ -85,8 +85,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1771502763079,
-      "longValue" : 0,
+      "lastUpdateTs" : 1772025904384,
+      "longValue" : 1772025904384,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -125,8 +125,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1771519557094,
-      "longValue" : 1771519556717,
+      "lastUpdateTs" : 1772043897079,
+      "longValue" : 1772043895037,
       "strValue" : null
     }, {
       "booleanValue" : null,

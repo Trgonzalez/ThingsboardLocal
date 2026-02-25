@@ -1,0 +1,22 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "nexor_created",
+    "description" : "",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "90d67250-1276-11f1-8fce-55f815a3848a"
+    },
+    "image" : "tb-image;/api/images/tenant/1.png",
+    "name" : "Nexor Created",
+    "order" : null,
+    "scada" : false,
+    "title" : "Nexor Created"
+  },
+  "fqns" : [ "device_cards_" ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

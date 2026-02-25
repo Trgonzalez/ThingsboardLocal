@@ -414,6 +414,19 @@
     "additionalInfo" : null,
     "from" : {
       "entityType" : "RULE_CHAIN",
+      "id" : "813d7f90-10f1-11f1-8fce-55f815a3848a"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 25405
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
       "id" : "a7b8a5e0-8876-11f0-bbbd-d5b23296cf03"
     },
     "to" : {
