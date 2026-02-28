@@ -80,9 +80,9 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":false,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"nombre\":\"Diego Casares\",\"chatID\":\"5491166932324\",\"receiveNotifications\":true}]",
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":false,\"mute_duration\":\"1h\",\"disabled_until\":\"2026-02-27T19:48:16.708Z\"},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"nombre\":\"Diego Casares\",\"chatID\":\"5491166932324\",\"receiveNotifications\":true}]",
       "key" : "whatsapp",
-      "lastUpdateTs" : 1762789826006,
+      "lastUpdateTs" : 1772218096856,
       "longValue" : null,
       "strValue" : null
     }, {

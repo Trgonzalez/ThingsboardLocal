@@ -3954,7 +3954,7 @@
     },
     "name" : "Smart energy monitoring",
     "resources" : null,
-    "assignedCustomers" : null,
+    "assignedCustomers" : [ ],
     "externalId" : null,
     "id" : {
       "entityType" : "DASHBOARD",

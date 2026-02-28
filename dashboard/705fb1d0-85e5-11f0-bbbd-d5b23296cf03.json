@@ -2851,7 +2851,7 @@
             "settings" : {
               "autoScale" : true,
               "showLabel" : true,
-              "label" : "tasmotaCmd {\"cmd\":\"teleperiod\",\"value\":\"35\"}:",
+              "label" : "Response: ",
               "labelFont" : {
                 "family" : "Roboto",
                 "size" : 20,
@@ -2993,11 +2993,23 @@
                 "_uniqueKey" : 2
               } ]
             },
-            "title" : "Basic GPIO Control",
+            "title" : "Tasmota MQTT Control",
             "datasources" : [ ],
             "targetDevice" : {
               "type" : "device",
               "deviceId" : "3cebd7e0-0ba3-11f1-8fce-55f815a3848a"
+            },
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
             }
           },
           "row" : 0,

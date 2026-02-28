@@ -41,11 +41,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1771899786098,
+      "lastUpdateTs" : 1772227325481,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,9 +53,9 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1771165549015,
+      "lastUpdateTs" : 1772148127855,
       "longValue" : null,
-      "strValue" : "off"
+      "strValue" : "CRITICAL"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
@@ -85,8 +85,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1771896243773,
-      "longValue" : 1771896243773,
+      "lastUpdateTs" : 1772227325477,
+      "longValue" : 1772227325477,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -109,8 +109,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772043753073,
-      "longValue" : 1772043751048,
+      "lastUpdateTs" : 1772223711095,
+      "longValue" : 1772223710616,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -157,7 +157,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankLowAlarmFlag",
-      "lastUpdateTs" : 1765499618603,
+      "lastUpdateTs" : 1772114896518,
       "longValue" : null,
       "strValue" : null
     }, {

@@ -14,7 +14,7 @@
     "scada" : false,
     "title" : "Nexor Created"
   },
-  "fqns" : [ "device_cards_" ],
+  "fqns" : [ "device_cards_", "tasmota_mqtt_console2" ],
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
