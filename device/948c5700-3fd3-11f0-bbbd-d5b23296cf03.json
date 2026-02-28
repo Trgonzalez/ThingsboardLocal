@@ -41,11 +41,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1769890451173,
+      "lastUpdateTs" : 1772294288880,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -101,16 +101,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1769890406379,
-      "longValue" : 1769890406379,
+      "lastUpdateTs" : 1772294288836,
+      "longValue" : 1772294288836,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772293821099,
-      "longValue" : 1772293820900,
+      "lastUpdateTs" : 1772293518092,
+      "longValue" : 1772293517663,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -210,8 +210,11 @@
       },
       "expression" : "var result = {};\r\n\r\n// Asumo que comedero1, comedero2, comedero3 ya están definidos como time‐series arguments o similares\r\nif (comedero1.values.size() >= 2) {\r\n    var delta1 = comedero1.last - comedero1.first;\r\n    if (delta1 < 0) {\r\n        result.consumoComedero1 = -(delta1);\r\n    }\r\n}\r\nif (comedero2.values.size() >= 2) {\r\n    var delta2 = comedero2.last - comedero2.first;\r\n    if (delta2 < 0) {\r\n        result.consumoComedero2 = -(delta2);\r\n    }\r\n}\r\nif (comedero3.values.size() >= 2) {\r\n    var delta3 = comedero3.last - comedero3.first;\r\n    if (delta3 < 0) {\r\n        result.consumoComedero3 = -(delta3);\r\n    }\r\n}\r\n\r\nreturn result;",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,

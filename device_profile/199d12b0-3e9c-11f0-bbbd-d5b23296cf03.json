@@ -160,8 +160,11 @@
       },
       "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,
@@ -190,8 +193,11 @@
       },
       "expression" : "// TBEL - Calculated Field: decodifica DATALOG de Dragino y emite puntos históricos\r\n// Argumento: data (string con el payload)\r\n\r\nvar s = data;\r\n\r\n// --- Normalizar: si viene DATALOG:\"...\"\r\nvar q1 = s.indexOf(\"\\\"\");\r\nvar q2 = s.lastIndexOf(\"\\\"\");\r\nif (q1 >= 0 && q2 > q1) {\r\n    s = s.substring(q1 + 1, q2);\r\n} else {\r\n    var p = s.indexOf(\":\");\r\n    if (p >= 0 && s.substring(0, p).toUpperCase().indexOf(\"DATALOG\") >= 0) {\r\n        s = s.substring(p + 1).trim();\r\n    }\r\n}\r\n\r\n// --- Separar en registros por \"],\"\r\nvar items = s.split(\"],\");\r\nvar result = [];\r\n\r\n// --- Aux: boolean\r\nfunction toBool(v) {\r\n    var t = (\"\" + v).trim().toLowerCase();\r\n    return t == \"true\" || t == \"1\" || t == \"yes\" || t == \"y\";\r\n}\r\n\r\n// --- Aux: ¿string numérico entero?\r\nfunction isAllDigits(t) {\r\n    if (t.length == 0) return false;\r\n    for (var i = 0; i < t.length; i++) {\r\n        var c = t.charAt(i);\r\n        if (c < '0' || c > '9') return false;\r\n    }\r\n    return true;\r\n}\r\n\r\n// --- Aux: parsear timestamp → ms\r\nfunction parseTsToMs(tsRaw) {\r\n    var t = (\"\" + tsRaw).trim();\r\n\r\n    // Si es epoch numérico\r\n    if (isAllDigits(t)) {\r\n        var val = Long.valueOf(t);\r\n        // Si tiene más de 10 dígitos => ya está en ms\r\n        if (t.length > 10) {\r\n            return val;\r\n        } else {\r\n            return val * 1000;\r\n        }\r\n    }\r\n\r\n    // Si es \"YYYY-MM-DD HH:mm:ss\"\r\n    var iso = t.replace(\" \", \"T\") + \"Z\";\r\n    var Tpos = iso.indexOf(\"T\");\r\n    var Zpos = iso.indexOf(\"Z\");\r\n    if (Tpos > 0 && Zpos > Tpos) {\r\n        var timeOnly = iso.substring(Tpos + 1, Zpos);\r\n        var colonCount = 0;\r\n        for (var k = 0; k < timeOnly.length; k++)\r\n            if (timeOnly.charAt(k) == ':') colonCount++;\r\n        if (colonCount == 1) {\r\n            iso = iso.substring(0, Zpos);\r\n            iso = iso + \":00Z\";\r\n        }\r\n    }\r\n\r\n    var ms = new Date(iso).getTime();\r\n    if (ms != ms) { // NaN check\r\n        return null;\r\n    }\r\n    return ms;\r\n}\r\n\r\n// --- Procesar cada registro\r\nvar i = 0;\r\nwhile (i < items.size) {\r\n    var item = items[i].trim();\r\n\r\n    if (item.length == 0) {\r\n        i = i + 1;\r\n        continue;\r\n    }\r\n\r\n    if (!item.startsWith(\"[\")) {\r\n        item = \"[\" + item;\r\n    }\r\n    if (!item.endsWith(\"]\")) {\r\n        item = item + \"]\";\r\n    }\r\n\r\n    var inner = item.substring(1, item.length - 1);\r\n    var fields = inner.split(\",\");\r\n\r\n    if (fields.size < 5) {\r\n        i = i + 1;\r\n        continue;\r\n    }\r\n\r\n    var hStr = fields[0].trim();\r\n    var tStr = fields[1].trim();\r\n    var tsStr = fields[4].trim();\r\n\r\n    var humidity = Double.valueOf(hStr);\r\n    var temperature = Double.valueOf(tStr);\r\n\r\n    var tsMs = parseTsToMs(tsStr);\r\n    if (tsMs != null) {\r\n        result.add({\r\n            \"ts\": tsMs,\r\n            \"values\": {\r\n                \"data_humidity\": humidity,\r\n                \"data_temperature\": temperature\r\n            }\r\n        });\r\n    }\r\n\r\n    i = i + 1;\r\n}\r\n\r\n// --- Devolver arreglo de puntos\r\nreturn result;",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,

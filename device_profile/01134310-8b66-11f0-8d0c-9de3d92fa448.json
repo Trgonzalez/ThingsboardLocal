@@ -72,8 +72,11 @@
       },
       "expression" : "// Sample script to output raw values of the rolling arguments;\nreturn {\n    \"acousticDevRecords\": acousticDevRecords,\n    \"temperatureRecords\": temperatureRecords,\n    \"vibrationRecords\": vibrationRecords\n};",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,

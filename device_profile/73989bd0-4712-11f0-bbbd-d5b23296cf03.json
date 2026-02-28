@@ -55,9 +55,12 @@
       },
       "expression" : "((Voltage-3)/1.2)*100",
       "output" : {
+        "type" : "TIME_SERIES",
         "decimalsByDefault" : 0,
         "name" : "batteryPercentage",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       },
       "useLatestTs" : false
     },
@@ -119,9 +122,12 @@
       },
       "expression" : "depth-(i - i0) / (iH - i0) * H",
       "output" : {
+        "type" : "TIME_SERIES",
         "decimalsByDefault" : 0,
         "name" : "waterDistance",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       },
       "useLatestTs" : false
     },

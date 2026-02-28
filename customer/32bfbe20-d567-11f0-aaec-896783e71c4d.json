@@ -41,5 +41,6 @@
       "longValue" : null,
       "strValue" : null
     } ]
-  }
+  },
+  "calculatedFields" : [ ]
 }

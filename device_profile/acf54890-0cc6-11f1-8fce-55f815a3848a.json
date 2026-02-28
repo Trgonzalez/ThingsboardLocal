@@ -56,8 +56,11 @@
       },
       "expression" : "var delta = 0.0;\r\nvar lastTs = null;\r\n\r\nif (energy_total_kwh.values.size() >= 2) {\r\n    var firstPoint = energy_total_kwh.values.get(0);\r\n    var lastPoint  = energy_total_kwh.values.get(energy_total_kwh.values.size() - 1);\r\n\r\n    var first = firstPoint.value;\r\n    var last  = lastPoint.value;\r\n\r\n    lastTs = lastPoint.ts;\r\n\r\n    // Anti-reset: si el contador baja, ignoramos el intervalo\r\n    if (last >= first) {\r\n        delta = last - first;\r\n    } else {\r\n        delta = 0.0;\r\n    }\r\n}\r\n\r\n// 5 decimales\r\ndelta = Math.round(delta * 100000.0) / 100000.0;\r\n\r\n// Time Series Output con timestamp explícito\r\nreturn {\r\n    ts: lastTs,\r\n    values: {\r\n        deltaEnergy_kWh: delta\r\n    }\r\n};",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,

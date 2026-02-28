@@ -410,8 +410,11 @@
       },
       "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,
@@ -463,9 +466,12 @@
       },
       "expression" : "(measDist+(measDist1/10)-lowDist)/(fullDist-lowDist) *100",
       "output" : {
+        "type" : "TIME_SERIES",
         "decimalsByDefault" : 1,
         "name" : "waterLevelPerc",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       },
       "useLatestTs" : true
     },
@@ -495,8 +501,11 @@
       },
       "expression" : "// TBEL - Calculated Field: decodifica DATALOG de DDS45-LB y emite puntos históricos\r\n// Argumento: data (string con el payload DATALOG)\r\n//\r\n// Formato esperado por registro:\r\n// [bat_mV, distance_mm, temp_c, interrupt(YES/NO), sensor(TRUE/FALSE), pnack(0/1), ts]\r\n// Ejemplo:\r\n// [3780,962,327.6,NO,FALSE,0,1764574733000]\r\n\r\n// --- Normalizar: si viene DATALOG:\"...\"\r\nvar s = data;\r\nif (s == null) {\r\n    return [];\r\n}\r\n\r\ns = (\"\" + s).trim();\r\n\r\nvar q1 = s.indexOf(\"\\\"\");\r\nvar q2 = s.lastIndexOf(\"\\\"\");\r\nif (q1 >= 0 && q2 > q1) {\r\n    s = s.substring(q1 + 1, q2);\r\n} else {\r\n    var p = s.indexOf(\":\");\r\n    if (p >= 0 && s.substring(0, p).toUpperCase().indexOf(\"DATALOG\") >= 0) {\r\n        s = s.substring(p + 1).trim();\r\n    }\r\n}\r\n\r\n// --- Separar en registros por \"],\"\r\nvar items = s.split(\"],\");\r\nvar result = [];\r\n\r\n// --- Aux: boolean\r\nfunction toBool(v) {\r\n    var t = (\"\" + v).trim().toLowerCase();\r\n    return t == \"true\" || t == \"1\" || t == \"yes\" || t == \"y\";\r\n}\r\n\r\n// --- Aux: ¿string numérico entero?\r\nfunction isAllDigits(t) {\r\n    if (t.length == 0) return false;\r\n    for (var i = 0; i < t.length; i++) {\r\n        var c = t.charAt(i);\r\n        if (c < '0' || c > '9') return false;\r\n    }\r\n    return true;\r\n}\r\n\r\n// --- Aux: parsear timestamp → ms\r\nfunction parseTsToMs(tsRaw) {\r\n    var t = (\"\" + tsRaw).trim();\r\n\r\n    // Si es epoch numérico\r\n    if (isAllDigits(t)) {\r\n        var val = Long.valueOf(t);\r\n        // Si tiene más de 10 dígitos => ya está en ms\r\n        if (t.length > 10) {\r\n            return val;\r\n        } else {\r\n            return val * 1000;\r\n        }\r\n    }\r\n\r\n    // Si fuera \"YYYY-MM-DD HH:mm:ss\" (compat viejo)\r\n    var iso = t.replace(\" \", \"T\") + \"Z\";\r\n    var Tpos = iso.indexOf(\"T\");\r\n    var Zpos = iso.indexOf(\"Z\");\r\n    if (Tpos > 0 && Zpos > Tpos) {\r\n        var timeOnly = iso.substring(Tpos + 1, Zpos);\r\n        var colonCount = 0;\r\n        for (var k = 0; k < timeOnly.length; k++)\r\n            if (timeOnly.charAt(k) == ':') colonCount++;\r\n        if (colonCount == 1) {\r\n            iso = iso.substring(0, Zpos);\r\n            iso = iso + \":00Z\";\r\n        }\r\n    }\r\n\r\n    var ms = new Date(iso).getTime();\r\n    if (ms != ms) { // NaN check\r\n        return null;\r\n    }\r\n    return ms;\r\n}\r\n\r\n// --- Procesar cada registro\r\nvar i = 0;\r\nwhile (i < items.size) {\r\n    var item = items[i].trim();\r\n\r\n    if (item.length == 0) {\r\n        i = i + 1;\r\n        continue;\r\n    }\r\n\r\n    if (!item.startsWith(\"[\")) {\r\n        item = \"[\" + item;\r\n    }\r\n    if (!item.endsWith(\"]\")) {\r\n        item = item + \"]\";\r\n    }\r\n\r\n    var inner = item.substring(1, item.length - 1);\r\n    var fields = inner.split(\",\");\r\n\r\n    // Esperamos al menos 7 campos:\r\n    // 0: bat_mV, 1: dist_mm, 2: temp_c,\r\n    // 3: interrupt YES/NO, 4: sensor TRUE/FALSE,\r\n    // 5: pnack 0/1, 6: ts\r\n    if (fields.size < 7) {\r\n        i = i + 1;\r\n        continue;\r\n    }\r\n\r\n    var batMvStr   = fields[0].trim();\r\n    var distStr    = fields[1].trim();\r\n    var tempStr    = fields[2].trim();\r\n    var interruptStr = fields[3].trim();\r\n    var sensorStr  = fields[4].trim();\r\n    var pnackStr   = fields[5].trim();\r\n    var tsStr      = fields[6].trim();\r\n\r\n    // Parseos numéricos\r\n    var batMv   = Double.valueOf(batMvStr);           // mV\r\n    var batV    = batMv / 1000.0;                     // V\r\n    var distanceMm = Double.valueOf(distStr);\r\n    var tempC   = Double.valueOf(tempStr);\r\n\r\n    // Booleans\r\n    var interrupt = toBool(interruptStr);             // YES/NO -> bool\r\n    var sensorOk  = toBool(sensorStr);                // TRUE/FALSE -> bool\r\n    var pnackFlag = toBool(pnackStr);                 // 0/1 -> bool\r\n\r\n    // Timestamp en ms\r\n    var tsMs = parseTsToMs(tsStr);\r\n    if (tsMs != null) {\r\n        result.add({\r\n            \"ts\": tsMs,\r\n            \"values\": {\r\n                \"data_Bat\":    batV,\r\n                \"data_Distance\":  distanceMm,\r\n                //\"dds_temp_c\":       tempC,\r\n                //\"dds_interrupt\":    interrupt,\r\n                //\"dds_sensor_ok\":    sensorOk,\r\n                //\"dds_pnack_flag\":   pnackFlag\r\n            }\r\n        });\r\n    }\r\n\r\n    i = i + 1;\r\n}\r\n\r\n// --- Devolver arreglo de puntos\r\nreturn result;",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,
@@ -541,9 +550,12 @@
       },
       "expression" : "if (mainValue == null || mainKey == null || visibleKeys == null) {\r\n    return;\r\n}\r\n\r\nvar vk = visibleKeys;\r\n\r\n// visibleKeys puede venir como JSON string\r\nif (vk instanceof String) {\r\n    vk = JSON.parse(vk);\r\n}\r\n\r\nif (vk[mainKey] == null) {\r\n    return;\r\n}\r\n\r\nvar unit = vk[mainKey].unit;\r\nif (unit == null) {\r\n    unit = '';\r\n}\r\n\r\n// concatenar valor + unidad\r\nreturn {\r\n    mainVariable: mainValue + ' ' + unit\r\n};",
       "output" : {
+        "type" : "TIME_SERIES",
         "decimalsByDefault" : 1,
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,
@@ -603,9 +615,12 @@
       },
       "expression" : "(measDist+(measDist1/10)-lowDist)/(fullDist-lowDist) *tankVol",
       "output" : {
+        "type" : "TIME_SERIES",
         "decimalsByDefault" : 1,
         "name" : "waterVolume",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       },
       "useLatestTs" : true
     },

@@ -81,8 +81,11 @@
       },
       "expression" : "// TBEL - Calculated Field: decodifica DATALOG de TrackerD y emite punto histórico\r\n// Argumento: data (string con el payload DATALOG)\r\n// Ejemplo de data:\r\n// [-34.591252,-58.407672,0,0,1763843480000,4.002,STILL]\r\n\r\nvar s = (\"\" + data).trim();\r\nvar result = [];\r\n\r\n// Si viene vacío, no emitimos nada\r\nif (s.length == 0) {\r\n    return result;\r\n}\r\n\r\n// Asegurarnos de que tenga [ y ]\r\nif (!s.startsWith(\"[\")) {\r\n    s = \"[\" + s;\r\n}\r\nif (!s.endsWith(\"]\")) {\r\n    s = s + \"]\";\r\n}\r\n\r\n// Sacar los corchetes\r\nvar inner = s.substring(1, s.length - 1);\r\n\r\n// Separar campos por coma\r\nvar fields = inner.split(\",\");\r\n\r\n// Esperamos al menos 7 campos:\r\n// 0: lat, 1: lon, 2: speed, 3: course, 4: tsMs, 5: vbat, 6: movement\r\nif (fields.size < 7) {\r\n    return result;\r\n}\r\n\r\n// Parseo de campos\r\nvar latStr   = fields[0].trim();\r\nvar lonStr   = fields[1].trim();\r\nvar spdStr   = fields[2].trim();\r\nvar crsStr   = fields[3].trim();\r\nvar tsStr    = fields[4].trim();\r\nvar vbatStr  = fields[5].trim();\r\nvar movStr   = fields[6].trim();\r\n\r\n// Convertir a tipos numéricos\r\nvar lat   = Double.valueOf(latStr);\r\nvar lon   = Double.valueOf(lonStr);\r\nvar speed = Double.valueOf(spdStr);\r\nvar course= Double.valueOf(crsStr);\r\nvar vbat  = Double.valueOf(vbatStr);\r\n\r\n// Timestamp en ms (ya viene en ms en el DATALOG que armamos)\r\nvar tsMs  = Long.valueOf(tsStr);\r\n\r\n// Limpiar movimiento por si viniera con comillas\r\nmovStr = movStr.replace(\"\\\"\", \"\");\r\n\r\n// Agregar punto histórico\r\nresult.add({\r\n    \"ts\": tsMs,\r\n    \"values\": {\r\n        \"data_latitude\":  lat,\r\n        \"data_longitude\": lon,\r\n        \"data_speed\":     speed,\r\n        \"data_course\":    course,\r\n        \"data_battery\":   vbat,\r\n        \"data_movement\":  movStr\r\n    }\r\n});\r\n\r\n// Devolver arreglo de puntos\r\nreturn result;",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,

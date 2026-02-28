@@ -94,5 +94,6 @@
       "longValue" : null,
       "strValue" : "https://www.ecowitt.net/home/share?authorize=DF7DH7"
     } ]
-  }
+  },
+  "calculatedFields" : [ ]
 }

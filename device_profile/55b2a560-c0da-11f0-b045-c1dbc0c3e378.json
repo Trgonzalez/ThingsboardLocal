@@ -134,8 +134,11 @@
       },
       "expression" : "// Sample script to convert temperature readings from Fahrenheit to Celsius\nif(status==\"OPEN\"){\nreturn {\n    \"data_status\": 1\n}}else{\n   return {\n    \"data_status\": 0\n} \n}",
       "output" : {
+        "type" : "TIME_SERIES",
         "name" : "",
-        "type" : "TIME_SERIES"
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
       }
     },
     "configurationVersion" : 0,
