@@ -396,6 +396,12 @@
                 "funcBody" : null,
                 "usePostProcessing" : null,
                 "postFuncBody" : null
+              }, {
+                "name" : "rssi",
+                "type" : "timeseries",
+                "label" : "rssi 2",
+                "color" : "#795548",
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
