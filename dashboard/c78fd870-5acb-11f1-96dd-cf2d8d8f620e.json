@@ -53,10 +53,10 @@
               "name" : "",
               "entityAliasId" : "96c3526f-00bf-4483-2227-75b86eab581f",
               "dataKeys" : [ {
-                "name" : "Owner",
-                "type" : "attribute",
-                "label" : "Owner",
-                "color" : "#cddc39",
+                "name" : "ownerName",
+                "type" : "entityField",
+                "label" : "Nombre del propietario",
+                "color" : "#009688",
                 "settings" : { }
               }, {
                 "name" : "name",
