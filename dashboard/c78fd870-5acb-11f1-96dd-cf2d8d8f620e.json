@@ -53,17 +53,11 @@
               "name" : "",
               "entityAliasId" : "96c3526f-00bf-4483-2227-75b86eab581f",
               "dataKeys" : [ {
-                "name" : "customerName",
+                "name" : "Owner",
                 "type" : "attribute",
-                "label" : "Cliente",
-                "color" : "#03a9f4",
-                "settings" : { },
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : null,
-                "postFuncBody" : null
+                "label" : "Owner",
+                "color" : "#cddc39",
+                "settings" : { }
               }, {
                 "name" : "name",
                 "type" : "entityField",
@@ -364,12 +358,6 @@
                 "funcBody" : null,
                 "usePostProcessing" : null,
                 "postFuncBody" : null
-              }, {
-                "name" : "assignedTo",
-                "type" : "attribute",
-                "label" : "assignedTo",
-                "color" : "#009688",
-                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
