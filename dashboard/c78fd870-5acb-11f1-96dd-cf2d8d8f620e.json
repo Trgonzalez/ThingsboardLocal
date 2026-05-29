@@ -277,7 +277,7 @@
                 "usePostProcessing" : null,
                 "postFuncBody" : null
               }, {
-                "name" : "msgPeriod",
+                "name" : "interval",
                 "type" : "attribute",
                 "label" : "Frec. real reporte",
                 "color" : "#e91e63",
