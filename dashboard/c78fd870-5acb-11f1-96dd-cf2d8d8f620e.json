@@ -364,6 +364,12 @@
                 "funcBody" : null,
                 "usePostProcessing" : null,
                 "postFuncBody" : null
+              }, {
+                "name" : "assignedTo",
+                "type" : "attribute",
+                "label" : "assignedTo",
+                "color" : "#009688",
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
