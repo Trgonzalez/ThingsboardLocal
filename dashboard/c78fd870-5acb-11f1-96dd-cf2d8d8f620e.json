@@ -133,23 +133,11 @@
                 "usePostProcessing" : null,
                 "postFuncBody" : null
               }, {
-                "name" : "eui",
-                "type" : "attribute",
-                "label" : "DevEUI",
-                "color" : "#4caf50",
-                "settings" : {
-                  "customTitle" : "",
-                  "columnWidth" : "0px",
-                  "useCellStyleFunction" : false,
-                  "cellStyleFunction" : "",
-                  "useCellContentFunction" : false,
-                  "useCellContentFunctionOnExport" : true,
-                  "cellContentFunction" : "",
-                  "defaultColumnVisibility" : "hidden-mobile",
-                  "columnSelectionToDisplay" : "enabled",
-                  "columnExportOption" : "onlyVisible",
-                  "disableSorting" : false
-                },
+                "name" : "type",
+                "type" : "entityField",
+                "label" : "Profile",
+                "color" : "#009688",
+                "settings" : { },
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -157,10 +145,10 @@
                 "usePostProcessing" : null,
                 "postFuncBody" : null
               }, {
-                "name" : "deviceType",
+                "name" : "dev_eui",
                 "type" : "attribute",
-                "label" : "Modelo",
-                "color" : "#f44336",
+                "label" : "DevEUI",
+                "color" : "#4caf50",
                 "settings" : {
                   "customTitle" : "",
                   "columnWidth" : "0px",
