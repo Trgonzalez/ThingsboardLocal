@@ -57,7 +57,23 @@
                 "type" : "entityField",
                 "label" : "Nombre del propietario",
                 "color" : "#009688",
-                "settings" : { }
+                "settings" : {
+                  "customTitle" : "",
+                  "columnWidth" : "0px",
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : true,
+                  "cellContentFunction" : "if (value ===\"Tenant\") {\n    return \"\";\n}\nreturn value;",
+                  "defaultColumnVisibility" : "visible",
+                  "columnSelectionToDisplay" : "enabled",
+                  "disableSorting" : false
+                },
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
               }, {
                 "name" : "name",
                 "type" : "entityField",
