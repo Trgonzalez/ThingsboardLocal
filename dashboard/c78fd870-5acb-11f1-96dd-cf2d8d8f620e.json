@@ -404,9 +404,10 @@
                 "openInPopover" : false,
                 "id" : "c5b16ee3-bd24-b47e-d162-68545c626b35"
               }, {
-                "name" : "agregar 2",
-                "buttonType" : "icon",
-                "icon" : "more_horiz",
+                "name" : "Agregar Device QR",
+                "buttonType" : "basic",
+                "showIcon" : true,
+                "icon" : "qr_code_scanner",
                 "buttonColor" : "rgba(0, 0, 0, 0.87)",
                 "customButtonStyle" : { },
                 "useShowWidgetActionFunction" : null,
