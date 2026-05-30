@@ -473,42 +473,6 @@
           "row" : 0,
           "col" : 0,
           "id" : "b7494986-779d-12f3-2cb8-38e9c7bc946b"
-        },
-        "67a30550-cda2-6c17-ae61-e0f4deb81c25" : {
-          "typeFullFqn" : "tenant.qr_code_scanner2",
-          "type" : "static",
-          "sizeX" : 5,
-          "sizeY" : 5,
-          "config" : {
-            "datasources" : [ {
-              "type" : "static",
-              "name" : "function",
-              "dataKeys" : [ {
-                "name" : "f(x)",
-                "type" : "function",
-                "label" : "Random",
-                "color" : "#2196f3",
-                "settings" : { },
-                "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
-              } ]
-            } ],
-            "showTitle" : false,
-            "backgroundColor" : "rgb(255, 255, 255)",
-            "color" : "rgba(0, 0, 0, 0.87)",
-            "padding" : "8px",
-            "settings" : {
-              "style" : "stroke",
-              "onScanSuccess" : "console.log('QR code: ', qrCode);\nalert('QR code: ' + qrCode)",
-              "strokeStyle" : "#qr-video {\n    object-fit: cover;\n}\n#qr-container.qr-stroke-style .scan-region-highlight-svg,\n#qr-container.qr-stroke-style .code-outline-highlight {\n    stroke: #FFFFFF !important;\n}",
-              "shadowStyle" : "#qr-video {\n    object-fit: cover;\n}\n#qr-container.qr-shadow-style {\n    position: relative;\n    width: max-content;\n    height: max-content;\n    overflow: hidden;\n}\n#qr-container.qr-shadow-style .scan-region-highlight {\n    border-radius: 30px;\n    outline: rgba(0, 0, 0, .25) solid 50vmax;\n}\n#qr-container.qr-shadow-style .scan-region-highlight-svg {\n    display: none;\n}\n#qr-container.qr-shadow-style .code-outline-highlight {\n    stroke: rgba(255, 255, 255, .5) !important;\n    stroke-width: 15 !important;\n    stroke-dasharray: none !important;\n}\n",
-              "customStyle" : "#qr-container {\n\n}\n#qr-video{\n    object-fit: cover;\n}\n#qr-container.scan-region-highlight-svg {\n\n}\n#qr-container.code-outline-highlight{\n\n}"
-            },
-            "title" : "QR code scanner",
-            "dropShadow" : true
-          },
-          "row" : 0,
-          "col" : 0,
-          "id" : "67a30550-cda2-6c17-ae61-e0f4deb81c25"
         }
       },
       "states" : {
@@ -525,12 +489,6 @@
                   "col" : 0,
                   "resizable" : true,
                   "preserveAspectRatio" : false
-                },
-                "67a30550-cda2-6c17-ae61-e0f4deb81c25" : {
-                  "sizeX" : 5,
-                  "sizeY" : 5,
-                  "row" : 11,
-                  "col" : 0
                 }
               },
               "gridSettings" : {
