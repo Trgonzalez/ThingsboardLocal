@@ -8811,7 +8811,11 @@
                   }
                 },
                 "units" : "kWh",
-                "decimals" : 4
+                "decimals" : 4,
+                "aggregationType" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "return value-prevValue;"
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
@@ -9094,7 +9098,7 @@
             "enableFullscreen" : true,
             "titleStyle" : null,
             "mobileHeight" : null,
-            "configMode" : "basic",
+            "configMode" : "advanced",
             "actions" : { },
             "showTitleIcon" : false,
             "titleIcon" : "thermostat",
@@ -9139,11 +9143,11 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 60000,
                 "timewindowMs" : 3600000
               },
               "aggregation" : {
-                "type" : "AVG"
+                "type" : "NONE",
+                "limit" : 25000
               }
             },
             "displayTimewindow" : true
