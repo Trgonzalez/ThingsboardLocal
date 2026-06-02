@@ -8815,7 +8815,7 @@
                 "aggregationType" : null,
                 "funcBody" : null,
                 "usePostProcessing" : true,
-                "postFuncBody" : "return value-prevValue;"
+                "postFuncBody" : "return value-prevOrigValue;"
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
