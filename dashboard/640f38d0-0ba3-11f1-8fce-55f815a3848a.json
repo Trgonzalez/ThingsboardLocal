@@ -7283,7 +7283,7 @@
               }, {
                 "name" : "current_a",
                 "type" : "timeseries",
-                "label" : "current_a",
+                "label" : "Interval real",
                 "color" : "#f44336",
                 "settings" : {
                   "yAxisId" : "axis1",
