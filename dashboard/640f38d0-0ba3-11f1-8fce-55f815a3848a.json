@@ -5048,11 +5048,11 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 1800000,
                 "timewindowMs" : 604800000
               },
               "aggregation" : {
-                "type" : "AVG"
+                "type" : "NONE",
+                "limit" : 25000
               }
             },
             "showTitle" : false,
@@ -5650,7 +5650,7 @@
                 "aggregationType" : null,
                 "funcBody" : null,
                 "usePostProcessing" : true,
-                "postFuncBody" : "return value-prevOrigValue;"
+                "postFuncBody" : "var delta = 0.0;\r\nvar lastTs = null;\r\n\r\n//if (energy_total_kwh.values.size() >= 2) {\r\n    //var firstPoint = energy_total_kwh.values.get(0);\r\n    //var lastPoint  = energy_total_kwh.values.get(energy_total_kwh.values.size() - 1);\r\n\r\n    var first = prevOrigValue;\r\n    var last  = value;\r\n\r\n    //lastTs = lastPoint.ts;\r\n\r\n    // Anti-reset: si el contador baja, ignoramos el intervalo\r\n    if (last >= first) {\r\n        delta = last - first;\r\n    } else {\r\n        delta = 0.0;\r\n    }\r\n\r\n\r\n// 5 decimales\r\ndelta = Math.round(delta * 100000.0) / 100000.0;\r\n\r\n// Time Series Output con timestamp explícito\r\nreturn {\r\n    //ts: lastTs,\r\n    //values: {\r\n         delta\r\n    //}\r\n};"
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
