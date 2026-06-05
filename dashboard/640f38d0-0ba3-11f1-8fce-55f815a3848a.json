@@ -5045,35 +5045,15 @@
               "latestDataKeys" : [ ]
             } ],
             "timewindow" : {
-              "hideAggregation" : false,
-              "hideAggInterval" : false,
-              "hideTimezone" : false,
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 120000,
-                "timewindowMs" : 18000000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : null,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
+                "interval" : 1800000,
+                "timewindowMs" : 604800000
               },
               "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              },
-              "timezone" : null
+                "type" : "AVG"
+              }
             },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
@@ -5666,7 +5646,7 @@
                     "color" : ""
                   }
                 },
-                "decimals" : 0,
+                "decimals" : 5,
                 "aggregationType" : null,
                 "funcBody" : null,
                 "usePostProcessing" : true,
@@ -5683,7 +5663,7 @@
               "realtime" : {
                 "realtimeType" : 1,
                 "interval" : 86400000,
-                "quickInterval" : "CURRENT_QUARTER"
+                "quickInterval" : "CURRENT_MONTH"
               },
               "aggregation" : {
                 "type" : "SUM"
@@ -5706,95 +5686,7 @@
                 "showLatest" : false,
                 "valueFormat" : null
               },
-              "thresholds" : [ {
-                "type" : "constant",
-                "yAxisId" : "default",
-                "units" : "V",
-                "decimals" : 0,
-                "lineColor" : "#FF0000",
-                "lineType" : "solid",
-                "lineWidth" : 2,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "emptyCircle",
-                "endSymbolSize" : 8,
-                "showLabel" : true,
-                "labelPosition" : "insideEndTop",
-                "labelFont" : {
-                  "size" : 12,
-                  "family" : "Roboto",
-                  "weight" : "500",
-                  "style" : "normal"
-                },
-                "labelColor" : null,
-                "value" : 240
-              }, {
-                "type" : "constant",
-                "yAxisId" : "default",
-                "units" : "V",
-                "decimals" : 0,
-                "lineColor" : "#FFDB00",
-                "lineType" : "solid",
-                "lineWidth" : 2,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "emptyCircle",
-                "endSymbolSize" : 8,
-                "showLabel" : true,
-                "labelPosition" : "insideEndTop",
-                "labelFont" : {
-                  "size" : 12,
-                  "family" : "Roboto",
-                  "weight" : "500",
-                  "style" : "normal"
-                },
-                "labelColor" : null,
-                "value" : 235
-              }, {
-                "type" : "constant",
-                "yAxisId" : "default",
-                "units" : "V",
-                "decimals" : 0,
-                "lineColor" : "#FFDB00",
-                "lineType" : "solid",
-                "lineWidth" : 2,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "emptyCircle",
-                "endSymbolSize" : 8,
-                "showLabel" : true,
-                "labelPosition" : "insideEndTop",
-                "labelFont" : {
-                  "size" : 12,
-                  "family" : "Roboto",
-                  "weight" : "500",
-                  "style" : "normal"
-                },
-                "labelColor" : null,
-                "value" : 205
-              }, {
-                "type" : "constant",
-                "yAxisId" : "default",
-                "units" : "V",
-                "decimals" : 0,
-                "lineColor" : "#FF0000",
-                "lineType" : "solid",
-                "lineWidth" : 2,
-                "startSymbol" : "none",
-                "startSymbolSize" : 5,
-                "endSymbol" : "emptyCircle",
-                "endSymbolSize" : 8,
-                "showLabel" : true,
-                "labelPosition" : "insideEndTop",
-                "labelFont" : {
-                  "size" : 12,
-                  "family" : "Roboto",
-                  "weight" : "500",
-                  "style" : "normal"
-                },
-                "labelColor" : null,
-                "value" : 200
-              } ],
+              "thresholds" : [ ],
               "dataZoom" : true,
               "stack" : false,
               "yAxis" : {
