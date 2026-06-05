@@ -9210,13 +9210,7 @@
                     "comparisonValuesLabel" : "",
                     "color" : ""
                   }
-                },
-                "aggregationType" : null,
-                "units" : null,
-                "decimals" : null,
-                "funcBody" : null,
-                "usePostProcessing" : true,
-                "postFuncBody" : "var delta = 0.0;\r\n\r\nif (prevOrigValue !== null && prevOrigValue !== undefined) {\r\n    var d = value - prevOrigValue;\r\n    // Anti-reset: si el contador bajó, ignoramos\r\n    if (d >= 0) {\r\n        delta = Math.round(d * 100000.0) / 100000.0;\r\n    }\r\n}\r\n\r\nreturn delta;"
+                }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
