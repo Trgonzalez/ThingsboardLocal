@@ -9210,7 +9210,13 @@
                     "comparisonValuesLabel" : "",
                     "color" : ""
                   }
-                }
+                },
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "console.log('v:', value, 'pv:', prevValue, 'pov:', prevOrigValue);\r\nvar delta = 0.0;\r\n\r\nif (prevOrigValue !== null && prevOrigValue !== undefined && prevOrigValue !==0) {\r\n    var d = value - prevOrigValue;\r\n    if (d >= 0) {\r\n        delta = Math.round(d * 100000.0) / 100000.0;\r\n    }\r\n}\r\n\r\nreturn delta;"
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
@@ -9539,11 +9545,11 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 3600000,
-                "timewindowMs" : 604800000
+                "timewindowMs" : 604800000,
+                "interval" : 3600000
               },
               "aggregation" : {
-                "type" : "SUM"
+                "type" : "AVG"
               }
             }
           },
