@@ -1,7 +1,7 @@
 {
   "entityType" : "DASHBOARD",
   "entity" : {
-    "title" : "Administración de dispositivos Tenant",
+    "title" : "Administración de dispositivos Tenant v2",
     "image" : "tb-image;/api/images/tenant/Admin de dispos_FN.jpg",
     "mobileHide" : false,
     "mobileOrder" : 4,
@@ -574,7 +574,7 @@
         "showUpdateDashboardImage" : false
       }
     },
-    "name" : "Administración de dispositivos Tenant",
+    "name" : "Administración de dispositivos Tenant v2",
     "resources" : null,
     "assignedCustomers" : null,
     "externalId" : null,
