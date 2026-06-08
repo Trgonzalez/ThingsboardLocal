@@ -364,6 +364,18 @@
                 "funcBody" : null,
                 "usePostProcessing" : null,
                 "postFuncBody" : null
+              }, {
+                "name" : "interval",
+                "type" : "attribute",
+                "label" : "reportInterval",
+                "color" : "#795548",
+                "settings" : { },
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
