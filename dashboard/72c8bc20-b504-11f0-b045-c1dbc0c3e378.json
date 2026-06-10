@@ -327,7 +327,7 @@
               "yAxes" : {
                 "default" : {
                   "units" : null,
-                  "decimals" : 0,
+                  "decimals" : 2,
                   "show" : true,
                   "label" : "",
                   "labelFont" : {
@@ -362,12 +362,20 @@
                   "min" : {
                     "type" : "constant",
                     "value" : null,
-                    "entityAlias" : null
+                    "latestKey" : null,
+                    "latestKeyType" : null,
+                    "entityAlias" : null,
+                    "entityKey" : null,
+                    "entityKeyType" : null
                   },
                   "max" : {
                     "type" : "constant",
                     "value" : null,
-                    "entityAlias" : null
+                    "latestKey" : null,
+                    "latestKeyType" : null,
+                    "entityAlias" : null,
+                    "entityKey" : null,
+                    "entityKeyType" : null
                   }
                 },
                 "axis1" : {
