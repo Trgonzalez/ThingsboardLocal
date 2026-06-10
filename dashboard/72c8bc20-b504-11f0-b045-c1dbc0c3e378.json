@@ -104,7 +104,7 @@
                 "label" : "humidity",
                 "color" : "#4caf50",
                 "settings" : {
-                  "yAxisId" : "default",
+                  "yAxisId" : "axis1",
                   "showInLegend" : true,
                   "dataHiddenByDefault" : false,
                   "type" : "line",
@@ -373,7 +373,7 @@
                 "axis1" : {
                   "units" : null,
                   "decimals" : 0,
-                  "show" : false,
+                  "show" : true,
                   "label" : "",
                   "labelFont" : {
                     "family" : "Roboto",
@@ -384,7 +384,7 @@
                     "lineHeight" : "1"
                   },
                   "labelColor" : "rgba(0, 0, 0, 0.54)",
-                  "position" : "left",
+                  "position" : "right",
                   "showTickLabels" : true,
                   "tickLabelFont" : {
                     "family" : "Roboto",
@@ -406,7 +406,7 @@
                   "order" : 1,
                   "min" : {
                     "type" : "constant",
-                    "value" : 3.5,
+                    "value" : null,
                     "latestKey" : null,
                     "latestKeyType" : null,
                     "entityAlias" : null,
@@ -415,7 +415,7 @@
                   },
                   "max" : {
                     "type" : "constant",
-                    "value" : 4.2,
+                    "value" : null,
                     "latestKey" : null,
                     "latestKeyType" : null,
                     "entityAlias" : null,
