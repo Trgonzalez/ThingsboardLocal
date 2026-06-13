@@ -1,0 +1,111 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "table",
+    "name" : "Table",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/Table.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"metric-card\">\r\n        <tb-entities-table-widget [ctx]=\"ctx\">\r\n        </tb-entities-table-widget>\r\n    </div>\r\n</div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: #ffffff00;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 8px;\r\n    /* Reducido para dar más espacio interno */\r\n    display: flex;\r\n    flex-direction: column;\r\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);\r\n    border-left: 4px solid #EE7623;\r\n    transition: all 0.2s ease;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n    /* Crítico: cortar cualquier desbordamiento */\r\n}\r\n\r\n/* Contenedor de la tabla con dimensiones estrictas */\r\ntb-entities-table-widget {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n/* Forzar contenedores internos */\r\n:host ::ng-deep tb-entities-table-widget>* {\r\n    max-width: 100% !important;\r\n}\r\n\r\n:host ::ng-deep .mat-toolbar {\r\n    background: transparent !important;\r\n    padding: 0 8px !important;\r\n    min-height: 40px !important;\r\n}\r\n\r\n:host ::ng-deep .mat-toolbar-row {\r\n    padding: 0 !important;\r\n    height: auto !important;\r\n    min-height: 40px !important;\r\n}\r\n\r\n:host ::ng-deep .tb-entity-table-content {\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    overflow: hidden;\r\n}\r\n\r\n/* Tabla principal con scroll interno */\r\n:host ::ng-deep .tb-entity-table {\r\n    width: 100%;\r\n    max-width: 100%;\r\n    overflow-x: auto;\r\n    overflow-y: auto;\r\n}\r\n\r\n/* Forzar que la tabla material respete el ancho */\r\n:host ::ng-deep .mat-table {\r\n    width: 100% !important;\r\n    max-width: 100% !important;\r\n    table-layout: fixed;\r\n    /* Importante: forzar tabla a respetar ancho del contenedor */\r\n}\r\n\r\n/* Filas y headers con ancho controlado */\r\n:host ::ng-deep mat-row,\r\n:host ::ng-deep mat-header-row {\r\n    width: 100% !important;\r\n    max-width: 100% !important;\r\n    box-sizing: border-box !important;\r\n}\r\n\r\n/* Celdas con padding interno */\r\n:host ::ng-deep mat-header-cell,\r\n:host ::ng-deep mat-cell {\r\n    padding: 0 12px !important;\r\n    box-sizing: border-box !important;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n/* Primera columna con padding extra para separar del borde naranja */\r\n:host ::ng-deep mat-header-cell:first-of-type,\r\n:host ::ng-deep mat-cell:first-of-type {\r\n    padding-left: 16px !important;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    // Aplicar configuraciones del settings form al contexto del widget\r\n    var settings = self.ctx.settings;\r\n\r\n    // Configurar opciones de la tabla en el contexto\r\n    if (self.ctx.widgetConfig) {\r\n        // Table header\r\n        if (settings.entitiesTitle !== undefined) {\r\n            self.ctx.widgetConfig.entitiesTitle = settings.entitiesTitle;\r\n        }\r\n        if (settings.displayHeader !== undefined) {\r\n            self.ctx.widgetConfig.displayHeader = settings.displayHeader;\r\n        }\r\n\r\n        // Header buttons\r\n        if (settings.enableSearch !== undefined) {\r\n            self.ctx.widgetConfig.enableSearch = settings.enableSearch;\r\n        }\r\n        if (settings.enableSelectColumnDisplay !== undefined) {\r\n            self.ctx.widgetConfig.enableSelectColumnDisplay = settings.enableSelectColumnDisplay;\r\n        }\r\n\r\n        // Pagination\r\n        if (settings.displayPagination !== undefined) {\r\n            self.ctx.widgetConfig.displayPagination = settings.displayPagination;\r\n        }\r\n        if (settings.defaultPageSize !== undefined) {\r\n            self.ctx.widgetConfig.defaultPageSize = settings.defaultPageSize;\r\n        }\r\n        if (settings.pageSizeIncrement !== undefined) {\r\n            self.ctx.widgetConfig.pageSizeIncrement = settings.pageSizeIncrement;\r\n        }\r\n        if (settings.numberOfSteps !== undefined) {\r\n            self.ctx.widgetConfig.numberOfSteps = settings.numberOfSteps;\r\n        }\r\n\r\n        // Entity columns\r\n        if (settings.displayEntityName !== undefined) {\r\n            self.ctx.widgetConfig.displayEntityName = settings.displayEntityName;\r\n        }\r\n        if (settings.entityNameColumnTitle !== undefined) {\r\n            self.ctx.widgetConfig.entityNameColumnTitle = settings.entityNameColumnTitle;\r\n        }\r\n        if (settings.displayEntityType !== undefined) {\r\n            self.ctx.widgetConfig.displayEntityType = settings.displayEntityType;\r\n        }\r\n        if (settings.entityTypeColumnTitle !== undefined) {\r\n            self.ctx.widgetConfig.entityTypeColumnTitle = settings.entityTypeColumnTitle;\r\n        }\r\n    }\r\n}\r\n\r\nself.onDataUpdated = function () {\r\n    self.ctx.$scope.entitiesTableWidget.onDataUpdated();\r\n}\r\n\r\nself.onEditModeChanged = function () {\r\n    self.ctx.$scope.entitiesTableWidget.onEditModeChanged();\r\n}\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: 1,\r\n        hasDataPageLink: true,\r\n        warnOnPageDataOverflow: false,\r\n        dataKeysOptional: true,\r\n        supportsUnitConversion: true\r\n    };\r\n}\r\n\r\nself.actionSources = function () {\r\n    return {\r\n        'actionCellButton': {\r\n            name: 'widget-action.action-cell-button',\r\n            multiple: true,\r\n            hasShowCondition: true\r\n        },\r\n        'rowClick': {\r\n            name: 'widget-action.row-click',\r\n            multiple: false\r\n        },\r\n        'rowDoubleClick': {\r\n            name: 'widget-action.row-double-click',\r\n            multiple: false\r\n        },\r\n        'cellClick': {\r\n            name: 'widget-action.cell-click',\r\n            multiple: true\r\n        }\r\n    };\r\n}\r\n\r\nself.onDestroy = function () {\r\n}\r\n",
+      "settingsForm" : [ {
+        "id" : "entitiesTitle",
+        "name" : "Entities table title",
+        "group" : "Table header",
+        "type" : "text"
+      }, {
+        "id" : "displayHeader",
+        "name" : "Always display header",
+        "group" : "Table header",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "enableSearch",
+        "name" : "Enable search",
+        "group" : "Header buttons",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "enableSelectColumnDisplay",
+        "name" : "Enable select columns to display",
+        "group" : "Header buttons",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "displayPagination",
+        "name" : "Display pagination",
+        "group" : "Pagination",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "defaultPageSize",
+        "name" : "Default page size",
+        "group" : "Pagination",
+        "type" : "number",
+        "default" : 10,
+        "min" : 1,
+        "max" : 100
+      }, {
+        "id" : "pageSizeIncrement",
+        "name" : "Step increment",
+        "group" : "Pagination - Page step settings",
+        "type" : "number",
+        "default" : 10,
+        "min" : 1,
+        "max" : 100
+      }, {
+        "id" : "numberOfSteps",
+        "name" : "Number of steps",
+        "group" : "Pagination - Page step settings",
+        "type" : "number",
+        "default" : 5,
+        "min" : 1,
+        "max" : 10
+      }, {
+        "id" : "displayEntityName",
+        "name" : "Display entity name column",
+        "group" : "Entity columns",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "entityNameColumnTitle",
+        "name" : "Entity name column title",
+        "group" : "Entity columns",
+        "type" : "text",
+        "default" : "Entity Name"
+      }, {
+        "id" : "displayEntityType",
+        "name" : "Display entity type column",
+        "group" : "Entity columns",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "entityTypeColumnTitle",
+        "name" : "Entity type column title",
+        "group" : "Entity columns",
+        "type" : "text",
+        "default" : "Entity Type"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.15479322438769105,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}},\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{},\"title\":\"Table\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "449c5ba0-4d56-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

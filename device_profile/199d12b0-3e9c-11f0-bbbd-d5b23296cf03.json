@@ -158,7 +158,7 @@
           }
         }
       },
-      "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
+      "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Clamp a 100% si está dentro del 10% superior\r\nif (batPerc >= 90) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
       "output" : {
         "type" : "TIME_SERIES",
         "name" : "",

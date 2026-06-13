@@ -1,0 +1,224 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "nexor_gauge_1",
+    "name" : "Nexor Gauge 1",
+    "deprecated" : false,
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 4.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"nx-card\">\r\n  <div class=\"nx-gauge-wrap\">\r\n    <svg class=\"nx-gauge-svg\" viewBox=\"0 0 100 76\" preserveAspectRatio=\"xMidYMid meet\">\r\n      <path class=\"nx-track\" d=\"M 10 55 A 40 40 0 1 1 90 55\" fill=\"none\"/>\r\n      <g class=\"nx-arc-segs\"></g>\r\n      <g class=\"nx-ticks\"></g>\r\n      <g class=\"nx-labels\"></g>\r\n      <g class=\"nx-needle\"></g>\r\n      <circle class=\"nx-pivot\" cx=\"50\" cy=\"50\"/>\r\n    </svg>\r\n  </div>\r\n  <div class=\"nx-gauge-info\">\r\n    <div *ngIf=\"showValue\" class=\"nx-value-row\">\r\n      <span class=\"nx-value\">{{ valueText }}</span>\r\n      <span *ngIf=\"units\" class=\"nx-unit\">{{ units }}</span>\r\n    </div>\r\n    <div *ngIf=\"showLabel\" class=\"nx-label\">{{ label }}</div>\r\n    <div *ngIf=\"showTimestamp\" class=\"nx-date\">{{ timestampText }}</div>\r\n  </div>\r\n</div>\r\n",
+      "templateCss" : ":host {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\r\n}\r\n\r\n.nx-card {\r\n  --nx-bg:             #ffffff;\r\n  --nx-text-primary:   #0f172a;\r\n  --nx-text-secondary: #64748b;\r\n  --nx-text-tertiary:  #94a3b8;\r\n  --nx-value-size:     32px;\r\n  --nx-unit-size:      14px;\r\n  --nx-label-size:     11px;\r\n  --nx-date-size:      10px;\r\n  --nx-radius:         14px;\r\n\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  height: 100%;\r\n  background: var(--nx-bg);\r\n  border: none;\r\n  border-radius: var(--nx-radius);\r\n  padding: 10px;\r\n  box-sizing: border-box;\r\n  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.03);\r\n  overflow: hidden;\r\n  transition: box-shadow 0.2s ease;\r\n}\r\n\r\n.nx-card:hover {\r\n  box-shadow: 0 4px 14px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04);\r\n}\r\n\r\n.nx-gauge-wrap {\r\n  flex: 1 1 auto;\r\n  min-height: 0;\r\n  min-width: 0;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  overflow: hidden;\r\n}\r\n\r\n.nx-gauge-svg {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: block;\r\n  overflow: visible;\r\n}\r\n\r\n.nx-gauge-info {\r\n  flex: 0 0 auto;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 2px;\r\n  overflow: hidden;\r\n}\r\n\r\n.nx-value-row {\r\n  display: flex;\r\n  align-items: baseline;\r\n  gap: 4px;\r\n  overflow: hidden;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-value {\r\n  font-size: var(--nx-value-size);\r\n  font-weight: 600;\r\n  letter-spacing: -0.02em;\r\n  color: var(--nx-text-primary);\r\n  font-variant-numeric: tabular-nums;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-unit {\r\n  font-size: var(--nx-unit-size);\r\n  font-weight: 500;\r\n  letter-spacing: -0.01em;\r\n  color: var(--nx-text-secondary);\r\n  white-space: nowrap;\r\n}\r\n\r\n.nx-label {\r\n  font-size: var(--nx-label-size);\r\n  font-weight: 600;\r\n  letter-spacing: 0.04em;\r\n  text-transform: uppercase;\r\n  color: var(--nx-text-secondary);\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-date {\r\n  font-size: var(--nx-date-size);\r\n  font-weight: 500;\r\n  color: var(--nx-text-tertiary);\r\n  white-space: nowrap;\r\n}\r\n\r\n@media (prefers-color-scheme: dark) {\r\n  .nx-card {\r\n    --nx-bg:             #0f172a;\r\n    --nx-text-primary:   #f8fafc;\r\n    --nx-text-secondary: #94a3b8;\r\n    --nx-text-tertiary:  #64748b;\r\n    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);\r\n  }\r\n}\r\n",
+      "controllerScript" : "var SVG_NS = 'http://www.w3.org/2000/svg';\r\nvar _els   = null; // SVG element refs\r\n\r\nself.onInit = function() {\r\n  var ctx = self.ctx;\r\n  var s   = ctx.settings || {};\r\n\r\n  var min          = parseNumberOrNull(s.minValue)   !== null ? parseNumberOrNull(s.minValue)   : 180;\r\n  var max          = parseNumberOrNull(s.maxValue)   !== null ? parseNumberOrNull(s.maxValue)   : 260;\r\n  var arcColor     = s.arcColor    || { type: 'constant', color: '#4caf50' };\r\n  var arcWidth     = parseNumberOrNull(s.arcWidth)   || 12;\r\n  var arcRoundCap  = s.arcRoundCap !== false;\r\n  var trackColor   = s.trackColor  || '#e0e0e0';\r\n  var trackWidth   = parseNumberOrNull(s.trackWidth) || 14;\r\n  var needleStyle  = s.needleStyle || 'triangle';\r\n  var needleColor  = s.needleColor || '#24272A';\r\n  var needleWidth  = parseNumberOrNull(s.needleWidth)  || 6;\r\n  var needleLength = parseNumberOrNull(s.needleLength) || 70;\r\n  var scaleMode    = s.scaleLabels || 'endpoints';\r\n  var showTicks    = s.showTicks      !== false;\r\n  var showSplits   = s.showSplitLines !== false;\r\n  var cardRadius   = parseNumberOrNull(s.cardRadius) !== null ? parseNumberOrNull(s.cardRadius) : 14;\r\n\r\n  ctx.$scope._min           = min;\r\n  ctx.$scope._max           = max;\r\n  ctx.$scope._arcColor      = arcColor;\r\n  ctx.$scope._arcWidth      = arcWidth;\r\n  ctx.$scope._needleStyle   = needleStyle;\r\n  ctx.$scope._needleColor   = needleColor;\r\n  ctx.$scope._needleWidth   = needleWidth;\r\n  ctx.$scope._needleLength  = needleLength;\r\n  ctx.$scope._showTicks     = showTicks;\r\n  ctx.$scope._showSplits    = showSplits;\r\n  ctx.$scope._scaleLabels   = scaleMode;\r\n  ctx.$scope._minAlias      = (s.minAlias != null && s.minAlias !== '') ? s.minAlias : null;\r\n  ctx.$scope._maxAlias      = (s.maxAlias != null && s.maxAlias !== '') ? s.maxAlias : null;\r\n  ctx.$scope._unitsOverride    = (s.units != null && s.units !== '') ? s.units : null;\r\n  ctx.$scope._decimalsOverride = parseNumberOrNull(s.decimals);\r\n  ctx.$scope.showValue     = s.showValue     !== false;\r\n  ctx.$scope.showLabel     = s.showLabel     !== false;\r\n  ctx.$scope.showTimestamp = s.showTimestamp === true;\r\n  ctx.$scope._valueScale   = clamp(0.5, (parseNumberOrNull(s.valueFontScale) || 100) / 100, 2.0);\r\n  ctx.$scope._labelScale   = clamp(0.5, (parseNumberOrNull(s.labelFontScale) || 100) / 100, 2.0);\r\n  ctx.$scope.valueText     = '—';\r\n  ctx.$scope.units         = '';\r\n  ctx.$scope.label         = '—';\r\n  ctx.$scope.timestampText = '';\r\n  ctx.$scope.lastTs        = null;\r\n  ctx.detectChanges();\r\n\r\n  var card    = ctx.$container[0].querySelector('.nx-card');\r\n  var track   = ctx.$container[0].querySelector('.nx-track');\r\n  var arcSegs = ctx.$container[0].querySelector('.nx-arc-segs');\r\n  var ticks   = ctx.$container[0].querySelector('.nx-ticks');\r\n  var labels  = ctx.$container[0].querySelector('.nx-labels');\r\n  var needle  = ctx.$container[0].querySelector('.nx-needle');\r\n  var pivot   = ctx.$container[0].querySelector('.nx-pivot');\r\n\r\n  if (!arcSegs || !track) return;\r\n\r\n  if (card) card.style.setProperty('--nx-radius', cardRadius + 'px');\r\n\r\n  track.setAttribute('stroke', trackColor);\r\n  track.setAttribute('stroke-width', trackWidth);\r\n  track.setAttribute('stroke-linecap', arcRoundCap ? 'round' : 'butt');\r\n\r\n  ctx.$scope._arcRoundCap = arcRoundCap;\r\n  buildArcSegments(arcSegs, arcColor, min, max, min, arcWidth, arcRoundCap);\r\n\r\n  var pivotR = Math.max(2, needleWidth * 0.55);\r\n  pivot.setAttribute('r', pivotR);\r\n  pivot.setAttribute('fill', needleColor);\r\n\r\n  buildTickMarks(ticks, min, max, arcWidth, showTicks, showSplits);\r\n  buildScaleLabels(labels, min, max, scaleMode, arcWidth);\r\n  updateNeedle(needle, needleStyle, needleColor, needleWidth, needleLength, min, min, max);\r\n\r\n  _els = { arcSegs: arcSegs, needle: needle, ticks: ticks, labels: labels };\r\n\r\n  if (card && typeof ResizeObserver !== 'undefined') {\r\n    self._ro = new ResizeObserver(function() { applyAdaptiveSizes(card); });\r\n    self._ro.observe(card);\r\n    applyAdaptiveSizes(card);\r\n  }\r\n\r\n  self._tickInterval = setInterval(function() {\r\n    if (ctx.$scope.lastTs) {\r\n      ctx.$scope.timestampText = formatRelativeTime(ctx.$scope.lastTs);\r\n      ctx.detectChanges();\r\n      var c = ctx.$container[0].querySelector('.nx-card');\r\n      if (c) applyAdaptiveSizes(c);\r\n    }\r\n  }, 30000);\r\n};\r\n\r\nself.onDataUpdated = function() {\r\n  var ctx  = self.ctx;\r\n  var data = ctx.data;\r\n  var sc   = ctx.$scope;\r\n\r\n  if (!data || !data.length || !data[0].data || !data[0].data.length) {\r\n    sc.valueText = '—';\r\n    ctx.detectChanges();\r\n    if (_els) updateNeedle(_els.needle, sc._needleStyle, sc._needleColor, sc._needleWidth, sc._needleLength, sc._min, sc._min, sc._max);\r\n    return;\r\n  }\r\n\r\n  var series = data[0];\r\n  var dk     = series.dataKey || {};\r\n\r\n  if (dk.label) sc.label = dk.label;\r\n  sc.units = sc._unitsOverride || dk.units || '';\r\n\r\n  var decimals = sc._decimalsOverride;\r\n  if (decimals == null && dk.decimals != null) decimals = dk.decimals;\r\n  if (decimals == null) decimals = 1;\r\n\r\n  var last   = series.data[series.data.length - 1];\r\n  var ts     = last[0];\r\n  var val    = last[1];\r\n  var numVal = null;\r\n\r\n  if (val !== null && val !== undefined && val !== '') {\r\n    var num = Number(val);\r\n    if (!isNaN(num) && isFinite(num)) {\r\n      numVal = num;\r\n      sc.valueText = num.toFixed(decimals);\r\n    } else {\r\n      sc.valueText = String(val);\r\n    }\r\n  } else {\r\n    sc.valueText = '—';\r\n  }\r\n\r\n  sc.lastTs        = ts;\r\n  sc.timestampText = formatRelativeTime(ts);\r\n  ctx.detectChanges();\r\n\r\n  // Dynamic min/max from extra data keys\r\n  if (sc._minAlias || sc._maxAlias) {\r\n    for (var di = 1; di < data.length; di++) {\r\n      var dk2   = data[di].dataKey || {};\r\n      var alias = dk2.label || dk2.name || '';\r\n      var dvals = data[di].data;\r\n      if (!dvals || !dvals.length) continue;\r\n      var dv = Number(dvals[dvals.length - 1][1]);\r\n      if (isNaN(dv)) continue;\r\n      if (sc._minAlias && alias === sc._minAlias) sc._min = dv;\r\n      if (sc._maxAlias && alias === sc._maxAlias) sc._max = dv;\r\n    }\r\n  }\r\n\r\n  var gaugeVal = numVal !== null ? clamp(sc._min, numVal, sc._max) : sc._min;\r\n\r\n  if (_els) {\r\n    updateNeedle(_els.needle, sc._needleStyle, sc._needleColor, sc._needleWidth, sc._needleLength, gaugeVal, sc._min, sc._max);\r\n    buildArcSegments(_els.arcSegs, sc._arcColor, sc._min, sc._max, gaugeVal, sc._arcWidth, sc._arcRoundCap);\r\n    if (sc._minAlias || sc._maxAlias) {\r\n      buildTickMarks(_els.ticks, sc._min, sc._max, sc._arcWidth, sc._showTicks, sc._showSplits);\r\n      buildScaleLabels(_els.labels, sc._min, sc._max, sc._scaleLabels, sc._arcWidth);\r\n    }\r\n  }\r\n\r\n  var card = ctx.$container[0].querySelector('.nx-card');\r\n  if (card) applyAdaptiveSizes(card);\r\n};\r\n\r\nself.onResize = function() {\r\n  var card = self.ctx.$container[0].querySelector('.nx-card');\r\n  if (card) applyAdaptiveSizes(card);\r\n};\r\n\r\nself.onDestroy = function() {\r\n  if (self._ro)          { self._ro.disconnect(); self._ro = null; }\r\n  if (self._tickInterval){ clearInterval(self._tickInterval); }\r\n  if (self._fitRaf)      { cancelAnimationFrame(self._fitRaf); }\r\n  _els = null;\r\n};\r\n\r\n// ── SVG builders ──────────────────────────────────────────────────────────\r\n\r\nfunction buildArcSegments(container, colorSettings, min, max, value, arcWidth, roundCap) {\r\n  while (container.firstChild) container.removeChild(container.firstChild);\r\n  var stops = computeColorStops(colorSettings, min, max, value);\r\n  var N = 36;\r\n  for (var i = 0; i < N; i++) {\r\n    var pStart = i / N;\r\n    var pEnd   = (i + 1) / N;\r\n    var color  = interpolateStopColor(stops, (pStart + pEnd) / 2);\r\n    var aS = arcRad(pStart), aE = arcRad(pEnd);\r\n    var x1 = 50 + 40 * Math.cos(aS), y1 = 55 + 40 * Math.sin(aS);\r\n    var x2 = 50 + 40 * Math.cos(aE), y2 = 55 + 40 * Math.sin(aE);\r\n    var seg = document.createElementNS(SVG_NS, 'path');\r\n    seg.setAttribute('d', 'M '+x1.toFixed(3)+' '+y1.toFixed(3)+' A 40 40 0 0 1 '+x2.toFixed(3)+' '+y2.toFixed(3));\r\n    seg.setAttribute('fill', 'none');\r\n    seg.setAttribute('stroke', color);\r\n    seg.setAttribute('stroke-width', arcWidth);\r\n    seg.setAttribute('stroke-linecap', (roundCap && (i === 0 || i === N - 1)) ? 'round' : 'square');\r\n    container.appendChild(seg);\r\n  }\r\n}\r\n\r\nfunction interpolateStopColor(stops, pct) {\r\n  var t = pct * 100;\r\n  if (!stops || !stops.length) return '#4caf50';\r\n  if (stops.length === 1 || t <= stops[0].offset) return stops[0].color;\r\n  if (t >= stops[stops.length - 1].offset) return stops[stops.length - 1].color;\r\n  for (var i = 0; i < stops.length - 1; i++) {\r\n    if (t >= stops[i].offset && t <= stops[i + 1].offset) {\r\n      var f = (t - stops[i].offset) / (stops[i + 1].offset - stops[i].offset);\r\n      return lerpColor(stops[i].color, stops[i + 1].color, f);\r\n    }\r\n  }\r\n  return stops[stops.length - 1].color;\r\n}\r\n\r\nfunction lerpColor(c1, c2, t) {\r\n  var a = parseRGBA(c1), b = parseRGBA(c2);\r\n  return 'rgba('+Math.round(a[0]+(b[0]-a[0])*t)+','+Math.round(a[1]+(b[1]-a[1])*t)+','+Math.round(a[2]+(b[2]-a[2])*t)+','+(a[3]+(b[3]-a[3])*t).toFixed(3)+')';\r\n}\r\n\r\nfunction parseRGBA(c) {\r\n  var m;\r\n  m = c.match(/rgba?\\(\\s*(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)(?:\\s*,\\s*([\\d.]+))?\\s*\\)/);\r\n  if (m) return [+m[1], +m[2], +m[3], m[4] !== undefined ? +m[4] : 1];\r\n  m = c.match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);\r\n  if (m) return [parseInt(m[1],16), parseInt(m[2],16), parseInt(m[3],16), 1];\r\n  m = c.match(/^#([0-9a-f])([0-9a-f])([0-9a-f])$/i);\r\n  if (m) return [parseInt(m[1]+m[1],16), parseInt(m[2]+m[2],16), parseInt(m[3]+m[3],16), 1];\r\n  return [128, 128, 128, 1];\r\n}\r\n\r\nfunction computeColorStops(colorSettings, min, max, value) {\r\n  var fallback = [{ offset: 0, color: '#4caf50' }, { offset: 100, color: '#4caf50' }];\r\n  if (!colorSettings) return fallback;\r\n\r\n  var type = colorSettings.type || 'constant';\r\n\r\n  if (type === 'constant') {\r\n    var c = colorSettings.color || '#4caf50';\r\n    return [{ offset: 0, color: c }, { offset: 100, color: c }];\r\n  }\r\n\r\n  if (type === 'gradient') {\r\n    var colors = (colorSettings.gradient && colorSettings.gradient.gradient) || [];\r\n    if (colors.length < 2) {\r\n      var c2 = colors[0] || '#4caf50';\r\n      return [{ offset: 0, color: c2 }, { offset: 100, color: c2 }];\r\n    }\r\n    return colors.map(function(c, i) {\r\n      return { offset: i / (colors.length - 1) * 100, color: c };\r\n    });\r\n  }\r\n\r\n  if (type === 'range') {\r\n    var ranges = (colorSettings.rangeList && colorSettings.rangeList.range) || [];\r\n    if (!ranges.length) return [{ offset: 0, color: colorSettings.color || '#4caf50' }, { offset: 100, color: colorSettings.color || '#4caf50' }];\r\n    var result = [];\r\n    ranges.forEach(function(r, i) {\r\n      var from    = (r.from !== null && r.from !== undefined) ? r.from : min;\r\n      var to      = (r.to   !== null && r.to   !== undefined) ? r.to   : max;\r\n      var fromPct = clamp(0, (from - min) / (max - min) * 100, 100);\r\n      var toPct   = clamp(0, (to   - min) / (max - min) * 100, 100);\r\n      if (i === 0) result.push({ offset: fromPct, color: r.color });\r\n      else         result.push({ offset: fromPct, color: r.color }); // hard step\r\n      result.push({ offset: toPct, color: r.color });\r\n    });\r\n    return result;\r\n  }\r\n\r\n  if (type === 'function') {\r\n    try {\r\n      if (self.ctx.utils && typeof self.ctx.utils.getColorFromColorSettings === 'function') {\r\n        var resolved = self.ctx.utils.getColorFromColorSettings(colorSettings, value);\r\n        if (resolved) return [{ offset: 0, color: resolved }, { offset: 100, color: resolved }];\r\n      }\r\n    } catch (e) {}\r\n    var fc = colorSettings.color || '#4caf50';\r\n    return [{ offset: 0, color: fc }, { offset: 100, color: fc }];\r\n  }\r\n\r\n  return fallback;\r\n}\r\n\r\nfunction buildTickMarks(ticksEl, min, max, arcWidth, showMinor, showMajor) {\r\n  while (ticksEl.firstChild) ticksEl.removeChild(ticksEl.firstChild);\r\n  if (!showMinor && !showMajor) return;\r\n\r\n  var dark       = window.matchMedia('(prefers-color-scheme: dark)').matches;\r\n  var majorColor = dark ? '#94a3b8' : '#64748b';\r\n  var minorColor = dark ? '#475569' : '#94a3b8';\r\n  var innerEdge  = 40 - arcWidth / 2;\r\n\r\n  for (var i = 0; i <= 10; i++) {\r\n    var isMajor = (i % 5 === 0);\r\n    if (isMajor && !showMajor)  continue;\r\n    if (!isMajor && !showMinor) continue;\r\n\r\n    var pct  = i / 10;\r\n    var a    = arcRad(pct);\r\n    var len  = isMajor ? 5 : 3;\r\n    var x1   = 50 + (innerEdge - 1) * Math.cos(a);\r\n    var y1   = 55 + (innerEdge - 1) * Math.sin(a);\r\n    var x2   = 50 + (innerEdge - 1 - len) * Math.cos(a);\r\n    var y2   = 55 + (innerEdge - 1 - len) * Math.sin(a);\r\n\r\n    var line = document.createElementNS(SVG_NS, 'line');\r\n    line.setAttribute('x1', x1); line.setAttribute('y1', y1);\r\n    line.setAttribute('x2', x2); line.setAttribute('y2', y2);\r\n    line.setAttribute('stroke', isMajor ? majorColor : minorColor);\r\n    line.setAttribute('stroke-width', isMajor ? 0.8 : 0.5);\r\n    line.setAttribute('stroke-linecap', 'round');\r\n    ticksEl.appendChild(line);\r\n  }\r\n}\r\n\r\nfunction buildScaleLabels(labelsEl, min, max, mode, arcWidth) {\r\n  while (labelsEl.firstChild) labelsEl.removeChild(labelsEl.firstChild);\r\n  if (mode === 'none') return;\r\n\r\n  var dark      = window.matchMedia('(prefers-color-scheme: dark)').matches;\r\n  var textColor = dark ? '#94a3b8' : '#64748b';\r\n  var labelR    = 40 + (arcWidth || 12) / 2 + 6;\r\n\r\n  function addLabel(v, x, y, anchor) {\r\n    var t = document.createElementNS(SVG_NS, 'text');\r\n    t.setAttribute('x', x);\r\n    t.setAttribute('y', y);\r\n    t.setAttribute('font-size', '4.5');\r\n    t.setAttribute('font-family', 'Inter, system-ui, sans-serif');\r\n    t.setAttribute('fill', textColor);\r\n    t.setAttribute('text-anchor', anchor || 'middle');\r\n    t.setAttribute('dominant-baseline', 'middle');\r\n    t.textContent = String(v);\r\n    labelsEl.appendChild(t);\r\n  }\r\n\r\n  function addLabelAtPct(pct, v) {\r\n    var a  = arcRad(pct);\r\n    var lx = 50 + labelR * Math.cos(a);\r\n    var ly = 55 + labelR * Math.sin(a);\r\n    addLabel(v, lx, Math.max(5, ly), 'middle');\r\n  }\r\n\r\n  // endpoints: arc endpoints are at (10,55) and (90,55), place labels just below\r\n  addLabel(min, 11, 63, 'start');\r\n  addLabel(max, 89, 63, 'end');\r\n\r\n  if (mode === 'endpoints+mid') {\r\n    addLabelAtPct(0.5, Math.round((min + max) / 2));\r\n  }\r\n\r\n  if (mode === 'full') {\r\n    [0.25, 0.5, 0.75].forEach(function(pct) {\r\n      addLabelAtPct(pct, Math.round(min + (max - min) * pct));\r\n    });\r\n  }\r\n}\r\n\r\nfunction updateNeedle(needleEl, style, color, strokeWidth, lengthPct, value, min, max) {\r\n  while (needleEl.firstChild) needleEl.removeChild(needleEl.firstChild);\r\n\r\n  var pct  = (value - min) / (max - min);\r\n  var dir  = gaugeDir(pct);\r\n  var r    = 40 * (lengthPct / 100);\r\n  var tx   = 50 + r * Math.cos(dir);\r\n  var ty   = 50 + r * Math.sin(dir);\r\n  var perp = dir + Math.PI / 2;\r\n  var hw   = strokeWidth * 0.5;\r\n\r\n  if (style === 'line') {\r\n    var ln = document.createElementNS(SVG_NS, 'line');\r\n    ln.setAttribute('x1', 50); ln.setAttribute('y1', 50);\r\n    ln.setAttribute('x2', tx); ln.setAttribute('y2', ty);\r\n    ln.setAttribute('stroke', color);\r\n    ln.setAttribute('stroke-width', strokeWidth);\r\n    ln.setAttribute('stroke-linecap', 'round');\r\n    needleEl.appendChild(ln);\r\n\r\n  } else if (style === 'lollipop') {\r\n    var ln2 = document.createElementNS(SVG_NS, 'line');\r\n    ln2.setAttribute('x1', 50); ln2.setAttribute('y1', 50);\r\n    ln2.setAttribute('x2', tx); ln2.setAttribute('y2', ty);\r\n    ln2.setAttribute('stroke', color);\r\n    ln2.setAttribute('stroke-width', Math.max(0.8, strokeWidth * 0.4));\r\n    ln2.setAttribute('stroke-linecap', 'round');\r\n    var ball = document.createElementNS(SVG_NS, 'circle');\r\n    ball.setAttribute('cx', tx); ball.setAttribute('cy', ty);\r\n    ball.setAttribute('r', hw + 1);\r\n    ball.setAttribute('fill', color);\r\n    needleEl.appendChild(ln2);\r\n    needleEl.appendChild(ball);\r\n\r\n  } else if (style === 'arrow') {\r\n    var midR  = r * 0.55;\r\n    var mx    = 50 + midR * Math.cos(dir);\r\n    var my    = 50 + midR * Math.sin(dir);\r\n    var hw2   = hw * 2;\r\n    var pts   = [\r\n      tx + ','+ty,\r\n      (mx + hw2*Math.cos(perp)) +','+ (my + hw2*Math.sin(perp)),\r\n      (50 + hw*Math.cos(perp)) +','+ (50 + hw*Math.sin(perp)),\r\n      (50 - hw*Math.cos(perp)) +','+ (50 - hw*Math.sin(perp)),\r\n      (mx - hw2*Math.cos(perp)) +','+ (my - hw2*Math.sin(perp))\r\n    ].join(' ');\r\n    var poly = document.createElementNS(SVG_NS, 'polygon');\r\n    poly.setAttribute('points', pts);\r\n    poly.setAttribute('fill', color);\r\n    needleEl.appendChild(poly);\r\n\r\n  } else {\r\n    // triangle (default)\r\n    var bx1 = 50 + hw * Math.cos(perp);\r\n    var by1 = 50 + hw * Math.sin(perp);\r\n    var bx2 = 50 - hw * Math.cos(perp);\r\n    var by2 = 50 - hw * Math.sin(perp);\r\n    var tri = document.createElementNS(SVG_NS, 'polygon');\r\n    tri.setAttribute('points', tx+','+ty+' '+bx1+','+by1+' '+bx2+','+by2);\r\n    tri.setAttribute('fill', color);\r\n    needleEl.appendChild(tri);\r\n  }\r\n}\r\n\r\n// ── Math helpers ──────────────────────────────────────────────────────────\r\n\r\n// Arc is a 180° semicircle, center at (50, 55), radius 40\r\n// arcRad maps pct 0→1 to angle PI→2PI (left→right through top)\r\nfunction arcRad(pct) {\r\n  return Math.PI * (1 + pct);\r\n}\r\n\r\n// Direction from needle pivot (50,50) toward the arc point at pct\r\nfunction gaugeDir(pct) {\r\n  var a = arcRad(pct);\r\n  return Math.atan2(55 + 40 * Math.sin(a) - 50, 50 + 40 * Math.cos(a) - 50);\r\n}\r\n\r\n// ── Adaptive sizing (info block only) ────────────────────────────────────\r\n\r\nfunction applyAdaptiveSizes(card) {\r\n  var w = card.clientWidth;\r\n  var h = card.clientHeight;\r\n  if (!w || !h) return;\r\n\r\n  var minDim    = Math.min(w, h);\r\n  var vScale    = self.ctx.$scope._valueScale || 1;\r\n  var lScale    = self.ctx.$scope._labelScale || 1;\r\n  var valueSize = clamp(12, minDim * 0.15, 64) * vScale;\r\n  var unitSize  = clamp(9,  minDim * 0.07, 26) * vScale;\r\n  var labelSize = clamp(9,  minDim * 0.065, 18) * lScale;\r\n  var dateSize  = clamp(8,  minDim * 0.055, 14);\r\n\r\n  card.style.setProperty('--nx-value-size', valueSize + 'px');\r\n  card.style.setProperty('--nx-unit-size',  unitSize  + 'px');\r\n  card.style.setProperty('--nx-label-size', labelSize + 'px');\r\n  card.style.setProperty('--nx-date-size',  dateSize  + 'px');\r\n\r\n  if (self._fitRaf) cancelAnimationFrame(self._fitRaf);\r\n  self._fitRaf = requestAnimationFrame(function() {\r\n    fitElementToWidth(card, '.nx-label', '--nx-label-size', labelSize, 8);\r\n    fitElementToWidth(card, '.nx-date',  '--nx-date-size',  dateSize,  8);\r\n    fitValueRow(card, valueSize, unitSize);\r\n  });\r\n}\r\n\r\nfunction fitElementToWidth(card, selector, cssVar, baseSize, minSize) {\r\n  var el = card.querySelector(selector);\r\n  if (!el) return;\r\n  card.style.setProperty(cssVar, baseSize + 'px');\r\n  var size = baseSize, attempts = 30;\r\n  while (attempts-- > 0) {\r\n    if (el.scrollWidth <= el.clientWidth + 1) break;\r\n    if (size <= minSize) break;\r\n    size = Math.max(minSize, size * 0.92);\r\n    card.style.setProperty(cssVar, size + 'px');\r\n  }\r\n}\r\n\r\nfunction fitValueRow(card, valueSize, unitSize) {\r\n  var row = card.querySelector('.nx-value-row');\r\n  if (!row) return;\r\n  card.style.setProperty('--nx-value-size', valueSize + 'px');\r\n  card.style.setProperty('--nx-unit-size',  unitSize  + 'px');\r\n  var attempts = 30;\r\n  while (attempts-- > 0) {\r\n    if (row.scrollWidth <= row.clientWidth + 1) break;\r\n    valueSize = Math.max(10, valueSize * 0.92);\r\n    unitSize  = Math.max(8,  unitSize  * 0.92);\r\n    card.style.setProperty('--nx-value-size', valueSize + 'px');\r\n    card.style.setProperty('--nx-unit-size',  unitSize  + 'px');\r\n  }\r\n}\r\n\r\n// ── Utilities ─────────────────────────────────────────────────────────────\r\n\r\nfunction clamp(min, val, max) {\r\n  return Math.max(min, Math.min(max, val));\r\n}\r\n\r\nfunction parseNumberOrNull(v) {\r\n  if (v == null || v === '') return null;\r\n  var n = Number(v);\r\n  return (isNaN(n) || !isFinite(n)) ? null : n;\r\n}\r\n\r\nfunction formatRelativeTime(ts) {\r\n  if (!ts) return '';\r\n  var diff = Math.max(0, Math.floor((Date.now() - ts) / 1000));\r\n  if (diff < 5)     return 'justo ahora';\r\n  if (diff < 60)    return 'hace ' + diff + ' s';\r\n  if (diff < 3600)  return 'hace ' + Math.floor(diff / 60) + ' min';\r\n  if (diff < 86400) return 'hace ' + Math.floor(diff / 3600) + ' h';\r\n  return 'hace ' + Math.floor(diff / 86400) + ' d';\r\n}\r\n",
+      "settingsForm" : [ {
+        "id" : "minValue",
+        "name" : "Min value",
+        "type" : "number",
+        "group" : "Range",
+        "default" : 180
+      }, {
+        "id" : "maxValue",
+        "name" : "Max value",
+        "type" : "number",
+        "group" : "Range",
+        "default" : 260
+      }, {
+        "id" : "units",
+        "name" : "Units override",
+        "hint" : "Leave empty to use the data key units",
+        "type" : "text",
+        "group" : "Range"
+      }, {
+        "id" : "decimals",
+        "name" : "Decimal places",
+        "hint" : "Leave empty to use the data key setting",
+        "type" : "number",
+        "group" : "Range"
+      }, {
+        "id" : "minAlias",
+        "name" : "Min value data key",
+        "hint" : "Label of an additional data key whose latest value overrides Min. Leave empty to use the fixed Min value.",
+        "type" : "text",
+        "group" : "Range"
+      }, {
+        "id" : "maxAlias",
+        "name" : "Max value data key",
+        "hint" : "Label of an additional data key whose latest value overrides Max. Leave empty to use the fixed Max value.",
+        "type" : "text",
+        "group" : "Range"
+      }, {
+        "id" : "arcColor",
+        "name" : "Arc color",
+        "type" : "color_settings",
+        "group" : "Arc",
+        "default" : {
+          "type" : "gradient",
+          "color" : "#4caf50",
+          "gradient" : {
+            "advancedMode" : false,
+            "gradient" : [ "rgba(244,67,54,1)", "rgba(255,152,0,1)", "rgba(76,175,80,1)", "rgba(255,152,0,1)", "rgba(244,67,54,1)" ],
+            "gradientAdvanced" : [ ],
+            "minValue" : 0,
+            "maxValue" : 100
+          },
+          "rangeList" : {
+            "advancedMode" : false,
+            "range" : [ ],
+            "rangeAdvanced" : [ ]
+          },
+          "colorFunction" : ""
+        }
+      }, {
+        "id" : "arcWidth",
+        "name" : "Arc width (px)",
+        "type" : "number",
+        "group" : "Arc",
+        "default" : 12
+      }, {
+        "id" : "arcRoundCap",
+        "name" : "Rounded arc ends",
+        "type" : "switch",
+        "group" : "Arc",
+        "default" : true
+      }, {
+        "id" : "trackColor",
+        "name" : "Track color",
+        "type" : "color",
+        "group" : "Arc",
+        "default" : "#e0e0e0"
+      }, {
+        "id" : "trackWidth",
+        "name" : "Track width (px)",
+        "hint" : "Should be >= arc width to be visible",
+        "type" : "number",
+        "group" : "Arc",
+        "default" : 14
+      }, {
+        "id" : "needleStyle",
+        "name" : "Needle style",
+        "type" : "select",
+        "group" : "Needle",
+        "items" : [ {
+          "value" : "triangle",
+          "label" : "Triangle"
+        }, {
+          "value" : "line",
+          "label" : "Line"
+        }, {
+          "value" : "arrow",
+          "label" : "Arrow"
+        }, {
+          "value" : "lollipop",
+          "label" : "Lollipop"
+        } ],
+        "default" : "triangle"
+      }, {
+        "id" : "needleColor",
+        "name" : "Needle color",
+        "type" : "color",
+        "group" : "Needle",
+        "default" : "#24272A"
+      }, {
+        "id" : "needleWidth",
+        "name" : "Needle width (px)",
+        "type" : "number",
+        "group" : "Needle",
+        "default" : 6
+      }, {
+        "id" : "needleLength",
+        "name" : "Needle length (%)",
+        "hint" : "Percentage of gauge radius",
+        "type" : "number",
+        "group" : "Needle",
+        "default" : 70
+      }, {
+        "id" : "scaleLabels",
+        "name" : "Scale labels",
+        "type" : "select",
+        "group" : "Scale",
+        "items" : [ {
+          "value" : "none",
+          "label" : "None"
+        }, {
+          "value" : "endpoints",
+          "label" : "Min & max"
+        }, {
+          "value" : "endpoints+mid",
+          "label" : "Min, mid & max"
+        }, {
+          "value" : "full",
+          "label" : "All"
+        } ],
+        "default" : "endpoints"
+      }, {
+        "id" : "showTicks",
+        "name" : "Show tick marks",
+        "type" : "switch",
+        "group" : "Scale",
+        "default" : true
+      }, {
+        "id" : "showSplitLines",
+        "name" : "Show split lines",
+        "type" : "switch",
+        "group" : "Scale",
+        "default" : true
+      }, {
+        "id" : "showValue",
+        "name" : "Show value",
+        "type" : "switch",
+        "group" : "Display",
+        "default" : true
+      }, {
+        "id" : "showLabel",
+        "name" : "Show label",
+        "type" : "switch",
+        "group" : "Display",
+        "default" : true
+      }, {
+        "id" : "showTimestamp",
+        "name" : "Show timestamp",
+        "type" : "switch",
+        "group" : "Display",
+        "default" : false
+      }, {
+        "id" : "valueFontScale",
+        "name" : "Value font scale (%)",
+        "hint" : "100 = auto size. 150 = 50% bigger",
+        "type" : "number",
+        "group" : "Display",
+        "default" : 100
+      }, {
+        "id" : "labelFontScale",
+        "name" : "Label font scale (%)",
+        "hint" : "100 = auto size. 150 = 50% bigger",
+        "type" : "number",
+        "group" : "Display",
+        "default" : 100
+      }, {
+        "id" : "cardRadius",
+        "name" : "Card corner radius (px)",
+        "type" : "number",
+        "group" : "Card",
+        "default" : 14
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":false,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"minValue\":180,\"maxValue\":260,\"arcColor\":{\"type\":\"gradient\",\"color\":\"#4caf50\",\"gradient\":{\"advancedMode\":false,\"gradient\":[\"rgba(244,67,54,1)\",\"rgba(255,152,0,1)\",\"rgba(76,175,80,1)\",\"rgba(255,152,0,1)\",\"rgba(244,67,54,1)\"],\"gradientAdvanced\":[],\"minValue\":0,\"maxValue\":100},\"rangeList\":{\"advancedMode\":false,\"range\":[],\"rangeAdvanced\":[]},\"colorFunction\":\"\"},\"arcWidth\":5,\"arcRoundCap\":true,\"trackColor\":\"#e0e0e0\",\"trackWidth\":6,\"needleStyle\":\"line\",\"needleColor\":\"#24272A\",\"needleWidth\":2,\"needleLength\":70,\"scaleLabels\":\"endpoints+mid\",\"showTicks\":true,\"showSplitLines\":true,\"showValue\":true,\"showLabel\":true,\"showTimestamp\":false,\"valueFontScale\":60,\"labelFontScale\":60,\"cardRadius\":14},\"title\":\"Nexor Gauge 1\",\"decimals\":null,\"dropShadow\":true,\"enableFullscreen\":true,\"widgetStyle\":{},\"widgetCss\":\"\",\"pageSize\":1024,\"noDataDisplayMessage\":\"\"}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "655279a0-53a1-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

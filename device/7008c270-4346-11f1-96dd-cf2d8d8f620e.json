@@ -1,0 +1,148 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "e8ed87b0-40c2-11f1-96dd-cf2d8d8f620e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "73989bd0-4712-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "7008c270-4346-11f1-96dd-cf2d8d8f620e"
+    },
+    "label" : "RIEGO 1 BOMBA",
+    "name" : "PS-L60-LB-0001",
+    "softwareId" : null,
+    "type" : "Freatimetro"
+  },
+  "credentials" : {
+    "credentialsId" : "8cKF6JVRD8cCN8XsL0lz",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "cc3bf2e0-4668-11f1-96dd-cf2d8d8f620e"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "7008c270-4346-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26684
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1781324416505,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.6,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1777410523177,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1781324416505,
+      "longValue" : 0,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1777673368348,
+      "longValue" : 3600000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1777673368342,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1781364007526,
+      "longValue" : 1781364006267,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -37.36992815761212,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1777761192609,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -61.51632428169251,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1777761192609,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1777491573700,
+      "longValue" : null,
+      "strValue" : "waterDistanceFromGround"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "profundidad_sensor_m",
+      "lastUpdateTs" : 1777761812537,
+      "longValue" : 58,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterDistanceFromGround\":{\"label\":\"Profundidad de napa\",\"unit\":\"m\"},\"data_Water_deep_cm\":{\"label\":\"Nivel sobre sensor\",\"unit\":\"m\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1777576948669,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

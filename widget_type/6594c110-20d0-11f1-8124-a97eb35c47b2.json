@@ -1,0 +1,132 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "nexor_gauge_test",
+    "name" : "nexor gauge test",
+    "deprecated" : false,
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ {
+        "url" : "https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"
+      } ],
+      "templateHtml" : "<div id=\"gauge\" style=\"width:100%;height:100%;\"></div>",
+      "templateCss" : "#container {\n    overflow: auto;\n}\n\n.tbDatasource-container {\n    margin: 5px;\n    padding: 8px;\n}\n\n.tbDatasource-title {\n    font-size: 1.200rem;\n    font-weight: 500;\n    padding-bottom: 10px;\n}\n\n.tbDatasource-table {\n    width: 100%;\n    box-shadow: 0 0 10px #ccc;\n    border-collapse: collapse;\n    white-space: nowrap;\n    font-size: 1.000rem;\n    color: #757575;\n}\n\n.tbDatasource-table td {\n    position: relative;\n    border-top: 1px solid rgba(0, 0, 0, 0.12);\n    border-bottom: 1px solid rgba(0, 0, 0, 0.12);\n    padding: 0px 18px;\n    box-sizing: border-box;\n}",
+      "controllerScript" : "self.onInit = function () {\r\n\r\n    var chartDom = document.getElementById('gauge');\r\n    self.chart = echarts.init(chartDom);\r\n\r\n    self.renderGauge(0);\r\n};\r\n\r\nself.renderGauge = function(value){\r\n\r\n    var s = self.ctx.settings || {};\r\n\r\n    var min = s.min || 0;\r\n    var max = s.max || 100;\r\n    var greenStart = s.greenStart || 40;\r\n    var greenEnd = s.greenEnd || 60;\r\n    var label = s.label || \"\";\r\n    var blend = s.colorBlend || \"smooth\";\r\n\r\n    var showTicks = s.showTicks !== false;\r\n    var showLabels = s.showLabels !== false;\r\n\r\n    var ratio1 = (greenStart - min) / (max - min);\r\n    var ratio2 = (greenEnd - min) / (max - min);\r\n\r\n    var colors;\r\n\r\n    if (blend === \"hard\") {\r\n\r\n        colors = [\r\n            [ratio1, '#ff4d4f'],\r\n            [ratio2, '#52c41a'],\r\n            [1, '#ff4d4f']\r\n        ];\r\n\r\n    } else {\r\n\r\n        colors = [\r\n            [0, '#ff4d4f'],\r\n            [ratio1, '#faad14'],\r\n            [ratio2, '#52c41a'],\r\n            [1, '#ff4d4f']\r\n        ];\r\n    }\r\n\r\n    var width = self.ctx.width || 300;\r\n\r\n    var fontScale = Math.max(width / 300, 0.6);\r\n\r\n    var option = {\r\n\r\n        series: [\r\n            {\r\n                type: 'gauge',\r\n\r\n                min: min,\r\n                max: max,\r\n\r\n                startAngle: 200,\r\n                endAngle: -20,\r\n\r\n                radius: '90%',\r\n\r\n                axisLine: {\r\n                    lineStyle: {\r\n                        width: 18,\r\n                        color: colors\r\n                    }\r\n                },\r\n\r\n                pointer: {\r\n                    width: 4\r\n                },\r\n\r\n                axisTick: {\r\n                    show: showTicks,\r\n                    distance: -18\r\n                },\r\n\r\n                splitLine: {\r\n                    show: showTicks,\r\n                    length: 12,\r\n                    distance: -18\r\n                },\r\n\r\n                axisLabel: {\r\n                    show: showLabels,\r\n                    fontSize: 10 * fontScale\r\n                },\r\n\r\n                detail: {\r\n                    fontSize: 28 * fontScale,\r\n                    offsetCenter: [0, '30%'],\r\n                    formatter: function(v){\r\n                        return v.toFixed(1);\r\n                    }\r\n                },\r\n\r\n                title: {\r\n                    fontSize: 12 * fontScale,\r\n                    offsetCenter: [0, '60%']\r\n                },\r\n\r\n                data: [\r\n                    {\r\n                        value: value,\r\n                        name: label\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    };\r\n\r\n    self.chart.setOption(option, true);\r\n};\r\n\r\nself.onDataUpdated = function () {\r\n\r\n    if (!self.ctx.data || !self.ctx.data.length) return;\r\n\r\n    var ts = self.ctx.data[0].data;\r\n\r\n    if (!ts.length) return;\r\n\r\n    var value = parseFloat(ts[ts.length - 1][1]);\r\n\r\n    self.renderGauge(value);\r\n};\r\n\r\nself.onResize = function () {\r\n\r\n    if (!self.chart) return;\r\n\r\n    self.chart.resize();\r\n\r\n    if (!self.ctx.data || !self.ctx.data.length) return;\r\n\r\n    var ts = self.ctx.data[0].data;\r\n\r\n    if (!ts.length) return;\r\n\r\n    var value = parseFloat(ts[ts.length - 1][1]);\r\n\r\n    self.renderGauge(value);\r\n};\r\n\r\nself.onDestroy = function () {\r\n    if (self.chart) self.chart.dispose();\r\n};",
+      "settingsForm" : [ {
+        "id" : "min",
+        "name" : "Min value",
+        "group" : "Scale",
+        "type" : "number",
+        "default" : 180,
+        "divider" : true
+      }, {
+        "id" : "max",
+        "name" : "Max value",
+        "group" : "Scale",
+        "type" : "number",
+        "default" : 260,
+        "rowClass" : "column"
+      }, {
+        "id" : "greenStart",
+        "name" : "Green start",
+        "type" : "number",
+        "default" : 210,
+        "group" : "Color zones"
+      }, {
+        "id" : "greenEnd",
+        "name" : "Green end",
+        "type" : "number",
+        "default" : 230,
+        "group" : "Color zones"
+      }, {
+        "id" : "colorBlend",
+        "name" : "Color transition",
+        "group" : "Color zones",
+        "type" : "select",
+        "default" : "smooth",
+        "items" : [ {
+          "value" : "hard",
+          "label" : "Hard"
+        }, {
+          "value" : "smooth",
+          "label" : "Smooth"
+        } ]
+      }, {
+        "id" : "showTicks",
+        "name" : "Show ticks",
+        "type" : "switch",
+        "default" : false,
+        "group" : "Appearance"
+      }, {
+        "id" : "showLabels",
+        "name" : "Show labels",
+        "type" : "switch",
+        "default" : false,
+        "group" : "Appearance"
+      }, {
+        "id" : "label",
+        "name" : "Gauge label",
+        "type" : "text",
+        "default" : "Voltage",
+        "group" : "Appearance"
+      }, {
+        "id" : "fds",
+        "name" : "sdf",
+        "type" : "color_settings",
+        "default" : {
+          "type" : "function",
+          "color" : "#000",
+          "gradient" : {
+            "advancedMode" : false,
+            "gradient" : [ "rgba(0, 255, 0, 1)", "rgba(255, 0, 0, 1)" ],
+            "gradientAdvanced" : [ {
+              "source" : {
+                "type" : "constant"
+              },
+              "color" : "rgba(0, 255, 0, 1)"
+            }, {
+              "source" : {
+                "type" : "constant"
+              },
+              "color" : "rgba(255, 0, 0, 1)"
+            } ],
+            "minValue" : 0,
+            "maxValue" : 100
+          },
+          "rangeList" : {
+            "advancedMode" : false,
+            "range" : [ {
+              "from" : 0,
+              "to" : 10,
+              "color" : "rgba(0,0,0,0.87)"
+            }, {
+              "from" : 10,
+              "to" : 20,
+              "color" : "rgba(131, 27, 27, 0.87)"
+            } ],
+            "rangeAdvanced" : [ ]
+          },
+          "colorFunction" : "var temperature = value;\nif (typeof temperature !== undefined) {\n  var percent = (temperature + 60)/120 * 100;\n  return tinycolor.mix('blue', 'red', percent).toHexString();\n}\nreturn 'blue';"
+        }
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.15479322438769105,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{},\"title\":\"Attributes card\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "6594c110-20d0-11f1-8124-a97eb35c47b2"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "7df66220-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "label" : "Aguada El Chocho",
+    "name" : "DS-US2-LB-0004",
+    "softwareId" : null,
+    "type" : "Ultrasonico"
+  },
+  "credentials" : {
+    "credentialsId" : "am6ui130w6urnsugn5xy",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "7df66220-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26689
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1780754653953,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.3,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1777580016867,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1780754653951,
+      "longValue" : 1780754653951,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1780950007956,
+      "longValue" : 7200000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1780950007941,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1780754041516,
+      "longValue" : 1780754039700,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1775608807758,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1775608807758,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

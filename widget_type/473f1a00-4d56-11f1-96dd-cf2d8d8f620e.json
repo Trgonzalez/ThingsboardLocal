@@ -1,0 +1,3658 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "static_table",
+    "name" : "Static table",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/Static table.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"metric-card\">\r\n        <div class=\"static-table-wrapper\" id=\"wd-table-wrapper\">\r\n            <!-- Table will be generated dynamically by JS -->\r\n        </div>\r\n    </div>\r\n</div>\r\n",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: #ffffff00;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n}\r\n\r\n.static-table-wrapper {\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: auto;\r\n}\r\n\r\n/* ===== TABLE ===== */\r\n\r\n.static-table {\r\n    width: 100%;\r\n    border-collapse: collapse;\r\n    table-layout: fixed;\r\n}\r\n\r\n/* ===== HEADER ===== */\r\n\r\n.static-table thead th {\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    font-size: 12px;\r\n    letter-spacing: 0.5px;\r\n    text-align: center;\r\n    position: sticky;\r\n    top: 0;\r\n    z-index: 1;\r\n}\r\n\r\n/* ===== CELLS ===== */\r\n\r\n.static-table td {\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    transition: background-color 0.3s ease, color 0.3s ease;\r\n}\r\n\r\n.static-table tbody tr:hover {\r\n    background-color: rgba(0, 0, 0, 0.02);\r\n}\r\n\r\n/* ===== CLICKABLE CELL HOVER ANIMATION ===== */\r\n\r\n.static-table td.cell-clickable {\r\n    cursor: pointer;\r\n    transition: background-color 0.18s ease, color 0.3s ease, filter 0.18s ease, outline 0.12s ease;\r\n    outline: 2px solid transparent;\r\n    outline-offset: -2px;\r\n}\r\n\r\n.static-table td.cell-clickable:hover {\r\n    background-color: rgba(238, 118, 35, 0.09) !important;\r\n    outline-color: rgba(238, 118, 35, 0.35);\r\n    filter: brightness(0.96) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.13));\r\n}\r\n\r\n/* ===== CELL CONTENT TYPES ===== */\r\n\r\n.cell-content {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 4px;\r\n    min-height: 24px;\r\n}\r\n\r\n.cell-content .material-icons {\r\n    font-size: 20px;\r\n    vertical-align: middle;\r\n}\r\n\r\n.cell-content .cell-icon-only .material-icons {\r\n    font-size: 24px;\r\n}\r\n\r\n.cell-value-text {\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.cell-unit-text {\r\n    white-space: nowrap;\r\n    font-size: 0.85em;\r\n    opacity: 0.75;\r\n    margin-left: 2px;\r\n}\r\n\r\n/* ===== CONDITIONAL ICON ===== */\r\n\r\n.cell-cond-icon {\r\n    display: inline-flex;\r\n    align-items: center;\r\n    margin-right: 4px;\r\n}\r\n\r\n.cell-cond-icon img {\r\n    width: 18px;\r\n    height: 18px;\r\n    object-fit: contain;\r\n}\r\n\r\n/* ===== ALTERNATING ROW COLORS ===== */\r\n\r\n.static-table tbody tr:nth-child(even) {\r\n    background-color: rgba(0, 0, 0, 0.02);\r\n}\r\n\r\n.static-table tbody tr:nth-child(odd) {\r\n    background-color: #ffffff;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    var settings = self.ctx.settings;\r\n\r\n    // Store parsed cell definitions\r\n    self.ctx.cellMap = {};    // \"row_col\" -> { type, value }\r\n    self.ctx.valueCells = []; // cells of type 'value' for data binding\r\n\r\n    var rowCount = settings.rowCount || 3;\r\n    var colCount = settings.colCount || 3;\r\n\r\n    // Parse cell definitions from flat settings (row1_c1_type, row1_c1_value, etc.)\r\n    for (var r = 1; r <= rowCount; r++) {\r\n        for (var c = 1; c <= colCount; c++) {\r\n            var prefix = 'row' + r + '_c' + c;\r\n            var cellType = settings[prefix + '_type'] || 'text';\r\n            var cellValue = settings[prefix + '_value'] || '';\r\n\r\n            var cellUnit = (cellType === 'value') ? (settings[prefix + '_unit'] || '') : '';\r\n\r\n            var cellDef = {\r\n                r: r,\r\n                c: c,\r\n                type: cellType,\r\n                value: cellValue,\r\n                unit: cellUnit\r\n            };\r\n\r\n            self.ctx.cellMap[r + '_' + c] = cellDef;\r\n\r\n            if (cellType === 'value') {\r\n                cellDef.key = cellValue; // data key name\r\n                self.ctx.valueCells.push(cellDef);\r\n            }\r\n        }\r\n    }\r\n\r\n    // Parse conditions\r\n    self.ctx.conditions = [];\r\n    if (settings.enableConditions) {\r\n        for (var ci = 1; ci <= 5; ci++) {\r\n            var condVal = settings['condValue' + ci];\r\n            if (condVal !== undefined && condVal !== '') {\r\n                self.ctx.conditions.push({\r\n                    operator: settings['condOperator' + ci] || 'eq',\r\n                    value: condVal,\r\n                    color: settings['condColor' + ci] || '',\r\n                    textColor: settings['condTextColor' + ci] || '',\r\n                    svg: settings['condSvg' + ci] || '',\r\n                    hideValue: settings['condHideValue' + ci] || false\r\n                });\r\n            }\r\n        }\r\n    }\r\n\r\n    // Build the table\r\n    self.buildTable();\r\n\r\n    // Make widget card auto-size to fit table content\r\n    var $container = self.ctx.$container;\r\n    $container.css({ 'overflow': 'visible', 'height': 'auto' });\r\n    $container.parents().each(function () {\r\n        var $el = $(this);\r\n        // Stop at the dashboard row/grid level\r\n        if ($el.hasClass('tb-widget-container') || $el.hasClass('gridster-item') || $el.hasClass('mat-tab-body-content')) {\r\n            return false; // break\r\n        }\r\n        $el.css({ 'overflow': 'visible', 'height': 'auto' });\r\n    });\r\n}\r\n\r\nself.buildTable = function () {\r\n    var settings = self.ctx.settings;\r\n    var $wrapper = $('#wd-table-wrapper', self.ctx.$container);\r\n    $wrapper.empty();\r\n\r\n    var rowCount = settings.rowCount || 3;\r\n    var colCount = settings.colCount || 3;\r\n    var showHeaders = settings.showHeaders !== false;\r\n    var headerBgColor = settings.headerBgColor || '#EE7623';\r\n    var headerTextColor = settings.headerTextColor || '#FFFFFF';\r\n    var borderColor = settings.borderColor || '#E0E0E0';\r\n    var cellPadding = settings.cellPadding || 8;\r\n    var fontSize = settings.fontSize || 14;\r\n\r\n    // Get headers from individual settings fields\r\n    var headers = [];\r\n    for (var h = 1; h <= colCount; h++) {\r\n        headers.push(settings['header' + h] || ('Columna ' + h));\r\n    }\r\n\r\n    // Create table element\r\n    var $table = $('<table class=\"static-table\"></table>');\r\n    $table.css('font-size', fontSize + 'px');\r\n\r\n    // Build header row\r\n    if (showHeaders) {\r\n        var $thead = $('<thead></thead>');\r\n        var $headerRow = $('<tr></tr>');\r\n\r\n        for (var hi = 0; hi < colCount; hi++) {\r\n            var $th = $('<th></th>');\r\n            $th.text(headers[hi]);\r\n            $th.css({\r\n                'background-color': headerBgColor,\r\n                'color': headerTextColor,\r\n                'padding': cellPadding + 'px',\r\n                'border': '1px solid ' + borderColor\r\n            });\r\n            $headerRow.append($th);\r\n        }\r\n        $thead.append($headerRow);\r\n        $table.append($thead);\r\n    }\r\n\r\n    // Build body rows\r\n    var $tbody = $('<tbody></tbody>');\r\n\r\n    for (var r = 1; r <= rowCount; r++) {\r\n        var $row = $('<tr></tr>');\r\n\r\n        for (var c = 1; c <= colCount; c++) {\r\n            var $td = $('<td></td>');\r\n            $td.css({\r\n                'padding': cellPadding + 'px',\r\n                'border': '1px solid ' + borderColor\r\n            });\r\n            $td.attr('id', 'cell-' + r + '-' + c);\r\n            $td.data('row', r).data('col', c);\r\n            $td.on('click', function (e) {\r\n                self.handleCellClick(e, $(this).data('row'), $(this).data('col'));\r\n            });\r\n\r\n            // Mark cells that have a configured action with a special class\r\n            if (self.ctx.actionsApi) {\r\n                var cellDescs = self.ctx.actionsApi.getActionDescriptors('cellClick_r' + r + '_c' + c);\r\n                if (!cellDescs || !cellDescs.length) {\r\n                    cellDescs = self.ctx.actionsApi.getActionDescriptors('cellClick_col' + c);\r\n                }\r\n                if (cellDescs && cellDescs.length) {\r\n                    $td.addClass('cell-clickable');\r\n                }\r\n            }\r\n\r\n            var cellDef = self.ctx.cellMap[r + '_' + c];\r\n\r\n            if (cellDef) {\r\n                var $content = self.renderCell(cellDef);\r\n                $td.append($content);\r\n            }\r\n\r\n            $row.append($td);\r\n        }\r\n\r\n        $tbody.append($row);\r\n    }\r\n\r\n    $table.append($tbody);\r\n    $wrapper.append($table);\r\n}\r\n\r\nself.renderCell = function (cellDef) {\r\n    var $content = $('<div class=\"cell-content\"></div>');\r\n\r\n    switch (cellDef.type) {\r\n        case 'text':\r\n            var $text = $('<span class=\"cell-value-text\"></span>');\r\n            $text.text(cellDef.value || '');\r\n            $content.append($text);\r\n            break;\r\n\r\n        case 'icon':\r\n            var $icon = $('<span class=\"material-icons\"></span>');\r\n            $icon.text(cellDef.value || 'help_outline');\r\n            $content.addClass('cell-icon-only');\r\n            $content.append($icon);\r\n            break;\r\n\r\n        case 'value':\r\n            // Placeholder — will be filled by onDataUpdated\r\n            var $val = $('<span class=\"cell-value-text\" id=\"val-' + cellDef.r + '-' + cellDef.c + '\">-</span>');\r\n            $content.append($val);\r\n            if (cellDef.unit) {\r\n                var $unit = $('<span class=\"cell-unit-text\" id=\"unit-' + cellDef.r + '-' + cellDef.c + '\"></span>');\r\n                $unit.text(cellDef.unit);\r\n                $content.append($unit);\r\n            }\r\n            break;\r\n\r\n        default:\r\n            break;\r\n    }\r\n\r\n    return $content;\r\n}\r\n\r\nself.onDataUpdated = function () {\r\n    if (!self.ctx.defaultSubscription || !self.ctx.defaultSubscription.data) return;\r\n\r\n    var data = self.ctx.defaultSubscription.data;\r\n\r\n    // Build map: label -> last value, and label -> entity info\r\n    var dataMap = {};\r\n    self.ctx.labelEntityMap = {};\r\n    for (var d = 0; d < data.length; d++) {\r\n        var entry = data[d];\r\n        var keyName = entry.dataKey.label || entry.dataKey.name;\r\n        if (entry.data && entry.data.length > 0) {\r\n            var lastPoint = entry.data[entry.data.length - 1];\r\n            dataMap[keyName] = lastPoint[1];\r\n        }\r\n        if (entry.datasource && entry.datasource.entity) {\r\n            self.ctx.labelEntityMap[keyName] = {\r\n                entityId:    entry.datasource.entity.id,\r\n                entityName:  entry.datasource.entityName,\r\n                entityLabel: entry.datasource.entityLabel || entry.datasource.entityName\r\n            };\r\n        }\r\n    }\r\n\r\n    var decimals = self.ctx.settings.decimals;\r\n    if (typeof decimals === 'undefined') decimals = 1;\r\n\r\n    // Update each value cell\r\n    for (var i = 0; i < self.ctx.valueCells.length; i++) {\r\n        var cell = self.ctx.valueCells[i];\r\n        var rawValue = dataMap[cell.key];\r\n        var displayValue = '-';\r\n        var $valElem = $('#val-' + cell.r + '-' + cell.c, self.ctx.$container);\r\n        var $tdElem = $('#cell-' + cell.r + '-' + cell.c, self.ctx.$container);\r\n        var $unitElem = $('#unit-' + cell.r + '-' + cell.c, self.ctx.$container);\r\n\r\n        if (rawValue !== undefined && rawValue !== null) {\r\n            var numVal = parseFloat(rawValue);\r\n\r\n            if (!isNaN(numVal)) {\r\n                displayValue = numVal.toFixed(decimals);\r\n            } else {\r\n                displayValue = rawValue;\r\n            }\r\n        }\r\n\r\n        // Apply conditional formatting\r\n        self.applyConditions($tdElem, $valElem, $unitElem, rawValue, displayValue);\r\n    }\r\n}\r\n\r\nself.handleCellClick = function (e, row, col) {\r\n    // Cell-specific action takes priority, falls back to column action\r\n    var descriptors = self.ctx.actionsApi.getActionDescriptors('cellClick_r' + row + '_c' + col);\r\n    if (!descriptors || !descriptors.length) {\r\n        descriptors = self.ctx.actionsApi.getActionDescriptors('cellClick_col' + col);\r\n    }\r\n    if (!descriptors || !descriptors.length) return;\r\n\r\n    var entityId = null, entityName = null, entityLabel = null;\r\n    var cellDef = self.ctx.cellMap[row + '_' + col];\r\n\r\n    if (cellDef && cellDef.type === 'value' && self.ctx.labelEntityMap) {\r\n        var info = self.ctx.labelEntityMap[cellDef.key];\r\n        if (info) {\r\n            entityId    = info.entityId;\r\n            entityName  = info.entityName;\r\n            entityLabel = info.entityLabel;\r\n        }\r\n    }\r\n\r\n    self.ctx.actionsApi.handleWidgetAction(e, descriptors[0], entityId, entityName, null, entityLabel);\r\n}\r\n\r\nself.applyConditions = function ($td, $valElem, $unitElem, rawValue, displayValue) {\r\n    // Reset styles\r\n    $td.css('background-color', '');\r\n    $td.css('color', '');\r\n\r\n    // Remove previous condition SVG\r\n    $td.find('.cell-cond-icon').remove();\r\n\r\n    // Show value and unit elements by default\r\n    $valElem.show();\r\n    if ($unitElem && $unitElem.length) $unitElem.show();\r\n\r\n    // Set the display value\r\n    $valElem.text(displayValue);\r\n\r\n    if (!self.ctx.conditions || self.ctx.conditions.length === 0) return;\r\n    if (rawValue === undefined || rawValue === null) return;\r\n\r\n    for (var i = 0; i < self.ctx.conditions.length; i++) {\r\n        var cond = self.ctx.conditions[i];\r\n        var match = self.evaluateCondition(cond.operator, rawValue, cond.value);\r\n\r\n        if (match) {\r\n            if (cond.color) {\r\n                $td.css('background-color', cond.color);\r\n                $td.css('color', cond.textColor ? cond.textColor : self.getContrastColor(cond.color));\r\n            } else if (cond.textColor) {\r\n                $td.css('color', cond.textColor);\r\n            }\r\n\r\n            if (cond.svg) {\r\n                var $svg = $('<span class=\"cell-cond-icon\"><img src=\"' + cond.svg + '\" alt=\"\" /></span>');\r\n                $td.find('.cell-content').prepend($svg);\r\n            }\r\n\r\n            if (cond.hideValue) {\r\n                $valElem.hide();\r\n                if ($unitElem && $unitElem.length) $unitElem.hide();\r\n            }\r\n\r\n            break; // First match wins\r\n        }\r\n    }\r\n}\r\n\r\nself.evaluateCondition = function (operator, rawValue, targetValue) {\r\n    var numRaw = parseFloat(rawValue);\r\n    var numTarget = parseFloat(targetValue);\r\n    var isNumeric = !isNaN(numRaw) && !isNaN(numTarget);\r\n\r\n    switch (operator) {\r\n        case 'eq':\r\n            if (isNumeric) return numRaw === numTarget;\r\n            return String(rawValue).toLowerCase() === String(targetValue).toLowerCase();\r\n\r\n        case 'neq':\r\n            if (isNumeric) return numRaw !== numTarget;\r\n            return String(rawValue).toLowerCase() !== String(targetValue).toLowerCase();\r\n\r\n        case 'gt':\r\n            if (isNumeric) return numRaw > numTarget;\r\n            return String(rawValue) > String(targetValue);\r\n\r\n        case 'lt':\r\n            if (isNumeric) return numRaw < numTarget;\r\n            return String(rawValue) < String(targetValue);\r\n\r\n        case 'gte':\r\n            if (isNumeric) return numRaw >= numTarget;\r\n            return String(rawValue) >= String(targetValue);\r\n\r\n        case 'lte':\r\n            if (isNumeric) return numRaw <= numTarget;\r\n            return String(rawValue) <= String(targetValue);\r\n\r\n        case 'contains':\r\n            return String(rawValue).toLowerCase().indexOf(String(targetValue).toLowerCase()) !== -1;\r\n\r\n        default:\r\n            return String(rawValue).toLowerCase() === String(targetValue).toLowerCase();\r\n    }\r\n}\r\n\r\nself.getContrastColor = function (hexColor) {\r\n    if (!hexColor || hexColor.length < 7) return '#000000';\r\n\r\n    var r = parseInt(hexColor.substr(1, 2), 16);\r\n    var g = parseInt(hexColor.substr(3, 2), 16);\r\n    var b = parseInt(hexColor.substr(5, 2), 16);\r\n\r\n    var brightness = (r * 299 + g * 587 + b * 114) / 1000;\r\n\r\n    return brightness > 128 ? '#000000' : '#FFFFFF';\r\n}\r\n\r\nself.onResize = function () {\r\n}\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: -1,\r\n        maxDataKeys: -1,\r\n        dataKeysOptional: true\r\n    };\r\n}\r\n\r\nself.actionSources = function () {\r\n    var sources = {};\r\n    var colCount = (self.ctx && self.ctx.settings && self.ctx.settings.colCount) || 10;\r\n    var rowCount = (self.ctx && self.ctx.settings && self.ctx.settings.rowCount) || 20;\r\n\r\n    // Column-level actions (apply to all cells in that column)\r\n    for (var c = 1; c <= colCount; c++) {\r\n        sources['cellClick_col' + c] = {\r\n            name: 'Click Columna ' + c,\r\n            multiple: false\r\n        };\r\n    }\r\n\r\n    // Cell-level actions (override column action for a specific cell)\r\n    for (var r = 1; r <= rowCount; r++) {\r\n        for (var c = 1; c <= colCount; c++) {\r\n            sources['cellClick_r' + r + '_c' + c] = {\r\n                name: 'Click Fila ' + r + ' Col ' + c,\r\n                multiple: false\r\n            };\r\n        }\r\n    }\r\n\r\n    return sources;\r\n}\r\n\r\nself.onDestroy = function () {\r\n}",
+      "settingsForm" : [ {
+        "id" : "rowCount",
+        "name" : "Cantidad de Filas",
+        "group" : "Estructura",
+        "type" : "number",
+        "default" : 3,
+        "min" : 1,
+        "max" : 20,
+        "step" : 1
+      }, {
+        "id" : "colCount",
+        "name" : "Cantidad de Columnas",
+        "group" : "Estructura",
+        "type" : "number",
+        "default" : 3,
+        "min" : 1,
+        "max" : 5,
+        "step" : 1
+      }, {
+        "id" : "showHeaders",
+        "name" : "Mostrar Encabezados",
+        "group" : "Estructura",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "headerBgColor",
+        "name" : "Color de Fondo Encabezado",
+        "group" : "Estilo",
+        "type" : "color",
+        "default" : "#EE7623"
+      }, {
+        "id" : "headerTextColor",
+        "name" : "Color de Texto Encabezado",
+        "group" : "Estilo",
+        "type" : "color",
+        "default" : "#FFFFFF"
+      }, {
+        "id" : "borderColor",
+        "name" : "Color de Bordes",
+        "group" : "Estilo",
+        "type" : "color",
+        "default" : "#E0E0E0"
+      }, {
+        "id" : "cellPadding",
+        "name" : "Padding de Celdas (px)",
+        "group" : "Estilo",
+        "type" : "number",
+        "default" : 8,
+        "min" : 2,
+        "max" : 24
+      }, {
+        "id" : "fontSize",
+        "name" : "Tamaño de Fuente (px)",
+        "group" : "Estilo",
+        "type" : "number",
+        "default" : 14,
+        "min" : 10,
+        "max" : 28
+      }, {
+        "id" : "decimals",
+        "name" : "Decimales (para celdas tipo Variable)",
+        "group" : "Estilo",
+        "type" : "number",
+        "default" : 1,
+        "min" : 0,
+        "max" : 5,
+        "step" : 1
+      }, {
+        "id" : "header1",
+        "name" : "Encabezado Columna 1",
+        "group" : "Encabezados",
+        "type" : "text",
+        "default" : "Columna 1",
+        "condition" : "if (model.colCount >= 1) { return true; } else { return false; }"
+      }, {
+        "id" : "header2",
+        "name" : "Encabezado Columna 2",
+        "group" : "Encabezados",
+        "type" : "text",
+        "default" : "Columna 2",
+        "condition" : "if (model.colCount >= 2) { return true; } else { return false; }"
+      }, {
+        "id" : "header3",
+        "name" : "Encabezado Columna 3",
+        "group" : "Encabezados",
+        "type" : "text",
+        "default" : "Columna 3",
+        "condition" : "if (model.colCount >= 3) { return true; } else { return false; }"
+      }, {
+        "id" : "header4",
+        "name" : "Encabezado Columna 4",
+        "group" : "Encabezados",
+        "type" : "text",
+        "default" : "Columna 4",
+        "condition" : "if (model.colCount >= 4) { return true; } else { return false; }"
+      }, {
+        "id" : "header5",
+        "name" : "Encabezado Columna 5",
+        "group" : "Encabezados",
+        "type" : "text",
+        "default" : "Columna 5",
+        "condition" : "if (model.colCount >= 5) { return true; } else { return false; }"
+      }, {
+        "id" : "row1_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row1_c1_type === 'value' && model.rowCount >= 1 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row1_c2_type === 'value' && model.rowCount >= 1 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row1_c3_type === 'value' && model.rowCount >= 1 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row1_c4_type === 'value' && model.rowCount >= 1 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 1 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row1_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row1_c5_type === 'value' && model.rowCount >= 1 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 1"
+      }, {
+        "id" : "row2_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row2_c1_type === 'value' && model.rowCount >= 2 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row2_c2_type === 'value' && model.rowCount >= 2 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row2_c3_type === 'value' && model.rowCount >= 2 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row2_c4_type === 'value' && model.rowCount >= 2 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 2 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row2_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row2_c5_type === 'value' && model.rowCount >= 2 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 2"
+      }, {
+        "id" : "row3_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row3_c1_type === 'value' && model.rowCount >= 3 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row3_c2_type === 'value' && model.rowCount >= 3 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row3_c3_type === 'value' && model.rowCount >= 3 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row3_c4_type === 'value' && model.rowCount >= 3 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 3 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row3_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row3_c5_type === 'value' && model.rowCount >= 3 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 3"
+      }, {
+        "id" : "row4_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row4_c1_type === 'value' && model.rowCount >= 4 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row4_c2_type === 'value' && model.rowCount >= 4 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row4_c3_type === 'value' && model.rowCount >= 4 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row4_c4_type === 'value' && model.rowCount >= 4 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 4 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row4_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row4_c5_type === 'value' && model.rowCount >= 4 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 4"
+      }, {
+        "id" : "row5_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row5_c1_type === 'value' && model.rowCount >= 5 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row5_c2_type === 'value' && model.rowCount >= 5 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row5_c3_type === 'value' && model.rowCount >= 5 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row5_c4_type === 'value' && model.rowCount >= 5 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 5 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row5_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row5_c5_type === 'value' && model.rowCount >= 5 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 5"
+      }, {
+        "id" : "row6_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row6_c1_type === 'value' && model.rowCount >= 6 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row6_c2_type === 'value' && model.rowCount >= 6 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row6_c3_type === 'value' && model.rowCount >= 6 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row6_c4_type === 'value' && model.rowCount >= 6 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 6 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row6_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row6_c5_type === 'value' && model.rowCount >= 6 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 6"
+      }, {
+        "id" : "row7_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row7_c1_type === 'value' && model.rowCount >= 7 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row7_c2_type === 'value' && model.rowCount >= 7 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row7_c3_type === 'value' && model.rowCount >= 7 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row7_c4_type === 'value' && model.rowCount >= 7 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 7 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row7_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row7_c5_type === 'value' && model.rowCount >= 7 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 7"
+      }, {
+        "id" : "row8_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row8_c1_type === 'value' && model.rowCount >= 8 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row8_c2_type === 'value' && model.rowCount >= 8 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row8_c3_type === 'value' && model.rowCount >= 8 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row8_c4_type === 'value' && model.rowCount >= 8 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 8 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row8_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row8_c5_type === 'value' && model.rowCount >= 8 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 8"
+      }, {
+        "id" : "row9_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row9_c1_type === 'value' && model.rowCount >= 9 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row9_c2_type === 'value' && model.rowCount >= 9 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row9_c3_type === 'value' && model.rowCount >= 9 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row9_c4_type === 'value' && model.rowCount >= 9 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 9 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row9_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row9_c5_type === 'value' && model.rowCount >= 9 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 9"
+      }, {
+        "id" : "row10_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row10_c1_type === 'value' && model.rowCount >= 10 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row10_c2_type === 'value' && model.rowCount >= 10 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row10_c3_type === 'value' && model.rowCount >= 10 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row10_c4_type === 'value' && model.rowCount >= 10 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 10 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row10_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row10_c5_type === 'value' && model.rowCount >= 10 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 10"
+      }, {
+        "id" : "row11_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row11_c1_type === 'value' && model.rowCount >= 11 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row11_c2_type === 'value' && model.rowCount >= 11 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row11_c3_type === 'value' && model.rowCount >= 11 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row11_c4_type === 'value' && model.rowCount >= 11 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 11 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row11_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row11_c5_type === 'value' && model.rowCount >= 11 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 11"
+      }, {
+        "id" : "row12_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row12_c1_type === 'value' && model.rowCount >= 12 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row12_c2_type === 'value' && model.rowCount >= 12 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row12_c3_type === 'value' && model.rowCount >= 12 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row12_c4_type === 'value' && model.rowCount >= 12 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 12 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row12_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row12_c5_type === 'value' && model.rowCount >= 12 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 12"
+      }, {
+        "id" : "row13_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row13_c1_type === 'value' && model.rowCount >= 13 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row13_c2_type === 'value' && model.rowCount >= 13 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row13_c3_type === 'value' && model.rowCount >= 13 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row13_c4_type === 'value' && model.rowCount >= 13 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 13 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row13_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row13_c5_type === 'value' && model.rowCount >= 13 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 13"
+      }, {
+        "id" : "row14_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row14_c1_type === 'value' && model.rowCount >= 14 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row14_c2_type === 'value' && model.rowCount >= 14 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row14_c3_type === 'value' && model.rowCount >= 14 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row14_c4_type === 'value' && model.rowCount >= 14 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 14 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row14_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row14_c5_type === 'value' && model.rowCount >= 14 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 14"
+      }, {
+        "id" : "row15_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row15_c1_type === 'value' && model.rowCount >= 15 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row15_c2_type === 'value' && model.rowCount >= 15 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row15_c3_type === 'value' && model.rowCount >= 15 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row15_c4_type === 'value' && model.rowCount >= 15 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 15 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row15_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row15_c5_type === 'value' && model.rowCount >= 15 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 15"
+      }, {
+        "id" : "row16_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row16_c1_type === 'value' && model.rowCount >= 16 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row16_c2_type === 'value' && model.rowCount >= 16 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row16_c3_type === 'value' && model.rowCount >= 16 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row16_c4_type === 'value' && model.rowCount >= 16 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 16 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row16_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row16_c5_type === 'value' && model.rowCount >= 16 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 16"
+      }, {
+        "id" : "row17_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row17_c1_type === 'value' && model.rowCount >= 17 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row17_c2_type === 'value' && model.rowCount >= 17 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row17_c3_type === 'value' && model.rowCount >= 17 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row17_c4_type === 'value' && model.rowCount >= 17 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 17 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row17_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row17_c5_type === 'value' && model.rowCount >= 17 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 17"
+      }, {
+        "id" : "row18_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row18_c1_type === 'value' && model.rowCount >= 18 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row18_c2_type === 'value' && model.rowCount >= 18 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row18_c3_type === 'value' && model.rowCount >= 18 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row18_c4_type === 'value' && model.rowCount >= 18 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 18 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row18_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row18_c5_type === 'value' && model.rowCount >= 18 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 18"
+      }, {
+        "id" : "row19_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row19_c1_type === 'value' && model.rowCount >= 19 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row19_c2_type === 'value' && model.rowCount >= 19 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row19_c3_type === 'value' && model.rowCount >= 19 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row19_c4_type === 'value' && model.rowCount >= 19 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 19 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row19_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row19_c5_type === 'value' && model.rowCount >= 19 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 19"
+      }, {
+        "id" : "row20_c1_type",
+        "name" : "Col 1 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c1_value",
+        "name" : "Col 1 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c1_unit",
+        "name" : "Col 1 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row20_c1_type === 'value' && model.rowCount >= 20 && model.colCount >= 1) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c2_type",
+        "name" : "Col 2 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c2_value",
+        "name" : "Col 2 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c2_unit",
+        "name" : "Col 2 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row20_c2_type === 'value' && model.rowCount >= 20 && model.colCount >= 2) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c3_type",
+        "name" : "Col 3 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c3_value",
+        "name" : "Col 3 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c3_unit",
+        "name" : "Col 3 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row20_c3_type === 'value' && model.rowCount >= 20 && model.colCount >= 3) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c4_type",
+        "name" : "Col 4 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c4_value",
+        "name" : "Col 4 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c4_unit",
+        "name" : "Col 4 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row20_c4_type === 'value' && model.rowCount >= 20 && model.colCount >= 4) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c5_type",
+        "name" : "Col 5 - Tipo",
+        "type" : "select",
+        "multiple" : false,
+        "allowEmptyOption" : false,
+        "items" : [ {
+          "value" : "text",
+          "label" : "Texto fijo"
+        }, {
+          "value" : "icon",
+          "label" : "Icono Material"
+        }, {
+          "value" : "value",
+          "label" : "Variable (Last Value)"
+        } ],
+        "default" : "text",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c5_value",
+        "name" : "Col 5 - Contenido",
+        "type" : "text",
+        "hint" : "Texto fijo, nombre de icono Material (ej: home, warning), o nombre del Data Key",
+        "condition" : "if (model.rowCount >= 20 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "row20_c5_unit",
+        "name" : "Col 5 - Unidad",
+        "type" : "text",
+        "hint" : "Unidad a mostrar junto al valor (ej: °C, %, m³/h). Solo aplica si el tipo es Variable.",
+        "condition" : "if (model.row20_c5_type === 'value' && model.rowCount >= 20 && model.colCount >= 5) { return true; } else { return false; }",
+        "group" : "Fila 20"
+      }, {
+        "id" : "enableConditions",
+        "name" : "Habilitar Condiciones",
+        "hint" : "Aplica formato condicional a las celdas de tipo Variable",
+        "group" : "Condiciones",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator1",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (>=), lte (<=), contains",
+        "group" : "Condición 1",
+        "type" : "text",
+        "default" : "eq",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condValue1",
+        "name" : "Valor de Comparación",
+        "group" : "Condición 1",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condColor1",
+        "name" : "Color de Celda",
+        "group" : "Condición 1",
+        "type" : "color",
+        "default" : "#F44336",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condTextColor1",
+        "name" : "Color de Letra (opcional)",
+        "hint" : "Dejar vacío para usar contraste automático según el color de celda.",
+        "group" : "Condición 1",
+        "type" : "color",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condSvg1",
+        "name" : "SVG Link (opcional)",
+        "hint" : "URL del archivo SVG. Dejar vacío para no mostrar.",
+        "group" : "Condición 1",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condHideValue1",
+        "name" : "Ocultar Valor",
+        "hint" : "Si se activa, solo se muestra el SVG sin el valor numérico/texto.",
+        "group" : "Condición 1",
+        "type" : "switch",
+        "default" : false,
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condOperator2",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (>=), lte (<=), contains",
+        "group" : "Condición 2",
+        "type" : "text",
+        "default" : "eq",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condValue2",
+        "name" : "Valor de Comparación",
+        "group" : "Condición 2",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condColor2",
+        "name" : "Color de Celda",
+        "group" : "Condición 2",
+        "type" : "color",
+        "default" : "#FF9800",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condTextColor2",
+        "name" : "Color de Letra (opcional)",
+        "hint" : "Dejar vacío para usar contraste automático según el color de celda.",
+        "group" : "Condición 2",
+        "type" : "color",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condSvg2",
+        "name" : "SVG Link (opcional)",
+        "hint" : "URL del archivo SVG. Dejar vacío para no mostrar.",
+        "group" : "Condición 2",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condHideValue2",
+        "name" : "Ocultar Valor",
+        "hint" : "Si se activa, solo se muestra el SVG sin el valor numérico/texto.",
+        "group" : "Condición 2",
+        "type" : "switch",
+        "default" : false,
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condOperator3",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (>=), lte (<=), contains",
+        "group" : "Condición 3",
+        "type" : "text",
+        "default" : "eq",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condValue3",
+        "name" : "Valor de Comparación",
+        "group" : "Condición 3",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condColor3",
+        "name" : "Color de Celda",
+        "group" : "Condición 3",
+        "type" : "color",
+        "default" : "#4CAF50",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condTextColor3",
+        "name" : "Color de Letra (opcional)",
+        "hint" : "Dejar vacío para usar contraste automático según el color de celda.",
+        "group" : "Condición 3",
+        "type" : "color",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condSvg3",
+        "name" : "SVG Link (opcional)",
+        "hint" : "URL del archivo SVG. Dejar vacío para no mostrar.",
+        "group" : "Condición 3",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condHideValue3",
+        "name" : "Ocultar Valor",
+        "hint" : "Si se activa, solo se muestra el SVG sin el valor numérico/texto.",
+        "group" : "Condición 3",
+        "type" : "switch",
+        "default" : false,
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condOperator4",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (>=), lte (<=), contains",
+        "group" : "Condición 4",
+        "type" : "text",
+        "default" : "eq",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condValue4",
+        "name" : "Valor de Comparación",
+        "group" : "Condición 4",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condColor4",
+        "name" : "Color de Celda",
+        "group" : "Condición 4",
+        "type" : "color",
+        "default" : "#2196F3",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condTextColor4",
+        "name" : "Color de Letra (opcional)",
+        "hint" : "Dejar vacío para usar contraste automático según el color de celda.",
+        "group" : "Condición 4",
+        "type" : "color",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condSvg4",
+        "name" : "SVG Link (opcional)",
+        "hint" : "URL del archivo SVG. Dejar vacío para no mostrar.",
+        "group" : "Condición 4",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condHideValue4",
+        "name" : "Ocultar Valor",
+        "hint" : "Si se activa, solo se muestra el SVG sin el valor numérico/texto.",
+        "group" : "Condición 4",
+        "type" : "switch",
+        "default" : false,
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condOperator5",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (>=), lte (<=), contains",
+        "group" : "Condición 5",
+        "type" : "text",
+        "default" : "eq",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condValue5",
+        "name" : "Valor de Comparación",
+        "group" : "Condición 5",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condColor5",
+        "name" : "Color de Celda",
+        "group" : "Condición 5",
+        "type" : "color",
+        "default" : "#9C27B0",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condTextColor5",
+        "name" : "Color de Letra (opcional)",
+        "hint" : "Dejar vacío para usar contraste automático según el color de celda.",
+        "group" : "Condición 5",
+        "type" : "color",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condSvg5",
+        "name" : "SVG Link (opcional)",
+        "hint" : "URL del archivo SVG. Dejar vacío para no mostrar.",
+        "group" : "Condición 5",
+        "type" : "text",
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      }, {
+        "id" : "condHideValue5",
+        "name" : "Ocultar Valor",
+        "hint" : "Si se activa, solo se muestra el SVG sin el valor numérico/texto.",
+        "group" : "Condición 5",
+        "type" : "switch",
+        "default" : false,
+        "condition" : "if (model.enableConditions === true) { return true; } else { return false; }"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.15479322438769105,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{},\"title\":\"Static table\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "473f1a00-4d56-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

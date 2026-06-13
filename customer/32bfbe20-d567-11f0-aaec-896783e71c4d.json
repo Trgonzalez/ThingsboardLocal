@@ -22,9 +22,54 @@
     "title" : "Plural",
     "zip" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "e7e3aaa0-1f09-11f1-8124-a97eb35c47b2"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26602
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"report_interval\":false}",
+      "key" : "advanceOptions",
+      "lastUpdateTs" : 1779910657397,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "billingPeriod",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "mensual"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "customerAction",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "newSubscription"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "deviceQty",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : 1,
+      "strValue" : null
+    }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
@@ -32,6 +77,86 @@
       "lastUpdateTs" : 1765457165755,
       "longValue" : null,
       "strValue" : "{\"recipients\":[{\"email\":\"ihuntrogue1@gmail.com\",\"enabled\":true},{\"email\":\"operaciones@plural.com.ar\",\"enabled\":true}]}"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastPaymentDate",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "21/05/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "monthlyAmount",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : 15,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "notifyChild",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "true"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "plan",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "Mensual - Nexor Básico"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "pricePerDevice",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : 15,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscription",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "NXR-B"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionCustomerName",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "Plural"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpiration",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "21/06/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpirationTs",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : 1782010800000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionStart",
+      "lastUpdateTs" : 1780002629929,
+      "longValue" : null,
+      "strValue" : "21/05/2026"
     }, {
       "booleanValue" : null,
       "doubleValue" : null,

@@ -1,0 +1,108 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "e8ed87b0-40c2-11f1-96dd-cf2d8d8f620e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "631c3f00-4356-11f1-96dd-cf2d8d8f620e"
+    },
+    "label" : "DS-US2-LB-0013",
+    "name" : "DS-US2-LB-0013",
+    "softwareId" : null,
+    "type" : "Ultrasonico"
+  },
+  "credentials" : {
+    "credentialsId" : "kt3f0q9upv26jdpgfmn1",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "cc3bf2e0-4668-11f1-96dd-cf2d8d8f620e"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "631c3f00-4356-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26685
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1777422003655,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.3,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1777580016764,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1777422003654,
+      "longValue" : 1777422003654,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1777421384261,
+      "longValue" : 1777421382878,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1777417373443,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1777417373443,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

@@ -41,11 +41,11 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1772294288761,
+      "lastUpdateTs" : 1779738152258,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -77,16 +77,16 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1772294287926,
-      "longValue" : 1772294287926,
+      "lastUpdateTs" : 1779738070280,
+      "longValue" : 1779738070280,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772293518093,
-      "longValue" : 1772293515953,
+      "lastUpdateTs" : 1781364181520,
+      "longValue" : 1781364179409,
       "strValue" : null
     }, {
       "booleanValue" : null,

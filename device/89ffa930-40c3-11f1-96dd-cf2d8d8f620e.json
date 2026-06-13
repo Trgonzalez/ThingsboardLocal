@@ -1,0 +1,156 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "e8ed87b0-40c2-11f1-96dd-cf2d8d8f620e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "73989bd0-4712-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "89ffa930-40c3-11f1-96dd-cf2d8d8f620e"
+    },
+    "label" : "RIEGO 3 TESTIGO",
+    "name" : "PS-L20-LB-0001",
+    "softwareId" : null,
+    "type" : "Freatimetro"
+  },
+  "credentials" : {
+    "credentialsId" : "5cwv0yo2lq6v8aj1rvnl",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "cc3bf2e0-4668-11f1-96dd-cf2d8d8f620e"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "89ffa930-40c3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26679
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1781121556515,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.6,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1777134400386,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1781121556515,
+      "longValue" : 0,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1777806474930,
+      "longValue" : 3600000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1777806474904,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1781362708527,
+      "longValue" : 1781362708351,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -37.37832516199481,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1777761985617,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -61.48479223219282,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1777761985617,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1777491030444,
+      "longValue" : null,
+      "strValue" : "waterDistanceFromGround"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "profundidad_sensor_m",
+      "lastUpdateTs" : 1777836266980,
+      "longValue" : 18,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "rango_m",
+      "lastUpdateTs" : 1777143583704,
+      "longValue" : 20,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterDistanceFromGround\":{\"label\":\"Profundidad de napa\",\"unit\":\"m\"},\"data_Water_deep_cm\":{\"label\":\"Nivel sobre sensor\",\"unit\":\"m\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1777492332411,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

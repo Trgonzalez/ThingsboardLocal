@@ -14,7 +14,7 @@
     "scada" : false,
     "title" : "Nexor Created"
   },
-  "fqns" : [ "device_cards_", "tasmota_mqtt_console2" ],
+  "fqns" : [ "device_cards_", "tasmota_mqtt_console2", "bar_chart", "heatmap", "nexor_gauge_test", "value_card_v2", "label_and_value_card", "device_rename_widget", "nexor_gauge_1", "nexor_user_device_assign2" ],
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]

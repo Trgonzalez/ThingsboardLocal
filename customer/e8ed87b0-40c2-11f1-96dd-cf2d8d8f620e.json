@@ -1,0 +1,155 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "La Gama",
+      "homeDashboardId" : null,
+      "homeDashboardHideToolbar" : false
+    },
+    "address" : null,
+    "address2" : null,
+    "city" : "Colina",
+    "country" : "Argentina",
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "e8ed87b0-40c2-11f1-96dd-cf2d8d8f620e"
+    },
+    "name" : "Arabare S.A.",
+    "phone" : null,
+    "state" : "Buenos Aires",
+    "title" : "Arabare S.A.",
+    "zip" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "e8ed87b0-40c2-11f1-96dd-cf2d8d8f620e"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "cc3bf2e0-4668-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26678
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "billingPeriod",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "mensual"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "customerAction",
+      "lastUpdateTs" : 1779917827511,
+      "longValue" : null,
+      "strValue" : "newSubscription"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "deviceQty",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : 9,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastPaymentDate",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "25/05/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "monthlyAmount",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : 135,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "notifyChild",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "false"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "plan",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "Mensual - Nexor Básico"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "pricePerDevice",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : 15,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscription",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "NXR-B"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionCustomerName",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "Arabare S.A."
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpiration",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : null,
+      "strValue" : "25/06/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpirationTs",
+      "lastUpdateTs" : 1780000916713,
+      "longValue" : 1782356400000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionStart",
+      "lastUpdateTs" : 1779917827511,
+      "longValue" : null,
+      "strValue" : "27/05/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"nombre\":\"Ignacio Casares\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true}]",
+      "key" : "whatsapp",
+      "lastUpdateTs" : 1777647646122,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  },
+  "calculatedFields" : [ ]
+}

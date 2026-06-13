@@ -1,0 +1,55 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "d42f2b70-3a93-11f0-96f4-672ec1447afa"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "e7e3aaa0-1f09-11f1-8124-a97eb35c47b2"
+    },
+    "label" : null,
+    "name" : "Havanna Billinghurst",
+    "type" : "default"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "e7e3aaa0-1f09-11f1-8124-a97eb35c47b2"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "574e2ee0-d510-11f0-aaec-896783e71c4d"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26603
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "32bfbe20-d567-11f0-aaec-896783e71c4d"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "e7e3aaa0-1f09-11f1-8124-a97eb35c47b2"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26602
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

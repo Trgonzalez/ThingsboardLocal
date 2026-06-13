@@ -1,0 +1,196 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2ccb4a50-7a2e-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "ec684f20-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "label" : "Aguada El Tero",
+    "name" : "DS-US2-LB-0003",
+    "softwareId" : null,
+    "type" : "Ultrasonico"
+  },
+  "credentials" : {
+    "credentialsId" : "hrqhjz45ny5jf69ar3bz",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "ec684f20-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26688
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1781166136513,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "alarm_severity",
+      "lastUpdateTs" : 1781029363518,
+      "longValue" : null,
+      "strValue" : "CRITICAL"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "alarm_type",
+      "lastUpdateTs" : 1780933639998,
+      "longValue" : null,
+      "strValue" : "Nivel de tanque Bajo"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.3,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1777580016816,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "fullDist",
+      "lastUpdateTs" : 1780942801481,
+      "longValue" : 55,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1781158995071,
+      "longValue" : 1781158995071,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityTimeout",
+      "lastUpdateTs" : 1780942801490,
+      "longValue" : 7200000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "interval",
+      "lastUpdateTs" : 1780942801481,
+      "longValue" : 3600,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1781364100521,
+      "longValue" : 1781364097528,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lowDist",
+      "lastUpdateTs" : 1780933664607,
+      "longValue" : 160,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1775608993086,
+      "longValue" : null,
+      "strValue" : "waterLevelPerc"
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankHighAlarmFlag",
+      "lastUpdateTs" : 1780933639269,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankLowAlarmFlag",
+      "lastUpdateTs" : 1780933639269,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMaxAlarmThreshold",
+      "lastUpdateTs" : 1780933639269,
+      "longValue" : 90,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankMinAlarmThreshold",
+      "lastUpdateTs" : 1780933639269,
+      "longValue" : 40,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "tankVolume",
+      "lastUpdateTs" : 1780933664607,
+      "longValue" : 70000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"waterLevelPerc\":{\"label\":\"Nivel de agua\",\"unit\":\"%\"},\"waterVolume\":{\"label\":\"Volumen de agua\",\"unit\":\"L\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1775608993086,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

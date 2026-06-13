@@ -1,0 +1,204 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "title" : "Pantalla de inicio",
+    "image" : null,
+    "mobileHide" : true,
+    "mobileOrder" : null,
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "4393c68d-9880-134b-eb35-dba4778d22ac" : {
+          "typeFullFqn" : "tenant.dashboard_list",
+          "type" : "static",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "static",
+              "name" : "function",
+              "dataKeys" : [ {
+                "name" : "f(x)",
+                "type" : "function",
+                "label" : "Random",
+                "color" : "#2196f3",
+                "settings" : { },
+                "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
+              } ]
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "rgba(255, 255, 255, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "minTileWidth" : 180,
+              "maxTileWidth" : 350,
+              "tileGap" : 16,
+              "tileBorderRadius" : 5,
+              "showDescription" : false,
+              "hideCurrentDashboard" : true
+            },
+            "title" : "HTML Card",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "4393c68d-9880-134b-eb35-dba4778d22ac"
+        },
+        "1612e5e0-7565-6197-207c-fd03bb8305c0" : {
+          "typeFullFqn" : "tenant.dashboard_list",
+          "type" : "static",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "static",
+              "name" : "function",
+              "dataKeys" : [ {
+                "name" : "f(x)",
+                "type" : "function",
+                "label" : "Random",
+                "color" : "#2196f3",
+                "settings" : { },
+                "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
+              } ]
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "rgba(255, 255, 255, 0)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "minTileWidth" : 180,
+              "maxTileWidth" : 350,
+              "tileGap" : 16,
+              "tileBorderRadius" : 5,
+              "showDescription" : false,
+              "hideCurrentDashboard" : false
+            },
+            "title" : "HTML Card",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "1612e5e0-7565-6197-207c-fd03bb8305c0"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "Pantalla de inicio",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "1612e5e0-7565-6197-207c-fd03bb8305c0" : {
+                  "sizeX" : 24,
+                  "sizeY" : 11,
+                  "row" : 0,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "layoutType" : "default",
+                "backgroundColor" : "#EEEEEE",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "minColumns" : 24,
+                "viewFormat" : "grid",
+                "autoFillHeight" : false,
+                "rowHeight" : 70,
+                "backgroundImageUrl" : null,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70
+              },
+              "breakpoints" : {
+                "xl" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#EEEEEE",
+                    "columns" : 24,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 24,
+                    "viewFormat" : "grid",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "4393c68d-9880-134b-eb35-dba4778d22ac" : {
+                      "sizeX" : 24,
+                      "sizeY" : 11,
+                      "row" : 0,
+                      "col" : 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : { },
+      "filters" : { },
+      "timewindow" : {
+        "selectedTab" : 0,
+        "realtime" : {
+          "realtimeType" : 0,
+          "interval" : 1000,
+          "timewindowMs" : 60000
+        },
+        "aggregation" : {
+          "type" : "AVG"
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : false,
+        "showEntitiesSelect" : false,
+        "showDashboardTimewindow" : false,
+        "showDashboardExport" : false,
+        "toolbarAlwaysOpen" : true,
+        "titleColor" : "rgba(0,0,0,0.870588)",
+        "showDashboardLogo" : true,
+        "dashboardLogoUrl" : "tb-image;/api/images/tenant/logo_title_white_(1).png",
+        "hideToolbar" : false,
+        "showFilters" : false,
+        "showUpdateDashboardImage" : false
+      }
+    },
+    "name" : "Pantalla de inicio",
+    "resources" : null,
+    "assignedCustomers" : [ {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+      },
+      "title" : "Campo La Travesia",
+      "public" : false
+    } ],
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "1c85ec50-5984-11f1-96dd-cf2d8d8f620e"
+    }
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : null,
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "199d12b0-3e9c-11f0-bbbd-d5b23296cf03"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "4fb782e0-64de-11f1-9c5d-cf2d8d8f620e"
+    },
+    "label" : null,
+    "name" : "S31B-LS-0001",
+    "softwareId" : null,
+    "type" : "lanza"
+  },
+  "credentials" : {
+    "credentialsId" : "1geTWLHNamZSd2LdtQnh",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : true,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1781104144519,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "application",
+      "lastUpdateTs" : 1781104266758,
+      "longValue" : null,
+      "strValue" : "ambient"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 3.6,
+      "jsonValue" : null,
+      "key" : "battery_nominal",
+      "lastUpdateTs" : 1781104140846,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1781364382505,
+      "longValue" : 1781364381474,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mainKey",
+      "lastUpdateTs" : 1781104140847,
+      "longValue" : null,
+      "strValue" : "pressure_bar"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"pressure_bar\":{\"label\":\"Presión\",\"unit\":\"bar\"},\"flow_l_min\":{\"label\":\"Caudal\",\"unit\":\"L/min\"}}",
+      "key" : "visibleKeys",
+      "lastUpdateTs" : 1781104140847,
+      "longValue" : null,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  },
+  "calculatedFields" : [ ]
+}

@@ -38,14 +38,27 @@
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "803470e0-b5d4-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26579
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1772227325481,
+      "lastUpdateTs" : 1781201656509,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,7 +66,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1772148127855,
+      "lastUpdateTs" : 1780586172139,
       "longValue" : null,
       "strValue" : "CRITICAL"
     }, {
@@ -61,15 +74,23 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1770000150435,
+      "lastUpdateTs" : 1778768571906,
       "longValue" : null,
-      "strValue" : "Nivel de tanque bajo"
+      "strValue" : "Nivel de tanque Bajo"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "assignedTo",
+      "lastUpdateTs" : 1779831698732,
+      "longValue" : null,
+      "strValue" : "trgonzalez@itba.edu.ar"
     }, {
       "booleanValue" : null,
       "doubleValue" : 3.3,
       "jsonValue" : null,
       "key" : "battery_nominal",
-      "lastUpdateTs" : 1771503114249,
+      "lastUpdateTs" : 1777580017096,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -85,15 +106,15 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1772227325477,
-      "longValue" : 1772227325477,
+      "lastUpdateTs" : 1781201656509,
+      "longValue" : 0,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityTimeout",
-      "lastUpdateTs" : 1765022680926,
+      "lastUpdateTs" : 1773002088036,
       "longValue" : 3600000,
       "strValue" : null
     }, {
@@ -101,7 +122,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1765022680855,
+      "lastUpdateTs" : 1773002088020,
       "longValue" : 3600,
       "strValue" : null
     }, {
@@ -109,8 +130,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772223711095,
-      "longValue" : 1772223710616,
+      "lastUpdateTs" : 1781363620513,
+      "longValue" : 1781363618300,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -145,11 +166,11 @@
       "longValue" : null,
       "strValue" : "waterLevelPerc"
     }, {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1765499629942,
+      "lastUpdateTs" : 1776207959811,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -157,7 +178,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankLowAlarmFlag",
-      "lastUpdateTs" : 1772114896518,
+      "lastUpdateTs" : 1774622345750,
       "longValue" : null,
       "strValue" : null
     }, {

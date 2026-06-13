@@ -21,7 +21,176 @@
     "name" : "La Travesia",
     "type" : "Root Property"
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26568
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "803470e0-b5d4-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26579
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "9f31e140-32e2-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26695
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "a763da60-8c40-11f0-8d0c-9de3d92fa448"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26581
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "cb35b100-32e1-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26691
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "ec684f20-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26688
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "0a35a990-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26693
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "20c21590-b5d4-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26578
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "35533800-32e2-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26692
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "522203a0-32e0-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26694
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "75823bb0-a2cd-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26580
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "7b93e870-32e0-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26690
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "7df66220-32e3-11f1-96dd-cf2d8d8f620e"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26689
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
       "booleanValue" : null,

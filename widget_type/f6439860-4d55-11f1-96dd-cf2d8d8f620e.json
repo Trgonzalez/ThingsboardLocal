@@ -1,0 +1,162 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "state_timeline",
+    "name" : "State timeline",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/State timeline.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "timeseries",
+      "sizeX" : 8,
+      "sizeY" : 5,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"metric-card\">\r\n        <div class=\"state-timeline-widget\">\r\n            <div class=\"timeline-legend\" id=\"timeline-legend\"></div>\r\n            <div class=\"timeline-header flex-row\">\r\n                <div class=\"header-label-space\"></div>\r\n                <div class=\"time-axis\" id=\"time-axis-top\"></div>\r\n            </div>\r\n            <div class=\"timeline-rows-container\" id=\"timeline-rows-container\">\r\n                <!-- Rows will be injected here -->\r\n            </div>\r\n            <div class=\"timeline-tooltip\" id=\"timeline-tooltip\" style=\"display: none;\"></div>\r\n        </div>\r\n    </div>\r\n</div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: #ffffff00;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 12px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);\r\n    border-left: 4px solid #EE7623;\r\n    transition: all 0.2s ease;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n}\r\n\r\n.state-timeline-widget {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: 'Roboto', sans-serif;\r\n    color: #333;\r\n    background-color: transparent;\r\n    overflow: hidden;\r\n}\r\n\r\n.timeline-legend {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 8px;\r\n    margin-bottom: 8px;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.legend-item {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 12px;\r\n    color: #666;\r\n}\r\n\r\n.legend-color {\r\n    width: 12px;\r\n    height: 12px;\r\n    display: inline-block;\r\n    margin-right: 4px;\r\n    border-radius: 2px;\r\n}\r\n\r\n.timeline-rows-container {\r\n    flex: 1;\r\n    overflow-y: auto;\r\n    overflow-x: hidden;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 4px;\r\n    position: relative;\r\n    border-left: 1px solid #eee;\r\n}\r\n\r\n.timeline-row {\r\n    display: flex;\r\n    align-items: center;\r\n    width: 100%;\r\n    position: relative;\r\n    border-bottom: 1px solid #f0f0f0;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.row-label {\r\n    width: 120px;\r\n    flex-shrink: 0;\r\n    font-size: 11px;\r\n    padding-right: 8px;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    text-align: right;\r\n    color: #555;\r\n    background: #fff;\r\n    z-index: 2;\r\n}\r\n\r\n.row-track {\r\n    flex: 1;\r\n    height: 100%;\r\n    position: relative;\r\n    background: #fafafa;\r\n}\r\n\r\n.state-segment {\r\n    position: absolute;\r\n    top: 2px;\r\n    bottom: 2px;\r\n    min-width: 1px;\r\n    transition: background-color 0.2s;\r\n}\r\n\r\n.state-segment:hover {\r\n    filter: brightness(0.9);\r\n}\r\n\r\n.timeline-tooltip {\r\n    position: fixed;\r\n    background: rgba(0, 0, 0, 0.85);\r\n    color: #fff;\r\n    padding: 6px 10px;\r\n    border-radius: 4px;\r\n    font-size: 11px;\r\n    pointer-events: none;\r\n    z-index: 1000;\r\n    white-space: pre-line;\r\n    max-width: 250px;\r\n    top: 0;\r\n    left: 0;\r\n}\r\n\r\n.flex-row {\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.header-label-space {\r\n    width: 120px;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.time-axis {\r\n    flex: 1;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    font-size: 10px;\r\n    color: #999;\r\n    padding: 0 4px;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    self.ctx.$container = $(self.ctx.$container);\r\n    self.rowsContainer = $('#timeline-rows-container', self.ctx.$container);\r\n    self.legendContainer = $('#timeline-legend', self.ctx.$container);\r\n    self.tooltip = $('#timeline-tooltip', self.ctx.$container);\r\n\r\n    // Parse Settings\r\n    self.settings = self.ctx.settings || {};\r\n\r\n    // Construct mappings from flat settings (stateValue1...5)\r\n    self.stateMappings = [];\r\n    for (var i = 1; i <= 5; i++) {\r\n        var val = self.settings['stateValue' + i];\r\n        if (val !== undefined && val !== null && val !== '') {\r\n            self.stateMappings.push({\r\n                value: val,\r\n                label: self.settings['stateLabel' + i] || val,\r\n                color: self.settings['stateColor' + i] || '#cccccc'\r\n            });\r\n        }\r\n    }\r\n\r\n    self.defaultColor = self.settings.defaultColor || '#999999';\r\n    self.defaultLabel = self.settings.defaultLabel || 'Sin datos';\r\n    self.showLegend = self.settings.showLegend !== false;\r\n    self.showDefaultLegend = self.settings.showDefaultLegend === true;\r\n    self.showTooltip = self.settings.showTooltip !== false;\r\n    self.barHeight = self.settings.barHeight || 30;\r\n    self.maxGapMs = (self.settings.maxGapMinutes && self.settings.maxGapMinutes > 0)\r\n        ? self.settings.maxGapMinutes * 60 * 1000\r\n        : 0;\r\n\r\n    self.renderLegend();\r\n    self.onResize();\r\n}\r\n\r\nself.onDataUpdated = function () {\r\n    self.render();\r\n}\r\n\r\nself.render = function () {\r\n    self.rowsContainer.empty();\r\n\r\n    // Get time window\r\n    var timeWindow = self.ctx.timeWindow;\r\n    var minTime = timeWindow.minTime;\r\n    var maxTime = timeWindow.maxTime;\r\n\r\n    // If using real-time data history, use data extent if window is dynamic\r\n    if (!minTime || !maxTime) {\r\n        // Fallback manual calc if widget context doesn't provide processed window\r\n        // Usually self.ctx.defaultSubscription.timeWindow gives correct range\r\n        minTime = Number.MAX_VALUE;\r\n        maxTime = Number.MIN_VALUE;\r\n\r\n        // Iterate to find extent\r\n        self.ctx.data.forEach(function (datasource) {\r\n            if (datasource.data && datasource.data.length > 0) {\r\n                minTime = Math.min(minTime, datasource.data[0][0]);\r\n                maxTime = Math.max(maxTime, datasource.data[datasource.data.length - 1][0]);\r\n            }\r\n        });\r\n\r\n        // Safety buffer\r\n        if (minTime > maxTime) {\r\n            var now = Date.now();\r\n            minTime = now - 60000;\r\n            maxTime = now;\r\n        }\r\n    }\r\n\r\n    // Update Axis labels (Simplified - Start/End)\r\n    // In a real robust widget, we would calculate ticks\r\n    $('#time-axis-top', self.ctx.$container).html(\r\n        '<span>' + moment(minTime).format('HH:mm:ss') + '</span>' +\r\n        '<span>' + moment(maxTime).format('HH:mm:ss') + '</span>'\r\n    );\r\n\r\n    // Group data by datasource (Series)\r\n    // self.ctx.data contains array of DatasourceData\r\n    self.ctx.data.forEach(function (datasourceData, index) {\r\n        var createRow = true;\r\n\r\n        // If multiple keys in one datasource, logic might vary, \r\n        // but typically standard widgets handle 1 key per series for state\r\n        // We will treat each 'dataKey' in 'datasourceData' as a row? \r\n        // Actually self.ctx.data is formatted as [ { dataKey, data: [[t,v]...], datasource } ]\r\n\r\n        var dataKey = datasourceData.dataKey;\r\n        var label = dataKey.label;\r\n        var data = datasourceData.data; // [[ts, val], ...]\r\n\r\n        var $row = $('<div class=\"timeline-row\"></div>');\r\n        $row.css('height', self.barHeight + 'px');\r\n\r\n        var $label = $('<div class=\"row-label\" title=\"' + label + '\">' + label + '</div>');\r\n        var $track = $('<div class=\"row-track\"></div>');\r\n\r\n        $row.append($label).append($track);\r\n        self.rowsContainer.append($row);\r\n\r\n        if (!data || data.length === 0) return;\r\n\r\n        // Render Segments\r\n        // Logic: Value at T1 lasts until T2.\r\n        for (var i = 0; i < data.length; i++) {\r\n            var point = data[i];\r\n            var ts = point[0];\r\n            var value = point[1];\r\n\r\n            // Start of segment\r\n            if (ts > maxTime) continue;\r\n\r\n            // End of segment is next point or maxTime\r\n            var endTs;\r\n            if (i < data.length - 1) {\r\n                endTs = data[i + 1][0];\r\n            } else {\r\n                endTs = maxTime; // Extend to end of window\r\n            }\r\n\r\n            // Cap segment duration if maxGapMs is configured\r\n            // and render a \"no data\" segment with defaultColor for the gap\r\n            var gapStart = null;\r\n            var gapEnd = null;\r\n            if (self.maxGapMs > 0) {\r\n                var maxEndTs = ts + self.maxGapMs;\r\n                if (endTs > maxEndTs) {\r\n                    gapStart = maxEndTs;\r\n                    gapEnd = endTs;\r\n                    endTs = maxEndTs;\r\n                }\r\n            }\r\n\r\n            // Clip to visible window\r\n            var visibleStart = Math.max(ts, minTime);\r\n            var visibleEnd = Math.min(endTs, maxTime);\r\n\r\n            if (visibleEnd <= visibleStart) continue; // Out of view\r\n\r\n            // Calculate %\r\n            var range = maxTime - minTime;\r\n            var leftPct = ((visibleStart - minTime) / range) * 100;\r\n            var widthPct = ((visibleEnd - visibleStart) / range) * 100;\r\n\r\n            // Add small overlap to prevent subpixel rendering gaps (white lines)\r\n            // This ensures segments slightly overlap, eliminating 1px gaps\r\n            var overlapPct = 0.15;\r\n            widthPct = widthPct + overlapPct;\r\n\r\n            var color = self.getColorForValue(value);\r\n\r\n            var $seg = $('<div class=\"state-segment\"></div>');\r\n            $seg.css({\r\n                left: leftPct + '%',\r\n                width: widthPct + '%',\r\n                backgroundColor: color\r\n            });\r\n\r\n            // Tooltip data\r\n            $seg.data('tooltip', {\r\n                label: label,\r\n                value: value,\r\n                start: visibleStart,\r\n                end: visibleEnd,\r\n                color: color\r\n            });\r\n\r\n            // Bind tooltip events\r\n            if (self.showTooltip) {\r\n                $seg.on('mousemove', self.onSegmentHover);\r\n                $seg.on('mouseleave', self.onSegmentLeave);\r\n            }\r\n\r\n            $track.append($seg);\r\n\r\n            // Render \"no data\" segment for the gap with defaultColor\r\n            if (gapStart !== null && gapEnd !== null) {\r\n                var gapVisibleStart = Math.max(gapStart, minTime);\r\n                var gapVisibleEnd = Math.min(gapEnd, maxTime);\r\n                if (gapVisibleEnd > gapVisibleStart) {\r\n                    var gapLeftPct = ((gapVisibleStart - minTime) / range) * 100;\r\n                    var gapWidthPct = ((gapVisibleEnd - gapVisibleStart) / range) * 100;\r\n                    gapWidthPct = gapWidthPct + overlapPct;\r\n\r\n                    var $gapSeg = $('<div class=\"state-segment\"></div>');\r\n                    $gapSeg.css({\r\n                        left: gapLeftPct + '%',\r\n                        width: gapWidthPct + '%',\r\n                        backgroundColor: self.defaultColor\r\n                    });\r\n\r\n                    $gapSeg.data('tooltip', {\r\n                        label: label,\r\n                        value: self.defaultLabel,\r\n                        start: gapVisibleStart,\r\n                        end: gapVisibleEnd,\r\n                        color: self.defaultColor\r\n                    });\r\n\r\n                    if (self.showTooltip) {\r\n                        $gapSeg.on('mousemove', self.onSegmentHover);\r\n                        $gapSeg.on('mouseleave', self.onSegmentLeave);\r\n                    }\r\n\r\n                    $track.append($gapSeg);\r\n                }\r\n            }\r\n        }\r\n    });\r\n}\r\n\r\nself.onSegmentHover = function (e) {\r\n    var data = $(this).data('tooltip');\r\n    if (!data) return;\r\n\r\n    var text = '<b>' + data.label + '</b><br/>' +\r\n        'Estado: ' + data.value + '<br/>' +\r\n        'Inicio: ' + moment(data.start).format('HH:mm:ss') + '<br/>' +\r\n        'Fin: ' + moment(data.end).format('HH:mm:ss') + '<br/>' +\r\n        'Duración: ' + moment.duration(data.end - data.start).humanize();\r\n\r\n    self.tooltip.html(text).show();\r\n\r\n    // Position\r\n    var parentOffset = self.ctx.$container.offset();\r\n    var x = e.clientX - parentOffset.left + 15; // relative to container or page?\r\n    // Using simple clientX/Y usually works better with fixed\r\n\r\n    self.tooltip.css({\r\n        top: e.clientY + 10 + 'px',\r\n        left: e.clientX + 10 + 'px'\r\n    });\r\n}\r\n\r\nself.onSegmentLeave = function () {\r\n    self.tooltip.hide();\r\n}\r\n\r\nself.getColorForValue = function (val) {\r\n    if (self.stateMappings) {\r\n        for (var i = 0; i < self.stateMappings.length; i++) {\r\n            var m = self.stateMappings[i];\r\n            // Comparación flexible: números == números, strings == strings\r\n            // También permite comparar \"0\" con 0, \"1\" con 1, etc.\r\n            if (m.value == val || String(m.value) === String(val)) {\r\n                return m.color || self.defaultColor;\r\n            }\r\n        }\r\n    }\r\n    return self.defaultColor;\r\n}\r\n\r\nself.renderLegend = function () {\r\n    if (!self.showLegend) {\r\n        self.legendContainer.hide();\r\n        return;\r\n    }\r\n    self.legendContainer.show().empty();\r\n\r\n    if (self.stateMappings) {\r\n        self.stateMappings.forEach(function (m) {\r\n            var label = m.label || m.value;\r\n            var color = m.color || self.defaultColor;\r\n\r\n            var $item = $('<div class=\"legend-item\"></div>');\r\n            var $box = $('<span class=\"legend-color\"></span>').css('background-color', color);\r\n            var $txt = $('<span></span>').text(label);\r\n\r\n            $item.append($box).append($txt);\r\n            self.legendContainer.append($item);\r\n        });\r\n    }\r\n\r\n    // Add default color legend item\r\n    if (self.showDefaultLegend) {\r\n        var $defItem = $('<div class=\"legend-item\"></div>');\r\n        var $defBox = $('<span class=\"legend-color\"></span>').css('background-color', self.defaultColor);\r\n        var $defTxt = $('<span></span>').text(self.defaultLabel);\r\n        $defItem.append($defBox).append($defTxt);\r\n        self.legendContainer.append($defItem);\r\n    }\r\n}\r\n\r\nself.onResize = function () {\r\n    self.render();\r\n}\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        useCustomDatasources: true,\r\n        maxDatasources: -1,\r\n        maxDataKeys: -1,\r\n        dataKeysOptional: false\r\n    };\r\n}\r\n\r\nself.onDestroy = function () {\r\n}\r\n",
+      "settingsForm" : [ {
+        "id" : "defaultColor",
+        "name" : "Color por Defecto",
+        "group" : "General",
+        "type" : "color",
+        "default" : "#999999"
+      }, {
+        "id" : "showDefaultLegend",
+        "name" : "Mostrar leyenda de estado por defecto",
+        "group" : "General",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "defaultLabel",
+        "name" : "Etiqueta estado por defecto",
+        "group" : "General",
+        "type" : "text",
+        "default" : "Sin datos"
+      }, {
+        "id" : "showLegend",
+        "name" : "Mostrar Leyenda",
+        "group" : "General",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "showTooltip",
+        "name" : "Mostrar Tooltip",
+        "group" : "General",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "barHeight",
+        "name" : "Altura de Barra (px)",
+        "group" : "General",
+        "type" : "number",
+        "default" : 30
+      }, {
+        "id" : "maxGapMinutes",
+        "name" : "Tiempo máximo entre puntos (min, 0=sin límite)",
+        "group" : "General",
+        "type" : "number",
+        "default" : 0
+      }, {
+        "id" : "stateValue1",
+        "name" : "Valor Estado 1",
+        "group" : "Estado 1",
+        "type" : "text"
+      }, {
+        "id" : "stateLabel1",
+        "name" : "Etiqueta Estado 1",
+        "group" : "Estado 1",
+        "type" : "text"
+      }, {
+        "id" : "stateColor1",
+        "name" : "Color Estado 1",
+        "group" : "Estado 1",
+        "type" : "color",
+        "default" : "#4CAF50"
+      }, {
+        "id" : "stateValue2",
+        "name" : "Valor Estado 2",
+        "group" : "Estado 2",
+        "type" : "text"
+      }, {
+        "id" : "stateLabel2",
+        "name" : "Etiqueta Estado 2",
+        "group" : "Estado 2",
+        "type" : "text"
+      }, {
+        "id" : "stateColor2",
+        "name" : "Color Estado 2",
+        "group" : "Estado 2",
+        "type" : "color",
+        "default" : "#FFC107"
+      }, {
+        "id" : "stateValue3",
+        "name" : "Valor Estado 3",
+        "group" : "Estado 3",
+        "type" : "text"
+      }, {
+        "id" : "stateLabel3",
+        "name" : "Etiqueta Estado 3",
+        "group" : "Estado 3",
+        "type" : "text"
+      }, {
+        "id" : "stateColor3",
+        "name" : "Color Estado 3",
+        "group" : "Estado 3",
+        "type" : "color",
+        "default" : "#F44336"
+      }, {
+        "id" : "stateValue4",
+        "name" : "Valor Estado 4",
+        "group" : "Estado 4",
+        "type" : "text"
+      }, {
+        "id" : "stateLabel4",
+        "name" : "Etiqueta Estado 4",
+        "group" : "Estado 4",
+        "type" : "text"
+      }, {
+        "id" : "stateColor4",
+        "name" : "Color Estado 4",
+        "group" : "Estado 4",
+        "type" : "color",
+        "default" : "#2196F3"
+      }, {
+        "id" : "stateValue5",
+        "name" : "Valor Estado 5",
+        "group" : "Estado 5",
+        "type" : "text"
+      }, {
+        "id" : "stateLabel5",
+        "name" : "Etiqueta Estado 5",
+        "group" : "Estado 5",
+        "type" : "text"
+      }, {
+        "id" : "stateColor5",
+        "name" : "Color Estado 5",
+        "group" : "Estado 5",
+        "type" : "color",
+        "default" : "#9C27B0"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "latestDataKeySettingsForm" : [ ],
+      "settingsDirective" : "",
+      "dataKeySettingsDirective" : "",
+      "latestDataKeySettingsDirective" : "",
+      "hasBasicMode" : true,
+      "basicModeDirective" : "",
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"First\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.8587686344902596,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\",\"aggregationType\":null,\"units\":null,\"decimals\":null,\"usePostProcessing\":null,\"postFuncBody\":null},{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Second\",\"color\":\"#FFC107\",\"settings\":{\"type\":\"bar\"},\"_hash\":0.5534217244004682,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\",\"aggregationType\":null,\"units\":null,\"decimals\":null,\"usePostProcessing\":null,\"postFuncBody\":null}],\"alarmFilterConfig\":{\"statusList\":[\"ACTIVE\"]},\"latestDataKeys\":null}],\"timewindow\":{\"hideAggregation\":false,\"hideAggInterval\":false,\"hideTimezone\":false,\"selectedTab\":0,\"realtime\":{\"realtimeType\":0,\"timewindowMs\":60000,\"quickInterval\":\"CURRENT_DAY\",\"interval\":1000},\"aggregation\":{\"type\":\"AVG\",\"limit\":25000},\"timezone\":null},\"showTitle\":true,\"backgroundColor\":\"rgba(0, 0, 0, 0)\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"showLegend\":true,\"legendConfig\":{\"direction\":\"column\",\"position\":\"top\",\"sortDataKeys\":false,\"showMin\":false,\"showMax\":false,\"showAvg\":true,\"showTotal\":false,\"showLatest\":false},\"thresholds\":[],\"dataZoom\":true,\"stack\":false,\"yAxis\":{\"show\":true,\"label\":\"\",\"labelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"600\",\"lineHeight\":\"1\"},\"labelColor\":\"rgba(0, 0, 0, 0.54)\",\"position\":\"left\",\"showTickLabels\":true,\"tickLabelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"400\",\"lineHeight\":\"1\"},\"tickLabelColor\":\"rgba(0, 0, 0, 0.54)\",\"showTicks\":true,\"ticksColor\":\"rgba(0, 0, 0, 0.54)\",\"showLine\":true,\"lineColor\":\"rgba(0, 0, 0, 0.54)\",\"showSplitLines\":true,\"splitLinesColor\":\"rgba(0, 0, 0, 0.12)\"},\"xAxis\":{\"show\":true,\"label\":\"\",\"labelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"600\",\"lineHeight\":\"1\"},\"labelColor\":\"rgba(0, 0, 0, 0.54)\",\"position\":\"bottom\",\"showTickLabels\":true,\"tickLabelFont\":{\"family\":\"Roboto\",\"size\":10,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"400\",\"lineHeight\":\"1\"},\"tickLabelColor\":\"rgba(0, 0, 0, 0.54)\",\"ticksFormat\":{},\"showTicks\":true,\"ticksColor\":\"rgba(0, 0, 0, 0.54)\",\"showLine\":true,\"lineColor\":\"rgba(0, 0, 0, 0.54)\",\"showSplitLines\":true,\"splitLinesColor\":\"rgba(0, 0, 0, 0.12)\"},\"legendLabelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"400\",\"lineHeight\":\"16px\"},\"legendLabelColor\":\"rgba(0, 0, 0, 0.76)\",\"showTooltip\":true,\"tooltipTrigger\":\"axis\",\"tooltipValueFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"500\",\"lineHeight\":\"16px\"},\"tooltipValueColor\":\"rgba(0, 0, 0, 0.76)\",\"tooltipShowDate\":true,\"tooltipDateFormat\":{\"format\":null,\"lastUpdateAgo\":false,\"custom\":false,\"auto\":true,\"autoDateFormatSettings\":{}},\"tooltipDateFont\":{\"family\":\"Roboto\",\"size\":11,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"400\",\"lineHeight\":\"16px\"},\"tooltipDateColor\":\"rgba(0, 0, 0, 0.76)\",\"tooltipDateInterval\":true,\"tooltipBackgroundColor\":\"rgba(255, 255, 255, 0.76)\",\"tooltipBackgroundBlur\":4,\"background\":{\"type\":\"color\",\"color\":\"#fff\",\"overlay\":{\"enabled\":false,\"color\":\"rgba(255,255,255,0.72)\",\"blur\":3}},\"yAxes\":{\"default\":{\"units\":null,\"decimals\":0,\"show\":true,\"label\":\"\",\"labelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"600\",\"lineHeight\":\"1\"},\"labelColor\":\"rgba(0, 0, 0, 0.54)\",\"position\":\"left\",\"showTickLabels\":true,\"tickLabelFont\":{\"family\":\"Roboto\",\"size\":12,\"sizeUnit\":\"px\",\"style\":\"normal\",\"weight\":\"400\",\"lineHeight\":\"1\"},\"tickLabelColor\":\"rgba(0, 0, 0, 0.54)\",\"ticksFormatter\":null,\"showTicks\":true,\"ticksColor\":\"rgba(0, 0, 0, 0.54)\",\"showLine\":true,\"lineColor\":\"rgba(0, 0, 0, 0.54)\",\"showSplitLines\":true,\"splitLinesColor\":\"rgba(0, 0, 0, 0.12)\",\"id\":\"default\",\"order\":0}},\"noAggregationBarWidthSettings\":{\"strategy\":\"group\",\"groupWidth\":{\"relative\":true,\"relativeWidth\":2,\"absoluteWidth\":1000},\"barWidth\":{\"relative\":true,\"relativeWidth\":2,\"absoluteWidth\":1000}},\"animation\":{\"animation\":true,\"animationThreshold\":2000,\"animationDuration\":500,\"animationEasing\":\"cubicOut\",\"animationDelay\":0,\"animationDurationUpdate\":300,\"animationEasingUpdate\":\"cubicOut\",\"animationDelayUpdate\":0},\"padding\":\"12px\"},\"title\":\"State timeline\",\"dropShadow\":true,\"enableFullscreen\":true,\"titleStyle\":null,\"mobileHeight\":null,\"configMode\":\"basic\",\"actions\":{},\"showTitleIcon\":false,\"titleIcon\":\"thermostat\",\"iconColor\":\"#1F6BDD\",\"useDashboardTimewindow\":false,\"displayTimewindow\":true,\"titleFont\":{\"size\":16,\"sizeUnit\":\"px\",\"family\":\"Roboto\",\"weight\":\"500\",\"style\":\"normal\",\"lineHeight\":\"24px\"},\"titleColor\":\"rgba(0, 0, 0, 0.87)\",\"titleTooltip\":\"\",\"widgetStyle\":{},\"widgetCss\":\"\",\"pageSize\":1024,\"units\":\"\",\"decimals\":null,\"noDataDisplayMessage\":\"\",\"timewindowStyle\":{\"showIcon\":false,\"iconSize\":\"24px\",\"icon\":null,\"iconPosition\":\"left\",\"font\":{\"size\":12,\"sizeUnit\":\"px\",\"family\":\"Roboto\",\"weight\":\"400\",\"style\":\"normal\",\"lineHeight\":\"16px\"},\"color\":\"rgba(0, 0, 0, 0.38)\",\"displayTypePrefix\":true},\"margin\":\"0px\",\"borderRadius\":\"0px\",\"iconSize\":\"0px\"}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "f6439860-4d55-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

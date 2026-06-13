@@ -1,0 +1,93 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "tank_level_card2",
+    "name" : "Tank level card",
+    "deprecated" : true,
+    "image" : "tb-image;/api/images/tenant/Tank level card.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"metric-card\">\r\n        <div class=\"tank-container\">\r\n            <div class=\"tank-wrapper\">\r\n                <div class=\"tank-body\">\r\n                    <div class=\"tank-liquid\" id=\"wd-tank-liquid\"></div>\r\n                    <div class=\"tank-glass\"></div> <!-- Optional shine effect -->\r\n                </div>\r\n                <div class=\"tank-scale\" id=\"wd-tank-scale\"></div>\r\n            </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n            <div class=\"card-value\">\r\n                <span id=\"wd-value\">-</span> <span id=\"wd-unit\" class=\"unit\"></span>\r\n            </div>\r\n            <div class=\"card-label\" id=\"wd-label\">Variable</div>\r\n        </div>\r\n        <span class=\"last-update\" id=\"wd-last-update\"></span>\r\n    </div>\r\n</div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: #ffffff00;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 12px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 12px;\r\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);\r\n    border-left: 4px solid #EE7623;\r\n    transition: all 0.2s ease;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.metric-card.clickable {\r\n    cursor: pointer;\r\n}\r\n\r\n.metric-card.clickable:hover {\r\n    transform: translateY(-2px);\r\n    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);\r\n    border-left-color: #ff8c42;\r\n}\r\n\r\n/* Tank Styles */\r\n.tank-container {\r\n    flex: 1;\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    min-height: 0;\r\n    position: relative;\r\n}\r\n\r\n.tank-body {\r\n    width: 70px;\r\n    height: 100%;\r\n    background-color: #e0e0e0;\r\n    border-radius: 8px;\r\n    border: 3px solid #ccc;\r\n    position: relative;\r\n    overflow: hidden;\r\n    box-sizing: border-box;\r\n}\r\n\r\n/* Scale Styles */\r\n.tank-wrapper {\r\n    position: relative;\r\n    width: 70px;\r\n    height: 120px;\r\n    display: flex;\r\n    justify-content: center;\r\n    transform: scale(var(--tank-scale, 1));\r\n    transform-origin: center center;\r\n    transition: transform 0.3s ease;\r\n}\r\n\r\n.tank-scale {\r\n    position: absolute;\r\n    left: 100%;\r\n    height: calc(100% - 6px);\r\n    bottom: 3px;\r\n    display: flex;\r\n    flex-direction: column-reverse;\r\n    justify-content: space-between;\r\n    min-width: 30px;\r\n    margin-left: 8px;\r\n}\r\n\r\n.scale-tick {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 100%;\r\n    height: 1px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n}\r\n\r\n.scale-tick::before {\r\n    content: '';\r\n    display: block;\r\n    width: 6px;\r\n    height: 1px;\r\n    background-color: #9EA1A2;\r\n    margin-right: 4px;\r\n}\r\n\r\n.scale-label {\r\n    font-size: 10px;\r\n    color: #9EA1A2;\r\n    line-height: 1;\r\n}\r\n\r\n.tank-liquid {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 0%;\r\n    background-color: #EE7623;\r\n    transition: height 0.5s ease-out, background-color 0.3s ease;\r\n}\r\n\r\n.tank-glass {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0) 100%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n}\r\n\r\n/* Text Styles */\r\n.card-content {\r\n    text-align: center;\r\n    width: 100%;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.card-value {\r\n    font-size: 24px;\r\n    font-weight: 700;\r\n    color: #24272A;\r\n    line-height: 1.2;\r\n    white-space: nowrap;\r\n}\r\n\r\n.card-value .unit {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    color: #9EA1A2;\r\n    margin-left: 2px;\r\n}\r\n\r\n.card-label {\r\n    font-size: 12px;\r\n    color: #9EA1A2;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.5px;\r\n    margin-top: 4px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.last-update {\r\n    font-size: 10px;\r\n    color: #9EA1A2;\r\n    position: absolute;\r\n    bottom: 4px;\r\n    right: 8px;\r\n    white-space: nowrap;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    self.ctx.wdValueElem = $('#wd-value', self.ctx.$container);\r\n    self.ctx.wdUnitElem = $('#wd-unit', self.ctx.$container);\r\n    self.ctx.wdLabelElem = $('#wd-label', self.ctx.$container);\r\n    self.ctx.wdTankLiquid = $('#wd-tank-liquid', self.ctx.$container);\r\n    self.ctx.wdBackgraundCard = $('.metric-card', self.ctx.$container);\r\n    self.ctx.wdColorValue = $('.card-value', self.ctx.$container);\r\n    self.ctx.wdTankScale = $('#wd-tank-scale', self.ctx.$container);\r\n    self.ctx.wdLastUpdate = $('#wd-last-update', self.ctx.$container);\r\n\r\n    // Initial Setup\r\n    var settings = self.ctx.settings;\r\n    var label = settings.widgetLabel || '';\r\n    self.ctx.wdLabelElem.text(label);\r\n\r\n    if (settings.customUnit) {\r\n        self.ctx.wdUnitElem.text(settings.customUnit);\r\n    }\r\n\r\n    if (settings.liquidColor) {\r\n        self.ctx.wdTankLiquid.css('background-color', settings.liquidColor);\r\n    }\r\n\r\n    if (settings.backgraundCard) {\r\n        self.ctx.wdBackgraundCard.css('background-color', settings.backgraundCard);\r\n    }\r\n\r\n    if (settings.ColorValue) {\r\n        self.ctx.wdColorValue.css('color', settings.ColorValue);\r\n    }\r\n\r\n    self.renderScale();\r\n\r\n    self.updateLevel(0); // Init at 0\r\n    self.onResize();\r\n\r\n    // Validar si hay acciones configuradas para el origen 'cardClick'\r\n    var clickActions = self.ctx.actionsApi.getActionDescriptors(\"cardClick\");\r\n\r\n    if (clickActions && clickActions.length > 0) {\r\n        $(\".metric-card\", self.ctx.$container).addClass(\"clickable\");\r\n        $(\".metric-card\", self.ctx.$container).on(\"click\", function ($event) {\r\n            // Obtener la entidad desde ctx.data (contiene el entity object completo)\r\n            var entityId = null;\r\n            var entityName = null;\r\n            var entityLabel = null;\r\n\r\n            if (self.ctx.data && self.ctx.data.length > 0) {\r\n                var datasource = self.ctx.data[0].datasource;\r\n                if (datasource && datasource.entity) {\r\n                    entityId = datasource.entity.id; // {id: 'uuid', entityType: 'DEVICE'}\r\n                    entityName = datasource.entityName;\r\n                    entityLabel = datasource.entityLabel || datasource.entityName;\r\n                }\r\n            }\r\n\r\n            // Ejecutar la primera acción configurada\r\n            self.ctx.actionsApi.handleWidgetAction(\r\n                $event,\r\n                clickActions[0],\r\n                entityId,\r\n                entityName,\r\n                null,\r\n                entityLabel,\r\n            );\r\n        });\r\n    }\r\n}\r\n\r\nself.renderScale = function () {\r\n    var settings = self.ctx.settings;\r\n    var $scale = self.ctx.wdTankScale;\r\n    $scale.empty();\r\n\r\n    if (settings.showScale === false) {\r\n        $scale.hide();\r\n        return;\r\n    }\r\n    $scale.show();\r\n\r\n    var max = settings.maxValue || 100;\r\n    var step = settings.scaleStep || 10;\r\n\r\n    if (step <= 0) step = 10; // Prevent infinite loop\r\n\r\n    for (var i = 0; i <= max; i += step) {\r\n        var pct = (i / max) * 100;\r\n        if (pct > 100) break; // Safety\r\n\r\n        var $tick = $('<div class=\"scale-tick\"></div>');\r\n        $tick.css('bottom', pct + '%');\r\n\r\n        var $label = $('<div class=\"scale-label\">' + i + '</div>');\r\n        $tick.append($label);\r\n\r\n        $scale.append($tick);\r\n    }\r\n}\r\n\r\nself.onDataUpdated = function () {\r\n    var value = '-';\r\n    var unit = '';\r\n    var rawValue = 0;\r\n\r\n    if (self.ctx.defaultSubscription.data && self.ctx.defaultSubscription.data.length > 0) {\r\n        var dataKey = self.ctx.defaultSubscription.data[0];\r\n\r\n        if (dataKey.data && dataKey.data.length > 0) {\r\n            var lastPoint = dataKey.data[dataKey.data.length - 1];\r\n            rawValue = lastPoint[1];\r\n\r\n            if (typeof rawValue === 'number') {\r\n                var decimals = (typeof self.ctx.settings.decimals !== 'undefined') ? self.ctx.settings.decimals : 1;\r\n                value = rawValue.toFixed(decimals);\r\n            } else {\r\n                value = rawValue;\r\n            }\r\n        }\r\n\r\n        if (!self.ctx.settings.customUnit && dataKey.dataKey.units) {\r\n            unit = dataKey.dataKey.units;\r\n        }\r\n    }\r\n\r\n    self.ctx.wdValueElem.html(value);\r\n\r\n    // Unit Override\r\n    if (self.ctx.settings.customUnit) {\r\n        self.ctx.wdUnitElem.text(self.ctx.settings.customUnit);\r\n    } else {\r\n        self.ctx.wdUnitElem.text(unit);\r\n    }\r\n\r\n    // Update Tank Level\r\n    if (typeof rawValue === 'number') {\r\n        self.updateLevel(rawValue);\r\n    } else {\r\n        var parsed = parseFloat(rawValue);\r\n        if (!isNaN(parsed)) {\r\n            self.updateLevel(parsed);\r\n        } else {\r\n            self.updateLevel(0);\r\n        }\r\n    }\r\n\r\n    // Mostrar última actualización si está habilitado\r\n    if (self.ctx.settings.showLastUpdate) {\r\n        var timestamp = null;\r\n        if (\r\n            self.ctx.defaultSubscription.data &&\r\n            self.ctx.defaultSubscription.data.length > 0\r\n        ) {\r\n            var dk = self.ctx.defaultSubscription.data[0];\r\n            if (dk.data && dk.data.length > 0) {\r\n                timestamp = dk.data[dk.data.length - 1][0];\r\n            }\r\n        }\r\n        if (timestamp) {\r\n            var date = new Date(timestamp);\r\n            var dd = String(date.getDate()).padStart(2, '0');\r\n            var mm = String(date.getMonth() + 1).padStart(2, '0');\r\n            var yy = String(date.getFullYear()).slice(-2);\r\n            var hh = String(date.getHours()).padStart(2, '0');\r\n            var min = String(date.getMinutes()).padStart(2, '0');\r\n            self.ctx.wdLastUpdate.text(dd + '/' + mm + '/' + yy + ' ' + hh + ':' + min);\r\n        } else {\r\n            self.ctx.wdLastUpdate.text('');\r\n        }\r\n    } else {\r\n        self.ctx.wdLastUpdate.text('');\r\n    }\r\n\r\n    // Re-calcular escala\r\n    self.onResize();\r\n}\r\n\r\nself.updateLevel = function (val) {\r\n    var settings = self.ctx.settings;\r\n    var max = settings.maxValue || 100;\r\n    var percentage = (val / max) * 100;\r\n\r\n    // Clamp\r\n    if (percentage > 100) percentage = 100;\r\n    if (percentage < 0) percentage = 0;\r\n\r\n    self.ctx.wdTankLiquid.css('height', percentage + '%');\r\n\r\n    // Update color if updated in settings (dynamic check not always needed but good practice)\r\n    if (settings.liquidColor) {\r\n        self.ctx.wdTankLiquid.css('background-color', settings.liquidColor);\r\n    }\r\n\r\n    if (settings.backgraundCard) {\r\n        self.ctx.wdBackgraundCard.css('background-color', settings.backgraundCard);\r\n    }\r\n\r\n    if (settings.ColorValue) {\r\n        self.ctx.wdColorValue.css('color', settings.ColorValue);\r\n    }\r\n}\r\n\r\nself.onResize = function () {\r\n    var container = self.ctx.$container;\r\n    var w = container.width();\r\n    var h = container.height();\r\n\r\n    // --- Escala del tanque ---\r\n    var $tankContainer = $('.tank-container', container);\r\n    var $tankWrapper = $('.tank-wrapper', container);\r\n\r\n    if ($tankContainer.length && $tankWrapper.length) {\r\n        var containerWidth = $tankContainer.width();\r\n        var containerHeight = $tankContainer.height();\r\n\r\n        var tankWidth = 70;\r\n        var tankHeight = 120;\r\n\r\n        var scaleX = containerWidth / tankWidth;\r\n        var scaleY = containerHeight / tankHeight;\r\n        var tankScale = Math.min(scaleX, scaleY, 3);\r\n        tankScale = Math.max(tankScale, 0.5);\r\n\r\n        $tankWrapper[0].style.setProperty('--tank-scale', tankScale);\r\n    }\r\n\r\n    // --- Escala de texto ---\r\n    var scaleW = Math.max(w / 200, 0.4);\r\n    var scaleH = Math.max(h / 180, 0.4);\r\n    var scale = Math.min(scaleW, scaleH, 2.5);\r\n\r\n    // Valor principal\r\n    var valueFontSize = Math.max(Math.round(24 * scale), 12);\r\n    self.ctx.wdColorValue.css('font-size', valueFontSize + 'px');\r\n\r\n    // Unidad\r\n    var unitFontSize = Math.max(Math.round(14 * scale), 8);\r\n    self.ctx.wdUnitElem.css('font-size', unitFontSize + 'px');\r\n\r\n    // Label\r\n    var labelFontSize = Math.max(Math.round(12 * scale), 8);\r\n    self.ctx.wdLabelElem.css('font-size', labelFontSize + 'px');\r\n\r\n    // Last update\r\n    if (self.ctx.wdLastUpdate) {\r\n        var updateFontSize = Math.max(Math.round(10 * scale), 7);\r\n        self.ctx.wdLastUpdate.css('font-size', updateFontSize + 'px');\r\n    }\r\n\r\n    // Padding y gap de la card\r\n    var padding = Math.max(Math.round(12 * scale), 4);\r\n    var gap = Math.max(Math.round(12 * scale), 4);\r\n    self.ctx.wdBackgraundCard.css({\r\n        'padding': padding + 'px',\r\n        'gap': gap + 'px'\r\n    });\r\n}\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: 1,\r\n        maxDataKeys: 1,\r\n        dataKeysOptional: false\r\n    };\r\n}\r\n\r\nself.actionSources = function () {\r\n    return {\r\n        'cardClick': {\r\n            name: 'On Card Click',\r\n            multiple: false\r\n        }\r\n    };\r\n}\r\n\r\nself.onDestroy = function () {\r\n    $('.metric-card', self.ctx.$container).off('click');\r\n}\r\n",
+      "settingsForm" : [ {
+        "id" : "widgetLabel",
+        "name" : "Etiqueta del Widget",
+        "hint" : "Texto a mostrar debajo del valor",
+        "group" : "General",
+        "type" : "text",
+        "default" : "Nivel"
+      }, {
+        "id" : "maxValue",
+        "name" : "Valor Máximo (100%)",
+        "hint" : "Valor que representa el tanque lleno",
+        "group" : "General",
+        "type" : "number",
+        "default" : 100
+      }, {
+        "id" : "liquidColor",
+        "name" : "Color del Líquido",
+        "hint" : "Color de relleno del tanque",
+        "group" : "Visual",
+        "type" : "color",
+        "default" : "#EE7623"
+      }, {
+        "id" : "showScale",
+        "name" : "Mostrar Escala",
+        "hint" : "Muestra una regla graduada al lado del tanque",
+        "group" : "Visual",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "scaleStep",
+        "name" : "Paso de Escala",
+        "hint" : "Incremento entre marcas de la escala",
+        "group" : "Visual",
+        "type" : "number",
+        "default" : 10
+      }, {
+        "id" : "customUnit",
+        "name" : "Unidad Personalizada",
+        "hint" : "Sobrescribe la unidad por defecto",
+        "group" : "General",
+        "type" : "text"
+      }, {
+        "id" : "decimals",
+        "name" : "Decimales",
+        "hint" : "Cantidad de decimales a mostrar",
+        "group" : "General",
+        "type" : "number",
+        "default" : 1,
+        "min" : 0,
+        "max" : 5,
+        "step" : 1
+      }, {
+        "id" : "showLastUpdate",
+        "name" : "Mostrar última actualización",
+        "hint" : "Muestra la fecha y hora de la última telemetría recibida",
+        "group" : "General",
+        "type" : "switch",
+        "default" : false
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "hasBasicMode" : false,
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"widgetLabel\":\"Nivel\",\"maxValue\":100,\"liquidColor\":\"#EE7623\",\"showScale\":true,\"scaleStep\":10,\"decimals\":1,\"backgraundCard\":\"#FFFFFF\",\"ColorValue\":\"#24272A\"},\"title\":\"Tank level card\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "41dc7850-4d56-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

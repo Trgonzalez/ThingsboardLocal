@@ -1,0 +1,156 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "simple_card",
+    "name" : "Simple card",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/Simple card.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"cards-grid\">\r\n        <div class=\"metric-card\">\r\n            <div class=\"card-icon\" id=\"wd-icon-container\">\r\n            </div>\r\n            <div class=\"card-content\">\r\n                <div class=\"card-value\">\r\n                    <span id=\"wd-value\">-</span> <span id=\"wd-unit\" class=\"unit\"></span>\r\n                </div>\r\n                <div class=\"card-label\" id=\"wd-label\">Variable</div>\r\n            </div>\r\n            <span class=\"last-update\" id=\"wd-last-update\"></span>\r\n        </div>\r\n    </div>\r\n</div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: #ffffff00;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.cards-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr;\r\n    gap: 12px;\r\n    height: 100%;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 16px;\r\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);\r\n    border-left: 4px solid #EE7623;\r\n    transition: all 0.2s ease;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.metric-card.clickable {\r\n    cursor: pointer;\r\n}\r\n\r\n.metric-card.clickable:hover {\r\n    transform: translateY(-2px);\r\n    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);\r\n    border-left-color: #ff8c42;\r\n}\r\n\r\n.card-icon {\r\n    width: 48px;\r\n    height: 48px;\r\n    min-width: 28px;\r\n    min-height: 28px;\r\n    background-color: #f5f5f5;\r\n    border-radius: 8px;\r\n    display: flex;\r\n    align-items: center;\r\n    padding: 7px;\r\n    justify-content: center;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.card-icon .material-icons {\r\n    font-size: 28px;\r\n    color: #24272A;\r\n}\r\n\r\n.card-icon img,\r\n.card-icon svg {\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    width: 28px;\r\n    height: 28px;\r\n    object-fit: contain;\r\n}\r\n\r\n.card-content {\r\n    flex: 1;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.card-value {\r\n    font-size: 28px;\r\n    font-weight: 700;\r\n    color: #24272A;\r\n    line-height: 1.2;\r\n    white-space: nowrap;\r\n}\r\n\r\n.card-value .unit {\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    color: #9EA1A2;\r\n    margin-left: 2px;\r\n}\r\n\r\n.card-label {\r\n    font-size: 12px;\r\n    color: #9EA1A2;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.5px;\r\n    margin-top: 4px;\r\n    white-space: nowrap;\r\n}\r\n\r\n.last-update {\r\n    font-size: 10px;\r\n    color: #9EA1A2;\r\n    position: absolute;\r\n    bottom: 15px;\r\n    right: 15px;\r\n    white-space: nowrap;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n  self.ctx.wdValueElem = $(\"#wd-value\", self.ctx.$container);\r\n  self.ctx.wdUnitElem = $(\"#wd-unit\", self.ctx.$container);\r\n  self.ctx.wdLabelElem = $(\"#wd-label\", self.ctx.$container);\r\n  self.ctx.wdBackgraundCard = $(\".metric-card\", self.ctx.$container);\r\n  self.ctx.wdColorValue = $(\".card-value\", self.ctx.$container);\r\n  self.ctx.wdIconContainer = $(\"#wd-icon-container\", self.ctx.$container);\r\n  self.ctx.wdLastUpdate = $(\"#wd-last-update\", self.ctx.$container);\r\n\r\n  // Configuración inicial\r\n  var settings = self.ctx.settings;\r\n  var label = settings.widgetLabel || \"Variable\";\r\n  self.ctx.wdLabelElem.text(label);\r\n\r\n  if (settings.customUnit) {\r\n    self.ctx.wdUnitElem.text(settings.customUnit);\r\n  }\r\n\r\n  if (settings.backgraundCard) {\r\n    self.ctx.wdBackgraundCard.css(\"background-color\", settings.backgraundCard);\r\n  }\r\n\r\n  if (settings.ColorValue) {\r\n    self.ctx.wdColorValue.css(\"color\", settings.ColorValue);\r\n  }\r\n\r\n  // Mostrar u ocultar ícono según configuración\r\n  if (settings.showIcon === false) {\r\n    self.ctx.wdIconContainer.css('display', 'none');\r\n  } else {\r\n    self.ctx.wdIconContainer.css('display', 'flex');\r\n  }\r\n\r\n  // Render inicial con estado placeholder\r\n  self.updateIcon(null);\r\n  self.onResize();\r\n\r\n  // Validar si hay acciones configuradas para el origen 'cardClick'\r\n  var clickActions = self.ctx.actionsApi.getActionDescriptors(\"cardClick\");\r\n\r\n  if (clickActions && clickActions.length > 0) {\r\n    $(\".metric-card\", self.ctx.$container).addClass(\"clickable\");\r\n    $(\".metric-card\", self.ctx.$container).on(\"click\", function ($event) {\r\n      // Obtener la entidad desde ctx.data (contiene el entity object completo)\r\n      var entityId = null;\r\n      var entityName = null;\r\n      var entityLabel = null;\r\n\r\n      if (self.ctx.data && self.ctx.data.length > 0) {\r\n        var datasource = self.ctx.data[0].datasource;\r\n        if (datasource && datasource.entity) {\r\n          entityId = datasource.entity.id; // {id: 'uuid', entityType: 'DEVICE'}\r\n          entityName = datasource.entityName;\r\n          entityLabel = datasource.entityLabel || datasource.entityName;\r\n        }\r\n      }\r\n\r\n      // Ejecutar la primera acción configurada\r\n      self.ctx.actionsApi.handleWidgetAction(\r\n        $event,\r\n        clickActions[0],\r\n        entityId,\r\n        entityName,\r\n        null,\r\n        entityLabel,\r\n      );\r\n    });\r\n  }\r\n};\r\n\r\nself.onDataUpdated = function () {\r\n  var value = \"-\";\r\n  var unit = \"\";\r\n  var rawValue = null;\r\n\r\n  // Obtener datos\r\n  if (\r\n    self.ctx.defaultSubscription.data &&\r\n    self.ctx.defaultSubscription.data.length > 0\r\n  ) {\r\n    var dataKey = self.ctx.defaultSubscription.data[0];\r\n\r\n    if (dataKey.data && dataKey.data.length > 0) {\r\n      var lastPoint = dataKey.data[dataKey.data.length - 1];\r\n      rawValue = lastPoint[1];\r\n\r\n      if (typeof rawValue === \"number\") {\r\n        var decimals =\r\n          typeof self.ctx.settings.decimals !== \"undefined\"\r\n            ? self.ctx.settings.decimals\r\n            : 1;\r\n        value = rawValue.toFixed(decimals);\r\n      } else {\r\n        value = rawValue;\r\n      }\r\n    }\r\n\r\n    if (!self.ctx.settings.customUnit && dataKey.dataKey.units) {\r\n      unit = dataKey.dataKey.units;\r\n    }\r\n  }\r\n\r\n  self.ctx.wdValueElem.html(value);\r\n\r\n  // Update Unit\r\n  if (self.ctx.settings.customUnit) {\r\n    self.ctx.wdUnitElem.text(self.ctx.settings.customUnit);\r\n  } else {\r\n    self.ctx.wdUnitElem.text(unit);\r\n  }\r\n\r\n  // Actualizar icono basado en el valor crudo (raw)\r\n  self.updateIcon(rawValue);\r\n\r\n  // Mostrar última actualización si está habilitado\r\n  if (self.ctx.settings.showLastUpdate) {\r\n    var timestamp = null;\r\n    if (\r\n      self.ctx.defaultSubscription.data &&\r\n      self.ctx.defaultSubscription.data.length > 0\r\n    ) {\r\n      var dk = self.ctx.defaultSubscription.data[0];\r\n      if (dk.data && dk.data.length > 0) {\r\n        timestamp = dk.data[dk.data.length - 1][0];\r\n      }\r\n    }\r\n    if (timestamp) {\r\n      var date = new Date(timestamp);\r\n      var dd = String(date.getDate()).padStart(2, '0');\r\n      var mm = String(date.getMonth() + 1).padStart(2, '0');\r\n      var yy = String(date.getFullYear()).slice(-2);\r\n      var hh = String(date.getHours()).padStart(2, '0');\r\n      var min = String(date.getMinutes()).padStart(2, '0');\r\n      self.ctx.wdLastUpdate.text(dd + '/' + mm + '/' + yy + ' ' + hh + ':' + min);\r\n    } else {\r\n      self.ctx.wdLastUpdate.text('');\r\n    }\r\n  } else {\r\n    self.ctx.wdLastUpdate.text('');\r\n  }\r\n\r\n  // Re-calcular escala después de actualizar contenido\r\n  self.onResize();\r\n};\r\n\r\nself.updateIcon = function (val) {\r\n  var settings = self.ctx.settings;\r\n  var targetUrl = null;\r\n  var targetMaterial = null;\r\n\r\n  // Check conditions\r\n  for (var i = 1; i <= 3; i++) {\r\n    if (settings[\"useCondition\" + i]) {\r\n      var op = settings[\"operator\" + i];\r\n      var limit = settings[\"value\" + i];\r\n      var url = settings[\"iconUrl\" + i];\r\n      var match = false;\r\n\r\n      if (val !== null) {\r\n        switch (op) {\r\n          case \"eq\":\r\n            match = val == limit;\r\n            break;\r\n          case \"neq\":\r\n            match = val != limit;\r\n            break;\r\n          case \"gt\":\r\n            match = val > limit;\r\n            break;\r\n          case \"lt\":\r\n            match = val < limit;\r\n            break;\r\n          case \"gte\":\r\n            match = val >= limit;\r\n            break;\r\n          case \"lte\":\r\n            match = val <= limit;\r\n            break;\r\n          default:\r\n            match = val == limit;\r\n        }\r\n      }\r\n\r\n      if (match && url) {\r\n        targetUrl = url;\r\n        break; // Stop at first match\r\n      }\r\n    }\r\n  }\r\n\r\n  // Default Fallback\r\n  if (!targetUrl) {\r\n    if (settings.customIconUrl && settings.customIconUrl.length > 0) {\r\n      targetUrl = settings.customIconUrl;\r\n    } else {\r\n      targetMaterial = settings.iconName || \"thermostat\";\r\n    }\r\n  }\r\n\r\n  // Render\r\n  self.ctx.wdIconContainer.empty();\r\n  if (targetUrl) {\r\n    self.ctx.wdIconContainer.append(\r\n      '<img src=\"' + targetUrl + '\" class=\"custom-icon\" />',\r\n    );\r\n  } else if (targetMaterial) {\r\n    self.ctx.wdIconContainer.append(\r\n      '<span class=\"material-icons\">' + targetMaterial + \"</span>\",\r\n    );\r\n  }\r\n};\r\n\r\nself.onResize = function () {\r\n  var container = self.ctx.$container;\r\n  var w = container.width();\r\n  var h = container.height();\r\n\r\n  // Escala basada en ancho (base 200px) y alto (base 100px)\r\n  var scaleW = Math.max(w / 200, 0.4);\r\n  var scaleH = Math.max(h / 100, 0.4);\r\n  var scale = Math.min(scaleW, scaleH, 2.5); // Limitar escala máxima\r\n\r\n  // Valor principal\r\n  var valueFontSize = Math.max(Math.round(28 * scale), 12);\r\n  self.ctx.wdColorValue.css('font-size', valueFontSize + 'px');\r\n\r\n  // Unidad\r\n  var unitFontSize = Math.max(Math.round(16 * scale), 8);\r\n  self.ctx.wdUnitElem.css('font-size', unitFontSize + 'px');\r\n\r\n  // Label\r\n  var labelFontSize = Math.max(Math.round(12 * scale), 8);\r\n  self.ctx.wdLabelElem.css('font-size', labelFontSize + 'px');\r\n\r\n  // Last update\r\n  if (self.ctx.wdLastUpdate) {\r\n    var updateFontSize = Math.max(Math.round(10 * scale), 7);\r\n    self.ctx.wdLastUpdate.css('font-size', updateFontSize + 'px');\r\n  }\r\n\r\n  // Icono\r\n  if (self.ctx.settings.showIcon === false) {\r\n    self.ctx.wdIconContainer.css('display', 'none');\r\n    return;\r\n  } else {\r\n    self.ctx.wdIconContainer.css('display', 'flex');\r\n  }\r\n  var iconSize = Math.max(Math.round(48 * scale), 24);\r\n  var iconInnerSize = Math.max(Math.round(28 * scale), 16);\r\n  self.ctx.wdIconContainer.css({\r\n    'width': iconSize + 'px',\r\n    'height': iconSize + 'px',\r\n    'border-radius': Math.max(Math.round(8 * scale), 4) + 'px',\r\n    'padding': Math.max(Math.round(7 * scale), 3) + 'px'\r\n  });\r\n  self.ctx.wdIconContainer.find('.material-icons').css('font-size', iconInnerSize + 'px');\r\n  self.ctx.wdIconContainer.find('img, svg').css({\r\n    'width': iconInnerSize + 'px',\r\n    'height': iconInnerSize + 'px'\r\n  });\r\n\r\n  // Gap de la card\r\n  var gap = Math.max(Math.round(16 * scale), 6);\r\n  self.ctx.wdBackgraundCard.css('gap', gap + 'px');\r\n\r\n  // Padding de la card\r\n  var padding = Math.max(Math.round(10 * scale), 4);\r\n  self.ctx.wdBackgraundCard.css('padding', padding + 'px');\r\n};\r\n\r\nself.typeParameters = function () {\r\n  return {\r\n    maxDatasources: 1,\r\n    maxDataKeys: 10,\r\n    dataKeysOptional: false,\r\n  };\r\n};\r\n\r\nself.actionSources = function () {\r\n  return {\r\n    cardClick: {\r\n      name: \"On Card Click\",\r\n      multiple: false,\r\n    },\r\n  };\r\n};\r\n\r\nself.onDestroy = function () {\r\n  $(\".metric-card\", self.ctx.$container).off(\"click\");\r\n};\r\n",
+      "settingsForm" : [ {
+        "id" : "widgetLabel",
+        "name" : "Etiqueta del Widget",
+        "hint" : "Texto a mostrar debajo del valor",
+        "group" : "General",
+        "type" : "text",
+        "default" : "Variable"
+      }, {
+        "id" : "customUnit",
+        "name" : "Unidad Personalizada",
+        "hint" : "Sobrescribe la unidad por defecto",
+        "group" : "General",
+        "type" : "text"
+      }, {
+        "id" : "decimals",
+        "name" : "Decimales",
+        "hint" : "Cantidad de decimales a mostrar",
+        "group" : "General",
+        "type" : "number",
+        "default" : 1,
+        "min" : 0,
+        "max" : 5,
+        "step" : 1
+      }, {
+        "id" : "showLastUpdate",
+        "name" : "Mostrar última actualización",
+        "hint" : "Muestra la fecha y hora de la última telemetría recibida",
+        "group" : "General",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "showIcon",
+        "name" : "Mostrar ícono",
+        "hint" : "Muestra u oculta el ícono del widget",
+        "group" : "Icono - Defecto",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "iconName",
+        "name" : "Icono Material (Defecto)",
+        "hint" : "Nombre del icono Material Design (ej. thermostat, bolt)",
+        "group" : "Icono - Defecto",
+        "type" : "text",
+        "default" : "thermostat"
+      }, {
+        "id" : "customIconUrl",
+        "name" : "URL Icono Custom (Defecto)",
+        "hint" : "Si se define, reemplaza al icono Material por defecto",
+        "group" : "Icono - Defecto",
+        "type" : "text"
+      }, {
+        "id" : "useCondition1",
+        "name" : "Habilitar Condición 1",
+        "group" : "Icono - Condición 1",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "operator1",
+        "name" : "Operador",
+        "group" : "Icono - Condición 1",
+        "type" : "text",
+        "default" : "eq",
+        "hint" : "eq (igual), gt (mayor), lt (menor), gte (mayor igual), lte (menor igual), neq (distinto)"
+      }, {
+        "id" : "value1",
+        "name" : "Valor Comparación",
+        "group" : "Icono - Condición 1",
+        "type" : "text",
+        "default" : 0
+      }, {
+        "id" : "iconUrl1",
+        "name" : "URL SVG Condición 1",
+        "group" : "Icono - Condición 1",
+        "type" : "text"
+      }, {
+        "id" : "useCondition2",
+        "name" : "Habilitar Condición 2",
+        "group" : "Icono - Condición 2",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "operator2",
+        "name" : "Operador",
+        "group" : "Icono - Condición 2",
+        "type" : "text",
+        "default" : "eq",
+        "hint" : "eq, gt, lt, gte, lte, neq"
+      }, {
+        "id" : "value2",
+        "name" : "Valor Comparación",
+        "group" : "Icono - Condición 2",
+        "type" : "text",
+        "default" : "0"
+      }, {
+        "id" : "iconUrl2",
+        "name" : "URL SVG Condición 2",
+        "group" : "Icono - Condición 2",
+        "type" : "text"
+      }, {
+        "id" : "useCondition3",
+        "name" : "Habilitar Condición 3",
+        "group" : "Icono - Condición 3",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "operator3",
+        "name" : "Operador",
+        "group" : "Icono - Condición 3",
+        "type" : "text",
+        "default" : "eq",
+        "hint" : "eq, gt, lt, gte, lte, neq"
+      }, {
+        "id" : "value3",
+        "name" : "Valor Comparación",
+        "group" : "Icono - Condición 3",
+        "type" : "text",
+        "default" : "0"
+      }, {
+        "id" : "iconUrl3",
+        "name" : "URL SVG Condición 3",
+        "group" : "Icono - Condición 3",
+        "type" : "text"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.15479322438769105,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}},\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{},\"title\":\"Simple card\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "45118ba0-4d56-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

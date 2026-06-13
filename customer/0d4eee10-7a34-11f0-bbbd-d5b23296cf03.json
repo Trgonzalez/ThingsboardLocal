@@ -8,9 +8,9 @@
     },
     "address" : null,
     "address2" : null,
-    "city" : null,
-    "country" : null,
-    "email" : null,
+    "city" : "General Alvear",
+    "country" : "Argentina",
+    "email" : "trisgb2000@gmail.com",
     "externalId" : null,
     "id" : {
       "entityType" : "CUSTOMER",
@@ -18,7 +18,7 @@
     },
     "name" : "Campo La Travesia",
     "phone" : null,
-    "state" : null,
+    "state" : "Mendoza",
     "title" : "Campo La Travesia",
     "zip" : null
   },
@@ -35,9 +35,46 @@
     "type" : "Contains",
     "typeGroup" : "COMMON",
     "version" : 4864
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "CUSTOMER",
+      "id" : "0d4eee10-7a34-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26568
   } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "billingPeriod",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : null,
+      "strValue" : "mensual"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "customerAction",
+      "lastUpdateTs" : 1779917725482,
+      "longValue" : null,
+      "strValue" : "dueDate"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "deviceQty",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : 12,
+      "strValue" : null
+    }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
@@ -45,6 +82,14 @@
       "lastUpdateTs" : 1761822972761,
       "longValue" : null,
       "strValue" : "{\"recipients\":[{\"email\":\"diegovcasares@gmail.com\",\"enabled\":true},{\"email\":\"icasares@itba.edu.ar\",\"enabled\":true},{\"email\":\"trgonzalez@itba.edu.ar\",\"enabled\":true}]}"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "extraDevices",
+      "lastUpdateTs" : 1779917457998,
+      "longValue" : 2,
+      "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
@@ -72,6 +117,86 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "monthlyAmount",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : 156,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "notifyChild",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : null,
+      "strValue" : "false"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "parentNotificationEmail",
+      "lastUpdateTs" : 1779917725482,
+      "longValue" : null,
+      "strValue" : ""
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "plan",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : null,
+      "strValue" : "Mensual - Nexor Estándar"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "pricePerDevice",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : 13,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscription",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : null,
+      "strValue" : "NXR-S"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionCustomerName",
+      "lastUpdateTs" : 1779917968392,
+      "longValue" : null,
+      "strValue" : "Campo La Travesia"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpiration",
+      "lastUpdateTs" : 1779917212802,
+      "longValue" : null,
+      "strValue" : "27/06/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionExpirationTs",
+      "lastUpdateTs" : 1779917212802,
+      "longValue" : 1782529200000,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscriptionStart",
+      "lastUpdateTs" : 1779917212802,
+      "longValue" : null,
+      "strValue" : "27/05/2026"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
       "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":true},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"chatID\":\"\",\"receiveNotifications\":false,\"mute_duration\":\"5m\",\"disabled_until\":\"2025-11-05T19:47:23.131Z\"}]",
       "key" : "telegram",
       "lastUpdateTs" : 1762371743236,
@@ -80,9 +205,9 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
-      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":false,\"mute_duration\":\"1h\",\"disabled_until\":\"2026-02-27T19:48:16.708Z\"},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true},{\"nombre\":\"Diego Casares\",\"chatID\":\"5491166932324\",\"receiveNotifications\":true}]",
+      "jsonValue" : "[{\"nombre\":\"Raul Hernandez\",\"chatID\":\"5492944347515\",\"receiveNotifications\":false,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Ignacio\",\"chatID\":\"5491121695961\",\"receiveNotifications\":true,\"mute_duration\":null,\"disabled_until\":null},{\"nombre\":\"Diego Casares\",\"chatID\":\"5491166932324\",\"receiveNotifications\":true},{\"nombre\":\"Juan Taboada\",\"chatID\":\"5492604652212\",\"receiveNotifications\":true}]",
       "key" : "whatsapp",
-      "lastUpdateTs" : 1772218096856,
+      "lastUpdateTs" : 1780927424358,
       "longValue" : null,
       "strValue" : null
     }, {

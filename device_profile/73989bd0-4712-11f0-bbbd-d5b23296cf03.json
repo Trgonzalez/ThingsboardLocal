@@ -43,34 +43,96 @@
   },
   "calculatedFields" : [ {
     "configuration" : {
-      "type" : "SIMPLE",
+      "type" : "SCRIPT",
       "arguments" : {
-        "Voltage" : {
+        "BatMaxV" : {
+          "defaultValue" : "3.6",
+          "refEntityKey" : {
+            "key" : "battery_nominal",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "BatMinV" : {
+          "defaultValue" : "3",
+          "refEntityKey" : {
+            "key" : "battery_min",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "BatV" : {
           "defaultValue" : "",
           "refEntityKey" : {
-            "key" : "data_voltage_1",
+            "key" : "data_Bat_V",
             "type" : "TS_LATEST"
           }
         }
       },
-      "expression" : "((Voltage-3)/1.2)*100",
+      "expression" : "var batPerc = (BatV - BatMinV) / (BatMaxV - BatMinV) * 100;\r\n\r\n// Limitar entre 0 y 100\r\nif (batPerc < 0)   batPerc = 0;\r\nif (batPerc > 100) batPerc = 100;\r\n\r\n// Clamp a 100% si está dentro del 10% superior\r\nif (batPerc >= 90) batPerc = 100;\r\n\r\n// Redondear a 1 decimal\r\nbatPerc = Math.round(batPerc * 10) / 10;\r\n\r\nreturn {\r\n    data_batPerc: batPerc\r\n};",
       "output" : {
         "type" : "TIME_SERIES",
-        "decimalsByDefault" : 0,
-        "name" : "batteryPercentage",
+        "name" : "",
         "strategy" : {
           "type" : "RULE_CHAIN"
         }
-      },
-      "useLatestTs" : false
+      }
     },
     "configurationVersion" : 0,
     "debugSettings" : {
       "allEnabled" : false,
-      "allEnabledUntil" : 1753749677209,
+      "allEnabledUntil" : 1764682580618,
       "failuresEnabled" : true
     },
-    "name" : "BatteryLevel",
+    "name" : "BatPercentage",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SCRIPT"
+  }, {
+    "configuration" : {
+      "type" : "SIMPLE",
+      "arguments" : {
+        "data_Water_deep_cm" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "data_Water_deep_cm",
+            "type" : "TS_LATEST"
+          }
+        },
+        "profundidad_sensor_m" : {
+          "defaultValue" : "0",
+          "refEntityKey" : {
+            "key" : "profundidad_sensor_m",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "(profundidad_sensor_m)-(data_Water_deep_cm/100)",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "decimalsByDefault" : 2,
+        "name" : "waterDistanceFromGround",
+        "strategy" : {
+          "type" : "IMMEDIATE",
+          "processCfs" : true,
+          "saveLatest" : true,
+          "saveTimeSeries" : true,
+          "sendWsUpdate" : true,
+          "ttl" : 0
+        }
+      },
+      "useLatestTs" : true
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1777489758947,
+      "failuresEnabled" : true
+    },
+    "name" : "Freatimetro Distancia del piso",
     "tenantId" : {
       "entityType" : "TENANT",
       "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
@@ -143,5 +205,55 @@
       "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
     },
     "type" : "SIMPLE"
+  }, {
+    "configuration" : {
+      "type" : "SCRIPT",
+      "arguments" : {
+        "mainKey" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "mainKey",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        },
+        "mainValue" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "waterDistanceFromGround",
+            "type" : "TS_LATEST"
+          }
+        },
+        "visibleKeys" : {
+          "defaultValue" : "",
+          "refEntityKey" : {
+            "key" : "visibleKeys",
+            "scope" : "SERVER_SCOPE",
+            "type" : "ATTRIBUTE"
+          }
+        }
+      },
+      "expression" : "if (mainValue == null || mainKey == null || visibleKeys == null) {\r\n    return;\r\n}\r\n\r\nvar vk = visibleKeys;\r\n\r\n// visibleKeys puede venir como JSON string\r\nif (vk instanceof String) {\r\n    vk = JSON.parse(vk);\r\n}\r\n\r\nif (vk[mainKey] == null) {\r\n    return;\r\n}\r\n\r\nvar unit = vk[mainKey].unit;\r\nif (unit == null) {\r\n    unit = '';\r\n}\r\n\r\n// concatenar valor + unidad\r\nreturn {\r\n    mainVariable: mainValue + ' ' + unit\r\n};",
+      "output" : {
+        "type" : "TIME_SERIES",
+        "decimalsByDefault" : 1,
+        "name" : "",
+        "strategy" : {
+          "type" : "RULE_CHAIN"
+        }
+      }
+    },
+    "configurationVersion" : 0,
+    "debugSettings" : {
+      "allEnabled" : false,
+      "allEnabledUntil" : 1770145994678,
+      "failuresEnabled" : true
+    },
+    "name" : "mainValue",
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "d3e3a380-3a93-11f0-96f4-672ec1447afa"
+    },
+    "type" : "SCRIPT"
   } ]
 }

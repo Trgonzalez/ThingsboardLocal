@@ -1,0 +1,101 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "wedo_tank",
+    "name" : "WeDo Tank",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/Tank level card.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 5,
+      "sizeY" : 6.5,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"sensor-container\">\r\n    <div class=\"metric-card mat-elevation-z2\"\r\n         [class.clickable]=\"hasClickAction\"\r\n         [style.background-color]=\"cardBg\"\r\n         [style.border-left-color]=\"borderColor\"\r\n         (click)=\"onCardClick($event)\">\r\n        <div class=\"tank-container\">\r\n            <div class=\"tank-wrapper\">\r\n                <div class=\"tank-body\" [style.background-color]=\"tankColor\">\r\n                    <div class=\"tank-liquid\"\r\n                         [style.height.%]=\"percentage\"\r\n                         [style.background-color]=\"liquidColor\"></div>\r\n                    <div class=\"tank-glass\"></div>\r\n                </div>\r\n                <div class=\"tank-scale\" *ngIf=\"showScale\">\r\n                    <div class=\"scale-tick\"\r\n                         *ngFor=\"let tick of scaleTicks\"\r\n                         [style.bottom.%]=\"tick.pct\">\r\n                        <div class=\"scale-label\">{{ tick.label }}</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"card-content\">\r\n            <div class=\"card-value\" [style.color]=\"valueColor\" [style.font-size.px]=\"valueFontSize\">\r\n                <span>{{ displayValue }}</span>\r\n                <span class=\"unit\" [style.font-size.px]=\"unitFontSize\">{{ displayUnit }}</span>\r\n            </div>\r\n            <div class=\"card-label\" [style.font-size.px]=\"labelFontSize\">{{ label }}</div>\r\n        </div>\r\n        <span class=\"last-update\" *ngIf=\"lastUpdate\">{{ lastUpdate }}</span>\r\n    </div>\r\n</div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n}\r\n\r\n.sensor-container {\r\n    font-family: 'Roboto', Arial, sans-serif;\r\n    background-color: transparent;\r\n    width: 100%;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    padding: 8px;\r\n}\r\n\r\n.metric-card {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 8px;\r\n    border-left: 4px solid #EE7623;\r\n    transition: box-shadow 0.2s ease, border-left-color 0.2s ease;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n    position: relative;\r\n}\r\n\r\n.metric-card.clickable {\r\n    cursor: pointer;\r\n}\r\n\r\n.metric-card.clickable:hover {\r\n    border-left-color: #ff8c42;\r\n}\r\n\r\n.tank-container {\r\n    flex: 1;\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    min-height: 0;\r\n    min-width: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.tank-wrapper {\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: stretch;\r\n    height: 90%;\r\n    max-width: 100%;\r\n    gap: 4px;\r\n}\r\n\r\n.tank-body {\r\n    aspect-ratio: 7 / 12;\r\n    height: 100%;\r\n    width: auto;\r\n    min-width: 0;\r\n    flex-shrink: 1;\r\n    background-color: #e0e0e0;\r\n    border-radius: 8px;\r\n    border: 3px solid #ccc;\r\n    position: relative;\r\n    overflow: hidden;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.tank-scale {\r\n    position: relative;\r\n    height: calc(100% - 6px);\r\n    align-self: center;\r\n    min-width: 36px;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.scale-tick {\r\n    position: absolute;\r\n    right: 0;\r\n    width: 100%;\r\n    height: 1px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n}\r\n\r\n.scale-tick::before {\r\n    content: '';\r\n    display: block;\r\n    width: 6px;\r\n    height: 1px;\r\n    background-color: #9EA1A2;\r\n    margin-right: 3px;\r\n}\r\n\r\n.scale-label {\r\n    font-size: 10px;\r\n    color: #9EA1A2;\r\n    line-height: 1;\r\n    white-space: nowrap;\r\n}\r\n\r\n.tank-liquid {\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 0%;\r\n    background-color: #EE7623;\r\n    transition: height 0.5s ease-out, background-color 0.3s ease;\r\n}\r\n\r\n.tank-glass {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(255, 255, 255, 0) 100%);\r\n    pointer-events: none;\r\n    z-index: 2;\r\n}\r\n\r\n.card-content {\r\n    text-align: center;\r\n    width: 100%;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.card-value {\r\n    font-size: 22px;\r\n    font-weight: 700;\r\n    color: #24272A;\r\n    line-height: 1.2;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.card-value .unit {\r\n    font-size: 13px;\r\n    font-weight: 400;\r\n    color: #9EA1A2;\r\n    margin-left: 2px;\r\n}\r\n\r\n.card-label {\r\n    font-size: 11px;\r\n    color: #9EA1A2;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.5px;\r\n    margin-top: 4px;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.last-update {\r\n    font-size: 9px;\r\n    color: #9EA1A2;\r\n    position: absolute;\r\n    bottom: 4px;\r\n    right: 8px;\r\n    white-space: nowrap;\r\n}\r\n\r\n/* Layout: height <= 90px — hide tank, label, last-update */\r\n.layout-tiny .tank-container,\r\n.layout-tiny .card-label,\r\n.layout-tiny .last-update {\r\n    display: none;\r\n}\r\n.layout-tiny .metric-card {\r\n    justify-content: center;\r\n    padding: 4px 8px;\r\n}\r\n\r\n/* Layout: width <= 90px — hide tank, scale, last-update */\r\n.layout-narrow .tank-container,\r\n.layout-narrow .tank-scale,\r\n.layout-narrow .last-update {\r\n    display: none;\r\n}\r\n.layout-narrow .metric-card {\r\n    padding: 4px;\r\n    gap: 2px;\r\n}\r\n\r\n/* Hide scale when too narrow or too short */\r\n.hide-scale .tank-scale {\r\n    display: none;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    var scope = self.ctx.$scope;\r\n    var settings = self.ctx.settings;\r\n\r\n    scope.displayValue = '-';\r\n    scope.displayUnit = settings.customUnit || '';\r\n    scope.label = settings.widgetLabel || '';\r\n    scope.percentage = 0;\r\n    scope.lastUpdate = '';\r\n    scope.showScale = settings.showScale !== false;\r\n    scope.scaleTicks = [];\r\n\r\n    scope.liquidColor = settings.liquidColor || null;\r\n    scope.tankColor = settings.tankColor || null;\r\n    scope.cardBg = settings.backgraundCard || null;\r\n    scope.valueColor = settings.ColorValue || null;\r\n    scope.borderColor = settings.borderColor || null;\r\n\r\n    scope.hasClickAction = false;\r\n    scope.onCardClick = function () {};\r\n\r\n    var clickActions = self.ctx.actionsApi.getActionDescriptors('cardClick');\r\n    if (clickActions && clickActions.length > 0) {\r\n        scope.hasClickAction = true;\r\n        scope.onCardClick = function ($event) {\r\n            var entityId = null;\r\n            var entityName = null;\r\n            var entityLabel = null;\r\n            if (self.ctx.data && self.ctx.data.length > 0) {\r\n                var ds = self.ctx.data[0].datasource;\r\n                if (ds && ds.entity) {\r\n                    entityId = ds.entity.id;\r\n                    entityName = ds.entityName;\r\n                    entityLabel = ds.entityLabel || ds.entityName;\r\n                }\r\n            }\r\n            self.ctx.actionsApi.handleWidgetAction(\r\n                $event, clickActions[0], entityId, entityName, null, entityLabel\r\n            );\r\n        };\r\n    }\r\n\r\n    self.applyLayoutClasses();\r\n    self.buildScaleTicks();\r\n    self.ctx.detectChanges();\r\n}\r\n\r\nself.buildScaleTicks = function () {\r\n    var scope = self.ctx.$scope;\r\n    var settings = self.ctx.settings;\r\n\r\n    if (settings.showScale === false) {\r\n        scope.scaleTicks = [];\r\n        scope.showScale = false;\r\n        return;\r\n    }\r\n    scope.showScale = true;\r\n\r\n    var max = settings.maxValue || 100;\r\n    var baseStep = settings.scaleStep || 10;\r\n    if (baseStep <= 0) baseStep = 10;\r\n\r\n    var scaleEl = self.ctx.$container[0].querySelector('.tank-scale');\r\n    var scaleHeight = scaleEl ? scaleEl.clientHeight : 0;\r\n    var step = self.calcAdaptiveStep(baseStep, max, scaleHeight);\r\n\r\n    var ticks = [];\r\n    for (var i = 0; i <= max; i += step) {\r\n        var pct = (i / max) * 100;\r\n        if (pct > 100) break;\r\n        ticks.push({ pct: pct, label: i });\r\n    }\r\n    scope.scaleTicks = ticks;\r\n}\r\n\r\nself.calcAdaptiveStep = function (baseStep, max, availableHeight) {\r\n    var minPxPerTick = 18;\r\n    var totalTicks = Math.floor(max / baseStep) + 1;\r\n    if (availableHeight <= 0 || totalTicks <= 2) return baseStep;\r\n\r\n    var pxPerTick = availableHeight / (totalTicks - 1);\r\n    var multiplier = 1;\r\n    while (pxPerTick < minPxPerTick && multiplier < 32) {\r\n        multiplier *= 2;\r\n        var reduced = Math.floor(max / (baseStep * multiplier)) + 1;\r\n        if (reduced <= 2) break;\r\n        pxPerTick = availableHeight / (reduced - 1);\r\n    }\r\n    return baseStep * multiplier;\r\n}\r\n\r\nself.onDataUpdated = function () {\r\n    var scope = self.ctx.$scope;\r\n    var settings = self.ctx.settings;\r\n    var value = '-';\r\n    var unit = '';\r\n    var rawValue = 0;\r\n\r\n    if (self.ctx.defaultSubscription.data && self.ctx.defaultSubscription.data.length > 0) {\r\n        var dataKey = self.ctx.defaultSubscription.data[0];\r\n        if (dataKey.data && dataKey.data.length > 0) {\r\n            var lastPoint = dataKey.data[dataKey.data.length - 1];\r\n            rawValue = lastPoint[1];\r\n            if (typeof rawValue === 'number') {\r\n                var decimals = (typeof settings.decimals !== 'undefined') ? settings.decimals : 1;\r\n                value = rawValue.toFixed(decimals);\r\n            } else {\r\n                value = rawValue;\r\n            }\r\n        }\r\n        if (!settings.customUnit && dataKey.dataKey.units) {\r\n            unit = dataKey.dataKey.units;\r\n        }\r\n    }\r\n\r\n    scope.displayValue = value;\r\n    scope.displayUnit = settings.customUnit || unit;\r\n\r\n    var numVal = (typeof rawValue === 'number') ? rawValue : parseFloat(rawValue);\r\n    if (isNaN(numVal)) numVal = 0;\r\n    var max = settings.maxValue || 100;\r\n    scope.percentage = Math.min(Math.max((numVal / max) * 100, 0), 100);\r\n\r\n    if (settings.showLastUpdate) {\r\n        var timestamp = null;\r\n        if (self.ctx.defaultSubscription.data && self.ctx.defaultSubscription.data.length > 0) {\r\n            var dk = self.ctx.defaultSubscription.data[0];\r\n            if (dk.data && dk.data.length > 0) {\r\n                timestamp = dk.data[dk.data.length - 1][0];\r\n            }\r\n        }\r\n        if (timestamp) {\r\n            var d = new Date(timestamp);\r\n            scope.lastUpdate =\r\n                String(d.getDate()).padStart(2, '0') + '/' +\r\n                String(d.getMonth() + 1).padStart(2, '0') + '/' +\r\n                String(d.getFullYear()).slice(-2) + ' ' +\r\n                String(d.getHours()).padStart(2, '0') + ':' +\r\n                String(d.getMinutes()).padStart(2, '0');\r\n        } else {\r\n            scope.lastUpdate = '';\r\n        }\r\n    } else {\r\n        scope.lastUpdate = '';\r\n    }\r\n\r\n    self.ctx.detectChanges();\r\n}\r\n\r\nself.onResize = function () {\r\n    self.applyLayoutClasses();\r\n    self.buildScaleTicks();\r\n    self.ctx.detectChanges();\r\n}\r\n\r\nself.applyLayoutClasses = function () {\r\n    var el = self.ctx.$container[0].querySelector('.sensor-container');\r\n    if (!el) return;\r\n    var scope = self.ctx.$scope;\r\n    var w = el.clientWidth;\r\n    var h = el.clientHeight;\r\n\r\n    el.classList.toggle('layout-tiny', h <= 90);\r\n    el.classList.toggle('layout-narrow', w <= 90);\r\n    el.classList.toggle('hide-scale', w <= 160 || h <= 140);\r\n\r\n    var ref = Math.min(w, h);\r\n    var s = Math.max(0.65, Math.min(ref / 170, 2));\r\n    scope.valueFontSize = Math.round(22 * s);\r\n    scope.unitFontSize = Math.round(13 * s);\r\n    scope.labelFontSize = Math.round(11 * s);\r\n}\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: 1,\r\n        maxDataKeys: 1,\r\n        dataKeysOptional: false\r\n    };\r\n}\r\n\r\nself.actionSources = function () {\r\n    return {\r\n        'cardClick': {\r\n            name: 'On Card Click',\r\n            multiple: false\r\n        }\r\n    };\r\n}\r\n\r\nself.onDestroy = function () {\r\n}\r\n",
+      "settingsForm" : [ {
+        "id" : "widgetLabel",
+        "name" : "Etiqueta del Widget",
+        "hint" : "Texto a mostrar debajo del valor",
+        "group" : "General",
+        "type" : "text",
+        "default" : "Nivel"
+      }, {
+        "id" : "maxValue",
+        "name" : "Valor Máximo (100%)",
+        "hint" : "Valor que representa el tanque lleno",
+        "group" : "General",
+        "type" : "number",
+        "default" : 100
+      }, {
+        "id" : "liquidColor",
+        "name" : "Color del Líquido",
+        "hint" : "Color de relleno del tanque",
+        "group" : "Visual",
+        "type" : "color",
+        "default" : "#EE7623"
+      }, {
+        "id" : "showScale",
+        "name" : "Mostrar Escala",
+        "hint" : "Muestra una regla graduada al lado del tanque",
+        "group" : "Visual",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "scaleStep",
+        "name" : "Paso de Escala",
+        "hint" : "Incremento entre marcas de la escala",
+        "group" : "Visual",
+        "type" : "number",
+        "default" : 10
+      }, {
+        "id" : "customUnit",
+        "name" : "Unidad Personalizada",
+        "hint" : "Sobrescribe la unidad por defecto",
+        "group" : "General",
+        "type" : "text"
+      }, {
+        "id" : "decimals",
+        "name" : "Decimales",
+        "hint" : "Cantidad de decimales a mostrar",
+        "group" : "General",
+        "type" : "number",
+        "default" : 1,
+        "min" : 0,
+        "max" : 5,
+        "step" : 1
+      }, {
+        "id" : "showLastUpdate",
+        "name" : "Mostrar última actualización",
+        "hint" : "Muestra la fecha y hora de la última telemetría recibida",
+        "group" : "General",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "tankColor",
+        "name" : "Color Fondo Tanque",
+        "hint" : "Color Fondo de Tanque",
+        "group" : "Visual",
+        "type" : "color",
+        "default" : "#9EA1A2",
+        "required" : false
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "hasBasicMode" : false,
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"widgetLabel\":\"Nivel\",\"maxValue\":100,\"liquidColor\":\"#EE7623\",\"showScale\":true,\"scaleStep\":10,\"decimals\":1,\"backgraundCard\":\"#FFFFFF\",\"ColorValue\":\"#24272A\"},\"title\":\"WeDo Tank\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "4272c4e0-4d56-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

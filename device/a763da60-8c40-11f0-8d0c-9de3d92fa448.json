@@ -38,14 +38,27 @@
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "49284500-9d91-11f0-b045-c1dbc0c3e378"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "a763da60-8c40-11f0-8d0c-9de3d92fa448"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26581
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
-      "booleanValue" : false,
+      "booleanValue" : true,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1772227985485,
+      "lastUpdateTs" : 1781287579513,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -66,10 +79,10 @@
       "strValue" : "Nivel de tanque alto"
     }, {
       "booleanValue" : null,
-      "doubleValue" : 3.6,
+      "doubleValue" : 3.3,
       "jsonValue" : null,
       "key" : "battery_nominal",
-      "lastUpdateTs" : 1770143564022,
+      "lastUpdateTs" : 1777580017168,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -85,8 +98,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1772227985482,
-      "longValue" : 1772227985481,
+      "lastUpdateTs" : 1781287575426,
+      "longValue" : 1781287575426,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -109,8 +122,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772224344076,
-      "longValue" : 1772224342310,
+      "lastUpdateTs" : 1781363188513,
+      "longValue" : 1781363186979,
       "strValue" : null
     }, {
       "booleanValue" : null,

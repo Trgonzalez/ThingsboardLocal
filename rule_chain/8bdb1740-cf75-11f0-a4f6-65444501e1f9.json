@@ -64,6 +64,10 @@
       "fromIndex" : 12,
       "toIndex" : 7,
       "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 8,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 12,
     "nodes" : [ {
@@ -346,7 +350,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1762296246567,
+        "allEnabledUntil" : 1772314638411,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -376,7 +380,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1762366082260,
+        "allEnabledUntil" : 1772314638411,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -397,14 +401,14 @@
       },
       "configuration" : {
         "scriptLang" : "JS",
-        "jsScript" : "// ES5 compatible Script (Rule Engine) — NO cambia msgType\r\n\r\n// Helpers\r\nfunction toArray(v) {\r\n  if (!v) return [];\r\n  if (Object.prototype.toString.call(v) === '[object Array]') return v;\r\n  if (typeof v === 'string') { try { var p = JSON.parse(v); return toArray(p); } catch(e) { return []; } }\r\n  if (typeof v === 'object') return [v];\r\n  return [];\r\n}\r\nfunction parseISO(s) {\r\n  if (s === null || s === undefined || s === '') return NaN;\r\n  if (typeof s === 'number') return s;\r\n  s = String(s).trim();\r\n  if (/^\\d{10}$/.test(s)) return Number(s) * 1000; // epoch s\r\n  if (/^\\d{13}$/.test(s)) return Number(s);        // epoch ms\r\n  var m = /^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2})(?::(\\d{2})(?:\\.(\\d{1,3}))?)?(Z|[+\\-]\\d{2}:?\\d{2})?$/.exec(s);\r\n  if (!m) { var t = Date.parse(s); return isNaN(t) ? NaN : t; }\r\n  var y=+m[1], mo=+m[2]-1, d=+m[3], h=+m[4], mi=+m[5];\r\n  var se=m[6]?+m[6]:0, ms=m[7]?+((m[7]+'000').slice(0,3)):0, tz=m[8]||'Z';\r\n  var utc = Date.UTC(y,mo,d,h,mi,se,ms);\r\n  if (tz==='Z'||tz==='z'||tz===undefined) return utc;\r\n  var sign = tz.charAt(0)==='-'?-1:1, hh,mm;\r\n  if (tz.indexOf(':')!==-1){ hh=+tz.substr(1,2); mm=+tz.substr(4,2); }\r\n  else { hh=+tz.substr(1,2); mm=+tz.substr(3,2)||0; }\r\n  return utc - sign*(hh*60+mm)*60000;\r\n}\r\nfunction trimParam(s, maxLen) {\r\n  maxLen = maxLen || 1024; // límite de parámetro de template de WhatsApp (aprox. 1024 chars)\r\n  s = (s === null || s === undefined) ? '' : String(s);\r\n  return s.length > maxLen ? s.slice(0, maxLen) : s;\r\n}\r\nfunction getFirstName(fullName) {\r\n  if (!fullName) return '';\r\n  fullName = String(fullName).trim();\r\n  var p = fullName.indexOf(' ');\r\n  return p > 0 ? fullName.slice(0, p) : fullName;\r\n}\r\n\r\n// Recipients desde metadata.notifications\r\nvar list = toArray(metadata.notifications);\r\nvar now  = Date.now();\r\nvar seen = {};\r\nvar recipients = [];\r\nfor (var i=0;i<list.length;i++){\r\n  var u = list[i];\r\n  if (!u || !u.chatID) continue;\r\n  var cid = String(u.chatID);\r\n  if (seen[cid]) continue; seen[cid] = true;\r\n\r\n  // --- GATE FINAL ---\r\n  // Normalizar '' a null para until\r\n  var untilRaw = (u.disabled_until === '') ? null : u.disabled_until;\r\n  var untilTs  = parseISO(untilRaw);\r\n  var hasUntil = !(untilRaw === null || untilRaw === undefined);\r\n  var muted    = (!isNaN(untilTs) && untilTs > now);       // futuro => bloquea\r\n  var expired  = (!isNaN(untilTs) && untilTs <= now);      // pasado => permite\r\n  var flagFalse = (u.receiveNotifications === false) ||\r\n                  (typeof u.receiveNotifications === 'string' &&\r\n                   u.receiveNotifications.trim().toLowerCase() === 'false');\r\n\r\n  var allow = false;\r\n  if (muted) {\r\n    allow = false;                         // aún muteado\r\n  } else if (!hasUntil) {\r\n    allow = !flagFalse;                    // sin until: respetar flag (false bloquea)\r\n  } else {\r\n    // tiene until pero no está muteado: vencido o inválido => permitir\r\n    allow = true;\r\n  }\r\n  if (!allow) continue;\r\n\r\n  recipients.push(u);\r\n}\r\n\r\n// Armar valores\r\nvar reason   = msg.name || 'Alarma'; // (3) estado/razón\r\nvar devName  = metadata.deviceLabel || metadata.deviceName || metadata.originatorName || 'dispositivo'; // (2)\r\nvar dataStr  = '';\r\nif (msg.details && typeof msg.details === 'object' && msg.details.data !== undefined) {\r\n  if (typeof msg.details.data === 'object') { try { dataStr = JSON.stringify(msg.details.data); } catch(e){ dataStr = String(msg.details.data); } }\r\n  else { dataStr = String(msg.details.data); }\r\n} else if (msg.data !== undefined) {\r\n  dataStr = String(msg.data);\r\n}\r\n// sanitizar/limitar parámetros para WhatsApp\r\nreason  = trimParam(reason, 1024);\r\ndevName = trimParam(devName, 1024);\r\ndataStr = trimParam(dataStr, 1024);\r\n\r\n// Emitir un mensaje por destinatario (NO cambia msgType)\r\nvar out = [];\r\nfor (var j=0;j<recipients.length;j++){\r\n  var r = recipients[j];\r\n  var firstName = getFirstName(r.nombre || '') || 'Hola';\r\n  firstName = trimParam(firstName, 60); // razonable para nombre\r\n\r\n  // Payload para WhatsApp Template API\r\n  var waPayload = {\r\n    messaging_product: \"whatsapp\",\r\n    to: String(r.chatID),                 // (phone en formato E.164 sin '+')\r\n    type: \"template\",\r\n    template: {\r\n      name: \"sensor_status\",\r\n      language: { code: \"es_AR\" },          // ajustá si tu template está en otro idioma/locale\r\n      components: [\r\n        {\r\n          type: \"body\",\r\n          parameters: [\r\n            { type: \"text\", text: firstName }, // (1) Nombre (trim al primer espacio)\r\n            { type: \"text\", text: devName },   // (2) Dispositivo\r\n            { type: \"text\", text: reason },    // (3) Estado / razón\r\n            { type: \"text\", text: dataStr }    // (4) Telemetría\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  };\r\n\r\n  out.push({\r\n    msg: waPayload,            // el siguiente nodo HTTP debe usar el body del mensaje\r\n    metadata: metadata,        // preservamos metadata\r\n    msgType: msgType           // NO cambiamos el msgType original\r\n  });\r\n}\r\n\r\nreturn out;\r\n",
+        "jsScript" : "// ES5 compatible Script (Rule Engine) — NO cambia msgType\r\n\r\n// Helpers\r\nfunction toArray(v) {\r\n  if (!v) return [];\r\n  if (Object.prototype.toString.call(v) === '[object Array]') return v;\r\n  if (typeof v === 'string') { try { var p = JSON.parse(v); return toArray(p); } catch(e) { return []; } }\r\n  if (typeof v === 'object') return [v];\r\n  return [];\r\n}\r\nfunction parseISO(s) {\r\n  if (s === null || s === undefined || s === '') return NaN;\r\n  if (typeof s === 'number') return s;\r\n  s = String(s).trim();\r\n  if (/^\\d{10}$/.test(s)) return Number(s) * 1000; // epoch s\r\n  if (/^\\d{13}$/.test(s)) return Number(s);        // epoch ms\r\n  var m = /^(\\d{4})-(\\d{2})-(\\d{2})[T ](\\d{2}):(\\d{2})(?::(\\d{2})(?:\\.(\\d{1,3}))?)?(Z|[+\\-]\\d{2}:?\\d{2})?$/.exec(s);\r\n  if (!m) { var t = Date.parse(s); return isNaN(t) ? NaN : t; }\r\n  var y=+m[1], mo=+m[2]-1, d=+m[3], h=+m[4], mi=+m[5];\r\n  var se=m[6]?+m[6]:0, ms=m[7]?+((m[7]+'000').slice(0,3)):0, tz=m[8]||'Z';\r\n  var utc = Date.UTC(y,mo,d,h,mi,se,ms);\r\n  if (tz==='Z'||tz==='z'||tz===undefined) return utc;\r\n  var sign = tz.charAt(0)==='-'?-1:1, hh,mm;\r\n  if (tz.indexOf(':')!==-1){ hh=+tz.substr(1,2); mm=+tz.substr(4,2); }\r\n  else { hh=+tz.substr(1,2); mm=+tz.substr(3,2)||0; }\r\n  return utc - sign*(hh*60+mm)*60000;\r\n}\r\nfunction trimParam(s, maxLen) {\r\n  maxLen = maxLen || 1024; // límite de parámetro de template de WhatsApp (aprox. 1024 chars)\r\n  s = (s === null || s === undefined) ? '' : String(s);\r\n  return s.length > maxLen ? s.slice(0, maxLen) : s;\r\n}\r\nfunction getFirstName(fullName) {\r\n  if (!fullName) return '';\r\n  fullName = String(fullName).trim();\r\n  var p = fullName.indexOf(' ');\r\n  return p > 0 ? fullName.slice(0, p) : fullName;\r\n}\r\n\r\n// Recipients desde metadata.notifications\r\nvar list = toArray(metadata.notifications);\r\nvar now  = Date.now();\r\nvar seen = {};\r\nvar recipients = [];\r\nfor (var i=0;i<list.length;i++){\r\n  var u = list[i];\r\n  if (!u || !u.chatID) continue;\r\n  var cid = String(u.chatID);\r\n  if (seen[cid]) continue; seen[cid] = true;\r\n\r\n  // --- GATE FINAL ---\r\n  // Normalizar '' a null para until\r\n  var untilRaw = (u.disabled_until === '') ? null : u.disabled_until;\r\n  var untilTs  = parseISO(untilRaw);\r\n  var hasUntil = !(untilRaw === null || untilRaw === undefined);\r\n  var muted    = (!isNaN(untilTs) && untilTs > now);       // futuro => bloquea\r\n  var expired  = (!isNaN(untilTs) && untilTs <= now);      // pasado => permite\r\n  var flagFalse = (u.receiveNotifications === false) ||\r\n                  (typeof u.receiveNotifications === 'string' &&\r\n                   u.receiveNotifications.trim().toLowerCase() === 'false');\r\n\r\n  var allow = false;\r\n  if (muted) {\r\n    allow = false;                         // aún muteado\r\n  } else if (!hasUntil) {\r\n    allow = !flagFalse;                    // sin until: respetar flag (false bloquea)\r\n  } else {\r\n    // tiene until pero no está muteado: vencido o inválido => permitir\r\n    allow = true;\r\n  }\r\n  if (!allow) continue;\r\n\r\n  recipients.push(u);\r\n}\r\n\r\n// Armar valores\r\nvar reason   = msg.name || 'Alarma'; // (3) estado/razón\r\nvar devName  = metadata.deviceLabel || metadata.deviceName || metadata.originatorName || 'dispositivo'; // (2)\r\nvar dataStr  = '';\r\nif (msg.details && typeof msg.details === 'object' && msg.details.data !== undefined) {\r\n  if (typeof msg.details.data === 'object') { try { dataStr = JSON.stringify(msg.details.data); } catch(e){ dataStr = String(msg.details.data); } }\r\n  else { dataStr = String(msg.details.data); }\r\n} else if (msg.data !== undefined) {\r\n  dataStr = String(msg.data);\r\n}\r\n// sanitizar/limitar parámetros para WhatsApp\r\nreason  = trimParam(reason, 1024);\r\ndevName = trimParam(devName, 1024);\r\ndataStr = trimParam(dataStr, 1024);\r\n\r\n// Emitir un mensaje por destinatario (NO cambia msgType)\r\nvar out = [];\r\nfor (var j=0;j<recipients.length;j++){\r\n  var r = recipients[j];\r\n  var firstName = getFirstName(r.nombre || '') || 'Hola';\r\n  firstName = trimParam(firstName, 60); // razonable para nombre\r\n\r\n  // Payload para WhatsApp Template API\r\n  var waPayload = {\r\n    messaging_product: \"whatsapp\",\r\n    to: String(r.chatID),                 // (phone en formato E.164 sin '+')\r\n    type: \"template\",\r\n    template: {\r\n      name: \"notificaciones_sensor\",\r\n      language: { code: \"es_AR\" },          // ajustá si tu template está en otro idioma/locale\r\n      components: [\r\n        {\r\n          type: \"body\",\r\n          parameters: [\r\n            { type: \"text\", text: firstName }, // (1) Nombre (trim al primer espacio)\r\n            { type: \"text\", text: devName },   // (2) Dispositivo\r\n            { type: \"text\", text: reason },    // (3) Estado / razón\r\n            { type: \"text\", text: dataStr }    // (4) Telemetría\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  };\r\n\r\n  out.push({\r\n    msg: waPayload,            // el siguiente nodo HTTP debe usar el body del mensaje\r\n    metadata: metadata,        // preservamos metadata\r\n    msgType: msgType           // NO cambiamos el msgType original\r\n  });\r\n}\r\n\r\nreturn out;\r\n",
         "tbelScript" : "var newMsgList = [];\r\nvar alarmText = '🚨 *Alarma activada*\\n\\n🔔 *' + msg.name + '*\\n📟 Dispositivo: ' + metadata.deviceName +\r\n                '\\n📊 Datos: ' + msg.details.data;\r\n\r\n// El atributo `telegramSubs` debe estar disponible en metadata (usá un nodo de enrichment antes)\r\nvar subs = metadata.telegramSubs ? JSON.parse(metadata.telegramSubs) : {};\r\n\r\nfor (var chatId in subs) {\r\n    if (subs[chatId]) {\r\n        newMsgList.push({\r\n            msg: {\r\n                text: alarmText,\r\n                chat_id: parseInt(chatId)\r\n            },\r\n            metadata: metadata,\r\n            msgType: msgType\r\n        });\r\n    }\r\n}\r\n\r\nreturn newMsgList;"
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1762366126053,
+        "allEnabledUntil" : 1772314638411,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -451,7 +455,7 @@
       "createdTime" : 0,
       "debugSettings" : {
         "allEnabled" : false,
-        "allEnabledUntil" : 1762366148830,
+        "allEnabledUntil" : 1772314638411,
         "failuresEnabled" : true
       },
       "externalId" : null,
@@ -475,7 +479,11 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1772314924464,
+        "failuresEnabled" : false
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
@@ -493,6 +501,19 @@
     "additionalInfo" : null,
     "from" : {
       "entityType" : "RULE_CHAIN",
+      "id" : "19e16850-638c-11f1-9c5d-cf2d8d8f620e"
+    },
+    "to" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "8bdb1740-cf75-11f0-a4f6-65444501e1f9"
+    },
+    "type" : "Uses",
+    "typeGroup" : "COMMON",
+    "version" : 32009
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "RULE_CHAIN",
       "id" : "1f04e460-6c16-11f0-bbbd-d5b23296cf03"
     },
     "to" : {
@@ -501,7 +522,7 @@
     },
     "type" : "Uses",
     "typeGroup" : "COMMON",
-    "version" : 24311
+    "version" : 27154
   } ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]

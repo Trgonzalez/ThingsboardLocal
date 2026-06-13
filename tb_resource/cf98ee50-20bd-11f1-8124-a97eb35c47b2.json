@@ -1,0 +1,37 @@
+{
+  "entityType" : "TB_RESOURCE",
+  "entity" : {
+    "data" : "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0ibm9uZSI+PHJlY3Qgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiBmaWxsPSIjZmZmIiByeD0iNCIvPjxwYXRoIHN0cm9rZT0iI0QxMjczMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik01IDcuNGgxOE0yMSA4djE0YTIgMiAwIDAgMS0yIDJIOWEyIDIgMCAwIDEtMi0yVjhtMy0uOVY2YTIgMiAwIDAgMSAyLTJoNGEyIDIgMCAwIDEgMiAydjEuMU0xMiAxM3Y2TTE2IDEzdjYiLz48L3N2Zz4=",
+    "descriptor" : {
+      "mediaType" : "image/svg+xml",
+      "width" : 28,
+      "height" : 28,
+      "size" : 329,
+      "etag" : "e06fb145e737ef33b6691a044526b9e5e48c2d772422d74528d35ee04c9e46b8",
+      "previewDescriptor" : {
+        "mediaType" : "image/svg+xml",
+        "width" : 28,
+        "height" : 28,
+        "size" : 329,
+        "etag" : "e06fb145e737ef33b6691a044526b9e5e48c2d772422d74528d35ee04c9e46b8"
+      }
+    },
+    "etag" : "e06fb145e737ef33b6691a044526b9e5e48c2d772422d74528d35ee04c9e46b8",
+    "externalId" : null,
+    "fileName" : "waste_management_administration_dashboard_widget_bins_map_marker_image_1.svg",
+    "id" : {
+      "entityType" : "TB_RESOURCE",
+      "id" : "cf98ee50-20bd-11f1-8124-a97eb35c47b2"
+    },
+    "link" : "/api/images/tenant/waste_management_administration_dashboard_widget_bins_map_marker_image_1.svg",
+    "name" : "\"Waste Management Administration\" dashboard widget \"Bins Map\" marker image 1",
+    "preview" : null,
+    "public" : true,
+    "publicLink" : "/api/images/public/mpIzYZvgHJQ91tncvUqj7sRxFwqabU8h",
+    "publicResourceKey" : "mpIzYZvgHJQ91tncvUqj7sRxFwqabU8h",
+    "resourceKey" : "waste_management_administration_dashboard_widget_bins_map_marker_image_1.svg",
+    "resourceSubType" : "IMAGE",
+    "resourceType" : "IMAGE",
+    "title" : "\"Waste Management Administration\" dashboard widget \"Bins Map\" marker image 1"
+  }
+}

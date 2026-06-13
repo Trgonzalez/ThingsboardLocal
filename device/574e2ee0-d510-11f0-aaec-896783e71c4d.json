@@ -38,14 +38,27 @@
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "e7e3aaa0-1f09-11f1-8124-a97eb35c47b2"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "574e2ee0-d510-11f0-aaec-896783e71c4d"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON",
+    "version" : 26603
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ {
       "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1772294693246,
+      "lastUpdateTs" : 1778401266382,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,7 +66,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_severity",
-      "lastUpdateTs" : 1771699566529,
+      "lastUpdateTs" : 1776093719108,
       "longValue" : null,
       "strValue" : "off"
     }, {
@@ -61,7 +74,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "alarm_type",
-      "lastUpdateTs" : 1771699566529,
+      "lastUpdateTs" : 1776093719110,
       "longValue" : null,
       "strValue" : "Nivel de tanque alto"
     }, {
@@ -69,7 +82,7 @@
       "doubleValue" : 3.3,
       "jsonValue" : null,
       "key" : "battery_nominal",
-      "lastUpdateTs" : 1771502935000,
+      "lastUpdateTs" : 1777580017017,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -85,15 +98,15 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1772294693242,
-      "longValue" : 1772294693242,
+      "lastUpdateTs" : 1778401266379,
+      "longValue" : 1778401266379,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityTimeout",
-      "lastUpdateTs" : 1765936618448,
+      "lastUpdateTs" : 1772568567110,
       "longValue" : 1200000,
       "strValue" : null
     }, {
@@ -101,7 +114,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "interval",
-      "lastUpdateTs" : 1765936618416,
+      "lastUpdateTs" : 1772568567092,
       "longValue" : 1200,
       "strValue" : null
     }, {
@@ -125,8 +138,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1772293446096,
-      "longValue" : 1772293443575,
+      "lastUpdateTs" : 1778400017255,
+      "longValue" : 1778400015168,
       "strValue" : null
     }, {
       "booleanValue" : null,
@@ -161,19 +174,19 @@
       "longValue" : null,
       "strValue" : "waterLevelPerc"
     }, {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag",
-      "lastUpdateTs" : 1765389861715,
+      "lastUpdateTs" : 1776108921918,
       "longValue" : null,
       "strValue" : null
     }, {
-      "booleanValue" : true,
+      "booleanValue" : false,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "tankHighAlarmFlag2",
-      "lastUpdateTs" : 1765906869250,
+      "lastUpdateTs" : 1776108921918,
       "longValue" : null,
       "strValue" : null
     }, {

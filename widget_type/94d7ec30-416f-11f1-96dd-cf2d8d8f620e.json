@@ -1,0 +1,88 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "value_card_v2",
+    "name" : "Value Card v2",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/Captura de pantalla 2026-04-26 104929.jpg",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 3.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div class=\"nx-value-card\">\r\n  <div class=\"nx-vc-header\">\r\n    <div *ngIf=\"showIcon\" class=\"nx-vc-icon\">\r\n      <tb-icon>{{ icon }}</tb-icon>\r\n    </div>\r\n    <div class=\"nx-vc-label\">{{ label }}</div>\r\n  </div>\r\n\r\n  <div class=\"nx-vc-body\">\r\n    <div class=\"nx-vc-value-wrap\">\r\n      <span class=\"nx-vc-value\">{{ valueText }}</span>\r\n      <span *ngIf=\"units\" class=\"nx-vc-unit\">{{ units }}</span>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"showTimestamp\" class=\"nx-vc-footer\">\r\n    <span class=\"nx-vc-dot\"></span>\r\n    <span class=\"nx-vc-date-text\">{{ timestampText }}</span>\r\n  </div>\r\n</div>",
+      "templateCss" : ":host {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.nx-value-card {\r\n  --nx-accent: #5469FF;\r\n  --nx-bg: #ffffff;\r\n  --nx-text-primary: #0f172a;\r\n  --nx-text-secondary: #64748b;\r\n  --nx-text-tertiary: #94a3b8;\r\n  --nx-dot: #10b981;\r\n\r\n  --nx-value-size: 36px;\r\n  --nx-label-size: 12px;\r\n  --nx-unit-size: 16px;\r\n  --nx-icon-box: 32px;\r\n  --nx-icon-size: 18px;\r\n  --nx-date-size: 11px;\r\n  --nx-pad: 16px;\r\n  --nx-radius: 14px;\r\n  --nx-gap: 10px;\r\n\r\n  position: relative;\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: var(--nx-pad);\r\n  box-sizing: border-box;\r\n\r\n  background: var(--nx-bg);\r\n  border: none;\r\n  border-radius: var(--nx-radius);\r\n  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.03);\r\n  overflow: hidden;\r\n\r\n  transition: box-shadow .2s ease;\r\n  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;\r\n}\r\n\r\n.nx-value-card:hover {\r\n  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);\r\n}\r\n\r\n/* HEADER */\r\n.nx-vc-header {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: var(--nx-gap);\r\n  min-width: 0;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.nx-vc-icon {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  width: var(--nx-icon-box);\r\n  height: var(--nx-icon-box);\r\n  border-radius: 8px;\r\n  background: color-mix(in srgb, var(--nx-accent) 14%, transparent);\r\n  color: var(--nx-accent);\r\n  flex-shrink: 0;\r\n}\r\n\r\n.nx-vc-icon tb-icon,\r\n.nx-vc-icon mat-icon {\r\n  font-size: var(--nx-icon-size);\r\n  width: var(--nx-icon-size);\r\n  height: var(--nx-icon-size);\r\n  line-height: 1;\r\n}\r\n\r\n.nx-vc-label {\r\n  font-size: var(--nx-label-size);\r\n  font-weight: 600;\r\n  color: var(--nx-text-secondary);\r\n  letter-spacing: 0.04em;\r\n  text-transform: uppercase;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis; /* fallback solo si shrink llegó al mínimo */\r\n  white-space: nowrap;\r\n  min-width: 0;\r\n  flex: 1 1 auto;\r\n}\r\n\r\n/* BODY */\r\n.nx-vc-body {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex: 1;\r\n  min-width: 0;\r\n  min-height: 0;\r\n  overflow: hidden;\r\n}\r\n\r\n.nx-vc-value-wrap {\r\n  display: flex;\r\n  align-items: baseline;\r\n  gap: 6px;\r\n  max-width: 100%;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-vc-value {\r\n  font-size: var(--nx-value-size);\r\n  font-weight: 600;\r\n  color: var(--nx-text-primary);\r\n  line-height: 1;\r\n  letter-spacing: -0.02em;\r\n  font-variant-numeric: tabular-nums;\r\n  white-space: nowrap;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-vc-unit {\r\n  font-size: var(--nx-unit-size);\r\n  font-weight: 500;\r\n  color: var(--nx-text-secondary);\r\n  letter-spacing: -0.01em;\r\n  white-space: nowrap;\r\n  flex-shrink: 0;\r\n}\r\n\r\n/* FOOTER */\r\n.nx-vc-footer {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 6px;\r\n  color: var(--nx-text-tertiary);\r\n  font-weight: 500;\r\n  font-variant-numeric: tabular-nums;\r\n  flex-shrink: 0;\r\n  min-width: 0;\r\n}\r\n\r\n.nx-vc-dot {\r\n  width: 6px;\r\n  height: 6px;\r\n  border-radius: 50%;\r\n  background: var(--nx-dot);\r\n  flex-shrink: 0;\r\n}\r\n\r\n.nx-vc-date-text {\r\n  font-size: var(--nx-date-size);\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n  min-width: 0;\r\n  flex: 1 1 auto;\r\n}\r\n\r\n/* DARK MODE */\r\n@media (prefers-color-scheme: dark) {\r\n  .nx-value-card {\r\n    --nx-bg: #0f172a;\r\n    --nx-text-primary: #f8fafc;\r\n    --nx-text-secondary: #94a3b8;\r\n    --nx-text-tertiary: #64748b;\r\n    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);\r\n  }\r\n  .nx-value-card:hover {\r\n    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);\r\n  }\r\n}",
+      "controllerScript" : "self.onInit = function() {\r\n  var ctx = self.ctx;\r\n  var s = ctx.settings || {};\r\n\r\n  ctx.$scope._unitsOverride    = (s.units != null && s.units !== '') ? s.units : null;\r\n  ctx.$scope._decimalsOverride = parseNumberOrNull(s.decimals);\r\n  ctx.$scope._valueScale       = parsePositiveScale(s.valueScale, 1);\r\n  ctx.$scope._labelScale       = parsePositiveScale(s.labelScale, 1);\r\n\r\n  ctx.$scope.icon          = s.icon || 'analytics';\r\n  ctx.$scope.showIcon      = s.showIcon !== false;\r\n  ctx.$scope.showTimestamp = s.showTimestamp !== false;\r\n\r\n  ctx.$scope.label         = '';\r\n  ctx.$scope.units         = '';\r\n  ctx.$scope.valueText     = '—';\r\n  ctx.$scope.timestampText = '';\r\n  ctx.$scope.lastTs        = null;\r\n\r\n  var rootEl = ctx.$container && ctx.$container[0];\r\n  var card = rootEl && rootEl.querySelector('.nx-value-card');\r\n  if (card && s.accentColor) {\r\n    card.style.setProperty('--nx-accent', s.accentColor);\r\n  }\r\n\r\n  if (card && typeof ResizeObserver !== 'undefined') {\r\n    self._ro = new ResizeObserver(function() { applyAdaptiveSizes(card); });\r\n    self._ro.observe(card);\r\n    applyAdaptiveSizes(card);\r\n  }\r\n\r\n  self._tickInterval = setInterval(function() {\r\n    if (ctx.$scope.lastTs) {\r\n      ctx.$scope.timestampText = formatRelativeTime(ctx.$scope.lastTs);\r\n      ctx.detectChanges();\r\n      // Re-fit el timestamp porque cambió el texto\r\n      var c = ctx.$container && ctx.$container[0] && ctx.$container[0].querySelector('.nx-value-card');\r\n      if (c) applyAdaptiveSizes(c);\r\n    }\r\n  }, 30000);\r\n};\r\n\r\nself.onDataUpdated = function() {\r\n  var ctx = self.ctx;\r\n  var data = ctx.data;\r\n  if (!data || !data.length) {\r\n    ctx.$scope.valueText = '—';\r\n    ctx.detectChanges();\r\n    return;\r\n  }\r\n\r\n  var series = data[0];\r\n  var dk = series.dataKey || {};\r\n\r\n  if (dk.label) ctx.$scope.label = dk.label;\r\n\r\n  ctx.$scope.units = ctx.$scope._unitsOverride || dk.units || '';\r\n\r\n  var decimals = ctx.$scope._decimalsOverride;\r\n  if (decimals == null && dk.decimals != null) decimals = dk.decimals;\r\n  if (decimals == null) decimals = 1;\r\n\r\n  if (series.data && series.data.length) {\r\n    var lastPoint = series.data[series.data.length - 1];\r\n    var ts  = lastPoint[0];\r\n    var val = lastPoint[1];\r\n\r\n    if (val !== null && val !== undefined && val !== '') {\r\n      var num = Number(val);\r\n      if (!isNaN(num) && isFinite(num)) {\r\n        ctx.$scope.valueText = num.toFixed(decimals);\r\n      } else {\r\n        ctx.$scope.valueText = String(val);\r\n      }\r\n    } else {\r\n      ctx.$scope.valueText = '—';\r\n    }\r\n\r\n    ctx.$scope.lastTs = ts;\r\n    ctx.$scope.timestampText = formatRelativeTime(ts);\r\n  }\r\n\r\n  ctx.detectChanges();\r\n\r\n  var rootEl = ctx.$container && ctx.$container[0];\r\n  var card = rootEl && rootEl.querySelector('.nx-value-card');\r\n  if (card) applyAdaptiveSizes(card);\r\n};\r\n\r\nself.onResize = function() {\r\n  var rootEl = self.ctx.$container && self.ctx.$container[0];\r\n  var card = rootEl && rootEl.querySelector('.nx-value-card');\r\n  if (card) applyAdaptiveSizes(card);\r\n};\r\n\r\nself.onDestroy = function() {\r\n  if (self._ro) { self._ro.disconnect(); self._ro = null; }\r\n  if (self._tickInterval) { clearInterval(self._tickInterval); self._tickInterval = null; }\r\n  if (self._fitRaf) { cancelAnimationFrame(self._fitRaf); self._fitRaf = null; }\r\n};\r\n\r\nfunction applyAdaptiveSizes(card) {\r\n  var w = card.clientWidth;\r\n  var h = card.clientHeight;\r\n  if (!w || !h) return;\r\n\r\n  var scope = self.ctx.$scope;\r\n  var vScale = scope._valueScale || 1;\r\n  var lScale = scope._labelScale || 1;\r\n\r\n  var minDim = Math.min(w, h);\r\n\r\n  var valueSize  = clamp(14, minDim * 0.22  * vScale, 96);\r\n  var unitSize   = clamp(10, minDim * 0.09  * vScale, 32);\r\n  var labelSize  = clamp(9,  minDim * 0.075 * lScale, 22);\r\n  var dateSize   = clamp(9,  minDim * 0.060 * lScale, 18);\r\n  var iconBox    = clamp(24, minDim * 0.18, 44);\r\n  var iconSize   = clamp(14, minDim * 0.10, 24);\r\n  var pad        = clamp(10, minDim * 0.07, 22);\r\n  var radius     = clamp(8,  minDim * 0.05, 16);\r\n  var gap        = clamp(6,  minDim * 0.045, 12);\r\n\r\n  card.style.setProperty('--nx-icon-box',   iconBox + 'px');\r\n  card.style.setProperty('--nx-icon-size',  iconSize + 'px');\r\n  card.style.setProperty('--nx-pad',        pad + 'px');\r\n  card.style.setProperty('--nx-radius',     radius + 'px');\r\n  card.style.setProperty('--nx-gap',        gap + 'px');\r\n\r\n  // Fit dentro de un único rAF\r\n  if (self._fitRaf) cancelAnimationFrame(self._fitRaf);\r\n  self._fitRaf = requestAnimationFrame(function() {\r\n    fitValueRow(card, valueSize, unitSize);\r\n    fitElementToWidth(card, '.nx-vc-label', '--nx-label-size', labelSize, 8);\r\n    fitElementToWidth(card, '.nx-vc-date-text', '--nx-date-size', dateSize, 8);\r\n  });\r\n}\r\n\r\n// Shrink-to-fit genérico para textos en una línea\r\nfunction fitElementToWidth(card, selector, cssVar, baseSize, minSize) {\r\n  var el = card.querySelector(selector);\r\n  if (!el) return;\r\n\r\n  // Reset al base antes de medir (importante para que recupere tamaño al agrandar)\r\n  card.style.setProperty(cssVar, baseSize + 'px');\r\n\r\n  var size = baseSize;\r\n  var attempts = 30;\r\n\r\n  while (attempts-- > 0) {\r\n    var sw = el.scrollWidth;\r\n    var cw = el.clientWidth;\r\n    if (sw <= cw + 1) break;\r\n    if (size <= minSize) break;\r\n    size = Math.max(minSize, size * 0.92);\r\n    card.style.setProperty(cssVar, size + 'px');\r\n  }\r\n}\r\n\r\n// Fit del value + unit (mantiene proporción entre ambos)\r\nfunction fitValueRow(card, baseValueSize, baseUnitSize) {\r\n  var body = card.querySelector('.nx-vc-body');\r\n  var wrap = card.querySelector('.nx-vc-value-wrap');\r\n  if (!body || !wrap) return;\r\n\r\n  card.style.setProperty('--nx-value-size', baseValueSize + 'px');\r\n  card.style.setProperty('--nx-unit-size',  baseUnitSize  + 'px');\r\n\r\n  var v = baseValueSize;\r\n  var ratio = baseUnitSize / baseValueSize;\r\n  var attempts = 30;\r\n  var minSize = 11;\r\n\r\n  while (attempts-- > 0) {\r\n    var overflowsX = wrap.scrollWidth  > body.clientWidth  + 1;\r\n    var overflowsY = wrap.scrollHeight > body.clientHeight + 1;\r\n    if (!overflowsX && !overflowsY) break;\r\n    if (v <= minSize) break;\r\n    v = Math.max(minSize, v * 0.93);\r\n    card.style.setProperty('--nx-value-size', v + 'px');\r\n    card.style.setProperty('--nx-unit-size',  Math.max(8, v * ratio) + 'px');\r\n  }\r\n}\r\n\r\nfunction clamp(min, val, max) {\r\n  return Math.max(min, Math.min(max, val));\r\n}\r\n\r\nfunction parseNumberOrNull(v) {\r\n  if (v == null || v === '') return null;\r\n  var n = Number(v);\r\n  return (isNaN(n) || !isFinite(n)) ? null : n;\r\n}\r\n\r\nfunction parsePositiveScale(v, fallback) {\r\n  if (v == null || v === '') return fallback;\r\n  var n = Number(v);\r\n  if (isNaN(n) || !isFinite(n) || n <= 0) return fallback;\r\n  return n / 100;\r\n}\r\n\r\nfunction formatRelativeTime(ts) {\r\n  if (!ts) return '';\r\n  var diff = Math.max(0, Math.floor((Date.now() - ts) / 1000));\r\n  if (diff < 5)     return 'justo ahora';\r\n  if (diff < 60)    return 'hace ' + diff + ' s';\r\n  if (diff < 3600)  return 'hace ' + Math.floor(diff / 60) + ' min';\r\n  if (diff < 86400) return 'hace ' + Math.floor(diff / 3600) + ' h';\r\n  return 'hace ' + Math.floor(diff / 86400) + ' d';\r\n}",
+      "settingsForm" : [ {
+        "id" : "accentColor",
+        "name" : "Color de acento",
+        "hint" : "Color del icono y elementos destacados",
+        "group" : "Apariencia",
+        "type" : "color",
+        "default" : "#5469FF"
+      }, {
+        "id" : "icon",
+        "name" : "Icono",
+        "hint" : "Nombre del icono de Material Icons (ej: bolt, water_drop, thermostat)",
+        "group" : "Apariencia",
+        "type" : "icon",
+        "default" : "analytics"
+      }, {
+        "id" : "showIcon",
+        "name" : "Mostrar icono",
+        "group" : "Apariencia",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "units",
+        "name" : "Unidad",
+        "hint" : "Unidad mostrada al lado del valor (V, kW, %, °C, etc.)",
+        "group" : "Formato del valor",
+        "type" : "units"
+      }, {
+        "id" : "decimals",
+        "name" : "Decimales",
+        "hint" : "Cantidad de decimales del valor numérico",
+        "group" : "Formato del valor",
+        "type" : "number",
+        "default" : 1
+      }, {
+        "id" : "showTimestamp",
+        "name" : "Mostrar timestamp",
+        "hint" : "Muestra cuánto tiempo pasó desde la última actualización",
+        "group" : "Visibilidad",
+        "type" : "switch",
+        "default" : true
+      }, {
+        "id" : "valueScale",
+        "name" : "Tamaño del valor (%)",
+        "hint" : "Ajusta el tamaño del número principal. 100 = automático",
+        "group" : "Formato del valor",
+        "type" : "number",
+        "default" : 100
+      }, {
+        "id" : "labelScale",
+        "name" : "Tamaño del label y timestamp (%)",
+        "hint" : "Ajusta el tamaño de los textos secundarios. 100 = automático",
+        "group" : "Formato del valor",
+        "type" : "number",
+        "default" : 100
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":false,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"\",\"settings\":{\"accentColor\":\"#0000F2\",\"icon\":\"thermostat\",\"showIcon\":true,\"units\":\"°C\",\"decimals\":3,\"showTimestamp\":true},\"title\":\"Attributes card\",\"decimals\":null,\"dropShadow\":false,\"enableFullscreen\":false,\"margin\":\"0\",\"borderRadius\":\"12px\",\"widgetStyle\":{},\"widgetCss\":\"\",\"pageSize\":1024,\"noDataDisplayMessage\":\"\"}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "94d7ec30-416f-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

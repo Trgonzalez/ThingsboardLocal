@@ -1,0 +1,79 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "tab_button_static",
+    "name" : "Tab button - static",
+    "deprecated" : true,
+    "image" : "tb-image;/api/images/tenant/Tab button.png",
+    "description" : "Botón para cambiar entre diferentes states, con dinamismo en base al state seleccionado",
+    "descriptor" : {
+      "type" : "static",
+      "sizeX" : 4,
+      "sizeY" : 2,
+      "resources" : [ ],
+      "templateHtml" : "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n<div id=\"main\" class=\"tab-button\">\r\n    <div class=\"tab-icon-container\" id=\"wd-icon-container\">\r\n        <!-- Acá se renderiza el icono Material o el SVG/imagen -->\r\n    </div>\r\n    <h2 id=\"wd-label\"></h2>\r\n</div>\r\n",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.tab-button {\r\n    background-color: #24272A;\r\n    color: #ffffff;\r\n    padding: 8px 14px;\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 12px;\r\n    border-radius: 6px;\r\n    height: 100%;\r\n    box-sizing: border-box;\r\n    cursor: pointer;\r\n    transition: all 0.2s ease;\r\n    position: relative;\r\n}\r\n\r\n.tab-button:hover {\r\n    background-color: #2d3135;\r\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.tab-button.active {\r\n    background-color: #3A3F44;\r\n    box-shadow: inset 0 -3px 0 #EE7623;\r\n}\r\n\r\n.tab-button h2 {\r\n    margin: 0;\r\n    color: #ffffff;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    flex: 1;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.tab-button .tab-icon-container {\r\n    width: 28px;\r\n    height: 28px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-shrink: 0;\r\n}\r\n\r\n.tab-button .tab-icon-container .material-icons {\r\n    font-size: 24px;\r\n    color: #EE7623;\r\n}\r\n\r\n.tab-button .tab-icon-container .custom-icon {\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n    width: 24px;\r\n    height: 24px;\r\n    object-fit: contain;\r\n}\r\n",
+      "controllerScript" : "self.onInit = function () {\r\n    // --- Referencias DOM ---\r\n    self.ctx.wdButton = $('#main', self.ctx.$container);\r\n    self.ctx.wdLabel = $('#wd-label', self.ctx.$container);\r\n    self.ctx.wdIconContainer = $('#wd-icon-container', self.ctx.$container);\r\n\r\n    // --- Configuración desde settings_form.json ---\r\n    var settings = self.ctx.settings;\r\n    self.ctx.targetState = settings.targetState || 'default';\r\n    self.ctx.wdLabel.text(settings.buttonLabel || '');\r\n\r\n    // --- Renderizar icono: SVG tiene prioridad, Material como fallback ---\r\n    self.renderIcon(settings);\r\n\r\n    // Colores personalizables (opcionales)\r\n    if (settings.inactiveColor) {\r\n        self.ctx.wdButton.css('background-color', settings.inactiveColor);\r\n    }\r\n    if (settings.activeColor) {\r\n        self.ctx.activeColor = settings.activeColor;\r\n    }\r\n\r\n    // --- Click handler: cambiar de state ---\r\n    self.ctx.wdButton.on('click', function () {\r\n        var sc = self.ctx.stateController;\r\n        var target = self.ctx.targetState;\r\n\r\n        if (!sc) {\r\n            console.error('[Tab Button] stateController no disponible');\r\n            return;\r\n        }\r\n\r\n        // Resetear stack de estados para evitar anidamiento\r\n        if (typeof sc.resetState === 'function') {\r\n            sc.resetState();\r\n        }\r\n\r\n        // updateState reemplaza el state actual (no anida)\r\n        if (typeof sc.updateState === 'function') {\r\n            sc.updateState(target, {});\r\n            return;\r\n        }\r\n\r\n        // Fallback: openState si updateState no existe\r\n        if (typeof sc.openState === 'function') {\r\n            sc.openState(target, {});\r\n            return;\r\n        }\r\n\r\n        console.error('[Tab Button] No se encontró método para cambiar de state.');\r\n    });\r\n\r\n    // --- Estado inicial: marcar activo si ya estamos en el state ---\r\n    self.checkActiveState();\r\n};\r\n\r\n// Detecta si el state actual del dashboard coincide con el targetState\r\nself.checkActiveState = function () {\r\n    if (!self.ctx.stateController) return;\r\n\r\n    var currentState = self.ctx.stateController.getStateId();\r\n    var target = self.ctx.targetState;\r\n\r\n    if (currentState === target) {\r\n        self.ctx.wdButton.addClass('active');\r\n        if (self.ctx.activeColor) {\r\n            self.ctx.wdButton.css('background-color', self.ctx.activeColor);\r\n        }\r\n    } else {\r\n        self.ctx.wdButton.removeClass('active');\r\n        var inactiveColor = self.ctx.settings.inactiveColor || '#24272A';\r\n        self.ctx.wdButton.css('background-color', inactiveColor);\r\n    }\r\n};\r\n\r\nself.onDataUpdated = function () {\r\n    // Re-chequear el state activo en cada ciclo\r\n    self.checkActiveState();\r\n};\r\n\r\nself.onResize = function () { };\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: 0,\r\n        maxDataKeys: 0,\r\n        dataKeysOptional: true\r\n    };\r\n};\r\n\r\nself.onDestroy = function () {\r\n    $('#main', self.ctx.$container).off('click');\r\n};\r\n\r\n// Renderizar icono: SVG crudo, URL de imagen, o Material icon (fallback)\r\nself.renderIcon = function (settings) {\r\n    self.ctx.wdIconContainer.empty();\r\n\r\n    var iconValue = (settings.customIconUrl || '').trim();\r\n    var iconColor = settings.iconColor || '';\r\n\r\n    if (iconValue.length > 0) {\r\n        if (iconValue.indexOf('<svg') !== -1) {\r\n            // SVG crudo: inyectar directo en el DOM\r\n            self.ctx.wdIconContainer.html(iconValue);\r\n            // Aplicar tamaño al SVG inyectado\r\n            self.ctx.wdIconContainer.find('svg').css({\r\n                width: '24px',\r\n                height: '24px'\r\n            });\r\n            // Aplicar color del color picker a todos los shapes del SVG\r\n            if (iconColor) {\r\n                self.ctx.wdIconContainer.find('path, circle, rect, polygon, line, polyline, ellipse').each(function () {\r\n                    $(this).attr('fill', iconColor);\r\n                    $(this).css('fill', iconColor);\r\n                });\r\n            }\r\n        } else {\r\n            // URL: intentar cargar como SVG inline para poder colorear\r\n            self.loadSvgFromUrl(iconValue, iconColor);\r\n        }\r\n    } else {\r\n        // Material icon (fallback)\r\n        var matColor = iconColor || '#EE7623';\r\n        self.ctx.wdIconContainer.append(\r\n            '<span class=\"material-icons\" style=\"color:' + matColor + '\">' + (settings.iconName || 'display_settings') + '</span>'\r\n        );\r\n    }\r\n};\r\n\r\n// Cargar SVG desde URL, inyectar inline, y aplicar color\r\nself.loadSvgFromUrl = function (url, iconColor) {\r\n    $.get(url, function (data) {\r\n        // data puede ser un Document XML o un string\r\n        var svgContent;\r\n        if (typeof data === 'string') {\r\n            svgContent = data;\r\n        } else {\r\n            // XMLDocument: extraer el elemento <svg>\r\n            var svgElem = $(data).find('svg');\r\n            if (svgElem.length > 0) {\r\n                svgContent = svgElem.prop('outerHTML') || new XMLSerializer().serializeToString(svgElem[0]);\r\n            }\r\n        }\r\n\r\n        if (svgContent && svgContent.indexOf('<svg') !== -1) {\r\n            // Inyectar SVG inline\r\n            self.ctx.wdIconContainer.html(svgContent);\r\n            self.ctx.wdIconContainer.find('svg').css({\r\n                width: '24px',\r\n                height: '24px'\r\n            });\r\n            // Aplicar color si está configurado\r\n            if (iconColor) {\r\n                self.ctx.wdIconContainer.find('path, circle, rect, polygon, line, polyline, ellipse').each(function () {\r\n                    $(this).attr('fill', iconColor);\r\n                    $(this).css('fill', iconColor);\r\n                });\r\n            }\r\n        } else {\r\n            // No es SVG, usar <img> como fallback\r\n            self.ctx.wdIconContainer.html(\r\n                '<img src=\"' + url + '\" class=\"custom-icon\" />'\r\n            );\r\n        }\r\n    }).fail(function () {\r\n        // Error de red: fallback a <img>\r\n        self.ctx.wdIconContainer.html(\r\n            '<img src=\"' + url + '\" class=\"custom-icon\" />'\r\n        );\r\n    });\r\n};\r\n",
+      "settingsForm" : [ {
+        "id" : "buttonLabel",
+        "name" : "Texto del botón",
+        "hint" : "Texto que se muestra en el botón",
+        "group" : "General",
+        "type" : "text"
+      }, {
+        "id" : "targetState",
+        "name" : "State destino",
+        "hint" : "ID del state del dashboard al que navega este botón (ej: 'default', 'details')",
+        "group" : "General",
+        "type" : "text",
+        "default" : "default"
+      }, {
+        "id" : "customIconUrl",
+        "name" : "URL Icono SVG/Custom",
+        "hint" : "URL de imagen SVG o PNG. Si se define, reemplaza al icono Material",
+        "group" : "Icono",
+        "type" : "text"
+      }, {
+        "id" : "iconName",
+        "name" : "Icono Material (fallback)",
+        "hint" : "Se usa solo si no hay URL custom. Ej: display_settings, home, bolt",
+        "group" : "Icono",
+        "type" : "text",
+        "default" : "display_settings"
+      }, {
+        "id" : "iconColor",
+        "name" : "Color del icono/SVG",
+        "hint" : "Naranja #EE7623",
+        "group" : "Icono",
+        "type" : "color"
+      }, {
+        "id" : "inactiveColor",
+        "name" : "Color inactivo (fondo)",
+        "hint" : "Color de fondo cuando el botón NO está en su state. Dejar vacío para usar #24272A",
+        "group" : "Apariencia",
+        "type" : "color"
+      }, {
+        "id" : "activeColor",
+        "name" : "Color activo (fondo)",
+        "hint" : "Color de fondo cuando el botón ESTÁ en su state. Dejar vacío para usar #3A3F44",
+        "group" : "Apariencia",
+        "type" : "color"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "settingsDirective" : "",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"Tab button - static\",\"datasources\":[],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}}}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "a0019980-4d5e-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

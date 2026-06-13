@@ -14504,7 +14504,20 @@
       "id" : "3f4bbad0-7a2d-11f0-bbbd-d5b23296cf03"
     }
   },
-  "relations" : [ ],
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "DASHBOARD",
+      "id" : "3f4bbad0-7a2d-11f0-bbbd-d5b23296cf03"
+    },
+    "to" : {
+      "entityType" : "USER",
+      "id" : "2d95aa10-8ec5-11f0-8d0c-9de3d92fa448"
+    },
+    "type" : "Owner",
+    "typeGroup" : "COMMON",
+    "version" : 26953
+  } ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }

@@ -39,51 +39,35 @@
     }, {
       "fromIndex" : 1,
       "toIndex" : 6,
-      "type" : "Attributes Updated"
-    }, {
-      "fromIndex" : 1,
-      "toIndex" : 6,
-      "type" : "Post attributes"
-    }, {
-      "fromIndex" : 1,
-      "toIndex" : 11,
       "type" : "Entity Created"
     }, {
       "fromIndex" : 1,
-      "toIndex" : 13,
+      "toIndex" : 8,
       "type" : "Entity Created"
     }, {
       "fromIndex" : 1,
-      "toIndex" : 13,
+      "toIndex" : 8,
       "type" : "Entity Updated"
     }, {
       "fromIndex" : 1,
-      "toIndex" : 14,
+      "toIndex" : 11,
       "type" : "Post telemetry"
     }, {
       "fromIndex" : 5,
       "toIndex" : 1,
       "type" : "Success"
     }, {
-      "fromIndex" : 6,
+      "fromIndex" : 8,
       "toIndex" : 7,
       "type" : "True"
     }, {
-      "fromIndex" : 7,
-      "toIndex" : 8,
-      "type" : "Success"
-    }, {
-      "fromIndex" : 8,
-      "toIndex" : 10,
-      "type" : "Success"
-    }, {
       "fromIndex" : 10,
       "toIndex" : 9,
-      "type" : "Success"
-    }, {
-      "fromIndex" : 13,
-      "toIndex" : 12,
       "type" : "True"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 10,
+      "type" : "Success"
     } ],
     "firstNodeIndex" : 5,
     "nodes" : [ {
@@ -246,160 +230,8 @@
     }, {
       "additionalInfo" : {
         "description" : "",
-        "layoutX" : 382,
-        "layoutY" : 353
-      },
-      "configuration" : {
-        "scriptLang" : "JS",
-        "jsScript" : "return 'receiveEmail' in msg ",
-        "tbelScript" : "var raw = msg.receiveEmail\r\nif (!raw) return false;\r\ntry { raw = typeof raw === 'string' ? JSON.parse(raw) : raw; } catch(e) {}\r\nreturn raw && raw.role === 'user' && (raw.content || '').trim().length > 0;\r\n"
-      },
-      "configurationVersion" : 0,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1757788026651,
-        "failuresEnabled" : true
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "816be290-10f1-11f1-8fce-55f815a3848a"
-      },
-      "name" : "is EmailNoti",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 382,
-        "layoutY" : 435
-      },
-      "configuration" : {
-        "dataToFetch" : "ATTRIBUTES",
-        "dataMapping" : {
-          "emailRecipients" : "emailRecipients"
-        },
-        "fetchTo" : "METADATA"
-      },
-      "configurationVersion" : 1,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1757787437321,
-        "failuresEnabled" : false
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "816c09a0-10f1-11f1-8fce-55f815a3848a"
-      },
-      "name" : "search email recipients",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.metadata.TbGetCustomerAttributeNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 371,
-        "layoutY" : 518
-      },
-      "configuration" : {
-        "scriptLang" : "JS",
-        "jsScript" : "// IN:\r\n//  - metadata.userEmail (string)\r\n//  - metadata.emailRecipients (string u objeto)  <-- atributo actual del Customer\r\n//  - msg.receiveEmail (bool | \"true\"/\"false\" | 1/0)\r\n// OUT:\r\n//  - msg = { emailRecipients: \"<json...>\" }     <-- guardar en Customer (SERVER attr)\r\n//  - metadata.recipientsCsv = \"a@x.com,b@y.com\"\r\n\r\nfunction toBool(v) {\r\n  if (typeof v === 'boolean') return v;\r\n  if (typeof v === 'number') return v !== 0;\r\n  if (typeof v === 'string') return v.trim().toLowerCase() === 'true' || v.trim() === '1';\r\n  return false;\r\n}\r\n\r\nfunction parseRecipients(raw) {\r\n  if (raw == null || raw === '') return { recipients: [] };\r\n  var data = raw;\r\n  if (typeof raw === 'string') {\r\n    try { data = JSON.parse(raw); } catch (e) {\r\n      // Si era CSV simple, lo convertimos\r\n      var arr = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);\r\n      return { recipients: arr.map(function(e){ return { email: e, enabled: true }; }) };\r\n    }\r\n  }\r\n  if (Array.isArray(data)) return { recipients: data };\r\n  if (data && Array.isArray(data.recipients)) return { recipients: data.recipients };\r\n  return { recipients: [] };\r\n}\r\n\r\nvar email = (metadata.userEmail || '').trim();\r\nif (!email) {\r\n  metadata.mergeError = 'Falta metadata.userEmail';\r\n  return { msg: { /* no guarda */ }, metadata: metadata, msgType: msgType };\r\n}\r\n\r\nvar want = toBool(msg.receiveEmail != null ? msg.receiveEmail : msg['receiveEmail']);\r\n\r\n// Estado actual del Customer\r\nvar store = parseRecipients(metadata.emailRecipients || msg.emailRecipients);\r\nvar list = store.recipients\r\n  .filter(function(r){ return r && r.email; })\r\n  .map(function(r){\r\n    return { email: String(r.email).trim(), enabled: toBool(r.enabled) };\r\n  });\r\n\r\n// Upsert por email (case-insensitive)\r\nvar found = false, i;\r\nfor (i = 0; i < list.length; i++) {\r\n  if (list[i].email.toLowerCase() === email.toLowerCase()) {\r\n    list[i].enabled = want;\r\n    found = true;\r\n    break;\r\n  }\r\n}\r\nif (!found) list.push({ email: email, enabled: want });\r\n\r\n// Dedupe manteniendo la última\r\nvar seen = {};\r\nfor (i = list.length - 1; i >= 0; i--) {\r\n  var k = list[i].email.toLowerCase();\r\n  if (seen[k]) list.splice(i, 1); else seen[k] = 1;\r\n}\r\n\r\n// (Opcional) ordenar por email\r\nlist.sort(function(a,b){\r\n  var A = a.email.toLowerCase(), B = b.email.toLowerCase();\r\n  return A < B ? -1 : (A > B ? 1 : 0);\r\n});\r\n\r\nvar updated = { recipients: list };\r\n\r\n// Salidas\r\nmetadata.recipientsCsv = list.filter(function(r){ return toBool(r.enabled); })\r\n                             .map(function(r){ return r.email; })\r\n                             .join(',');\r\n\r\n// Para no guardar keys de más, dejamos solo la que queremos persistir\r\nmsg = { emailRecipients: JSON.stringify(updated) };\r\n\r\nreturn { msg: msg, metadata: metadata, msgType: \"POST_ATTRIBUTES_REQUEST\" };\r\n",
-        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
-      },
-      "configurationVersion" : 0,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1757790077615,
-        "failuresEnabled" : false
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "816c30b0-10f1-11f1-8fce-55f815a3848a"
-      },
-      "name" : "change notification status",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 369,
-        "layoutY" : 680
-      },
-      "configuration" : {
-        "processingSettings" : {
-          "type" : "ON_EVERY_MESSAGE"
-        },
-        "scope" : "SERVER_SCOPE",
-        "notifyDevice" : false,
-        "sendAttributesUpdatedNotification" : true,
-        "updateAttributesOnlyOnValueChange" : false
-      },
-      "configurationVersion" : 3,
-      "createdTime" : 0,
-      "debugSettings" : {
-        "allEnabled" : false,
-        "allEnabledUntil" : 1757789897016,
-        "failuresEnabled" : false
-      },
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "816c57c0-10f1-11f1-8fce-55f815a3848a"
-      },
-      "name" : "save attribute",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 365,
-        "layoutY" : 606
-      },
-      "configuration" : {
-        "originatorSource" : "CUSTOMER",
-        "relationsQuery" : {
-          "direction" : "FROM",
-          "maxLevel" : 1,
-          "filters" : [ {
-            "relationType" : "Contains",
-            "entityTypes" : [ ],
-            "negate" : false
-          } ],
-          "fetchLastLevelOnly" : false
-        },
-        "entityType" : null,
-        "entityNamePattern" : null
-      },
-      "configurationVersion" : 0,
-      "createdTime" : 0,
-      "debugSettings" : null,
-      "externalId" : null,
-      "id" : {
-        "entityType" : "RULE_NODE",
-        "id" : "816ca5e0-10f1-11f1-8fce-55f815a3848a"
-      },
-      "name" : "originator",
-      "queueName" : null,
-      "ruleChainId" : null,
-      "singletonMode" : false,
-      "type" : "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode"
-    }, {
-      "additionalInfo" : {
-        "description" : "",
-        "layoutX" : 408,
-        "layoutY" : 45
+        "layoutX" : 376,
+        "layoutY" : 10
       },
       "configuration" : {
         "forwardMsgToDefaultRuleChain" : false,
@@ -474,8 +306,8 @@
     }, {
       "additionalInfo" : {
         "description" : null,
-        "layoutX" : 812,
-        "layoutY" : 174
+        "layoutX" : 1201,
+        "layoutY" : 179
       },
       "configuration" : {
         "defaultTTL" : 0,
@@ -501,6 +333,58 @@
       "ruleChainId" : null,
       "singletonMode" : false,
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 955,
+        "layoutY" : 177
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "function isInvalidValue(value) {\r\n    if (value === undefined) return false;\r\n    if (Array.isArray(value)) return true;\r\n    if (typeof value === 'string') {\r\n        var trimmed = value.trim();\r\n        //if (trimmed.startsWith('[')) \r\n        return true;\r\n    }\r\n    return false;\r\n}\r\n\r\nreturn !isInvalidValue(msg.voltage_v) &&\r\n       !isInvalidValue(msg.current_a) &&\r\n       !isInvalidValue(msg.power_w) &&\r\n       !isInvalidValue(msg.power_factor);",
+        "tbelScript" : "return msg.temperature > 20;"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1781184296986,
+        "failuresEnabled" : true
+      },
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ab0bf8a0-6098-11f1-9c5d-cf2d8d8f620e"
+      },
+      "name" : "Array filter [0,0]",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 714,
+        "layoutY" : 172
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "var out = {};\r\nforeach (entry : msg.entrySet()) {\r\n    var k = entry.key;\r\n    var v = entry.value;\r\n    if (k.startsWith(\"data_\")) {\r\n        var clean = k.substring(5);\r\n        if (out.get(clean) == null && msg.get(clean) == null) {\r\n            out[clean] = v;\r\n        } else {\r\n            out[\"_collision_\" + clean] = v;\r\n        }\r\n    } else {\r\n        out[k] = v;\r\n    }\r\n}\r\nreturn {msg: out, metadata: metadata, msgType: msgType};"
+      },
+      "configurationVersion" : 0,
+      "createdTime" : 0,
+      "debugSettings" : null,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "46529740-61c7-11f1-9c5d-cf2d8d8f620e"
+      },
+      "name" : "delete \"data_\" prefix",
+      "queueName" : null,
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
     } ],
     "ruleChainConnections" : null
   },
@@ -516,7 +400,7 @@
     },
     "type" : "Uses",
     "typeGroup" : "COMMON",
-    "version" : 25405
+    "version" : 31265
   }, {
     "additionalInfo" : null,
     "from" : {
@@ -529,7 +413,7 @@
     },
     "type" : "Uses",
     "typeGroup" : "COMMON",
-    "version" : 25407
+    "version" : 31267
   } ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]

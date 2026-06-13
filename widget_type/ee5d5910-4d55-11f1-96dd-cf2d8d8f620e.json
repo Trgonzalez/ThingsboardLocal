@@ -1,0 +1,208 @@
+{
+  "entityType" : "WIDGET_TYPE",
+  "entity" : {
+    "fqn" : "svg_box",
+    "name" : "SVG box",
+    "deprecated" : false,
+    "image" : "tb-image;/api/images/tenant/SVG box.png",
+    "description" : null,
+    "descriptor" : {
+      "type" : "latest",
+      "sizeX" : 7.5,
+      "sizeY" : 3,
+      "resources" : [ ],
+      "templateHtml" : "<div id=\"svg-container\" class=\"svg-box\"></div>",
+      "templateCss" : ":host {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    padding: 0;\r\n    margin: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n.svg-box {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding: 0;\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    overflow: hidden;\r\n}\r\n\r\n.svg-box svg {\r\n    width: 100%;\r\n    height: 100%;\r\n    display: block;\r\n}\r\n\r\n.svg-box img {\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: contain;\r\n    display: block;\r\n}",
+      "controllerScript" : "self.onInit = function () {\r\n    self.ctx.svgContainer = $('#svg-container', self.ctx.$container);\r\n\r\n    var settings = self.ctx.settings;\r\n    self.ctx.svgValue = (settings.svgSource || '').trim();\r\n    self.ctx.globalColor = settings.globalColor || '';\r\n    self.ctx.specificPathIds = (settings.specificPathIds || '').trim();\r\n    self.ctx.specificPathColor = settings.specificPathColor || '';\r\n    self.ctx.svgLoaded = false;\r\n\r\n    // Cargar SVG\r\n    self.loadSvg();\r\n};\r\n\r\n// --- Cargar SVG (raw o URL) ---\r\nself.loadSvg = function () {\r\n    var svgValue = self.ctx.svgValue;\r\n    if (!svgValue || svgValue.length === 0) return;\r\n\r\n    if (svgValue.indexOf('<svg') !== -1) {\r\n        // SVG crudo\r\n        self.ctx.svgContainer.html(svgValue);\r\n        self.ctx.svgLoaded = true;\r\n        self.applySvgStyles();\r\n        self.applyConditions();\r\n    } else {\r\n        // URL: cargar contenido\r\n        self.loadSvgFromUrl(svgValue);\r\n    }\r\n};\r\n\r\n// --- Cargar SVG desde URL e inyectar inline ---\r\nself.loadSvgFromUrl = function (url) {\r\n    $.get(url, function (data) {\r\n        var svgContent;\r\n        if (typeof data === 'string') {\r\n            svgContent = data;\r\n        } else {\r\n            var svgElem = $(data).find('svg');\r\n            if (svgElem.length > 0) {\r\n                svgContent = svgElem.prop('outerHTML') || new XMLSerializer().serializeToString(svgElem[0]);\r\n            }\r\n        }\r\n\r\n        if (svgContent && svgContent.indexOf('<svg') !== -1) {\r\n            self.ctx.svgContainer.html(svgContent);\r\n            self.ctx.svgLoaded = true;\r\n            self.applySvgStyles();\r\n            self.applyConditions();\r\n        } else {\r\n            // Fallback: img tag\r\n            self.ctx.svgContainer.html('<img src=\"' + url + '\" />');\r\n            self.ctx.svgLoaded = false;\r\n        }\r\n    }).fail(function () {\r\n        self.ctx.svgContainer.html('<img src=\"' + url + '\" />');\r\n        self.ctx.svgLoaded = false;\r\n    });\r\n};\r\n\r\n// --- Aplicar color global y color de paths específicos ---\r\nself.applySvgStyles = function () {\r\n    if (!self.ctx.svgLoaded) return;\r\n\r\n    var container = self.ctx.svgContainer;\r\n    var shapes = 'path, circle, rect, polygon, line, polyline, ellipse';\r\n\r\n    // Color global: cambia todos los shapes\r\n    if (self.ctx.globalColor) {\r\n        container.find(shapes).each(function () {\r\n            $(this).attr('fill', self.ctx.globalColor);\r\n            $(this).css('fill', self.ctx.globalColor);\r\n        });\r\n    }\r\n\r\n    // Color de paths específicos (por ID, separados por coma)\r\n    if (self.ctx.specificPathIds && self.ctx.specificPathColor) {\r\n        var ids = self.ctx.specificPathIds.split(',');\r\n        for (var i = 0; i < ids.length; i++) {\r\n            var id = ids[i].trim();\r\n            if (id) {\r\n                var el = container.find('#' + id);\r\n                if (el.length > 0) {\r\n                    el.attr('fill', self.ctx.specificPathColor);\r\n                    el.css('fill', self.ctx.specificPathColor);\r\n                }\r\n            }\r\n        }\r\n    }\r\n};\r\n\r\n// --- Aplicar condiciones basadas en telemetría ---\r\nself.applyConditions = function () {\r\n    if (!self.ctx.svgLoaded) return;\r\n\r\n    var settings = self.ctx.settings;\r\n    var container = self.ctx.svgContainer;\r\n\r\n    // Obtener valor actual de telemetría\r\n    var rawValue = null;\r\n    if (\r\n        self.ctx.defaultSubscription &&\r\n        self.ctx.defaultSubscription.data &&\r\n        self.ctx.defaultSubscription.data.length > 0\r\n    ) {\r\n        var dataKey = self.ctx.defaultSubscription.data[0];\r\n        if (dataKey.data && dataKey.data.length > 0) {\r\n            rawValue = dataKey.data[dataKey.data.length - 1][1];\r\n        }\r\n    }\r\n\r\n    // Evaluar condiciones 1-5\r\n    for (var i = 1; i <= 5; i++) {\r\n        if (!settings['condEnabled' + i]) continue;\r\n\r\n        var op = settings['condOperator' + i] || 'eq';\r\n        var compareVal = settings['condValue' + i];\r\n        var condColor = settings['condColor' + i];\r\n        var condPaths = (settings['condPaths' + i] || '').trim();\r\n\r\n        if (!condColor || !condPaths) continue;\r\n\r\n        var match = self.evaluateCondition(rawValue, op, compareVal);\r\n\r\n        if (match) {\r\n            // Aplicar color a los paths especificados\r\n            var pathIds = condPaths.split(',');\r\n            for (var j = 0; j < pathIds.length; j++) {\r\n                var pid = pathIds[j].trim();\r\n                if (pid) {\r\n                    var el = container.find('#' + pid);\r\n                    if (el.length > 0) {\r\n                        el.attr('fill', condColor);\r\n                        el.css('fill', condColor);\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n};\r\n\r\n// --- Comparar valor de telemetría con el valor de la condición ---\r\nself.evaluateCondition = function (rawValue, operator, compareVal) {\r\n    if (rawValue === null || rawValue === undefined) return false;\r\n    if (compareVal === null || compareVal === undefined || compareVal === '') return false;\r\n\r\n    // Convertir ambos a número si es posible, sino comparar como string\r\n    var val = rawValue;\r\n    var cmp = compareVal;\r\n\r\n    // Intentar comparación numérica\r\n    var numVal = Number(val);\r\n    var numCmp = Number(cmp);\r\n    var bothNumeric = !isNaN(numVal) && !isNaN(numCmp) && String(val).trim() !== '' && String(cmp).trim() !== '';\r\n\r\n    if (bothNumeric) {\r\n        val = numVal;\r\n        cmp = numCmp;\r\n    } else {\r\n        // Comparar como strings (soporta booleanos como \"true\"/\"false\")\r\n        val = String(val).trim().toLowerCase();\r\n        cmp = String(cmp).trim().toLowerCase();\r\n    }\r\n\r\n    switch (operator) {\r\n        case 'eq': return val == cmp;\r\n        case 'neq': return val != cmp;\r\n        case 'gt': return val > cmp;\r\n        case 'lt': return val < cmp;\r\n        case 'gte': return val >= cmp;\r\n        case 'lte': return val <= cmp;\r\n        default: return val == cmp;\r\n    }\r\n};\r\n\r\nself.onDataUpdated = function () {\r\n    if (!self.ctx.svgLoaded) {\r\n        // SVG aún no cargado (posiblemente por URL async), intentar cargar\r\n        if (!self.ctx.svgValue) return;\r\n        self.loadSvg();\r\n        return;\r\n    }\r\n\r\n    // Re-aplicar estilos base (resetear colores condicionales)\r\n    self.applySvgStyles();\r\n    // Re-evaluar condiciones con datos nuevos\r\n    self.applyConditions();\r\n};\r\n\r\nself.onResize = function () { };\r\n\r\nself.typeParameters = function () {\r\n    return {\r\n        maxDatasources: 1,\r\n        maxDataKeys: 1,\r\n        dataKeysOptional: true\r\n    };\r\n};\r\n\r\nself.onDestroy = function () { };\r\n",
+      "settingsForm" : [ {
+        "id" : "svgSource",
+        "name" : "SVG (link o código SVG)",
+        "hint" : "Pegá una URL de SVG o el código SVG crudo directamente",
+        "group" : "SVG",
+        "type" : "text"
+      }, {
+        "id" : "globalColor",
+        "name" : "Color global del SVG",
+        "hint" : "Cambia el color de todos los shapes. Dejar vacío para respetar colores originales",
+        "group" : "Colores",
+        "type" : "color"
+      }, {
+        "id" : "specificPathIds",
+        "name" : "IDs de paths específicos",
+        "hint" : "IDs de elementos SVG separados por coma (ej: path1, path2, circle3)",
+        "group" : "Colores",
+        "type" : "text"
+      }, {
+        "id" : "specificPathColor",
+        "name" : "Color de paths específicos",
+        "hint" : "Color a aplicar a los paths listados arriba",
+        "group" : "Colores",
+        "type" : "color"
+      }, {
+        "id" : "condEnabled1",
+        "name" : "Habilitar Condición 1",
+        "group" : "Condición 1",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator1",
+        "name" : "Operador",
+        "hint" : "eq (igual), neq (distinto), gt (mayor), lt (menor), gte (mayor igual), lte (menor igual)",
+        "group" : "Condición 1",
+        "type" : "text",
+        "default" : "eq"
+      }, {
+        "id" : "condValue1",
+        "name" : "Valor de comparación",
+        "hint" : "Número, texto o booleano (true/false)",
+        "group" : "Condición 1",
+        "type" : "text"
+      }, {
+        "id" : "condPaths1",
+        "name" : "Paths afectados (IDs)",
+        "hint" : "IDs de elementos SVG separados por coma",
+        "group" : "Condición 1",
+        "type" : "text"
+      }, {
+        "id" : "condColor1",
+        "name" : "Color de la condición",
+        "group" : "Condición 1",
+        "type" : "color"
+      }, {
+        "id" : "condEnabled2",
+        "name" : "Habilitar Condición 2",
+        "group" : "Condición 2",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator2",
+        "name" : "Operador",
+        "hint" : "eq, neq, gt, lt, gte, lte",
+        "group" : "Condición 2",
+        "type" : "text",
+        "default" : "eq"
+      }, {
+        "id" : "condValue2",
+        "name" : "Valor de comparación",
+        "hint" : "Número, texto o booleano (true/false)",
+        "group" : "Condición 2",
+        "type" : "text"
+      }, {
+        "id" : "condPaths2",
+        "name" : "Paths afectados (IDs)",
+        "hint" : "IDs de elementos SVG separados por coma",
+        "group" : "Condición 2",
+        "type" : "text"
+      }, {
+        "id" : "condColor2",
+        "name" : "Color de la condición",
+        "group" : "Condición 2",
+        "type" : "color"
+      }, {
+        "id" : "condEnabled3",
+        "name" : "Habilitar Condición 3",
+        "group" : "Condición 3",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator3",
+        "name" : "Operador",
+        "hint" : "eq, neq, gt, lt, gte, lte",
+        "group" : "Condición 3",
+        "type" : "text",
+        "default" : "eq"
+      }, {
+        "id" : "condValue3",
+        "name" : "Valor de comparación",
+        "hint" : "Número, texto o booleano (true/false)",
+        "group" : "Condición 3",
+        "type" : "text"
+      }, {
+        "id" : "condPaths3",
+        "name" : "Paths afectados (IDs)",
+        "hint" : "IDs de elementos SVG separados por coma",
+        "group" : "Condición 3",
+        "type" : "text"
+      }, {
+        "id" : "condColor3",
+        "name" : "Color de la condición",
+        "group" : "Condición 3",
+        "type" : "color"
+      }, {
+        "id" : "condEnabled4",
+        "name" : "Habilitar Condición 4",
+        "group" : "Condición 4",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator4",
+        "name" : "Operador",
+        "hint" : "eq, neq, gt, lt, gte, lte",
+        "group" : "Condición 4",
+        "type" : "text",
+        "default" : "eq"
+      }, {
+        "id" : "condValue4",
+        "name" : "Valor de comparación",
+        "hint" : "Número, texto o booleano (true/false)",
+        "group" : "Condición 4",
+        "type" : "text"
+      }, {
+        "id" : "condPaths4",
+        "name" : "Paths afectados (IDs)",
+        "hint" : "IDs de elementos SVG separados por coma",
+        "group" : "Condición 4",
+        "type" : "text"
+      }, {
+        "id" : "condColor4",
+        "name" : "Color de la condición",
+        "group" : "Condición 4",
+        "type" : "color"
+      }, {
+        "id" : "condEnabled5",
+        "name" : "Habilitar Condición 5",
+        "group" : "Condición 5",
+        "type" : "switch",
+        "default" : false
+      }, {
+        "id" : "condOperator5",
+        "name" : "Operador",
+        "hint" : "eq, neq, gt, lt, gte, lte",
+        "group" : "Condición 5",
+        "type" : "text",
+        "default" : "eq"
+      }, {
+        "id" : "condValue5",
+        "name" : "Valor de comparación",
+        "hint" : "Número, texto o booleano (true/false)",
+        "group" : "Condición 5",
+        "type" : "text"
+      }, {
+        "id" : "condPaths5",
+        "name" : "Paths afectados (IDs)",
+        "hint" : "IDs de elementos SVG separados por coma",
+        "group" : "Condición 5",
+        "type" : "text"
+      }, {
+        "id" : "condColor5",
+        "name" : "Color de la condición",
+        "group" : "Condición 5",
+        "type" : "color"
+      } ],
+      "dataKeySettingsForm" : [ ],
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Random\",\"color\":\"#2196f3\",\"settings\":{},\"_hash\":0.15479322438769105,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{},\"title\":\"SVG box\",\"decimals\":null}"
+    },
+    "externalId" : null,
+    "resources" : null,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "ee5d5910-4d55-11f1-96dd-cf2d8d8f620e"
+    },
+    "scada" : false,
+    "tags" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

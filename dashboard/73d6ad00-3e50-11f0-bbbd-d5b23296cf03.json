@@ -24,7 +24,6 @@
                 "label" : "Temperature",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.4154264195753765,
                 "units" : "°C",
                 "decimals" : 0
               } ],
@@ -85,7 +84,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.7513792370358555,
                 "units" : "°C",
                 "decimals" : 0,
                 "aggregationType" : "NONE"
@@ -127,7 +125,6 @@
                   },
                   "showArrow" : true
                 },
-                "_hash" : 0.8352141975552512,
                 "units" : "%",
                 "decimals" : 0,
                 "aggregationType" : "AVG",
@@ -160,7 +157,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.6601513314333026,
                 "units" : "°C",
                 "decimals" : 1,
                 "aggregationType" : "AVG",
@@ -368,7 +364,6 @@
                 "label" : "Humidity",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.45844002166932674,
                 "units" : "%",
                 "decimals" : 0
               } ],
@@ -421,7 +416,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.29817030522842447,
                 "units" : "%",
                 "decimals" : 0,
                 "aggregationType" : "NONE"
@@ -463,7 +457,6 @@
                   },
                   "showArrow" : true
                 },
-                "_hash" : 0.6148310473313147,
                 "units" : "%",
                 "decimals" : 0,
                 "aggregationType" : "AVG",
@@ -496,7 +489,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.873418457182655,
                 "units" : "%",
                 "decimals" : 1,
                 "aggregationType" : "AVG",
@@ -703,15 +695,13 @@
                 "type" : "timeseries",
                 "label" : "Wind Direction",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.9228458677198702
+                "settings" : { }
               }, {
                 "name" : "windSpeed",
                 "type" : "timeseries",
                 "label" : "Wind Speed",
                 "color" : "#4caf50",
                 "settings" : { },
-                "_hash" : 0.845660514578442,
                 "units" : "m/s",
                 "decimals" : 1
               } ],
@@ -719,37 +709,6 @@
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748666834667,
-                  "endTimeMs" : 1748753234667
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : true,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -843,14 +802,12 @@
             },
             "units" : "",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : {
               "headerButton" : [ ]
             },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "",
             "widgetCss" : "",
@@ -906,7 +863,6 @@
                 "label" : "rain",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.6355961100750355,
                 "units" : "mm",
                 "decimals" : 1
               } ],
@@ -955,7 +911,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.4434391660796284,
                 "units" : "mm",
                 "decimals" : 1,
                 "aggregationType" : "NONE"
@@ -997,7 +952,6 @@
                   },
                   "showArrow" : true
                 },
-                "_hash" : 0.9229690876407318,
                 "units" : "%",
                 "decimals" : 0,
                 "aggregationType" : "AVG",
@@ -1030,7 +984,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.7874113713934134,
                 "units" : "mm",
                 "decimals" : 1,
                 "aggregationType" : "AVG",
@@ -1247,7 +1200,6 @@
                     }
                   }
                 },
-                "_hash" : 0.5973804076994531,
                 "units" : "°C",
                 "decimals" : 1,
                 "aggregationType" : null,
@@ -1265,8 +1217,7 @@
                 "color" : "#4caf50",
                 "settings" : {
                   "__thresholdKey" : true
-                },
-                "_hash" : 0.7120450032526351
+                }
               } ]
             } ],
             "timewindow" : {
@@ -1711,7 +1662,6 @@
                     }
                   }
                 },
-                "_hash" : 0.4481337125330429,
                 "units" : "%",
                 "decimals" : 0,
                 "aggregationType" : null,
@@ -1729,8 +1679,7 @@
                 "color" : "#4caf50",
                 "settings" : {
                   "__thresholdKey" : true
-                },
-                "_hash" : 0.134733085341747
+                }
               } ]
             } ],
             "timewindow" : {
@@ -2537,51 +2486,18 @@
                 "type" : "attribute",
                 "label" : "longitude",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.32463501334955613
+                "settings" : { }
               }, {
                 "name" : "latitude",
                 "type" : "attribute",
                 "label" : "latitude",
                 "color" : "#4caf50",
-                "settings" : { },
-                "_hash" : 0.004828989928954863
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748802289194,
-                  "endTimeMs" : 1748888689194
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -2598,10 +2514,8 @@
               "fontSize" : "16px",
               "fontWeight" : 400
             },
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "actions" : { },
-            "displayTimewindow" : true,
             "widgetCss" : "",
             "pageSize" : 1024,
             "noDataDisplayMessage" : ""
@@ -2626,7 +2540,6 @@
                 "label" : "consumoComedero1",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.5789894827803642,
                 "units" : "m³",
                 "decimals" : 0,
                 "aggregationType" : null,
@@ -2663,7 +2576,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.5876701452523303,
                 "units" : "kg",
                 "decimals" : 1,
                 "aggregationType" : "SUM",
@@ -2942,7 +2854,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.5861349633210496,
                 "decimals" : 0
               }, {
                 "name" : "comedero2",
@@ -3018,7 +2929,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.9917454157228757,
                 "decimals" : 0
               }, {
                 "name" : "comedero3",
@@ -3094,7 +3004,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.6587981653858497,
                 "decimals" : 0
               } ],
               "alarmFilterConfig" : {
@@ -3461,58 +3370,24 @@
                 "type" : "attribute",
                 "label" : "comedero1VacasCount",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.34485162802474123
+                "settings" : { }
               }, {
                 "name" : "comedero2VacasCount",
                 "type" : "attribute",
                 "label" : "comedero2VacasCount",
                 "color" : "#4caf50",
-                "settings" : { },
-                "_hash" : 0.4690843773216974
+                "settings" : { }
               }, {
                 "name" : "comedero3VacasCount",
                 "type" : "attribute",
                 "label" : "comedero3VacasCount",
                 "color" : "#f44336",
-                "settings" : { },
-                "_hash" : 0.6922896585386888
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748989676678,
-                  "endTimeMs" : 1749076076678
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : true,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -3540,10 +3415,8 @@
               "fontSize" : "16px",
               "fontWeight" : 400
             },
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
-            "actions" : { },
-            "displayTimewindow" : true
+            "actions" : { }
           },
           "row" : 0,
           "col" : 0,
@@ -3565,7 +3438,6 @@
                 "label" : "consumoComedero2",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.10506992273831184,
                 "units" : "m³",
                 "decimals" : 0
               } ],
@@ -3598,7 +3470,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.5876701452523303,
                 "units" : "kg",
                 "decimals" : 1,
                 "aggregationType" : "SUM",
@@ -3809,7 +3680,6 @@
                 "label" : "consumoComedero3",
                 "color" : "rgba(0, 0, 0, 0.87)",
                 "settings" : { },
-                "_hash" : 0.04949994768208177,
                 "units" : "m³",
                 "decimals" : 0
               } ],
@@ -3842,7 +3712,6 @@
                   },
                   "showArrow" : false
                 },
-                "_hash" : 0.5876701452523303,
                 "units" : "kg",
                 "decimals" : 1,
                 "aggregationType" : "SUM",
@@ -4044,37 +3913,6 @@
           "sizeY" : 6,
           "config" : {
             "datasources" : [ ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1741884755143,
-                  "endTimeMs" : 1741971155143
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -4109,7 +3947,6 @@
                   "label" : "temperature",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.570889787682481,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -4122,7 +3959,6 @@
                   "label" : "humidity",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.13597394595782442,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -4134,50 +3970,43 @@
                   "type" : "attribute",
                   "label" : "active",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.21080919932756603
+                  "settings" : { }
                 }, {
                   "name" : "type",
                   "type" : "entityField",
                   "label" : "Tipo",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.2402638554346055
+                  "settings" : { }
                 }, {
                   "name" : "pressure",
                   "type" : "timeseries",
                   "label" : "pressure",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.9683764423539665
+                  "settings" : { }
                 }, {
                   "name" : "windDir",
                   "type" : "timeseries",
                   "label" : "windDir",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.06790987039798024
+                  "settings" : { }
                 }, {
                   "name" : "windSpeed",
                   "type" : "timeseries",
                   "label" : "windSpeed",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5480132600348905
+                  "settings" : { }
                 }, {
                   "name" : "rain",
                   "type" : "timeseries",
                   "label" : "rain",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.14102539103329192
+                  "settings" : { }
                 }, {
                   "name" : "nivelNapa",
                   "type" : "timeseries",
                   "label" : "nivelNapa",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.4952274411831883
+                  "settings" : { }
                 } ],
                 "label" : {
                   "show" : true,
@@ -4293,8 +4122,6 @@
               "padding" : "0"
             },
             "title" : "Map",
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "showTitleIcon" : false,
             "titleTooltip" : "",
             "dropShadow" : true,
@@ -4337,44 +4164,12 @@
                 "type" : "attribute",
                 "label" : "battVal",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.3941968496842906
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748729577207,
-                  "endTimeMs" : 1748815977207
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : true,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -4459,12 +4254,10 @@
             },
             "units" : "%",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "basic",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "",
             "widgetCss" : "",
@@ -4902,7 +4695,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.2937190222125866,
                 "aggregationType" : null,
                 "units" : "m",
                 "decimals" : null,
@@ -5245,44 +5037,12 @@
                 "type" : "attribute",
                 "label" : "battVal",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.3941968496842906
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748729577207,
-                  "endTimeMs" : 1748815977207
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : true,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -5367,12 +5127,10 @@
             },
             "units" : "%",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "basic",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "",
             "widgetCss" : "",
@@ -5418,37 +5176,6 @@
           "sizeX" : 7.5,
           "sizeY" : 6.5,
           "config" : {
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 86400000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1748637797991,
-                  "endTimeMs" : 1748724197991
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "NONE",
-                "limit" : 200
-              }
-            },
             "showTitle" : true,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -5482,7 +5209,6 @@
               "fontWeight" : 400,
               "padding" : "5px 10px 5px 10px"
             },
-            "useDashboardTimewindow" : false,
             "showLegend" : false,
             "datasources" : [ {
               "type" : "entity",
@@ -5495,7 +5221,6 @@
                 "label" : "Nombre",
                 "color" : "#f44336",
                 "settings" : { },
-                "_hash" : 0.010070857757604412,
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -5518,7 +5243,6 @@
                   "columnSelectionToDisplay" : "enabled",
                   "disableSorting" : false
                 },
-                "_hash" : 0.3661306593657292,
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -5541,7 +5265,6 @@
                   "columnSelectionToDisplay" : "enabled",
                   "disableSorting" : false
                 },
-                "_hash" : 0.4036150317729671,
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -5553,7 +5276,6 @@
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "displayTimewindow" : false,
             "configMode" : "advanced",
             "actions" : {
               "rowClick" : [ {
@@ -5604,37 +5326,6 @@
               "filterId" : null,
               "dataKeys" : [ ]
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1682928306473,
-                  "endTimeMs" : 1683014706473
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 2500
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -5753,127 +5444,109 @@
                 "type" : "entityField",
                 "label" : "Nombre",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.18788394870546488
+                "settings" : { }
               }, {
                 "name" : "type",
                 "type" : "entityField",
                 "label" : "Tipo",
                 "color" : "#4caf50",
-                "settings" : { },
-                "_hash" : 0.7277008645532687
+                "settings" : { }
               }, {
                 "name" : "data_temperature_2",
                 "type" : "timeseries",
                 "label" : "data_temperature_2",
                 "color" : "#f44336",
-                "settings" : { },
-                "_hash" : 0.3113716288501823
+                "settings" : { }
               }, {
                 "name" : "waterLevelPerc",
                 "type" : "timeseries",
                 "label" : "waterLevelPerc",
                 "color" : "#ffc107",
-                "settings" : { },
-                "_hash" : 0.3588994643776008
+                "settings" : { }
               }, {
                 "name" : "waterVolume",
                 "type" : "timeseries",
                 "label" : "waterVolume",
                 "color" : "#607d8b",
-                "settings" : { },
-                "_hash" : 0.11598182185513584
+                "settings" : { }
               }, {
                 "name" : "rain",
                 "type" : "timeseries",
                 "label" : "rain",
                 "color" : "#9c27b0",
-                "settings" : { },
-                "_hash" : 0.20112760147397624
+                "settings" : { }
               }, {
                 "name" : "windDir",
                 "type" : "timeseries",
                 "label" : "windDir",
                 "color" : "#8bc34a",
-                "settings" : { },
-                "_hash" : 0.05847622555323728
+                "settings" : { }
               }, {
                 "name" : "temperature",
                 "type" : "timeseries",
                 "label" : "temperature",
                 "color" : "#e91e63",
-                "settings" : { },
-                "_hash" : 0.012523065486068519
+                "settings" : { }
               }, {
                 "name" : "humidity",
                 "type" : "timeseries",
                 "label" : "humidity",
                 "color" : "#ffeb3b",
-                "settings" : { },
-                "_hash" : 0.946407427496765
+                "settings" : { }
               }, {
                 "name" : "windSpeed",
                 "type" : "timeseries",
                 "label" : "windSpeed",
                 "color" : "#ffeb3b",
-                "settings" : { },
-                "_hash" : 0.41291441643142546
+                "settings" : { }
               }, {
                 "name" : "pressure",
                 "type" : "timeseries",
                 "label" : "pressure",
                 "color" : "#03a9f4",
-                "settings" : { },
-                "_hash" : 0.6169344540672429
+                "settings" : { }
               }, {
                 "name" : "comedero1",
                 "type" : "timeseries",
                 "label" : "comedero1",
                 "color" : "#ff9800",
-                "settings" : { },
-                "_hash" : 0.5308682453811485
+                "settings" : { }
               }, {
                 "name" : "comedero2",
                 "type" : "timeseries",
                 "label" : "comedero2",
                 "color" : "#673ab7",
-                "settings" : { },
-                "_hash" : 0.40970797413494
+                "settings" : { }
               }, {
                 "name" : "comedero3",
                 "type" : "timeseries",
                 "label" : "comedero3",
                 "color" : "#cddc39",
-                "settings" : { },
-                "_hash" : 0.6186957887381043
+                "settings" : { }
               }, {
                 "name" : "alarm_severity",
                 "type" : "attribute",
                 "label" : "alarm_severity",
                 "color" : "#009688",
-                "settings" : { },
-                "_hash" : 0.8145259853525755
+                "settings" : { }
               }, {
                 "name" : "alarm_type",
                 "type" : "attribute",
                 "label" : "alarm_type",
                 "color" : "#795548",
-                "settings" : { },
-                "_hash" : 0.13176959530760746
+                "settings" : { }
               }, {
                 "name" : "nivelNapa",
                 "type" : "timeseries",
                 "label" : "nivelNapa",
                 "color" : "#00bcd4",
-                "settings" : { },
-                "_hash" : 0.8864291843691685
+                "settings" : { }
               }, {
                 "name" : "data_temperature",
                 "type" : "timeseries",
                 "label" : "temperature",
                 "color" : "#ff5722",
                 "settings" : { },
-                "_hash" : 0.3038951421792161,
                 "aggregationType" : "NONE",
                 "units" : null,
                 "decimals" : null,
@@ -5886,7 +5559,6 @@
                 "label" : "humidity",
                 "color" : "#9e9e9e",
                 "settings" : { },
-                "_hash" : 0.31987990477194006,
                 "aggregationType" : "NONE",
                 "units" : null,
                 "decimals" : null,
@@ -5898,37 +5570,6 @@
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1757198970022,
-                  "endTimeMs" : 1757285370022
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#FFFFFF00",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -5953,8 +5594,6 @@
               "fontWeight" : 400
             },
             "showLegend" : false,
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "widgetCss" : "",
             "pageSize" : 1024,
             "noDataDisplayMessage" : "",
@@ -5991,44 +5630,12 @@
                 "type" : "entityField",
                 "label" : "Title",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.23278673876621192
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1724146213845,
-                  "endTimeMs" : 1724232613845
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#FFFFFF",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -6053,8 +5660,6 @@
               "fontWeight" : 400
             },
             "showLegend" : false,
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "actions" : {
               "elementClick" : [ {
                 "name" : "liveApp",
@@ -6217,8 +5822,7 @@
                 "name" : "count",
                 "type" : "count",
                 "label" : "count",
-                "settings" : { },
-                "_hash" : 0.9181540205118637
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ],
@@ -6227,37 +5831,6 @@
                 "assigneeId" : null
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1758840516424,
-                  "endTimeMs" : 1758926916424
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -6336,7 +5909,6 @@
             },
             "units" : "",
             "decimals" : null,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : {
@@ -6356,7 +5928,6 @@
               } ]
             },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -6411,8 +5982,7 @@
                 "name" : "count",
                 "type" : "count",
                 "label" : "count",
-                "settings" : { },
-                "_hash" : 0.7957483904850419
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ],
@@ -6420,37 +5990,6 @@
                 "assigneeId" : null
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1758840780784,
-                  "endTimeMs" : 1758927180784
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -6521,7 +6060,6 @@
             },
             "units" : "",
             "decimals" : null,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : {
@@ -6541,7 +6079,6 @@
               } ]
             },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -6588,37 +6125,6 @@
           "sizeY" : 6,
           "config" : {
             "datasources" : [ ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1741884755143,
-                  "endTimeMs" : 1741971155143
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -6659,7 +6165,6 @@
                   "label" : "temperature",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.570889787682481,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -6672,7 +6177,6 @@
                   "label" : "humidity",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.13597394595782442,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -6684,22 +6188,19 @@
                   "type" : "attribute",
                   "label" : "active",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.21080919932756603
+                  "settings" : { }
                 }, {
                   "name" : "type",
                   "type" : "entityField",
                   "label" : "Tipo",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.1357587191053956
+                  "settings" : { }
                 }, {
                   "name" : "pozo",
                   "type" : "timeseries",
                   "label" : "pozo",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.6817815369277647,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -6712,7 +6213,6 @@
                   "label" : "nivelAguada",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.41051360922605606,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -6725,7 +6225,6 @@
                   "label" : "nivelTanque",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.10653271737889158,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -6737,78 +6236,67 @@
                   "type" : "timeseries",
                   "label" : "windDir",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.7494149641343646
+                  "settings" : { }
                 }, {
                   "name" : "windSpeed",
                   "type" : "timeseries",
                   "label" : "windSpeed",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.6909522833646339
+                  "settings" : { }
                 }, {
                   "name" : "rain",
                   "type" : "timeseries",
                   "label" : "rain",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.3165646978758382
+                  "settings" : { }
                 }, {
                   "name" : "comedero1",
                   "type" : "timeseries",
                   "label" : "comedero1",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5447639875242816
+                  "settings" : { }
                 }, {
                   "name" : "comedero2",
                   "type" : "timeseries",
                   "label" : "comedero2",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.13120470438313603
+                  "settings" : { }
                 }, {
                   "name" : "comedero3",
                   "type" : "timeseries",
                   "label" : "comedero3",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.21122955934647059
+                  "settings" : { }
                 }, {
                   "name" : "pressure",
                   "type" : "timeseries",
                   "label" : "pressure",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.6357233440039781
+                  "settings" : { }
                 }, {
                   "name" : "nivelNapa",
                   "type" : "timeseries",
                   "label" : "nivelNapa",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5158796826873344
+                  "settings" : { }
                 }, {
                   "name" : "waterVolume",
                   "type" : "timeseries",
                   "label" : "waterVolume",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.8649181166822368
+                  "settings" : { }
                 }, {
                   "name" : "waterLevelPerc",
                   "type" : "timeseries",
                   "label" : "waterLevelPerc",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.8782297497321601
+                  "settings" : { }
                 }, {
                   "name" : "data_temperature_2",
                   "type" : "timeseries",
                   "label" : "data_temperature_2",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.7747460584745568
+                  "settings" : { }
                 } ],
                 "label" : {
                   "show" : true,
@@ -7088,8 +6576,6 @@
               "padding" : "0"
             },
             "title" : "Map",
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "showTitleIcon" : false,
             "titleTooltip" : "",
             "dropShadow" : true,
@@ -7146,44 +6632,13 @@
           "sizeY" : 3.5,
           "config" : {
             "datasources" : [ ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1749219792418,
-                  "endTimeMs" : 1749306192418
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
             "padding" : "0px",
             "settings" : {
               "useMarkdownTextFunction" : false,
-              "markdownTextPattern" : "<div class=\"header flex flex-col items-center justify-around p-4 gt-sm:flex-row gt-sm:items-stretch gt-sm:justify-between gap-4\">\r\n  <div class=\"flex flex-col items-start justify-center max-w-full gt-sm:max-w-[60%]\">\r\n    <div class=\"title text-xl font-semibold text-[#28232D]\">🔧 Panel de Demostración</div>\r\n    <div class=\"subtitle text-sm text-[#444] leading-snug\">\r\n      Este panel muestra una <strong>simulación de datos</strong> generados por sensores conectados. Algunas funciones se encuentran desactivadas.<br>\r\n      Puede <strong>personalizarse completamente</strong> según los <strong>sensores instalados</strong> y los <strong>objetivos del cliente</strong>.\r\n    </div>\r\n  </div>\r\n  <div class=\"flex flex-col items-center justify-center\">\r\n    <a href=\"https://www.nexoragro.com/#contact\" class=\"button bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-base font-medium no-underline\">\r\n      📩 Me Interesa\r\n    </a>\r\n  </div>\r\n</div>\r\n",
+              "markdownTextPattern" : "<div class=\"header flex flex-col items-center justify-around p-4 gt-sm:flex-row gt-sm:items-stretch gt-sm:justify-between gap-4\">\r\n  <div class=\"flex flex-col items-start justify-center max-w-full gt-sm:max-w-[60%]\">\r\n    <div class=\"title text-xl font-semibold text-[#28232D]\">🔧 Panel de Demostración</div>\r\n    <div class=\"subtitle text-sm text-[#444] leading-snug\">\r\n      Este panel muestra una <strong>simulación de datos</strong> generados por sensores conectados. Algunas funciones se encuentran desactivadas.<br>\r\n      Puede <strong>personalizarse completamente</strong> según los <strong>sensores instalados</strong> y los <strong>objetivos del cliente</strong>.\r\n    </div>\r\n  </div>\r\n  <div class=\"flex flex-col items-center justify-center gap-2\">\r\n    <a href=\"https://www.nexoragro.com/#contact\" class=\"button bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-base font-medium no-underline\">\r\n      📩 Me Interesa\r\n    </a>\r\n    <a href=\"https://wa.me/5491121695961\" target=\"_blank\" style=\"background-color:#25D366; display:inline-flex; align-items:center; gap:6px;\" class=\"button hover:opacity-90 text-white py-2 px-4 rounded-md text-base font-medium no-underline\">\r\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"white\">\r\n        <path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\"/>\r\n      </svg>\r\n      WhatsApp\r\n    </a>\r\n  </div>\r\n</div>",
               "markdownTextFunction" : "return '# Some title\\n - Entity name: ' + data[0]['entityName'];",
               "applyDefaultMarkdownStyle" : true,
               "markdownCss" : ":host {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  box-sizing: border-box;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n/* Estilos base para el contenedor */\r\n.header {\r\n  height: 100%;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  \r\n  border-radius: 8px;\r\n  background-color: #fff;\r\n  padding: 16px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: space-around;\r\n  gap: 16px;\r\n}\r\n\r\n/* Desktop: usa Tailwind clases desde HTML, no hace falta redefinir acá */\r\n\r\n/* Título */\r\n.title {\r\n  font-size: 24px;\r\n  font-weight: 600;\r\n  color: #28232D;\r\n  margin-bottom: 6px;\r\n}\r\n\r\n/* Subtítulo */\r\n.subtitle {\r\n  font-size: 15px;\r\n  color: #444;\r\n  line-height: 1.4;\r\n}\r\n\r\n/* Botón */\r\n.button {\r\n  background-color: #007BFF;\r\n  color: white;\r\n  padding: 10px 18px;\r\n  border-radius: 6px;\r\n  font-size: 15px;\r\n  font-weight: 500;\r\n  text-decoration: none;\r\n  white-space: nowrap;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  transition: background-color 0.2s ease;\r\n}\r\n\r\n.button:hover {\r\n  background-color: #005ec4;\r\n}\r\n"
@@ -7201,8 +6656,6 @@
               "fontWeight" : 400
             },
             "showLegend" : false,
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "widgetCss" : "",
             "pageSize" : 1024,
             "noDataDisplayMessage" : ""
@@ -7226,44 +6679,12 @@
                 "type" : "timeseries",
                 "label" : "nivelAguada",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.8994357859381429
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1755215406568,
-                  "endTimeMs" : 1755301806568
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -7445,12 +6866,10 @@
             },
             "units" : "%",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -7505,7 +6924,6 @@
                 "label" : "nivelAguada",
                 "color" : "#2196f3",
                 "settings" : { },
-                "_hash" : 0.4396573671958548,
                 "aggregationType" : "NONE",
                 "units" : null,
                 "decimals" : null,
@@ -7517,37 +6935,6 @@
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1755215406568,
-                  "endTimeMs" : 1755301806568
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -7729,12 +7116,10 @@
             },
             "units" : "L",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -7789,7 +7174,6 @@
                 "label" : "nivelTanque",
                 "color" : "#2196f3",
                 "settings" : { },
-                "_hash" : 0.10510557515887842,
                 "aggregationType" : "NONE",
                 "units" : null,
                 "decimals" : null,
@@ -7801,37 +7185,6 @@
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1755214883758,
-                  "endTimeMs" : 1755301283758
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -7979,12 +7332,10 @@
             },
             "units" : "°C",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "showLegend" : false,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -8107,7 +7458,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.16278602436859257,
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -8189,7 +7539,6 @@
                     "color" : ""
                   }
                 },
-                "_hash" : 0.8886761387248614,
                 "aggregationType" : null,
                 "units" : null,
                 "decimals" : null,
@@ -8623,44 +7972,12 @@
                 "type" : "attribute",
                 "label" : "battVal",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.7390969768066162
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1754260604418,
-                  "endTimeMs" : 1754347004418
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -8724,11 +8041,9 @@
             },
             "units" : "min",
             "decimals" : 0,
-            "useDashboardTimewindow" : true,
             "widgetStyle" : { },
             "actions" : { },
             "configMode" : "advanced",
-            "displayTimewindow" : true,
             "margin" : "0px",
             "borderRadius" : "0px",
             "widgetCss" : "",
@@ -8782,15 +8097,9 @@
                 "label" : "Random",
                 "color" : "#2196f3",
                 "settings" : { },
-                "_hash" : 0.15479322438769105,
                 "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
               } ]
             } ],
-            "timewindow" : {
-              "realtime" : {
-                "timewindowMs" : 60000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgb(255, 255, 255)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -8823,37 +8132,6 @@
               "filterId" : null,
               "dataKeys" : [ ]
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1682928306473,
-                  "endTimeMs" : 1683014706473
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 2500
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -8969,37 +8247,6 @@
               "filterId" : null,
               "dataKeys" : [ ]
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1682928306473,
-                  "endTimeMs" : 1683014706473
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 2500
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -9115,37 +8362,6 @@
               "filterId" : null,
               "dataKeys" : [ ]
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1682928306473,
-                  "endTimeMs" : 1683014706473
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 2500
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -9261,37 +8477,6 @@
               "filterId" : null,
               "dataKeys" : [ ]
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1682928306473,
-                  "endTimeMs" : 1683014706473
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 2500
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#fff",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -9410,44 +8595,12 @@
                 "type" : "entityField",
                 "label" : "Title",
                 "color" : "#2196f3",
-                "settings" : { },
-                "_hash" : 0.23278673876621192
+                "settings" : { }
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
               }
             } ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1724146213845,
-                  "endTimeMs" : 1724232613845
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "#FFFFFF",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -9472,8 +8625,6 @@
               "fontWeight" : 400
             },
             "showLegend" : false,
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "actions" : {
               "elementClick" : [ {
                 "name" : "liveApp",
@@ -9629,37 +8780,6 @@
           "sizeY" : 6,
           "config" : {
             "datasources" : [ ],
-            "timewindow" : {
-              "displayValue" : "",
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 1,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "history" : {
-                "historyType" : 0,
-                "interval" : 1000,
-                "timewindowMs" : 60000,
-                "fixedTimewindow" : {
-                  "startTimeMs" : 1741884755143,
-                  "endTimeMs" : 1741971155143
-                },
-                "quickInterval" : "CURRENT_DAY",
-                "hideInterval" : false,
-                "hideLastInterval" : false,
-                "hideFixedInterval" : false,
-                "hideQuickInterval" : false
-              },
-              "aggregation" : {
-                "type" : "AVG",
-                "limit" : 25000
-              }
-            },
             "showTitle" : false,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
             "color" : "rgba(0, 0, 0, 0.87)",
@@ -9700,7 +8820,6 @@
                   "label" : "temperature",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.570889787682481,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -9713,7 +8832,6 @@
                   "label" : "humidity",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.13597394595782442,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -9725,22 +8843,19 @@
                   "type" : "attribute",
                   "label" : "active",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.21080919932756603
+                  "settings" : { }
                 }, {
                   "name" : "type",
                   "type" : "entityField",
                   "label" : "Tipo",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.1357587191053956
+                  "settings" : { }
                 }, {
                   "name" : "pozo",
                   "type" : "timeseries",
                   "label" : "pozo",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.6817815369277647,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -9753,7 +8868,6 @@
                   "label" : "nivelAguada",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.41051360922605606,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -9766,7 +8880,6 @@
                   "label" : "nivelTanque",
                   "color" : "#2196f3",
                   "settings" : { },
-                  "_hash" : 0.10653271737889158,
                   "aggregationType" : "NONE",
                   "units" : null,
                   "decimals" : null,
@@ -9778,78 +8891,67 @@
                   "type" : "timeseries",
                   "label" : "windDir",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.7494149641343646
+                  "settings" : { }
                 }, {
                   "name" : "windSpeed",
                   "type" : "timeseries",
                   "label" : "windSpeed",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.6909522833646339
+                  "settings" : { }
                 }, {
                   "name" : "rain",
                   "type" : "timeseries",
                   "label" : "rain",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.3165646978758382
+                  "settings" : { }
                 }, {
                   "name" : "comedero1",
                   "type" : "timeseries",
                   "label" : "comedero1",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5447639875242816
+                  "settings" : { }
                 }, {
                   "name" : "comedero2",
                   "type" : "timeseries",
                   "label" : "comedero2",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.13120470438313603
+                  "settings" : { }
                 }, {
                   "name" : "comedero3",
                   "type" : "timeseries",
                   "label" : "comedero3",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.21122955934647059
+                  "settings" : { }
                 }, {
                   "name" : "pressure",
                   "type" : "timeseries",
                   "label" : "pressure",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.6357233440039781
+                  "settings" : { }
                 }, {
                   "name" : "nivelNapa",
                   "type" : "timeseries",
                   "label" : "nivelNapa",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.5158796826873344
+                  "settings" : { }
                 }, {
                   "name" : "waterVolume",
                   "type" : "timeseries",
                   "label" : "waterVolume",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.8649181166822368
+                  "settings" : { }
                 }, {
                   "name" : "waterLevelPerc",
                   "type" : "timeseries",
                   "label" : "waterLevelPerc",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.8782297497321601
+                  "settings" : { }
                 }, {
                   "name" : "data_temperature_2",
                   "type" : "timeseries",
                   "label" : "data_temperature_2",
                   "color" : "#2196f3",
-                  "settings" : { },
-                  "_hash" : 0.7747460584745568
+                  "settings" : { }
                 } ],
                 "label" : {
                   "show" : true,
@@ -10129,8 +9231,6 @@
               "padding" : "0"
             },
             "title" : "Map",
-            "useDashboardTimewindow" : true,
-            "displayTimewindow" : true,
             "showTitleIcon" : false,
             "titleTooltip" : "",
             "dropShadow" : true,
@@ -10271,6 +9371,91 @@
                       "col" : 0
                     }
                   }
+                },
+                "md" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "grid",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "f2c7d5c8-11a0-04fa-320e-e94d78ef8044" : {
+                      "sizeX" : 13,
+                      "sizeY" : 35,
+                      "row" : 0,
+                      "col" : 0
+                    },
+                    "636b1c3b-25cb-cf4f-abf5-692a6e40e9ab" : {
+                      "sizeX" : 16,
+                      "sizeY" : 5,
+                      "row" : 0,
+                      "col" : 13
+                    },
+                    "a4065ce1-52ab-1a59-41a9-8a346830c534" : {
+                      "sizeX" : 16,
+                      "sizeY" : 5,
+                      "row" : 0,
+                      "col" : 29
+                    },
+                    "3a7ebb7e-692b-bdd5-e03d-a5cc0162521c" : {
+                      "sizeX" : 32,
+                      "sizeY" : 24,
+                      "resizable" : true,
+                      "row" : 5,
+                      "col" : 13
+                    },
+                    "d330fa0c-24bb-bf36-744a-204671f0f6d4" : {
+                      "sizeX" : 19,
+                      "sizeY" : 29,
+                      "resizable" : true,
+                      "row" : 0,
+                      "col" : 45
+                    }
+                  }
+                },
+                "sm" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "d330fa0c-24bb-bf36-744a-204671f0f6d4" : {
+                      "sizeX" : 19,
+                      "sizeY" : 29,
+                      "resizable" : true,
+                      "row" : 0,
+                      "col" : 45,
+                      "mobileOrder" : 1
+                    },
+                    "7e6582c8-06f3-9473-9b2d-f13f119af757" : {
+                      "sizeX" : 13,
+                      "sizeY" : 35,
+                      "resizable" : true,
+                      "row" : 10,
+                      "col" : 3
+                    }
+                  }
                 }
               }
             }
@@ -10353,6 +9538,74 @@
               },
               "breakpoints" : {
                 "xs" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "589e9406-ea6f-2542-56f5-c0d0176a6421" : {
+                      "sizeX" : 13,
+                      "sizeY" : 11,
+                      "mobileHeight" : null,
+                      "row" : 4,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 1
+                    },
+                    "4ee910e0-f862-98d8-7326-7e84e66d1d3f" : {
+                      "sizeX" : 13,
+                      "sizeY" : 11,
+                      "mobileHeight" : null,
+                      "row" : 4,
+                      "col" : 26,
+                      "resizable" : true,
+                      "mobileOrder" : 2
+                    },
+                    "d6db4b43-9e79-e4df-52df-f4789fb62f5f" : {
+                      "sizeX" : 13,
+                      "sizeY" : 11,
+                      "row" : 4,
+                      "col" : 39,
+                      "resizable" : true,
+                      "mobileOrder" : 3
+                    },
+                    "649460f2-cdc5-2bf5-b9d3-02a04c0050b6" : {
+                      "sizeX" : 13,
+                      "sizeY" : 11,
+                      "mobileHeight" : null,
+                      "row" : 4,
+                      "col" : 52,
+                      "resizable" : true,
+                      "mobileOrder" : 4
+                    },
+                    "a8b6eb29-4c5a-97ed-c3c8-0ab57471f886" : {
+                      "sizeX" : 52,
+                      "sizeY" : 28,
+                      "row" : 15,
+                      "col" : 13
+                    },
+                    "6fa799e9-86af-cb4d-7a7d-f7b24a91cf8f" : {
+                      "sizeX" : 52,
+                      "sizeY" : 4,
+                      "row" : 0,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 0
+                    }
+                  }
+                },
+                "sm" : {
                   "gridSettings" : {
                     "layoutType" : "default",
                     "backgroundColor" : "#eeeeee",
@@ -10517,6 +9770,49 @@
                       "mobileOrder" : 0
                     }
                   }
+                },
+                "sm" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "5f01779f-d25d-987f-d61a-f62cb30d4bb9" : {
+                      "sizeX" : 54,
+                      "sizeY" : 15,
+                      "row" : 4,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 1
+                    },
+                    "1876ca1e-bd5f-6a1f-6307-d39702607f76" : {
+                      "sizeX" : 54,
+                      "sizeY" : 16,
+                      "row" : 19,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 2
+                    },
+                    "9d448512-8d53-8eef-624a-67726228ff30" : {
+                      "sizeX" : 54,
+                      "sizeY" : 4,
+                      "row" : 0,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 0
+                    }
+                  }
                 }
               }
             }
@@ -10590,6 +9886,65 @@
               },
               "breakpoints" : {
                 "xs" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "e7acada5-c16f-972a-ba5c-b8e1f112d698" : {
+                      "sizeX" : 11,
+                      "sizeY" : 8,
+                      "resizable" : true,
+                      "row" : 4,
+                      "col" : 13
+                    },
+                    "b573cbe0-ef07-75ae-05f8-9cf2b5efedbb" : {
+                      "sizeX" : 11,
+                      "sizeY" : 8,
+                      "row" : 12,
+                      "col" : 13
+                    },
+                    "a6ddc727-09c3-0824-a870-a58ac3590823" : {
+                      "sizeX" : 11,
+                      "sizeY" : 9,
+                      "row" : 20,
+                      "col" : 13
+                    },
+                    "a1c98594-069a-86da-730e-2256da83c8ec" : {
+                      "sizeX" : 51,
+                      "sizeY" : 29,
+                      "mobileHeight" : null,
+                      "row" : 4,
+                      "col" : 24
+                    },
+                    "be103648-1633-5a3f-9e51-73272b6a4672" : {
+                      "sizeX" : 11,
+                      "sizeY" : 4,
+                      "row" : 29,
+                      "col" : 13
+                    },
+                    "cfc0e0db-49b6-1a14-b824-298e19259fc7" : {
+                      "sizeX" : 62,
+                      "sizeY" : 4,
+                      "row" : 0,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 0
+                    }
+                  }
+                },
+                "sm" : {
                   "gridSettings" : {
                     "layoutType" : "default",
                     "backgroundColor" : "#eeeeee",
@@ -10979,6 +10334,59 @@
                       "mobileOrder" : 0
                     }
                   }
+                },
+                "sm" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "5913117a-1e94-723e-f342-9c39017ea7f2" : {
+                      "sizeX" : 19,
+                      "sizeY" : 12,
+                      "resizable" : true,
+                      "row" : 4,
+                      "col" : 13
+                    },
+                    "f7614dcc-ced6-c9a2-80a5-8975b65503b1" : {
+                      "sizeX" : 9,
+                      "sizeY" : 12,
+                      "row" : 4,
+                      "col" : 47
+                    },
+                    "af0a0457-d804-4289-a666-9345d91d2f48" : {
+                      "sizeX" : 15,
+                      "sizeY" : 12,
+                      "row" : 4,
+                      "col" : 32
+                    },
+                    "29fe0486-1b67-42ec-ce17-8dfe991d71ff" : {
+                      "sizeX" : 43,
+                      "sizeY" : 16,
+                      "resizable" : true,
+                      "row" : 16,
+                      "col" : 13
+                    },
+                    "455634d2-c1a6-c701-bf2a-40a983d7fabc" : {
+                      "sizeX" : 43,
+                      "sizeY" : 4,
+                      "row" : 0,
+                      "col" : 13,
+                      "resizable" : true,
+                      "mobileOrder" : 0
+                    }
+                  }
                 }
               }
             }
@@ -11021,6 +10429,32 @@
               },
               "breakpoints" : {
                 "xs" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "a6a706af-cfe5-986c-602c-bc54edc73b30" : {
+                      "sizeX" : 51,
+                      "sizeY" : 29,
+                      "resizable" : true,
+                      "row" : 0,
+                      "col" : 13
+                    }
+                  }
+                },
+                "sm" : {
                   "gridSettings" : {
                     "layoutType" : "default",
                     "backgroundColor" : "#eeeeee",
@@ -11140,13 +10574,38 @@
                       "col" : 13
                     }
                   }
+                },
+                "sm" : {
+                  "gridSettings" : {
+                    "layoutType" : "default",
+                    "backgroundColor" : "#eeeeee",
+                    "columns" : 64,
+                    "margin" : 10,
+                    "outerMargin" : true,
+                    "backgroundSizeMode" : "100%",
+                    "minColumns" : 64,
+                    "viewFormat" : "list",
+                    "autoFillHeight" : false,
+                    "rowHeight" : 70,
+                    "backgroundImageUrl" : null,
+                    "mobileAutoFillHeight" : false,
+                    "mobileRowHeight" : 70
+                  },
+                  "widgets" : {
+                    "3e376cfc-7449-b346-138a-2854f6e5a6fc" : {
+                      "sizeX" : 51,
+                      "sizeY" : 35,
+                      "row" : 0,
+                      "col" : 13
+                    }
+                  }
                 }
               }
             }
           }
         },
         "mobilemap" : {
-          "name" : "mobileMap",
+          "name" : "Mapa",
           "root" : false,
           "layouts" : {
             "main" : {
@@ -11403,37 +10862,14 @@
         }
       },
       "timewindow" : {
-        "displayValue" : "",
-        "hideAggregation" : false,
-        "hideAggInterval" : false,
-        "hideTimezone" : false,
         "selectedTab" : 0,
         "realtime" : {
           "realtimeType" : 0,
           "interval" : 1000,
-          "timewindowMs" : 60000,
-          "quickInterval" : "CURRENT_DAY",
-          "hideInterval" : false,
-          "hideLastInterval" : false,
-          "hideQuickInterval" : false
-        },
-        "history" : {
-          "historyType" : 0,
-          "interval" : 1000,
-          "timewindowMs" : 60000,
-          "fixedTimewindow" : {
-            "startTimeMs" : 1748631545375,
-            "endTimeMs" : 1748717945375
-          },
-          "quickInterval" : "CURRENT_DAY",
-          "hideInterval" : false,
-          "hideLastInterval" : false,
-          "hideFixedInterval" : false,
-          "hideQuickInterval" : false
+          "timewindowMs" : 60000
         },
         "aggregation" : {
-          "type" : "AVG",
-          "limit" : 25000
+          "type" : "AVG"
         }
       },
       "settings" : {

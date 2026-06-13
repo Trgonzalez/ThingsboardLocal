@@ -56,6 +56,14 @@
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "subscription",
+      "lastUpdateTs" : 1778522465712,
+      "longValue" : null,
+      "strValue" : "LIC20"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
       "jsonValue" : "[{\"chatID\":\"941688522\",\"receiveNotifications\":false,\"mute_duration\":null,\"disabled_until\":null,\"nombre\":\"Tris\"}]",
       "key" : "telegram",
       "lastUpdateTs" : 1757646124631,
