@@ -187,8 +187,8 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 60000,
-                "timewindowMs" : 3600000
+                "interval" : 120000,
+                "timewindowMs" : 43200000
               },
               "aggregation" : {
                 "type" : "AVG"
@@ -1972,7 +1972,7 @@
               "name" : "",
               "deviceId" : "285112e0-5ea6-11f1-9c5d-cf2d8d8f620e",
               "dataKeys" : [ {
-                "name" : "power_total",
+                "name" : "power_active_total",
                 "type" : "timeseries",
                 "label" : "Temperature",
                 "color" : "#2196f3",
@@ -2374,8 +2374,8 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 60000,
-                "timewindowMs" : 3600000
+                "interval" : 120000,
+                "timewindowMs" : 43200000
               },
               "aggregation" : {
                 "type" : "AVG"
