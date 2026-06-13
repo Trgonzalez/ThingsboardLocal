@@ -251,7 +251,7 @@
                     "color" : ""
                   }
                 },
-                "decimals" : 0
+                "decimals" : 3
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
