@@ -4635,7 +4635,7 @@
                 },
                 "groups" : null,
                 "edit" : {
-                  "enabledActions" : [ "move" ],
+                  "enabledActions" : [ "add", "move", "remove" ],
                   "attributeScope" : "SERVER_SCOPE",
                   "snappable" : false
                 },
@@ -4862,6 +4862,7 @@
                 }
               } ],
               "circles" : [ ],
+              "polylines" : [ ],
               "additionalDataSources" : [ ],
               "controlsPosition" : "topleft",
               "zoomActions" : [ "scroll", "doubleClick", "controlButtons" ],
