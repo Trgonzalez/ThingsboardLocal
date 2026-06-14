@@ -11179,7 +11179,7 @@
               "widgets" : {
                 "bde68678-7e78-3712-8d2b-627b5b8e8b11" : {
                   "sizeX" : 20,
-                  "sizeY" : 11,
+                  "sizeY" : 13,
                   "resizable" : true,
                   "row" : 0,
                   "col" : 4
@@ -12859,5 +12859,6 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
-  }
+  },
+  "calculatedFields" : [ ]
 }
