@@ -2128,7 +2128,7 @@
                 "label" : "current_l1",
                 "color" : "#4caf50",
                 "settings" : {
-                  "yAxisId" : "default",
+                  "yAxisId" : "axis1",
                   "showInLegend" : true,
                   "dataHiddenByDefault" : false,
                   "type" : "line",
@@ -2196,7 +2196,8 @@
                     "color" : ""
                   }
                 },
-                "decimals" : 0
+                "units" : "A",
+                "decimals" : 2
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
@@ -2378,6 +2379,41 @@
                     "value" : null,
                     "entityAlias" : null
                   }
+                },
+                "axis1" : {
+                  "units" : null,
+                  "decimals" : 0,
+                  "show" : true,
+                  "label" : "",
+                  "labelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "600",
+                    "lineHeight" : "1"
+                  },
+                  "labelColor" : "rgba(0, 0, 0, 0.54)",
+                  "position" : "left",
+                  "showTickLabels" : true,
+                  "tickLabelFont" : {
+                    "family" : "Roboto",
+                    "size" : 12,
+                    "sizeUnit" : "px",
+                    "style" : "normal",
+                    "weight" : "400",
+                    "lineHeight" : "1"
+                  },
+                  "tickLabelColor" : "rgba(0, 0, 0, 0.54)",
+                  "ticksFormatter" : null,
+                  "showTicks" : true,
+                  "ticksColor" : "rgba(0, 0, 0, 0.54)",
+                  "showLine" : true,
+                  "lineColor" : "rgba(0, 0, 0, 0.54)",
+                  "showSplitLines" : true,
+                  "splitLinesColor" : "rgba(0, 0, 0, 0.12)",
+                  "id" : "axis1",
+                  "order" : 1
                 }
               },
               "noAggregationBarWidthSettings" : {
