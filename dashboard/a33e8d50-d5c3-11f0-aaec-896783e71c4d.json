@@ -2704,7 +2704,7 @@
                     "color" : ""
                   }
                 },
-                "decimals" : 0
+                "decimals" : 3
               }, {
                 "name" : "data_batPerc",
                 "type" : "timeseries",
@@ -2919,7 +2919,7 @@
               "yAxes" : {
                 "default" : {
                   "units" : null,
-                  "decimals" : 0,
+                  "decimals" : 3,
                   "show" : true,
                   "label" : "",
                   "labelFont" : {
@@ -2954,12 +2954,20 @@
                   "min" : {
                     "type" : "constant",
                     "value" : null,
-                    "entityAlias" : null
+                    "latestKey" : null,
+                    "latestKeyType" : null,
+                    "entityAlias" : null,
+                    "entityKey" : null,
+                    "entityKeyType" : null
                   },
                   "max" : {
                     "type" : "constant",
                     "value" : null,
-                    "entityAlias" : null
+                    "latestKey" : null,
+                    "latestKeyType" : null,
+                    "entityAlias" : null,
+                    "entityKey" : null,
+                    "entityKeyType" : null
                   }
                 }
               },
@@ -3104,11 +3112,11 @@
               "displayTypePrefix" : true
             },
             "timewindow" : {
-              "selectedTab" : 0,
-              "realtime" : {
-                "realtimeType" : 0,
-                "interval" : 7200000,
-                "timewindowMs" : 2592000000
+              "selectedTab" : 1,
+              "history" : {
+                "historyType" : 2,
+                "quickInterval" : "PREVIOUS_YEAR",
+                "interval" : 86400000
               },
               "aggregation" : {
                 "type" : "AVG"
@@ -3323,5 +3331,6 @@
   "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
-  }
+  },
+  "calculatedFields" : [ ]
 }
