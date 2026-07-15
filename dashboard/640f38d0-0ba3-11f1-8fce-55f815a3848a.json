@@ -9088,6 +9088,39 @@
           "row" : 0,
           "col" : 0,
           "id" : "c27fe355-5233-b74a-4101-bf2ded7b4579"
+        },
+        "f9dff2b2-949c-688a-7c17-29b1602f2372" : {
+          "typeFullFqn" : "tenant.customnotis",
+          "type" : "static",
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "static",
+              "name" : "function",
+              "dataKeys" : [ {
+                "name" : "f(x)",
+                "type" : "function",
+                "label" : "Random",
+                "color" : "#2196f3",
+                "settings" : { },
+                "funcBody" : "var value = prevValue + Math.random() * 100 - 50;\nvar multiplier = Math.pow(10, 2 || 0);\nvar value = Math.round(value * multiplier) / multiplier;\nif (value < -1000) {\n\tvalue = -1000;\n} else if (value > 1000) {\n\tvalue = 1000;\n}\nreturn value;"
+              } ]
+            } ],
+            "showTitle" : false,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "cardHtml" : "<div class='card'>HTML code here</div>",
+              "cardCss" : ".card {\n    font-weight: bold;\n    font-size: 32px;\n    color: #999;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}"
+            },
+            "title" : "HTML Card",
+            "dropShadow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "f9dff2b2-949c-688a-7c17-29b1602f2372"
         }
       },
       "states" : {
@@ -9202,6 +9235,12 @@
                   "sizeY" : 1,
                   "row" : 0,
                   "col" : 19
+                },
+                "f9dff2b2-949c-688a-7c17-29b1602f2372" : {
+                  "sizeX" : 2,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 22
                 }
               },
               "gridSettings" : {
