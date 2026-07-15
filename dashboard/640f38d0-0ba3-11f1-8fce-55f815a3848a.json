@@ -8709,13 +8709,12 @@
                 "decimals" : 4,
                 "aggregationType" : null,
                 "funcBody" : null,
-                "usePostProcessing" : true,
-                "postFuncBody" : "return value-prevOrigValue;"
+                "usePostProcessing" : false,
+                "postFuncBody" : null
               } ],
               "alarmFilterConfig" : {
                 "statusList" : [ "ACTIVE" ]
-              },
-              "latestDataKeys" : [ ]
+              }
             } ],
             "showTitle" : true,
             "backgroundColor" : "rgba(0, 0, 0, 0)",
@@ -9132,6 +9131,121 @@
           "row" : 0,
           "col" : 0,
           "id" : "9780cb36-f542-07b7-dd16-ac30412cba75"
+        },
+        "c27fe355-5233-b74a-4101-bf2ded7b4579" : {
+          "typeFullFqn" : "system.action_button",
+          "type" : "latest",
+          "sizeX" : 3,
+          "sizeY" : 1,
+          "config" : {
+            "datasources" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#FFFFFF01",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "activatedState" : {
+                "action" : "DO_NOTHING",
+                "defaultValue" : false,
+                "getAttribute" : {
+                  "key" : "state",
+                  "scope" : null
+                },
+                "getTimeSeries" : {
+                  "key" : "state"
+                },
+                "getAlarmStatus" : {
+                  "severityList" : null,
+                  "typeList" : null
+                },
+                "dataToValue" : {
+                  "type" : "NONE",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "/* Should return boolean value */\nreturn data;"
+                }
+              },
+              "disabledState" : {
+                "action" : "DO_NOTHING",
+                "defaultValue" : false,
+                "getAttribute" : {
+                  "key" : "state",
+                  "scope" : null
+                },
+                "getTimeSeries" : {
+                  "key" : "state"
+                },
+                "getAlarmStatus" : {
+                  "severityList" : null,
+                  "typeList" : null
+                },
+                "dataToValue" : {
+                  "type" : "NONE",
+                  "compareToValue" : true,
+                  "dataToValueFunction" : "/* Should return boolean value */\nreturn data;"
+                }
+              },
+              "appearance" : {
+                "type" : "outlined",
+                "autoScale" : true,
+                "showLabel" : true,
+                "label" : "Button",
+                "showIcon" : true,
+                "icon" : "home",
+                "iconSize" : 24,
+                "iconSizeUnit" : "px",
+                "mainColor" : "#3F52DD",
+                "backgroundColor" : "#FFFFFF",
+                "customStyle" : {
+                  "enabled" : null,
+                  "hovered" : null,
+                  "pressed" : null,
+                  "activated" : null,
+                  "disabled" : null
+                }
+              }
+            },
+            "title" : "Action button",
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "dropShadow" : false,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "borderRadius" : "4px",
+            "configMode" : "basic",
+            "actions" : {
+              "click" : [ {
+                "id" : "8336ea10-c54f-55d2-412f-6490ed932798",
+                "name" : "onClick",
+                "icon" : "more_horiz",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "unreadnotis",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "popoverPreferredPlacement" : "bottom",
+                "popoverHideOnClickOutside" : true,
+                "popoverHideDashboardToolbar" : true,
+                "popoverWidth" : "25vw",
+                "popoverHeight" : "25vh",
+                "popoverStyle" : { },
+                "openInSeparateDialog" : false,
+                "openInPopover" : true
+              } ]
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c27fe355-5233-b74a-4101-bf2ded7b4579"
         }
       },
       "states" : {
@@ -9240,6 +9354,12 @@
                   "mobileHeight" : null,
                   "row" : 21,
                   "col" : 0
+                },
+                "c27fe355-5233-b74a-4101-bf2ded7b4579" : {
+                  "sizeX" : 3,
+                  "sizeY" : 1,
+                  "row" : 0,
+                  "col" : 19
                 }
               },
               "gridSettings" : {
