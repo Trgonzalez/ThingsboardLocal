@@ -2447,7 +2447,7 @@
               "entityAliasId" : "a12382dc-3ac1-38c2-8974-57f764f6a9d9",
               "filterId" : null,
               "dataKeys" : [ {
-                "name" : "data_Distance",
+                "name" : "data_IDC_intput_mA",
                 "type" : "timeseries",
                 "label" : "data_Distance",
                 "color" : "#2196f3",
@@ -2511,8 +2511,8 @@
               "selectedTab" : 0,
               "realtime" : {
                 "realtimeType" : 0,
-                "interval" : 1800000,
-                "timewindowMs" : 604800000
+                "interval" : 7200000,
+                "timewindowMs" : 2592000000
               },
               "aggregation" : {
                 "type" : "AVG"
