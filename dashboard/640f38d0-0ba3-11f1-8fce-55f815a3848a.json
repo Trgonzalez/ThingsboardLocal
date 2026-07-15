@@ -9236,7 +9236,7 @@
                 "popoverHideOnClickOutside" : true,
                 "popoverHideDashboardToolbar" : true,
                 "popoverWidth" : "25vw",
-                "popoverHeight" : "25vh",
+                "popoverHeight" : "60vh",
                 "popoverStyle" : { },
                 "openInSeparateDialog" : false,
                 "openInPopover" : true
