@@ -9121,7 +9121,29 @@
             "widgetStyle" : { },
             "widgetCss" : "",
             "pageSize" : 1024,
-            "noDataDisplayMessage" : ""
+            "noDataDisplayMessage" : "",
+            "actions" : {
+              "buttonClick" : [ {
+                "name" : "abrir",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "unreadnotis",
+                "setEntityId" : false,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "popoverPreferredPlacement" : "top",
+                "popoverHideOnClickOutside" : true,
+                "popoverHideDashboardToolbar" : true,
+                "popoverWidth" : "25vw",
+                "popoverHeight" : "25vh",
+                "popoverStyle" : { },
+                "openInSeparateDialog" : false,
+                "openInPopover" : true,
+                "id" : "f3f0c1b8-b2d8-6a40-ddf9-341d84e44ddc"
+              } ]
+            }
           },
           "row" : 0,
           "col" : 0,
